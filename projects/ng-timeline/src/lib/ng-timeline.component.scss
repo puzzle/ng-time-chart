@@ -1,0 +1,240 @@
+$day-width: 20px;
+$item-vertical-padding: 2px;
+$item-vertical-margin: 4px;
+$sidebar-width: 200px;
+$header-height: 70px;
+$gray-dark: #888;
+$gray-base: #aaa;
+$gray-light: #ccc;
+$gray-lighter: #eee;
+$brand-info: #dead00;
+$brand-primary: #b00b1e;
+$brand-danger: #399383;
+
+.timetable {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: auto
+}
+
+.label-bar {
+  background-color: white;
+  z-index: 1000;
+  flex: 1 0 $sidebar-width;
+  min-width: $sidebar-width;
+  max-width: $sidebar-width;
+}
+
+.timetable-header {
+  display: flex;
+  margin-bottom: $item-vertical-margin;
+
+  .year-selector {
+    box-sizing: border-box;
+    height: $header-height;
+    max-height: $header-height;
+    position: sticky;
+    left: 0;
+
+    h3 {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+  }
+
+  .calendar-header {
+    height: $header-height;
+    max-height: $header-height;
+  }
+}
+
+.timetable-body {
+  margin-top: $item-vertical-margin;
+  margin-bottom: $item-vertical-margin;
+
+  min-height: 10px;
+
+  .item-group {
+    display: flex;
+    flex-direction: row;
+
+
+    .item-label {
+      position: sticky;
+      left: 0;
+      flex: 1 0 $sidebar-width;
+      text-align: left;
+      color: $gray-base;
+      margin: 0;
+      padding-top: calc(#{$item-vertical-padding} + #{$item-vertical-margin} + 1px);
+      padding-bottom: calc(#{$item-vertical-padding} + #{$item-vertical-margin} + 1px);
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      border-top: solid 1px $gray-light;
+      width: 100%;
+
+      .item {
+        cursor: pointer;
+        position: relative;
+        border-radius: 10px;
+        border-width: 2px;
+        border-style: solid;
+        text-align: center;
+        color: $brand-info;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-top: $item-vertical-padding;
+        padding-bottom: $item-vertical-padding;
+        margin: 4px 0;
+        transition: 0.5s;
+
+        .blockade-title {
+          position: relative;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .SMALL_TYPE4 {
+        border-color: $brand-primary;
+        background-color: lighten($brand-primary, 35%);
+      }
+
+      .BIG_TYPE5 {
+        border-color: $brand-info;
+        background-color: lighten($brand-info, 35%);
+        color: $gray-lighter;
+      }
+
+      .BIG_NVZ {
+        border-color: $brand-danger;
+        background-color: lighten($brand-danger, 35%);
+      }
+
+      .blockade-day {
+        position: absolute;
+        display: inline-block;
+        margin-top: -$item-vertical-padding;
+        height: 100%;
+      }
+
+      .blockade-day.SMALL_TYPE4 {
+        background-color: $brand-primary
+      }
+
+      .blockade-day.BIG_TYPE5 {
+        background-color: $brand-info;
+      }
+
+      .blockade-day.BIG_NVZ {
+        background-color: $brand-danger;
+      }
+
+      .open-left {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .open-right {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .item:hover {
+        filter: brightness(110%);
+        transform: scaleY(1.1);
+      }
+    }
+  }
+
+  .item-group:nth-child(odd) {
+    background-color: $gray-lighter;
+  }
+}
+
+.months {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.month {
+  border: solid 1px $gray-dark;
+  border-left-width: 0;
+  flex: auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.month:first-child {
+  border-left-width: 1px;
+}
+
+@for $day from 0 through 366 {
+  .day-width-#{$day} {
+    min-width: calc(#{$day} * #{$day-width});
+    max-width: calc(#{$day} * #{$day-width});
+  }
+
+  .left-#{$day}-days {
+    left: calc(#{$day} * #{$day-width});
+  }
+}
+
+.calendar-day-width-365 {
+  min-width: calc(365 * #{$day-width} + #{$sidebar-width});
+}
+
+.calendar-day-width-366 {
+  min-width: calc(366 * #{$day-width} + #{$sidebar-width});
+}
+
+.week-offset {
+  border-right: solid $gray-dark 1px;
+  box-sizing: border-box;
+}
+
+.weeks {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.week {
+  border: 0 solid;
+  border-right-width: 1px;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+.week:first-child {
+  border-left-width: 1px;
+}
+
+.days {
+  display: flex;
+  flex-direction: row;
+}
+
+.day {
+  box-sizing: border-box;
+  border: solid 1px $gray-dark;
+  border-left-width: 0;
+  min-width: $day-width;
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  font-size: 10px;
+}
+
+.day:first-child {
+  border-left-width: 1px;
+}

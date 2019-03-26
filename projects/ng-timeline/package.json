@@ -1,0 +1,10 @@
+{
+  "name": "ng-timeline",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "@angular/common": "^6.1.10",
+    "@angular/core": "^6.1.10",
+    "moment": "^2.24.0"
+  }
+}

@@ -1,0 +1,65 @@
+<div class="timetable">
+  <div class="timetable-header"
+       [ngClass]="'day-width-'+days.length">
+    <div class="year-selector label-bar">
+      <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear-1)">&lt; </h3>
+      <h1 style="display: inline-block">{{currentYear}}</h1>
+      <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear+1)"> &gt; </h3>
+    </div>
+    <div class="calendar-header"
+         [ngClass]="'day-width-'+days.length">
+      <div class="months">
+        <div *ngFor="let month of months"
+             [ngClass]="'day-width-'+month.daysInMonth()"
+             class="month">
+          {{month.format('MMMM')}}
+        </div>
+      </div>
+      <div class="week-bar">
+        <div class="weeks">
+          <div class="week-offset"
+               *ngIf="getOldPeriodDaysBeforeFirstWeek()>0"
+               [ngClass]="'day-width-'+getOldPeriodDaysBeforeFirstWeek()"></div>
+          <div class="week"
+               *ngFor="let week of weeks"
+               [ngClass]="'day-width-'+getLengthOfWeekInPeriod(week)">({{week.isoWeek()}}
+            ){{week.format('D. M. YYYY')}}</div>
+        </div>
+      </div>
+      <div class="days">
+        <div class="day" *ngFor="let day of days">{{day.format('dd')}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="timetable-body"
+       [ngClass]="'calendar-day-width-'+days.length">
+    <div class="item-group"
+         *ngFor="let group of groups">
+      <div class="item-label label-bar">
+        {{group.name}}
+      </div>
+      <div class="items">
+        <ng-container *ngFor="let item of group.items">
+          <div class="item"
+               *ngIf="isInPeriod(item.startTime) || isInPeriod(item.endTime)"
+               [ngClass]="['left-'+getDayOfPeriod(item.startTime)+'-days','day-width-'+getDuration(item)]"
+               [class.open-left]="startsBeforePeriod(item.startTime)"
+               [class.open-right]="endsAfterPeriod(item.endTime)"
+               (click)="open(group)">
+            <!--<ng-container *ngFor="let day of blockade.validity.dates">-->
+            <!--<div class="blockade-day day-width-1"-->
+            <!--*ngIf="isInPeriod(day)"-->
+            <!--[ngClass]="['left-'+(getDaysSince(blockade.validity.startTime,day))+'-days', site.nzvType]">-->
+            <!--&nbsp;-->
+            <!--</div>-->
+            <!--</ng-container>-->
+            <div class="blockade-title">
+              {{item.name}}
+              ({{item.startTime | timelineDateFormatter}} - {{item.endTime | timelineDateFormatter}})
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

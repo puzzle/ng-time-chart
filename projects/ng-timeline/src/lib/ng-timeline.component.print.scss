@@ -1,0 +1,11 @@
+@media print {
+  .timetable {
+    overflow-x: initial;
+
+    .year-selector {
+      h3 {
+        visibility: hidden;
+      }
+    }
+  }
+}
