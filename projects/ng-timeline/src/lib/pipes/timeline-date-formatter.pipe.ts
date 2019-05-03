@@ -11,8 +11,7 @@ const moment = moment_;
 export class TimelineDateFormatterPipe implements PipeTransform {
 
   transform(dateString: string, args?: any): any {
-    const mlj: moment_.Moment = moment(dateString);
-    return moment(dateString).locale('de-ch').format('D. M.');
+    return moment(dateString).format('D. M.');
   }
 
 }

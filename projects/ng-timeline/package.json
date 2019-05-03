@@ -1,6 +1,23 @@
 {
   "name": "ng-timeline",
   "version": "0.0.1",
+  "description": "A library to display durations in a horizontally scrolling calendar. Similar to a Gantt-chart.",
+  "author": "Florian Hug (hug@puzzle.ch)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puzzle/ng-timeline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/puzzle/ng-timeline/issues"
+  },
+  "homepage": "https://github.com/puzzle/ng-timeline",
+  "keywords": [
+    "angular",
+    "typescript",
+    "momentjs",
+    "calendar",
+    "Gantt-chart"
+  ],
   "license": "Apache-2.0",
   "peerDependencies": {
     "@angular/common": "^6.1.10",

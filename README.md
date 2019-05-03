@@ -1,27 +1,26 @@
 # NgTimelineLibrary
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+* A library to display durations in a horizontally scrolling calendar. Similar to a Gantt-chart.
+* Durations are part of groups and are displayed together
+* The library displays the duration of an entire year
+  * The year can be advanced and regressed
+* Library location: `projects/ng-timeline` directory of this repository
+* It is developed using Angular >=6.0.0 and its newly introduced ng g library schematics.
 
-## Development server
+## Examples/Demo
+* A simple Example can be found under src/app directory of this repository.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
+`npm i ng-timeline`
 
-## Code scaffolding
+## Usage
+1. Register the NgTimlineModule
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`import { NgTimelineModule } from 'ng-timeline';`
 
-## Build
+2. Use the component (ng-timeline) in your component.
+```angular2html
+<ng-timeline [groups]="groups">
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+</ng-timeline>
+```

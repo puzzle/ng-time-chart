@@ -13,6 +13,7 @@ export class AppComponent {
   groups: Group[];
 
   constructor() {
+    moment.locale('de-ch');
     this.groups = [
       {
         name: 'Testgroup 0',
@@ -26,7 +27,7 @@ export class AppComponent {
             name: 'Testitem 1',
             startTime: moment('2018-11-11'),
             endTime: moment('2019-02-02')
-          }],
+          }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         onClick: () => console.log('clicked')
       }
     ];
