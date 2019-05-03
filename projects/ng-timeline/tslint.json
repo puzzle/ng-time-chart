@@ -12,6 +12,10 @@
       "element",
       "ng",
       "kebab-case"
+    ],
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
     ]
   }
 }
