@@ -1,21 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgTimelineComponent } from './ng-timeline.component';
+import { NgTimeChartComponent } from './ng-time-chart.component';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TimelineDateFormatterPipe } from './pipes/timeline-date-formatter.pipe';
+import { TimeChartDateFormatterPipe } from './pipes/time-chart-date-formatter.pipe';
 
-describe('NgTimelineComponent', () => {
-  let component: NgTimelineComponent;
-  let fixture: ComponentFixture<NgTimelineComponent>;
+describe('NgTimeChartComponent', () => {
+  let component: NgTimeChartComponent;
+  let fixture: ComponentFixture<NgTimeChartComponent>;
 
   let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        NgTimelineComponent,
-        TimelineDateFormatterPipe],
+        NgTimeChartComponent,
+        TimeChartDateFormatterPipe
+      ],
       imports: [
         RouterTestingModule.withRoutes([])
       ]
@@ -23,7 +24,7 @@ describe('NgTimelineComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgTimelineComponent);
+    fixture = TestBed.createComponent(NgTimeChartComponent);
     component = fixture.componentInstance;
     router = TestBed.get(Router);
     fixture.detectChanges();

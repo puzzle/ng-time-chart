@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Group } from '../../projects/ng-timeline/src/lib/group';
+import { Group } from '../../../ng-time-chart/src/public-api';
 import * as moment from 'moment';
 
 @Component({
@@ -8,7 +8,7 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'NgTimelineLibrary';
+  title = 'NgTimeChartLibrary';
 
   groups: Group[];
 

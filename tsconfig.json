@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "ng-timeline": [
-        "dist/ng-timeline"
+      "ng-time-chart": [
+        "dist/ng-time-chart"
       ],
       "ng-timeline/*": [
-        "dist/ng-timeline/*"
+        "dist/ng-time-chart/*"
       ]
     }
   }

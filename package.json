@@ -1,13 +1,17 @@
 {
-  "name": "ng-timeline-library",
+  "name": "ng-time-chart-showcase",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && npm run copy:readme && npm run copy:license",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "copy:readme": "copyfiles ./README.md ./dist/ng-time-chart",
+    "copy:license": "copyfiles ./LICENSE ./dist/ng-time-chart",
+    "publish:showcase": "npx angular-cli-ghpages --dir=./dist/ng-time-chart",
+    "build:showcase": "ng build ng-time-chart-showcase --base-href='https://puzzle.github.io/ng-time-chart/'"
   },
   "private": false,
   "dependencies": {
@@ -19,12 +23,12 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "angular-cli-ghpages": "^0.5.3",
     "core-js": "^2.5.4",
+    "moment": "^2.24.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26",
-    "moment": "^2.24.0",
-    "ng-timeline": "0.0.1"
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.8",
@@ -36,6 +40,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "copyfiles": "^2.1.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.0.0",
