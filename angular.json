@@ -115,7 +115,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "projects/ng-time-chart-e2e/protractor.conf.js",
             "devServerTarget": "ng-time-chart-showcase:serve"
           },
           "configurations": {
@@ -127,7 +127,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": "projects/ng-time-chart-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
