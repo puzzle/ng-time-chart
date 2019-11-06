@@ -8,19 +8,20 @@
 * It is developed using Angular >=6.0.0 and its newly introduced ng g library schematics.
 
 ## Examples/Demo
-* A simple Example can be found under src/app directory of this repository.
+* A simple Example can be found under projects/ng-time-chart-showase directory of this repository.
+* The example is deployed: [Demo Link](https://puzzle.github.io/ng-time-chart/)
 
 ## Installation
-`npm i ng-timeline`
+`npm i @puzzleitc/ng-time-chart`
 
 ## Usage
 1. Register the NgTimlineModule
 
-`import { NgTimelineModule } from 'ng-timeline';`
+`import { NgTimeChartModule } from 'ng-time-chart';`
 
-2. Use the component (ng-timeline) in your component.
+2. Use the component (ng-time-chart) in your component.
 ```angular2html
-<ng-timeline [groups]="groups">
+<ng-time-chart [groups]="groups">
 
-</ng-timeline>
+</ng-time-chart>
 ```
