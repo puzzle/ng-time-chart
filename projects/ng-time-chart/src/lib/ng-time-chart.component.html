@@ -40,9 +40,11 @@
       </div>
       <div class="items">
         <ng-container *ngFor="let item of group.items">
-          <div class="item" [style.color]="item.color || defaultColor"
+          <div class="item" 
                *ngIf="isInPeriod(item.startTime) || isInPeriod(item.endTime)"
-               [ngClass]="['left-'+getDayOfPeriod(item.startTime)+'-days','day-width-'+getDuration(item)]"
+               [style.borderColor]="item.color || defaultColor"
+               [style.backgroundColor]="item.color || defaultColor"
+               [ngClass]="['left-'+getDayOfPeriod(item.startTime)+'-days','day-width-'+getDuration(item), 'lighten']"
                [class.open-left]="startsBeforePeriod(item.startTime)"
                [class.open-right]="endsAfterPeriod(item.endTime)"
                (click)="open(group)">

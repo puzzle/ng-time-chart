@@ -55,6 +55,13 @@ $brand-danger: #399383;
   }
 }
 
+.lighten {
+  background-image: linear-gradient(
+    0deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.4) 100%);
+}
+
 .timetable-body {
   margin-top: $item-vertical-margin;
   margin-bottom: $item-vertical-margin;
