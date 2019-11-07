@@ -1,8 +1,8 @@
-import { TimelineDateFormatterPipe } from './timeline-date-formatter.pipe';
+import { TimeChartDateFormatterPipe } from './time-chart-date-formatter.pipe';
 
-describe('TimelineDateFormatterPipe', () => {
+describe('TimeChartDateFormatterPipe', () => {
   it('create an instance', () => {
-    const pipe = new TimelineDateFormatterPipe();
+    const pipe = new TimeChartDateFormatterPipe();
     expect(pipe).toBeTruthy();
   });
 });

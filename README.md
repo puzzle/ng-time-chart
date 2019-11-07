@@ -1,10 +1,10 @@
-# NgTimelineLibrary
+# NgTimeChart
 
 * A library to display durations in a horizontally scrolling calendar. Similar to a Gantt-chart.
 * Durations are part of groups and are displayed together
 * The library displays the duration of an entire year
   * The year can be advanced and regressed
-* Library location: `projects/ng-timeline` directory of this repository
+* Library location: `projects/ng-time-chart` directory of this repository
 * It is developed using Angular >=6.0.0 and its newly introduced ng g library schematics.
 
 ## Examples/Demo
