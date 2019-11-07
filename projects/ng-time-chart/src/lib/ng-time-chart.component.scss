@@ -33,7 +33,6 @@ $brand-danger: #399383;
   margin-bottom: $item-vertical-margin;
   position:sticky;
   top: 0;
-  background-color: white;
   z-index: 10;
 
   .year-selector {
@@ -52,6 +51,7 @@ $brand-danger: #399383;
   .calendar-header {
     height: $header-height;
     max-height: $header-height;
+    background-color: white;
   }
 }
 
