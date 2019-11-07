@@ -11,11 +11,11 @@ import { Item } from './item';
 const moment = moment_;
 
 @Component({
-  selector: 'ng-timeline',
-  templateUrl: './ng-timeline.component.html',
-  styleUrls: ['./ng-timeline.component.scss', './ng-timeline.component.print.scss']
+  selector: 'ng-time-chart',
+  templateUrl: './ng-time-chart.component.html',
+  styleUrls: ['./ng-time-chart.component.scss', './ng-time-chart.component.print.scss']
 })
-export class NgTimelineComponent implements OnInit {
+export class NgTimeChartComponent implements OnInit {
 
   @Input()
   groups: Group[];

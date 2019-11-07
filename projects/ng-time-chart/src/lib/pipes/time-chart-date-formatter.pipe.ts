@@ -5,10 +5,10 @@ import 'moment/locale/de-ch';
 const moment = moment_;
 
 @Pipe({
-  name: 'timelineDateFormatter'
+  name: 'timeChartDateFormatter'
 })
 
-export class TimelineDateFormatterPipe implements PipeTransform {
+export class TimeChartDateFormatterPipe implements PipeTransform {
 
   transform(dateString: string, args?: any): any {
     return moment(dateString).format('D. M.');

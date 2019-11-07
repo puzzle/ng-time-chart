@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgTimelineModule } from 'ng-timeline';
+import { NgTimeChartModule } from '../../../ng-time-chart/src/lib/ng-time-chart.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { NgTimelineModule } from 'ng-timeline';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgTimelineModule
+    NgTimeChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
