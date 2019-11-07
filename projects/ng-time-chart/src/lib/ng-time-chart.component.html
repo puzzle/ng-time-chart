@@ -10,7 +10,7 @@
          [ngClass]="'day-width-'+days.length">
       <div class="months">
         <div *ngFor="let month of months"
-             [ngClass]="'day-width-'+month.daysInMonth()"
+             [ngClass]="'day-width-'+daysInMonth(month)"
              class="month">
           {{month.format('MMMM')}}
         </div>
@@ -23,7 +23,7 @@
           <div class="week"
                *ngFor="let week of weeks"
                [ngClass]="'day-width-'+getLengthOfWeekInPeriod(week)">({{week.isoWeek()}}
-            ){{week.format('D. M. YYYY')}}</div>
+            ){{week.format('L')}}</div>
         </div>
       </div>
       <div class="days">

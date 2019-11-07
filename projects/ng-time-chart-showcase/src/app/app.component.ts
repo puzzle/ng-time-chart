@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Group } from '../../../ng-time-chart/src/public-api';
 import * as moment from 'moment';
+import 'moment/locale/de-ch';
 
 @Component({
   selector: 'ng-tl-root',
@@ -11,6 +12,9 @@ export class AppComponent {
   title = 'NgTimeChartLibrary';
 
   groups: Group[];
+
+  startDate = moment('2019-10-10');
+  endDate = moment('2020-03-10');
 
   constructor() {
     moment.locale('de-ch');

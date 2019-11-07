@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import * as moment_ from 'moment';
-import 'moment/locale/de-ch';
 
 const moment = moment_;
 
