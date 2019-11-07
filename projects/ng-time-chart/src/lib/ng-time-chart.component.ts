@@ -31,6 +31,8 @@ export class NgTimeChartComponent implements OnInit {
   currentYear: number;
   period: Period;
 
+  defaultColor = '#dead00';
+
   constructor() {
     this.yearChange = new EventEmitter<number>();
     this.periodChange = new Subject<Period>();
@@ -124,12 +126,12 @@ export class NgTimeChartComponent implements OnInit {
     return Math.round(date.diff(this.period.startDate, 'days', true));
   }
 
-  // getDaysSince(referenceDate: string, date: string): number {
-  //   const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
-  //   const myDate = this.getStartDateInCurrentPeriod(moment(date));
-  //
-  //   return Math.ceil(myDate.diff(moment(refDate), 'days', true));
-  // }
+  getDaysSince(referenceDate: string, date: string): number {
+     const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
+     const myDate = this.getStartDateInCurrentPeriod(moment(date));
+  
+     return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+  }
 
   getDuration(item: Item): number {
     const startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);

@@ -156,7 +156,11 @@ export class AppComponent {
           {
             name: 'Testitem 0',
             startTime: moment('2019-02-12'),
-            endTime: moment('2019-05-23')
+            endTime: moment('2019-05-23'),
+            dates: [
+              moment('2019-04-11'),
+              moment('2019-04-12')
+            ]
           },
           {
             name: 'Testitem 1',
@@ -171,12 +175,20 @@ export class AppComponent {
           {
             name: 'Testitem 0',
             startTime: moment('2019-06-12'),
-            endTime: moment('2019-07-23')
+            endTime: moment('2019-07-23'),
+            color: '#044BD9',
+            dates: [
+              moment('2019-06-18'),
+              moment('2019-06-19'),
+              moment('2019-06-23'),
+              moment('2019-06-24')
+            ]
           },
           {
             name: 'Testitem 1',
             startTime: moment('2018-08-11'),
-            endTime: moment('2019-09-02')
+            endTime: moment('2019-09-02'),
+            color: '#D95284'
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         onClick: () => console.log('clicked')
       },
