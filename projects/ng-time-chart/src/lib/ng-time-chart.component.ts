@@ -37,6 +37,8 @@ export class NgTimeChartComponent implements OnInit {
   period: Period;
 
   defaultColor = '#dead00';
+  dayWidth = 20;
+  sidebarWidth =  200;
 
   constructor() {
     this.yearChange = new EventEmitter<number>();

@@ -188,21 +188,10 @@ $brand-danger: #399383;
   border-left-width: 1px;
 }
 
-@for $day from 0 through 366 {
-  .day-width-#{$day} {
-    min-width: calc(#{$day} * #{$day-width});
-    max-width: calc(#{$day} * #{$day-width});
-  }
-
-  .left-#{$day}-days {
-    left: calc(#{$day} * #{$day-width});
-  }
-
-  .calendar-day-width-#{$day} {
-    min-width: calc(#{$day} * #{$day-width} + #{$sidebar-width});
-  }
+.day-width-1 {
+  min-width:$day-width;
+  max-width: $day-width;
 }
-
 
 .week-offset {
   border-right: solid $gray-dark 1px;
