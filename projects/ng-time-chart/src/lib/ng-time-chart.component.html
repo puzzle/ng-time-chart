@@ -1,7 +1,7 @@
 <div class="timetable">
   <div class="timetable-header"
       [style.width.px]="days.length * dayWidth">
-    <div class="year-selector label-bar">
+    <div class="year-selector label-bar" [style.visibility]="startDate && endDate ? 'hidden' : ''">
       <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear-1)">&lt; </h3>
       <h1 style="display: inline-block">{{currentYear}}</h1>
       <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear+1)"> &gt; </h3>
@@ -12,7 +12,7 @@
         <div *ngFor="let month of months"
              [style.width.px]="daysInMonth(month) * dayWidth"
              class="month">
-          {{month.format('MMMM')}}
+          {{month.format('MMMM YYYY')}}
         </div>
       </div>
       <div class="week-bar">

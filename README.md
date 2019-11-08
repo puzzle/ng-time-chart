@@ -25,7 +25,7 @@
 2. Use the component (ng-time-chart) in your component.
 
 2.1 create a group
-```
+```typescript
 {
         name: 'Group',
         items: [
@@ -59,3 +59,17 @@
 ```
 
 `ng-time-chart` takes all the available space from the parent element. If wrapped in a smaller element vertical and horizontal scrolling is available
+
+
+3. The visible period can be configured by setting endDate and startDate. Both dates have to be set. If dates are set, switching years is disabled.
+
+```typescript
+  startDate = moment('2019-10-10');
+  endDate = moment('2020-03-10');
+```
+
+```angular2html
+<ng-time-chart [groups]="groups" [startDate]="startDate" [endDate]="endDate">
+
+</ng-time-chart>
+```
