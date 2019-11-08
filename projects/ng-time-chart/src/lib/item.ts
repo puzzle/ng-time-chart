@@ -4,4 +4,6 @@ export interface Item {
   name: string;
   startTime: moment.Moment;
   endTime: moment.Moment;
+  dates?: moment.Moment[];
+  color?: string;
 }

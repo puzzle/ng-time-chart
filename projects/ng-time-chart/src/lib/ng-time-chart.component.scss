@@ -33,7 +33,6 @@ $brand-danger: #399383;
   margin-bottom: $item-vertical-margin;
   position:sticky;
   top: 0;
-  background-color: white;
   z-index: 10;
 
   .year-selector {
@@ -52,7 +51,15 @@ $brand-danger: #399383;
   .calendar-header {
     height: $header-height;
     max-height: $header-height;
+    background-color: white;
   }
+}
+
+.lighten {
+  background-image: linear-gradient(
+    0deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.4) 100%);
 }
 
 .timetable-body {
@@ -90,7 +97,6 @@ $brand-danger: #399383;
         border-width: 2px;
         border-style: solid;
         text-align: center;
-        color: $brand-info;
         font-weight: bold;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -191,15 +197,12 @@ $brand-danger: #399383;
   .left-#{$day}-days {
     left: calc(#{$day} * #{$day-width});
   }
+
+  .calendar-day-width-#{$day} {
+    min-width: calc(#{$day} * #{$day-width} + #{$sidebar-width});
+  }
 }
 
-.calendar-day-width-365 {
-  min-width: calc(365 * #{$day-width} + #{$sidebar-width});
-}
-
-.calendar-day-width-366 {
-  min-width: calc(366 * #{$day-width} + #{$sidebar-width});
-}
 
 .week-offset {
   border-right: solid $gray-dark 1px;
