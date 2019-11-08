@@ -79,12 +79,12 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
+            "main": "projects/ng-time-chart/src/test.ts",
             "polyfills": "projects/ng-time-chart-showcase/src/polyfills.ts",
             "tsConfig": "projects/ng-time-chart-showcase/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "karmaConfig": "projects/ng-time-chart/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "projects/ng-time-chart-showcase/src/styles.scss"
             ],
             "scripts": [],
             "assets": [
