@@ -26,7 +26,7 @@ describe('NgTimeChartComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NgTimeChartComponent);
     component = fixture.componentInstance;
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 

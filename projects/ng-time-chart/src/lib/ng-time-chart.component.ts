@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as moment_ from 'moment';
-import { map } from 'rxjs/operators';
-import { Period } from './period';
-import { Subject } from 'rxjs';
-import { Moment } from 'moment';
-import { Group } from './group';
-import { Item } from './item';
+import {map} from 'rxjs/operators';
+import {Period} from './period';
+import {Subject} from 'rxjs';
+import {Moment} from 'moment';
+import {Group} from './group';
+import {Item} from './item';
 
 const moment = moment_;
 
@@ -38,7 +38,7 @@ export class NgTimeChartComponent implements OnInit {
 
   defaultColor = '#dead00';
   dayWidth = 20;
-  sidebarWidth =  200;
+  sidebarWidth = 200;
 
   constructor() {
     this.yearChange = new EventEmitter<number>();
@@ -109,9 +109,9 @@ export class NgTimeChartComponent implements OnInit {
   }
 
   daysInMonth(month: any): number {
-    if(month && month.month() === this.period.startDate.month() && month.year() === this.period.startDate.year()) {
+    if (month && month.month() === this.period.startDate.month() && month.year() === this.period.startDate.year()) {
       return month.daysInMonth() - this.period.startDate.date();
-    } else if(month && month.month() === this.period.endDate.month() && month.year() === this.period.endDate.year()) {
+    } else if (month && month.month() === this.period.endDate.month() && month.year() === this.period.endDate.year()) {
       return this.period.endDate.date() + 1;
     } else {
       return month.daysInMonth();
@@ -143,11 +143,10 @@ export class NgTimeChartComponent implements OnInit {
     return Math.round(date.diff(this.period.startDate, 'days', true));
   }
 
-  getDaysSince(referenceDate: string, date: string): number {
-     const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
-     const myDate = this.getStartDateInCurrentPeriod(moment(date));
-  
-     return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+  getDaysSince(referenceDate: string | Moment, date: string | Moment): number {
+    const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
+    const myDate = this.getStartDateInCurrentPeriod(moment(date));
+    return Math.ceil(myDate.diff(moment(refDate), 'days', true));
   }
 
   getDuration(item: Item): number {
@@ -186,7 +185,7 @@ export class NgTimeChartComponent implements OnInit {
   changeYear(year: number) {
     this.yearChange.next(year);
     this.currentYear = year;
-    if(this.startDate && this.endDate) {
+    if (this.startDate && this.endDate) {
       this.periodChange.next(new Period(this.startDate.hour(12), this.endDate.hour(23)));
     } else {
       this.periodChange.next(new Period(moment(`${year}-01-01`).hour(12), moment(`${year}-12-31`).hour(23)));
