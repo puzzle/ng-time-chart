@@ -10,7 +10,7 @@ const moment = moment_;
 
 export class TimeChartDateFormatterPipe implements PipeTransform {
 
-  transform(dateString: string | Moment): any {
+  transform(dateString: (string | Moment)): any {
     return moment(dateString).format('D. M.');
   }
 
