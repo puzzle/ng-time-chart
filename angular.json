@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ng-time-chart",
             "index": "projects/ng-time-chart-showcase/src/index.html",
             "main": "projects/ng-time-chart-showcase/src/main.ts",
@@ -54,6 +55,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -147,7 +152,12 @@
             "tsConfig": "projects/ng-time-chart/tsconfig.lib.json",
             "project": "projects/ng-time-chart/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-time-chart/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
