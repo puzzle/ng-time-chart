@@ -3,6 +3,41 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ng-time-chart": {
+      "root": "projects/ng-time-chart",
+      "sourceRoot": "projects/ng-time-chart/src",
+      "projectType": "library",
+      "prefix": "Ng",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-time-chart/tsconfig.lib.json",
+            "project": "projects/ng-time-chart/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-time-chart/src/test.ts",
+            "tsConfig": "projects/ng-time-chart/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-time-chart/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-time-chart/tsconfig.lib.json",
+              "projects/ng-time-chart/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "ng-time-chart-showcase": {
       "root": "projects/ng-time-chart-showcase",
       "sourceRoot": "projects/ng-time-chart-showcase/src",
@@ -133,46 +168,6 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "projects/ng-time-chart-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "ng-time-chart": {
-      "root": "projects/ng-time-chart",
-      "sourceRoot": "projects/ng-time-chart/src",
-      "projectType": "library",
-      "prefix": "Ng",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/ng-time-chart/tsconfig.lib.json",
-            "project": "projects/ng-time-chart/ng-package.json"
-          }
-        ,          "configurations": {
-            "production": {
-              "tsConfig": "projects/ng-time-chart/tsconfig.lib.prod.json"
-            }
-          }
-},
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ng-time-chart/src/test.ts",
-            "tsConfig": "projects/ng-time-chart/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-time-chart/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-time-chart/tsconfig.lib.json",
-              "projects/ng-time-chart/tsconfig.spec.json"
-            ],
             "exclude": [
               "**/node_modules/**"
             ]
