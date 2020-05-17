@@ -4,5 +4,5 @@
 
 export * from './lib/group';
 export * from './lib/item';
-// export * from './lib/pipes/timeline-date-formatter.pipe';
 export * from './lib/ng-time-chart.module';
+export * from './lib/ng-time-chart.component';
