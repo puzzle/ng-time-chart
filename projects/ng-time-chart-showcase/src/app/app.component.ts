@@ -13,8 +13,8 @@ export class AppComponent {
 
   groups: Group[];
 
-  startDate = moment('2019-10-10');
-  endDate = moment('2020-03-10');
+  startDate = moment('2020-01-01');
+  endDate = moment('2020-12-31');
 
   constructor() {
     moment.locale('de-ch');
@@ -24,13 +24,13 @@ export class AppComponent {
         items: [
           {
             name: 'Testitem 0',
-            startTime: moment('2019-02-12'),
-            endTime: moment('2019-05-23')
+            startTime: moment('2020-02-12'),
+            endTime: moment('2020-05-23')
           },
           {
             name: 'Testitem 1',
-            startTime: moment('2018-12-11'),
-            endTime: moment('2019-03-02')
+            startTime: moment('2019-12-11'),
+            endTime: moment('2020-03-02')
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         onClick: () => console.log('clicked')
       },
@@ -59,8 +59,8 @@ export class AppComponent {
           },
           {
             name: 'Testitem 1',
-            startTime: moment('2018-08-11'),
-            endTime: moment('2019-09-02')
+            startTime: moment('2019-08-11'),
+            endTime: moment('2020-09-02')
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         onClick: () => console.log('clicked')
       },

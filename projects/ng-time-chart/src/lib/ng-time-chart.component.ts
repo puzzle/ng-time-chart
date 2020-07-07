@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import * as moment_ from 'moment';
 import {map} from 'rxjs/operators';
 import {Period} from './period';
@@ -14,7 +14,7 @@ const moment = moment_;
   templateUrl: './ng-time-chart.component.html',
   styleUrls: ['./ng-time-chart.component.scss', './ng-time-chart.component.print.scss']
 })
-export class NgTimeChartComponent implements OnInit {
+export class NgTimeChartComponent implements OnInit, AfterViewInit {
 
   @Input()
   groups: Group[];
@@ -28,11 +28,14 @@ export class NgTimeChartComponent implements OnInit {
   @Output()
   yearChange: EventEmitter<number>;
 
+  @ViewChild('todaymarker') todayMarker;
+
   periodChange: Subject<Period>;
 
   months: moment_.Moment[];
   weeks: moment_.Moment[];
   days: moment_.Moment[];
+  today: moment_.Moment;
   currentYear: number;
   period: Period;
 
@@ -43,6 +46,7 @@ export class NgTimeChartComponent implements OnInit {
   constructor() {
     this.yearChange = new EventEmitter<number>();
     this.periodChange = new Subject<Period>();
+    this.today = moment();
   }
 
   ngOnInit() {
@@ -62,6 +66,13 @@ export class NgTimeChartComponent implements OnInit {
       .subscribe(days => this.days = days);
 
     this.changeYear(moment().year());
+  }
+
+  isToday(day: Moment): boolean {
+    if (!this.isInPeriod(this.today)) {
+      return false;
+    }
+    return this.today.isSame(day, 'day');
   }
 
   private enumerateMonths(period: Period): moment_.Moment[] {
@@ -210,5 +221,9 @@ export class NgTimeChartComponent implements OnInit {
       return this.period.endDate.clone();
     }
     return date;
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.todayMarker);
   }
 }

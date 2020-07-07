@@ -29,7 +29,10 @@
         </div>
       </div>
       <div class="days">
-        <div class="day" *ngFor="let day of days">{{day.format('dd')}}</div>
+        <div class="day" [ngClass]="{'today': isToday(day)}" *ngFor="let day of days">
+          {{day.format('dd')}}
+          <!--          <div *ngIf="isToday(day)" class="today-marker" #todaymarker></div>-->
+        </div>
       </div>
     </div>
   </div>
@@ -41,6 +44,7 @@
         {{group.name}}
       </div>
       <div class="items">
+
         <ng-container *ngFor="let item of group.items">
           <div class="item"
                *ngIf="isInPeriod(item.startTime) || isInPeriod(item.endTime)"
@@ -67,8 +71,12 @@
               ({{item.startTime | timeChartDateFormatter}} - {{item.endTime | timeChartDateFormatter}})
             </div>
           </div>
+
         </ng-container>
       </div>
     </div>
+    <div class="today-marker"
+         *ngIf="isInPeriod(this.today)"
+         [style.left.px]="(getDayOfPeriod(this.today) * dayWidth) + sidebarWidth + 7" #todaymarker></div>
   </div>
 </div>
