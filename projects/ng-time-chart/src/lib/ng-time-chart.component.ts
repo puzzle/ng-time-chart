@@ -49,6 +49,10 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
     this.today = moment();
   }
 
+  ngAfterViewInit(): void {
+    this.scrollTodayIntoView();
+  }
+
   ngOnInit() {
     this.periodChange
       .subscribe(period => this.period = period);
@@ -175,9 +179,7 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
       weekStart.add(1, 'week');
     }
     const difference = Math.ceil(weekStart.diff(this.period.startDate, 'days', true));
-    console.log('getOldPeriodDaysBeforeFirstWeek', weekStart, this.period.startDate, difference);
     return difference > 0 ? difference : 0;
-
   }
 
   isInPeriod(time: Moment): boolean {
@@ -223,7 +225,9 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
     return date;
   }
 
-  ngAfterViewInit(): void {
-    console.log(this.todayMarker);
+  private scrollTodayIntoView() {
+    if (!!this.todayMarker && this.isInPeriod(this.today)) {
+      this.todayMarker.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'center'});
+    }
   }
 }

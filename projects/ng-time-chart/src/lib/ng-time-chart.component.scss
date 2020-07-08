@@ -30,7 +30,8 @@ $brand-danger: #399383;
 
 .timetable-header {
   display: flex;
-  margin-bottom: $item-vertical-margin;
+  padding-bottom: 0;
+  margin-bottom: 0;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -63,11 +64,11 @@ $brand-danger: #399383;
 }
 
 .timetable-body {
-  margin-top: $item-vertical-margin;
+  padding-top: 0;
+  margin-top: 0;
   margin-bottom: $item-vertical-margin;
-  z-index: 0;
-  min-height: 10px;
   position: relative;
+  z-index: 0;
 
   .item-group {
     display: flex;
@@ -167,6 +168,11 @@ $brand-danger: #399383;
     }
   }
 
+  .item-group:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
   .item-group:nth-child(odd) {
     background-color: $gray-lighter;
   }
@@ -246,16 +252,12 @@ $brand-danger: #399383;
 
 .today-marker {
   width: 4px;
-  //height: calc(400px - #{$header-height} - 1px);
   background-color: $brand-primary;
   display: block;
-  content: "";
   border-left: solid white 1px;
   border-right: solid white 1px;
   box-sizing: content-box;
   position: absolute;
-  //left: calc((#{$day-width} / 2) - 2px);
-  //overflow: hidden;
-  top: 0;
+  top: -40px;
   bottom: 0;
 }
