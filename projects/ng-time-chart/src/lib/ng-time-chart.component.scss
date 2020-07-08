@@ -30,8 +30,9 @@ $brand-danger: #399383;
 
 .timetable-header {
   display: flex;
-  margin-bottom: $item-vertical-margin;
-  position:sticky;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  position: sticky;
   top: 0;
   z-index: 10;
 
@@ -57,16 +58,17 @@ $brand-danger: #399383;
 
 .lighten {
   background-image: linear-gradient(
-    0deg,
-    rgba(255,255,255,0.4) 0%,
-    rgba(255,255,255,0.4) 100%);
+      0deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.4) 100%);
 }
 
 .timetable-body {
-  margin-top: $item-vertical-margin;
+  padding-top: 0;
+  margin-top: 0;
   margin-bottom: $item-vertical-margin;
+  position: relative;
   z-index: 0;
-  min-height: 10px;
 
   .item-group {
     display: flex;
@@ -82,6 +84,7 @@ $brand-danger: #399383;
       margin: 0;
       padding-top: calc(#{$item-vertical-padding} + #{$item-vertical-margin} + 1px);
       padding-bottom: calc(#{$item-vertical-padding} + #{$item-vertical-margin} + 1px);
+      z-index: 1000;
     }
 
     .items {
@@ -165,6 +168,11 @@ $brand-danger: #399383;
     }
   }
 
+  .item-group:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
   .item-group:nth-child(odd) {
     background-color: $gray-lighter;
   }
@@ -189,7 +197,7 @@ $brand-danger: #399383;
 }
 
 .day-width-1 {
-  min-width:$day-width;
+  min-width: $day-width;
   max-width: $day-width;
 }
 
@@ -235,4 +243,21 @@ $brand-danger: #399383;
 
 .day:first-child {
   border-left-width: 1px;
+}
+
+.today {
+  background-color: $brand-primary;
+  position: relative;
+}
+
+.today-marker {
+  width: 4px;
+  background-color: $brand-primary;
+  display: block;
+  border-left: solid white 1px;
+  border-right: solid white 1px;
+  box-sizing: content-box;
+  position: absolute;
+  top: -40px;
+  bottom: 0;
 }

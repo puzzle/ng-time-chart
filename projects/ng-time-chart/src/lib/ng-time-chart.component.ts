@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import * as moment_ from 'moment';
 import {map} from 'rxjs/operators';
 import {Period} from './period';
@@ -14,7 +14,7 @@ const moment = moment_;
   templateUrl: './ng-time-chart.component.html',
   styleUrls: ['./ng-time-chart.component.scss', './ng-time-chart.component.print.scss']
 })
-export class NgTimeChartComponent implements OnInit {
+export class NgTimeChartComponent implements OnInit, AfterViewInit {
 
   @Input()
   groups: Group[];
@@ -28,11 +28,14 @@ export class NgTimeChartComponent implements OnInit {
   @Output()
   yearChange: EventEmitter<number>;
 
+  @ViewChild('todaymarker') todayMarker;
+
   periodChange: Subject<Period>;
 
   months: moment_.Moment[];
   weeks: moment_.Moment[];
   days: moment_.Moment[];
+  today: moment_.Moment;
   currentYear: number;
   period: Period;
 
@@ -43,6 +46,11 @@ export class NgTimeChartComponent implements OnInit {
   constructor() {
     this.yearChange = new EventEmitter<number>();
     this.periodChange = new Subject<Period>();
+    this.today = moment();
+  }
+
+  ngAfterViewInit(): void {
+    this.scrollTodayIntoView();
   }
 
   ngOnInit() {
@@ -62,6 +70,13 @@ export class NgTimeChartComponent implements OnInit {
       .subscribe(days => this.days = days);
 
     this.changeYear(moment().year());
+  }
+
+  isToday(day: Moment): boolean {
+    if (!this.isInPeriod(this.today)) {
+      return false;
+    }
+    return this.today.isSame(day, 'day');
   }
 
   private enumerateMonths(period: Period): moment_.Moment[] {
@@ -164,9 +179,7 @@ export class NgTimeChartComponent implements OnInit {
       weekStart.add(1, 'week');
     }
     const difference = Math.ceil(weekStart.diff(this.period.startDate, 'days', true));
-    console.log('getOldPeriodDaysBeforeFirstWeek', weekStart, this.period.startDate, difference);
     return difference > 0 ? difference : 0;
-
   }
 
   isInPeriod(time: Moment): boolean {
@@ -210,5 +223,11 @@ export class NgTimeChartComponent implements OnInit {
       return this.period.endDate.clone();
     }
     return date;
+  }
+
+  private scrollTodayIntoView() {
+    if (!!this.todayMarker && this.isInPeriod(this.today)) {
+      this.todayMarker.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'center'});
+    }
   }
 }
