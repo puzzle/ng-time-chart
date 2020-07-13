@@ -24,5 +24,8 @@
     "@angular/core": "^9.1.6",
     "moment": "^2.25.3",
     "rxjs": "~6.5.5"
+  },
+  "scripts": {
+    "postinstall": "ngcc"
   }
 }
