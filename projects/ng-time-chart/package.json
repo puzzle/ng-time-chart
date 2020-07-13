@@ -1,6 +1,6 @@
 {
   "name": "@puzzleitc/ng-time-chart",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A library to display durations in a horizontally scrolling calendar. Similar to a Gantt-chart.",
   "author": "Florian Hug (hug@puzzle.ch)",
   "repository": {
