@@ -16,7 +16,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 
 function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -38,7 +38,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -52,15 +52,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendor"], {
   /***/
-  "../../node_modules/@angular/common/fesm2015/common.js":
-  /*!*****************************************************************************************************!*\
-    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/common/fesm2015/common.js ***!
-    \*****************************************************************************************************/
+  "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js":
+  /*!******************************************************************************************************************!*\
+    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js ***!
+    \******************************************************************************************************************/
 
   /*! exports provided: APP_BASE_HREF, AsyncPipe, CommonModule, CurrencyPipe, DOCUMENT, DatePipe, DecimalPipe, FormStyle, FormatWidth, HashLocationStrategy, I18nPluralPipe, I18nSelectPipe, JsonPipe, KeyValuePipe, LOCATION_INITIALIZED, Location, LocationStrategy, LowerCasePipe, NgClass, NgComponentOutlet, NgForOf, NgForOfContext, NgIf, NgIfContext, NgLocaleLocalization, NgLocalization, NgPlural, NgPluralCase, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, NumberFormatStyle, NumberSymbol, PathLocationStrategy, PercentPipe, PlatformLocation, Plural, SlicePipe, TitleCasePipe, TranslationWidth, UpperCasePipe, VERSION, ViewportScroller, WeekDay, formatCurrency, formatDate, formatNumber, formatPercent, getCurrencySymbol, getLocaleCurrencyCode, getLocaleCurrencyName, getLocaleCurrencySymbol, getLocaleDateFormat, getLocaleDateTimeFormat, getLocaleDayNames, getLocaleDayPeriods, getLocaleDirection, getLocaleEraNames, getLocaleExtraDayPeriodRules, getLocaleExtraDayPeriods, getLocaleFirstDayOfWeek, getLocaleId, getLocaleMonthNames, getLocaleNumberFormat, getLocaleNumberSymbol, getLocalePluralCase, getLocaleTimeFormat, getLocaleWeekEndRange, getNumberOfCurrencyDigits, isPlatformBrowser, isPlatformServer, isPlatformWorkerApp, isPlatformWorkerUi, registerLocaleData, ɵBrowserPlatformLocation, ɵDomAdapter, ɵNullViewportScroller, ɵPLATFORM_BROWSER_ID, ɵPLATFORM_SERVER_ID, ɵPLATFORM_WORKER_APP_ID, ɵPLATFORM_WORKER_UI_ID, ɵangular_packages_common_common_a, ɵangular_packages_common_common_b, ɵangular_packages_common_common_c, ɵangular_packages_common_common_d, ɵangular_packages_common_common_e, ɵangular_packages_common_common_f, ɵgetDOM, ɵparseCookieValue, ɵsetRootDomAdapter */
 
   /***/
-  function node_modulesAngularCommonFesm2015CommonJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesAngularCommon__ivy_ngcc__Fesm2015CommonJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -621,9 +621,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! @angular/core */
-    "../../node_modules/@angular/core/fesm2015/core.js");
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
     /**
-     * @license Angular v9.1.6
+     * @license Angular v9.1.12
      * (c) 2010-2020 Google LLC. https://angular.io/
      * License: MIT
      */
@@ -743,21 +743,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, PlatformLocation);
     };
 
-    PlatformLocation.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-      args: [{
-        providedIn: 'platform',
-        // See #23917
-        useFactory: useBrowserPlatformLocation
-      }]
-    }];
+    PlatformLocation.ɵfac = function PlatformLocation_Factory(t) {
+      return new (t || PlatformLocation)();
+    };
     /** @nocollapse */
+
 
     PlatformLocation.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
       factory: useBrowserPlatformLocation,
       token: PlatformLocation,
       providedIn: "platform"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PlatformLocation, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'platform',
+          // See #23917
+          useFactory: useBrowserPlatformLocation
+        }]
+      }], null, null);
+    })();
 
     if (false) {}
     /**
@@ -1004,15 +1012,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return BrowserPlatformLocation;
     }(PlatformLocation);
 
-    BrowserPlatformLocation.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-      args: [{
-        providedIn: 'platform',
-        // See #23917
-        useFactory: createBrowserPlatformLocation
-      }]
-    }];
+    BrowserPlatformLocation.ɵfac = function BrowserPlatformLocation_Factory(t) {
+      return new (t || BrowserPlatformLocation)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](DOCUMENT));
+    };
     /** @nocollapse */
+
 
     BrowserPlatformLocation.ctorParameters = function () {
       return [{
@@ -1031,6 +1035,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       token: BrowserPlatformLocation,
       providedIn: "platform"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserPlatformLocation, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'platform',
+          // See #23917
+          useFactory: createBrowserPlatformLocation
+        }]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [DOCUMENT]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -1175,20 +1199,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, LocationStrategy);
     };
 
-    LocationStrategy.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-      args: [{
-        providedIn: 'root',
-        useFactory: provideLocationStrategy
-      }]
-    }];
+    LocationStrategy.ɵfac = function LocationStrategy_Factory(t) {
+      return new (t || LocationStrategy)();
+    };
     /** @nocollapse */
+
 
     LocationStrategy.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
       factory: provideLocationStrategy,
       token: LocationStrategy,
       providedIn: "root"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LocationStrategy, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root',
+          useFactory: provideLocationStrategy
+        }]
+      }], null, null);
+    })();
 
     if (false) {}
     /**
@@ -1393,9 +1425,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return PathLocationStrategy;
     }(LocationStrategy);
 
-    PathLocationStrategy.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }];
+    PathLocationStrategy.ɵfac = function PathLocationStrategy_Factory(t) {
+      return new (t || PathLocationStrategy)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](PlatformLocation), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](APP_BASE_HREF, 8));
+    };
+
+    PathLocationStrategy.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: PathLocationStrategy,
+      factory: PathLocationStrategy.ɵfac
+    });
     /** @nocollapse */
 
     PathLocationStrategy.ctorParameters = function () {
@@ -1411,6 +1448,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PathLocationStrategy, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+      }], function () {
+        return [{
+          type: PlatformLocation
+        }, {
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+          }, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [APP_BASE_HREF]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -1577,9 +1634,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return HashLocationStrategy;
     }(LocationStrategy);
 
-    HashLocationStrategy.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }];
+    HashLocationStrategy.ɵfac = function HashLocationStrategy_Factory(t) {
+      return new (t || HashLocationStrategy)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](PlatformLocation), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](APP_BASE_HREF, 8));
+    };
+
+    HashLocationStrategy.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: HashLocationStrategy,
+      factory: HashLocationStrategy.ɵfac
+    });
     /** @nocollapse */
 
     HashLocationStrategy.ctorParameters = function () {
@@ -1595,6 +1657,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HashLocationStrategy, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+      }], function () {
+        return [{
+          type: PlatformLocation
+        }, {
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+          }, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [APP_BASE_HREF]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -1889,6 +1971,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return Location;
     }();
+
+    Location.ɵfac = function Location_Factory(t) {
+      return new (t || Location)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](LocationStrategy), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](PlatformLocation));
+    };
     /**
      * Normalizes URL parameters by prepending with `?` if needed.
      *
@@ -1921,14 +2007,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
     Location.stripTrailingSlash = stripTrailingSlash;
-    Location.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-      args: [{
-        providedIn: 'root',
-        // See #23917
-        useFactory: createLocation
-      }]
-    }];
     /** @nocollapse */
 
     Location.ctorParameters = function () {
@@ -1946,6 +2024,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       token: Location,
       providedIn: "root"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Location, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root',
+          // See #23917
+          useFactory: createLocation
+        }]
+      }], function () {
+        return [{
+          type: LocationStrategy
+        }, {
+          type: PlatformLocation
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -4723,9 +4819,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgLocaleLocalization;
     }(NgLocalization);
 
-    NgLocaleLocalization.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }];
+    NgLocaleLocalization.ɵfac = function NgLocaleLocalization_Factory(t) {
+      return new (t || NgLocaleLocalization)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]));
+    };
+
+    NgLocaleLocalization.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: NgLocaleLocalization,
+      factory: NgLocaleLocalization.ɵfac
+    });
     /** @nocollapse */
 
     NgLocaleLocalization.ctorParameters = function () {
@@ -4737,6 +4838,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgLocaleLocalization, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
+      }], function () {
+        return [{
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -5116,12 +5233,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgClass;
     }();
 
-    NgClass.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngClass]'
-      }]
-    }];
+    NgClass.ɵfac = function NgClass_Factory(t) {
+      return new (t || NgClass)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]));
+    };
+
+    NgClass.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgClass,
+      selectors: [["", "ngClass", ""]],
+      inputs: {
+        klass: ["class", "klass"],
+        ngClass: "ngClass"
+      }
+    });
     /** @nocollapse */
 
     NgClass.ctorParameters = function () {
@@ -5146,6 +5269,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         args: ['ngClass']
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgClass, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngClass]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]
+        }];
+      }, {
+        klass: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+          args: ['class']
+        }],
+        ngClass: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+          args: ['ngClass']
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -5274,12 +5426,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgComponentOutlet;
     }();
 
-    NgComponentOutlet.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngComponentOutlet]'
-      }]
-    }];
+    NgComponentOutlet.ɵfac = function NgComponentOutlet_Factory(t) {
+      return new (t || NgComponentOutlet)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]));
+    };
+
+    NgComponentOutlet.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgComponentOutlet,
+      selectors: [["", "ngComponentOutlet", ""]],
+      inputs: {
+        ngComponentOutlet: "ngComponentOutlet",
+        ngComponentOutletInjector: "ngComponentOutletInjector",
+        ngComponentOutletContent: "ngComponentOutletContent",
+        ngComponentOutletNgModuleFactory: "ngComponentOutletNgModuleFactory"
+      },
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]]
+    });
     /** @nocollapse */
 
     NgComponentOutlet.ctorParameters = function () {
@@ -5302,6 +5463,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgComponentOutlet, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngComponentOutlet]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+        }];
+      }, {
+        ngComponentOutlet: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngComponentOutletInjector: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngComponentOutletContent: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngComponentOutletNgModuleFactory: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -5717,12 +5905,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgForOf;
     }();
 
-    NgForOf.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngFor][ngForOf]'
-      }]
-    }];
+    NgForOf.ɵfac = function NgForOf_Factory(t) {
+      return new (t || NgForOf)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"]));
+    };
+
+    NgForOf.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgForOf,
+      selectors: [["", "ngFor", "", "ngForOf", ""]],
+      inputs: {
+        ngForOf: "ngForOf",
+        ngForTrackBy: "ngForTrackBy",
+        ngForTemplate: "ngForTemplate"
+      }
+    });
     /** @nocollapse */
 
     NgForOf.ctorParameters = function () {
@@ -5746,6 +5941,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgForOf, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngFor][ngForOf]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"]
+        }];
+      }, {
+        ngForOf: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngForTrackBy: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngForTemplate: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -6034,12 +6257,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgIf;
     }();
 
-    NgIf.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngIf]'
-      }]
-    }];
+    NgIf.ɵfac = function NgIf_Factory(t) {
+      return new (t || NgIf)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]));
+    };
+
+    NgIf.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgIf,
+      selectors: [["", "ngIf", ""]],
+      inputs: {
+        ngIf: "ngIf",
+        ngIfThen: "ngIfThen",
+        ngIfElse: "ngIfElse"
+      }
+    });
     /** @nocollapse */
 
     NgIf.ctorParameters = function () {
@@ -6061,6 +6291,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgIf, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngIf]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+        }];
+      }, {
+        ngIf: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngIfThen: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngIfElse: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -6322,17 +6578,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgSwitch;
     }();
 
-    NgSwitch.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngSwitch]'
-      }]
-    }];
+    NgSwitch.ɵfac = function NgSwitch_Factory(t) {
+      return new (t || NgSwitch)();
+    };
+
+    NgSwitch.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgSwitch,
+      selectors: [["", "ngSwitch", ""]],
+      inputs: {
+        ngSwitch: "ngSwitch"
+      }
+    });
     NgSwitch.propDecorators = {
       ngSwitch: [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitch, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngSwitch]'
+        }]
+      }], function () {
+        return [];
+      }, {
+        ngSwitch: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -6401,12 +6678,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgSwitchCase;
     }();
 
-    NgSwitchCase.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngSwitchCase]'
-      }]
-    }];
+    NgSwitchCase.ɵfac = function NgSwitchCase_Factory(t) {
+      return new (t || NgSwitchCase)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](NgSwitch, 1));
+    };
+
+    NgSwitchCase.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgSwitchCase,
+      selectors: [["", "ngSwitchCase", ""]],
+      inputs: {
+        ngSwitchCase: "ngSwitchCase"
+      }
+    });
     /** @nocollapse */
 
     NgSwitchCase.ctorParameters = function () {
@@ -6427,6 +6709,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitchCase, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngSwitchCase]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+        }, {
+          type: NgSwitch,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Host"]
+          }]
+        }];
+      }, {
+        ngSwitchCase: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -6457,12 +6764,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       ngSwitch._addDefault(new SwitchView(viewContainer, templateRef));
     };
 
-    NgSwitchDefault.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngSwitchDefault]'
-      }]
-    }];
+    NgSwitchDefault.ɵfac = function NgSwitchDefault_Factory(t) {
+      return new (t || NgSwitchDefault)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](NgSwitch, 1));
+    };
+
+    NgSwitchDefault.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgSwitchDefault,
+      selectors: [["", "ngSwitchDefault", ""]]
+    });
     /** @nocollapse */
 
     NgSwitchDefault.ctorParameters = function () {
@@ -6477,6 +6786,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitchDefault, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngSwitchDefault]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+        }, {
+          type: NgSwitch,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Host"]
+          }]
+        }];
+      }, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/common/src/directives/ng_plural.ts
@@ -6599,12 +6930,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgPlural;
     }();
 
-    NgPlural.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngPlural]'
-      }]
-    }];
+    NgPlural.ɵfac = function NgPlural_Factory(t) {
+      return new (t || NgPlural)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](NgLocalization));
+    };
+
+    NgPlural.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgPlural,
+      selectors: [["", "ngPlural", ""]],
+      inputs: {
+        ngPlural: "ngPlural"
+      }
+    });
     /** @nocollapse */
 
     NgPlural.ctorParameters = function () {
@@ -6618,6 +6954,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgPlural, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngPlural]'
+        }]
+      }], function () {
+        return [{
+          type: NgLocalization
+        }];
+      }, {
+        ngPlural: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -6659,12 +7013,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       ngPlural.addCase(isANumber ? "=".concat(value) : value, new SwitchView(viewContainer, template));
     };
 
-    NgPluralCase.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngPluralCase]'
-      }]
-    }];
+    NgPluralCase.ɵfac = function NgPluralCase_Factory(t) {
+      return new (t || NgPluralCase)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinjectAttribute"]('ngPluralCase'), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](NgPlural, 1));
+    };
+
+    NgPluralCase.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgPluralCase,
+      selectors: [["", "ngPluralCase", ""]]
+    });
     /** @nocollapse */
 
     NgPluralCase.ctorParameters = function () {
@@ -6685,6 +7041,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgPluralCase, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngPluralCase]'
+        }]
+      }], function () {
+        return [{
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"],
+            args: ['ngPluralCase']
+          }]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+        }, {
+          type: NgPlural,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Host"]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -6845,12 +7229,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgStyle;
     }();
 
-    NgStyle.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngStyle]'
-      }]
-    }];
+    NgStyle.ɵfac = function NgStyle_Factory(t) {
+      return new (t || NgStyle)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]));
+    };
+
+    NgStyle.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgStyle,
+      selectors: [["", "ngStyle", ""]],
+      inputs: {
+        ngStyle: "ngStyle"
+      }
+    });
     /** @nocollapse */
 
     NgStyle.ctorParameters = function () {
@@ -6869,6 +7258,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         args: ['ngStyle']
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgStyle, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngStyle]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]
+        }];
+      }, {
+        ngStyle: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+          args: ['ngStyle']
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -7035,12 +7447,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return NgTemplateOutlet;
     }();
 
-    NgTemplateOutlet.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
-      args: [{
-        selector: '[ngTemplateOutlet]'
-      }]
-    }];
+    NgTemplateOutlet.ɵfac = function NgTemplateOutlet_Factory(t) {
+      return new (t || NgTemplateOutlet)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]));
+    };
+
+    NgTemplateOutlet.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+      type: NgTemplateOutlet,
+      selectors: [["", "ngTemplateOutlet", ""]],
+      inputs: {
+        ngTemplateOutletContext: "ngTemplateOutletContext",
+        ngTemplateOutlet: "ngTemplateOutlet"
+      },
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]]
+    });
     /** @nocollapse */
 
     NgTemplateOutlet.ctorParameters = function () {
@@ -7057,6 +7476,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgTemplateOutlet, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+          selector: '[ngTemplateOutlet]'
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+        }];
+      }, {
+        ngTemplateOutletContext: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        ngTemplateOutlet: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -7373,13 +7813,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return AsyncPipe;
     }();
 
-    AsyncPipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'async',
-        pure: false
-      }]
-    }];
+    AsyncPipe.ɵfac = function AsyncPipe_Factory(t) {
+      return new (t || AsyncPipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinjectPipeChangeDetectorRef"]());
+    };
+
+    AsyncPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "async",
+      type: AsyncPipe,
+      pure: false
+    });
     /** @nocollapse */
 
     AsyncPipe.ctorParameters = function () {
@@ -7387,6 +7829,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AsyncPipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'async',
+          pure: false
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -7438,12 +7896,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return LowerCasePipe;
     }();
 
-    LowerCasePipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'lowercase'
-      }]
-    }]; //
+    LowerCasePipe.ɵfac = function LowerCasePipe_Factory(t) {
+      return new (t || LowerCasePipe)();
+    };
+
+    LowerCasePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "lowercase",
+      type: LowerCasePipe,
+      pure: true
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LowerCasePipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'lowercase'
+        }]
+      }], null, null);
+    })(); //
     // Regex below matches any Unicode word and compatible with ES5. In ES2018 the same result
     // can be achieved by using /\p{L}\S*/gu and also known as Unicode Property Escapes
     // (http://2ality.com/2017/07/regexp-unicode-property-escapes.html). Since there is no
@@ -7454,10 +7925,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /** @type {?} */
 
+
     var unicodeWordMatch = /(?:[A-Za-z\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u08A0-\u08B4\u08B6-\u08BD\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16F1-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u1884\u1887-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312E\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FEA\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF2D-\uDF40\uDF42-\uDF49\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF]|\uD801[\uDC00-\uDC9D\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2]|\uD804[\uDC03-\uDC37\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE2B\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF50\uDF5D-\uDF61]|\uD805[\uDC00-\uDC34\uDC47-\uDC4A\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDDD8-\uDDDB\uDE00-\uDE2F\uDE44\uDE80-\uDEAA\uDF00-\uDF19]|\uD806[\uDCA0-\uDCDF\uDCFF\uDE00\uDE0B-\uDE32\uDE3A\uDE50\uDE5C-\uDE83\uDE86-\uDE89\uDEC0-\uDEF8]|\uD807[\uDC00-\uDC08\uDC0A-\uDC2E\uDC40\uDC72-\uDC8F\uDD00-\uDD06\uDD08\uDD09\uDD0B-\uDD30\uDD46]|\uD808[\uDC00-\uDF99]|\uD809[\uDC80-\uDD43]|[\uD80C\uD81C-\uD820\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD811[\uDC00-\uDE46]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50\uDF93-\uDF9F\uDFE0\uDFE1]|\uD821[\uDC00-\uDFEC]|\uD822[\uDC00-\uDEF2]|\uD82C[\uDC00-\uDD1E\uDD70-\uDEFB]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD83A[\uDC00-\uDCC4\uDD00-\uDD43]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0]|\uD87E[\uDC00-\uDE1D])\S*/g;
     /**
      * Transforms text to title case.
-     * Capitalizes the first letter of each word, and transforms the
+     * Capitalizes the first letter of each word and transforms the
      * rest of the word to lower case.
      * Words are delimited by any whitespace character, such as a space, tab, or line-feed character.
      *
@@ -7506,12 +7978,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return TitleCasePipe;
     }();
 
-    TitleCasePipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'titlecase'
-      }]
-    }];
+    TitleCasePipe.ɵfac = function TitleCasePipe_Factory(t) {
+      return new (t || TitleCasePipe)();
+    };
+
+    TitleCasePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "titlecase",
+      type: TitleCasePipe,
+      pure: true
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TitleCasePipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'titlecase'
+        }]
+      }], null, null);
+    })();
     /**
      * Transforms text to all upper case.
      * @see `LowerCasePipe`
@@ -7520,6 +8005,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * \@ngModule CommonModule
      * \@publicApi
      */
+
 
     var UpperCasePipe = /*#__PURE__*/function () {
       function UpperCasePipe() {
@@ -7547,12 +8033,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return UpperCasePipe;
     }();
 
-    UpperCasePipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'uppercase'
-      }]
-    }];
+    UpperCasePipe.ɵfac = function UpperCasePipe_Factory(t) {
+      return new (t || UpperCasePipe)();
+    };
+
+    UpperCasePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "uppercase",
+      type: UpperCasePipe,
+      pure: true
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UpperCasePipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'uppercase'
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/common/src/pipes/date_pipe.ts
@@ -7700,6 +8199,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
     // clang-format on
 
+
     var DatePipe = /*#__PURE__*/function () {
       /**
        * @param {?} locale
@@ -7743,13 +8243,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return DatePipe;
     }();
 
-    DatePipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'date',
-        pure: true
-      }]
-    }];
+    DatePipe.ɵfac = function DatePipe_Factory(t) {
+      return new (t || DatePipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]));
+    };
+
+    DatePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "date",
+      type: DatePipe,
+      pure: true
+    });
     /** @nocollapse */
 
     DatePipe.ctorParameters = function () {
@@ -7761,6 +8263,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DatePipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'date',
+          pure: true
+        }]
+      }], function () {
+        return [{
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -7826,13 +8348,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return I18nPluralPipe;
     }();
 
-    I18nPluralPipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'i18nPlural',
-        pure: true
-      }]
-    }];
+    I18nPluralPipe.ɵfac = function I18nPluralPipe_Factory(t) {
+      return new (t || I18nPluralPipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](NgLocalization));
+    };
+
+    I18nPluralPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "i18nPlural",
+      type: I18nPluralPipe,
+      pure: true
+    });
     /** @nocollapse */
 
     I18nPluralPipe.ctorParameters = function () {
@@ -7840,6 +8364,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: NgLocalization
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](I18nPluralPipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'i18nPlural',
+          pure: true
+        }]
+      }], function () {
+        return [{
+          type: NgLocalization
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -7903,13 +8443,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return I18nSelectPipe;
     }();
 
-    I18nSelectPipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'i18nSelect',
-        pure: true
-      }]
-    }];
+    I18nSelectPipe.ɵfac = function I18nSelectPipe_Factory(t) {
+      return new (t || I18nSelectPipe)();
+    };
+
+    I18nSelectPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "i18nSelect",
+      type: I18nSelectPipe,
+      pure: true
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](I18nSelectPipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'i18nSelect',
+          pure: true
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/common/src/pipes/json_pipe.ts
@@ -7932,6 +8485,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * \@publicApi
      */
 
+
     var JsonPipe = /*#__PURE__*/function () {
       function JsonPipe() {
         _classCallCheck(this, JsonPipe);
@@ -7952,13 +8506,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return JsonPipe;
     }();
 
-    JsonPipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'json',
-        pure: false
-      }]
-    }];
+    JsonPipe.ɵfac = function JsonPipe_Factory(t) {
+      return new (t || JsonPipe)();
+    };
+
+    JsonPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "json",
+      type: JsonPipe,
+      pure: false
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JsonPipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'json',
+          pure: false
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/common/src/pipes/keyvalue_pipe.ts
@@ -7971,6 +8538,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {?} value
      * @return {?}
      */
+
 
     function makeKeyValuePair(key, value) {
       return {
@@ -8075,13 +8643,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return KeyValuePipe;
     }();
 
-    KeyValuePipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'keyvalue',
-        pure: false
-      }]
-    }];
+    KeyValuePipe.ɵfac = function KeyValuePipe_Factory(t) {
+      return new (t || KeyValuePipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"]));
+    };
+
+    KeyValuePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "keyvalue",
+      type: KeyValuePipe,
+      pure: false
+    });
     /** @nocollapse */
 
     KeyValuePipe.ctorParameters = function () {
@@ -8089,6 +8659,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](KeyValuePipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'keyvalue',
+          pure: false
+        }]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -8224,12 +8810,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return DecimalPipe;
     }();
 
-    DecimalPipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'number'
-      }]
-    }];
+    DecimalPipe.ɵfac = function DecimalPipe_Factory(t) {
+      return new (t || DecimalPipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]));
+    };
+
+    DecimalPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "number",
+      type: DecimalPipe,
+      pure: true
+    });
     /** @nocollapse */
 
     DecimalPipe.ctorParameters = function () {
@@ -8241,6 +8830,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DecimalPipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'number'
+        }]
+      }], function () {
+        return [{
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -8312,12 +8920,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return PercentPipe;
     }();
 
-    PercentPipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'percent'
-      }]
-    }];
+    PercentPipe.ɵfac = function PercentPipe_Factory(t) {
+      return new (t || PercentPipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]));
+    };
+
+    PercentPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "percent",
+      type: PercentPipe,
+      pure: true
+    });
     /** @nocollapse */
 
     PercentPipe.ctorParameters = function () {
@@ -8329,6 +8940,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PercentPipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'percent'
+        }]
+      }], function () {
+        return [{
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -8468,12 +9098,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return CurrencyPipe;
     }();
 
-    CurrencyPipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'currency'
-      }]
-    }];
+    CurrencyPipe.ɵfac = function CurrencyPipe_Factory(t) {
+      return new (t || CurrencyPipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_CURRENCY_CODE"]));
+    };
+
+    CurrencyPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "currency",
+      type: CurrencyPipe,
+      pure: true
+    });
     /** @nocollapse */
 
     CurrencyPipe.ctorParameters = function () {
@@ -8491,6 +9124,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CurrencyPipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'currency'
+        }]
+      }], function () {
+        return [{
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]]
+          }]
+        }, {
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_CURRENCY_CODE"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -8603,13 +9261,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return SlicePipe;
     }();
 
-    SlicePipe.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-      args: [{
-        name: 'slice',
-        pure: false
-      }]
-    }];
+    SlicePipe.ɵfac = function SlicePipe_Factory(t) {
+      return new (t || SlicePipe)();
+    };
+
+    SlicePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+      name: "slice",
+      type: SlicePipe,
+      pure: false
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SlicePipe, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
+        args: [{
+          name: 'slice',
+          pure: false
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/common/src/pipes/index.ts
@@ -8620,6 +9291,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * A collection of Angular pipes that are likely to be used in each and every application.
      * @type {?}
      */
+
 
     var COMMON_PIPES = [AsyncPipe, UpperCasePipe, LowerCasePipe, JsonPipe, SlicePipe, DecimalPipe, PercentPipe, TitleCasePipe, CurrencyPipe, DatePipe, I18nPluralPipe, I18nSelectPipe, KeyValuePipe];
     /**
@@ -8648,17 +9320,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, CommonModule);
     };
 
-    CommonModule.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
-      args: [{
-        declarations: [COMMON_DIRECTIVES, COMMON_PIPES],
-        exports: [COMMON_DIRECTIVES, COMMON_PIPES],
-        providers: [{
-          provide: NgLocalization,
-          useClass: NgLocaleLocalization
-        }]
+    CommonModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+      type: CommonModule
+    });
+    CommonModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+      factory: function CommonModule_Factory(t) {
+        return new (t || CommonModule)();
+      },
+      providers: [{
+        provide: NgLocalization,
+        useClass: NgLocaleLocalization
       }]
-    }];
+    });
+
+    (function () {
+      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](CommonModule, {
+        declarations: [NgClass, NgComponentOutlet, NgForOf, NgIf, NgTemplateOutlet, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgPlural, NgPluralCase, AsyncPipe, UpperCasePipe, LowerCasePipe, JsonPipe, SlicePipe, DecimalPipe, PercentPipe, TitleCasePipe, CurrencyPipe, DatePipe, I18nPluralPipe, I18nSelectPipe, KeyValuePipe],
+        exports: [NgClass, NgComponentOutlet, NgForOf, NgIf, NgTemplateOutlet, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgPlural, NgPluralCase, AsyncPipe, UpperCasePipe, LowerCasePipe, JsonPipe, SlicePipe, DecimalPipe, PercentPipe, TitleCasePipe, CurrencyPipe, DatePipe, I18nPluralPipe, I18nSelectPipe, KeyValuePipe]
+      });
+    })();
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CommonModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+          declarations: [COMMON_DIRECTIVES, COMMON_PIPES],
+          exports: [COMMON_DIRECTIVES, COMMON_PIPES],
+          providers: [{
+            provide: NgLocalization,
+            useClass: NgLocaleLocalization
+          }]
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/common/src/platform_id.ts
@@ -8674,6 +9370,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
     /** @type {?} */
+
 
     var PLATFORM_BROWSER_ID = 'browser';
     /** @type {?} */
@@ -8740,7 +9437,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('9.1.6');
+    var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('9.1.12');
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/common/src/viewport_scroller.ts
@@ -9047,15 +9744,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "../../node_modules/@angular/core/fesm2015/core.js":
-  /*!*************************************************************************************************!*\
-    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/core/fesm2015/core.js ***!
-    \*************************************************************************************************/
+  "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js":
+  /*!**************************************************************************************************************!*\
+    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js ***!
+    \**************************************************************************************************************/
 
-  /*! exports provided: ANALYZE_FOR_ENTRY_COMPONENTS, APP_BOOTSTRAP_LISTENER, APP_ID, APP_INITIALIZER, ApplicationInitStatus, ApplicationModule, ApplicationRef, Attribute, COMPILER_OPTIONS, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, ChangeDetectorRef, Compiler, CompilerFactory, Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, ContentChild, ContentChildren, DEFAULT_CURRENCY_CODE, DebugElement, DebugEventListener, DebugNode, DefaultIterableDiffer, Directive, ElementRef, EmbeddedViewRef, ErrorHandler, EventEmitter, Host, HostBinding, HostListener, INJECTOR, Inject, InjectFlags, Injectable, InjectionToken, Injector, Input, IterableDiffers, KeyValueDiffers, LOCALE_ID, MissingTranslationStrategy, ModuleWithComponentFactories, NO_ERRORS_SCHEMA, NgModule, NgModuleFactory, NgModuleFactoryLoader, NgModuleRef, NgProbeToken, NgZone, Optional, Output, PACKAGE_ROOT_URL, PLATFORM_ID, PLATFORM_INITIALIZER, Pipe, PlatformRef, Query, QueryList, ReflectiveInjector, ReflectiveKey, Renderer2, RendererFactory2, RendererStyleFlags2, ResolvedReflectiveFactory, Sanitizer, SecurityContext, Self, SimpleChange, SkipSelf, SystemJsNgModuleLoader, SystemJsNgModuleLoaderConfig, TRANSLATIONS, TRANSLATIONS_FORMAT, TemplateRef, Testability, TestabilityRegistry, Type, VERSION, Version, ViewChild, ViewChildren, ViewContainerRef, ViewEncapsulation, ViewRef, WrappedValue, asNativeElements, assertPlatform, createPlatform, createPlatformFactory, defineInjectable, destroyPlatform, enableProdMode, forwardRef, getDebugNode, getModuleFactory, getPlatform, inject, isDevMode, platformCore, resolveForwardRef, setTestabilityGetter, ɵALLOW_MULTIPLE_PLATFORMS, ɵAPP_ID_RANDOM_PROVIDER, ɵChangeDetectorStatus, ɵCodegenComponentFactoryResolver, ɵCompiler_compileModuleAndAllComponentsAsync__POST_R3__, ɵCompiler_compileModuleAndAllComponentsSync__POST_R3__, ɵCompiler_compileModuleAsync__POST_R3__, ɵCompiler_compileModuleSync__POST_R3__, ɵComponentFactory, ɵConsole, ɵDEFAULT_LOCALE_ID, ɵEMPTY_ARRAY, ɵEMPTY_MAP, ɵINJECTOR_IMPL__POST_R3__, ɵINJECTOR_SCOPE, ɵLifecycleHooksFeature, ɵLocaleDataIndex, ɵNG_COMP_DEF, ɵNG_DIR_DEF, ɵNG_ELEMENT_ID, ɵNG_INJ_DEF, ɵNG_MOD_DEF, ɵNG_PIPE_DEF, ɵNG_PROV_DEF, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, ɵNO_CHANGE, ɵNgModuleFactory, ɵNoopNgZone, ɵReflectionCapabilities, ɵRender3ComponentFactory, ɵRender3ComponentRef, ɵRender3NgModuleRef, ɵSWITCH_CHANGE_DETECTOR_REF_FACTORY__POST_R3__, ɵSWITCH_COMPILE_COMPONENT__POST_R3__, ɵSWITCH_COMPILE_DIRECTIVE__POST_R3__, ɵSWITCH_COMPILE_INJECTABLE__POST_R3__, ɵSWITCH_COMPILE_NGMODULE__POST_R3__, ɵSWITCH_COMPILE_PIPE__POST_R3__, ɵSWITCH_ELEMENT_REF_FACTORY__POST_R3__, ɵSWITCH_IVY_ENABLED__POST_R3__, ɵSWITCH_RENDERER2_FACTORY__POST_R3__, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__, ɵSWITCH_VIEW_CONTAINER_REF_FACTORY__POST_R3__, ɵ_sanitizeHtml, ɵ_sanitizeStyle, ɵ_sanitizeUrl, ɵallowSanitizationBypassAndThrow, ɵand, ɵangular_packages_core_core_a, ɵangular_packages_core_core_b, ɵangular_packages_core_core_ba, ɵangular_packages_core_core_bb, ɵangular_packages_core_core_bc, ɵangular_packages_core_core_bd, ɵangular_packages_core_core_bf, ɵangular_packages_core_core_bg, ɵangular_packages_core_core_bh, ɵangular_packages_core_core_bi, ɵangular_packages_core_core_bj, ɵangular_packages_core_core_bk, ɵangular_packages_core_core_bl, ɵangular_packages_core_core_bm, ɵangular_packages_core_core_bn, ɵangular_packages_core_core_bp, ɵangular_packages_core_core_bq, ɵangular_packages_core_core_c, ɵangular_packages_core_core_d, ɵangular_packages_core_core_e, ɵangular_packages_core_core_f, ɵangular_packages_core_core_g, ɵangular_packages_core_core_h, ɵangular_packages_core_core_i, ɵangular_packages_core_core_j, ɵangular_packages_core_core_k, ɵangular_packages_core_core_l, ɵangular_packages_core_core_m, ɵangular_packages_core_core_n, ɵangular_packages_core_core_o, ɵangular_packages_core_core_p, ɵangular_packages_core_core_q, ɵangular_packages_core_core_r, ɵangular_packages_core_core_s, ɵangular_packages_core_core_t, ɵangular_packages_core_core_u, ɵangular_packages_core_core_v, ɵangular_packages_core_core_w, ɵangular_packages_core_core_x, ɵangular_packages_core_core_y, ɵangular_packages_core_core_z, ɵbypassSanitizationTrustHtml, ɵbypassSanitizationTrustResourceUrl, ɵbypassSanitizationTrustScript, ɵbypassSanitizationTrustStyle, ɵbypassSanitizationTrustUrl, ɵccf, ɵclearOverrides, ɵclearResolutionOfComponentResourcesQueue, ɵcmf, ɵcompileComponent, ɵcompileDirective, ɵcompileNgModule, ɵcompileNgModuleDefs, ɵcompileNgModuleFactory__POST_R3__, ɵcompilePipe, ɵcreateInjector, ɵcrt, ɵdefaultIterableDiffers, ɵdefaultKeyValueDiffers, ɵdetectChanges, ɵdevModeEqual, ɵdid, ɵeld, ɵfindLocaleData, ɵflushModuleScopingQueueAsMuchAsPossible, ɵgetComponentViewDefinitionFactory, ɵgetDebugNodeR2, ɵgetDebugNode__POST_R3__, ɵgetDirectives, ɵgetHostElement, ɵgetInjectableDef, ɵgetLContext, ɵgetLocaleCurrencyCode, ɵgetLocalePluralCase, ɵgetModuleFactory__POST_R3__, ɵgetSanitizationBypassType, ɵglobal, ɵinitServicesIfNeeded, ɵinlineInterpolate, ɵinterpolate, ɵisBoundToModule__POST_R3__, ɵisDefaultChangeDetectionStrategy, ɵisListLikeIterable, ɵisObservable, ɵisPromise, ɵivyEnabled, ɵlooseIdentical, ɵmakeDecorator, ɵmarkDirty, ɵmod, ɵmpd, ɵncd, ɵnov, ɵoverrideComponentView, ɵoverrideProvider, ɵpad, ɵpatchComponentDefWithScope, ɵpid, ɵpod, ɵppd, ɵprd, ɵpublishDefaultGlobalUtils, ɵpublishGlobalUtil, ɵqud, ɵregisterLocaleData, ɵregisterModuleFactory, ɵregisterNgModuleType, ɵrenderComponent, ɵresetCompiledComponents, ɵresetJitOptions, ɵresolveComponentResources, ɵsetClassMetadata, ɵsetCurrentInjector, ɵsetDocument, ɵsetLocaleId, ɵstore, ɵstringify, ɵted, ɵtransitiveScopesFor, ɵunregisterLocaleData, ɵunv, ɵunwrapSafeValue, ɵvid, ɵwhenRendered, ɵɵCopyDefinitionFeature, ɵɵInheritDefinitionFeature, ɵɵNgOnChangesFeature, ɵɵProvidersFeature, ɵɵadvance, ɵɵattribute, ɵɵattributeInterpolate1, ɵɵattributeInterpolate2, ɵɵattributeInterpolate3, ɵɵattributeInterpolate4, ɵɵattributeInterpolate5, ɵɵattributeInterpolate6, ɵɵattributeInterpolate7, ɵɵattributeInterpolate8, ɵɵattributeInterpolateV, ɵɵclassMap, ɵɵclassMapInterpolate1, ɵɵclassMapInterpolate2, ɵɵclassMapInterpolate3, ɵɵclassMapInterpolate4, ɵɵclassMapInterpolate5, ɵɵclassMapInterpolate6, ɵɵclassMapInterpolate7, ɵɵclassMapInterpolate8, ɵɵclassMapInterpolateV, ɵɵclassProp, ɵɵcomponentHostSyntheticListener, ɵɵcontainer, ɵɵcontainerRefreshEnd, ɵɵcontainerRefreshStart, ɵɵcontentQuery, ɵɵdefaultStyleSanitizer, ɵɵdefineComponent, ɵɵdefineDirective, ɵɵdefineInjectable, ɵɵdefineInjector, ɵɵdefineNgModule, ɵɵdefinePipe, ɵɵdirectiveInject, ɵɵdisableBindings, ɵɵelement, ɵɵelementContainer, ɵɵelementContainerEnd, ɵɵelementContainerStart, ɵɵelementEnd, ɵɵelementStart, ɵɵembeddedViewEnd, ɵɵembeddedViewStart, ɵɵenableBindings, ɵɵgetCurrentView, ɵɵgetFactoryOf, ɵɵgetInheritedFactory, ɵɵhostProperty, ɵɵi18n, ɵɵi18nApply, ɵɵi18nAttributes, ɵɵi18nEnd, ɵɵi18nExp, ɵɵi18nPostprocess, ɵɵi18nStart, ɵɵinject, ɵɵinjectAttribute, ɵɵinjectPipeChangeDetectorRef, ɵɵinvalidFactory, ɵɵinvalidFactoryDep, ɵɵlistener, ɵɵloadQuery, ɵɵnamespaceHTML, ɵɵnamespaceMathML, ɵɵnamespaceSVG, ɵɵnextContext, ɵɵpipe, ɵɵpipeBind1, ɵɵpipeBind2, ɵɵpipeBind3, ɵɵpipeBind4, ɵɵpipeBindV, ɵɵprojection, ɵɵprojectionDef, ɵɵproperty, ɵɵpropertyInterpolate, ɵɵpropertyInterpolate1, ɵɵpropertyInterpolate2, ɵɵpropertyInterpolate3, ɵɵpropertyInterpolate4, ɵɵpropertyInterpolate5, ɵɵpropertyInterpolate6, ɵɵpropertyInterpolate7, ɵɵpropertyInterpolate8, ɵɵpropertyInterpolateV, ɵɵpureFunction0, ɵɵpureFunction1, ɵɵpureFunction2, ɵɵpureFunction3, ɵɵpureFunction4, ɵɵpureFunction5, ɵɵpureFunction6, ɵɵpureFunction7, ɵɵpureFunction8, ɵɵpureFunctionV, ɵɵqueryRefresh, ɵɵreference, ɵɵresolveBody, ɵɵresolveDocument, ɵɵresolveWindow, ɵɵrestoreView, ɵɵsanitizeHtml, ɵɵsanitizeResourceUrl, ɵɵsanitizeScript, ɵɵsanitizeStyle, ɵɵsanitizeUrl, ɵɵsanitizeUrlOrResourceUrl, ɵɵselect, ɵɵsetComponentScope, ɵɵsetNgModuleScope, ɵɵstaticContentQuery, ɵɵstaticViewQuery, ɵɵstyleMap, ɵɵstyleMapInterpolate1, ɵɵstyleMapInterpolate2, ɵɵstyleMapInterpolate3, ɵɵstyleMapInterpolate4, ɵɵstyleMapInterpolate5, ɵɵstyleMapInterpolate6, ɵɵstyleMapInterpolate7, ɵɵstyleMapInterpolate8, ɵɵstyleMapInterpolateV, ɵɵstyleProp, ɵɵstylePropInterpolate1, ɵɵstylePropInterpolate2, ɵɵstylePropInterpolate3, ɵɵstylePropInterpolate4, ɵɵstylePropInterpolate5, ɵɵstylePropInterpolate6, ɵɵstylePropInterpolate7, ɵɵstylePropInterpolate8, ɵɵstylePropInterpolateV, ɵɵstyleSanitizer, ɵɵtemplate, ɵɵtemplateRefExtractor, ɵɵtext, ɵɵtextInterpolate, ɵɵtextInterpolate1, ɵɵtextInterpolate2, ɵɵtextInterpolate3, ɵɵtextInterpolate4, ɵɵtextInterpolate5, ɵɵtextInterpolate6, ɵɵtextInterpolate7, ɵɵtextInterpolate8, ɵɵtextInterpolateV, ɵɵupdateSyntheticHostBinding, ɵɵviewQuery */
+  /*! exports provided: ANALYZE_FOR_ENTRY_COMPONENTS, APP_BOOTSTRAP_LISTENER, APP_ID, APP_INITIALIZER, ApplicationInitStatus, ApplicationModule, ApplicationRef, Attribute, COMPILER_OPTIONS, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, ChangeDetectorRef, Compiler, CompilerFactory, Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, ContentChild, ContentChildren, DEFAULT_CURRENCY_CODE, DebugElement, DebugEventListener, DebugNode, DefaultIterableDiffer, Directive, ElementRef, EmbeddedViewRef, ErrorHandler, EventEmitter, Host, HostBinding, HostListener, INJECTOR, Inject, InjectFlags, Injectable, InjectionToken, Injector, Input, IterableDiffers, KeyValueDiffers, LOCALE_ID, MissingTranslationStrategy, ModuleWithComponentFactories, NO_ERRORS_SCHEMA, NgModule, NgModuleFactory, NgModuleFactoryLoader, NgModuleRef, NgProbeToken, NgZone, Optional, Output, PACKAGE_ROOT_URL, PLATFORM_ID, PLATFORM_INITIALIZER, Pipe, PlatformRef, Query, QueryList, ReflectiveInjector, ReflectiveKey, Renderer2, RendererFactory2, RendererStyleFlags2, ResolvedReflectiveFactory, Sanitizer, SecurityContext, Self, SimpleChange, SkipSelf, SystemJsNgModuleLoader, SystemJsNgModuleLoaderConfig, TRANSLATIONS, TRANSLATIONS_FORMAT, TemplateRef, Testability, TestabilityRegistry, Type, VERSION, Version, ViewChild, ViewChildren, ViewContainerRef, ViewEncapsulation, ViewRef, WrappedValue, asNativeElements, assertPlatform, createPlatform, createPlatformFactory, defineInjectable, destroyPlatform, enableProdMode, forwardRef, getDebugNode, getModuleFactory, getPlatform, inject, isDevMode, platformCore, resolveForwardRef, setTestabilityGetter, ɵALLOW_MULTIPLE_PLATFORMS, ɵAPP_ID_RANDOM_PROVIDER, ɵChangeDetectorStatus, ɵCodegenComponentFactoryResolver, ɵCompiler_compileModuleAndAllComponentsAsync__POST_R3__, ɵCompiler_compileModuleAndAllComponentsSync__POST_R3__, ɵCompiler_compileModuleAsync__POST_R3__, ɵCompiler_compileModuleSync__POST_R3__, ɵComponentFactory, ɵConsole, ɵDEFAULT_LOCALE_ID, ɵEMPTY_ARRAY, ɵEMPTY_MAP, ɵINJECTOR_IMPL__POST_R3__, ɵINJECTOR_SCOPE, ɵLifecycleHooksFeature, ɵLocaleDataIndex, ɵNG_COMP_DEF, ɵNG_DIR_DEF, ɵNG_ELEMENT_ID, ɵNG_INJ_DEF, ɵNG_MOD_DEF, ɵNG_PIPE_DEF, ɵNG_PROV_DEF, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, ɵNO_CHANGE, ɵNgModuleFactory, ɵNoopNgZone, ɵReflectionCapabilities, ɵRender3ComponentFactory, ɵRender3ComponentRef, ɵRender3NgModuleRef, ɵSWITCH_CHANGE_DETECTOR_REF_FACTORY__POST_R3__, ɵSWITCH_COMPILE_COMPONENT__POST_R3__, ɵSWITCH_COMPILE_DIRECTIVE__POST_R3__, ɵSWITCH_COMPILE_INJECTABLE__POST_R3__, ɵSWITCH_COMPILE_NGMODULE__POST_R3__, ɵSWITCH_COMPILE_PIPE__POST_R3__, ɵSWITCH_ELEMENT_REF_FACTORY__POST_R3__, ɵSWITCH_IVY_ENABLED__POST_R3__, ɵSWITCH_RENDERER2_FACTORY__POST_R3__, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__, ɵSWITCH_VIEW_CONTAINER_REF_FACTORY__POST_R3__, ɵ_sanitizeHtml, ɵ_sanitizeStyle, ɵ_sanitizeUrl, ɵallowSanitizationBypassAndThrow, ɵand, ɵangular_packages_core_core_a, ɵangular_packages_core_core_b, ɵangular_packages_core_core_ba, ɵangular_packages_core_core_bb, ɵangular_packages_core_core_bc, ɵangular_packages_core_core_bd, ɵangular_packages_core_core_bf, ɵangular_packages_core_core_bg, ɵangular_packages_core_core_bh, ɵangular_packages_core_core_bi, ɵangular_packages_core_core_bj, ɵangular_packages_core_core_bk, ɵangular_packages_core_core_bl, ɵangular_packages_core_core_bm, ɵangular_packages_core_core_bn, ɵangular_packages_core_core_bp, ɵangular_packages_core_core_bq, ɵangular_packages_core_core_c, ɵangular_packages_core_core_d, ɵangular_packages_core_core_e, ɵangular_packages_core_core_f, ɵangular_packages_core_core_g, ɵangular_packages_core_core_h, ɵangular_packages_core_core_i, ɵangular_packages_core_core_j, ɵangular_packages_core_core_k, ɵangular_packages_core_core_l, ɵangular_packages_core_core_m, ɵangular_packages_core_core_n, ɵangular_packages_core_core_o, ɵangular_packages_core_core_p, ɵangular_packages_core_core_q, ɵangular_packages_core_core_r, ɵangular_packages_core_core_s, ɵangular_packages_core_core_t, ɵangular_packages_core_core_u, ɵangular_packages_core_core_v, ɵangular_packages_core_core_w, ɵangular_packages_core_core_x, ɵangular_packages_core_core_y, ɵangular_packages_core_core_z, ɵbypassSanitizationTrustHtml, ɵbypassSanitizationTrustResourceUrl, ɵbypassSanitizationTrustScript, ɵbypassSanitizationTrustStyle, ɵbypassSanitizationTrustUrl, ɵccf, ɵclearOverrides, ɵclearResolutionOfComponentResourcesQueue, ɵcmf, ɵcompileComponent, ɵcompileDirective, ɵcompileNgModule, ɵcompileNgModuleDefs, ɵcompileNgModuleFactory__POST_R3__, ɵcompilePipe, ɵcreateInjector, ɵcrt, ɵdefaultIterableDiffers, ɵdefaultKeyValueDiffers, ɵdetectChanges, ɵdevModeEqual, ɵdid, ɵeld, ɵfindLocaleData, ɵflushModuleScopingQueueAsMuchAsPossible, ɵgetComponentViewDefinitionFactory, ɵgetDebugNodeR2, ɵgetDebugNode__POST_R3__, ɵgetDirectives, ɵgetHostElement, ɵgetInjectableDef, ɵgetLContext, ɵgetLocaleCurrencyCode, ɵgetLocalePluralCase, ɵgetModuleFactory__POST_R3__, ɵgetSanitizationBypassType, ɵglobal, ɵinitServicesIfNeeded, ɵinlineInterpolate, ɵinterpolate, ɵisBoundToModule__POST_R3__, ɵisDefaultChangeDetectionStrategy, ɵisListLikeIterable, ɵisObservable, ɵisPromise, ɵivyEnabled, ɵlooseIdentical, ɵmakeDecorator, ɵmarkDirty, ɵmod, ɵmpd, ɵncd, ɵnov, ɵoverrideComponentView, ɵoverrideProvider, ɵpad, ɵpatchComponentDefWithScope, ɵpid, ɵpod, ɵppd, ɵprd, ɵpublishDefaultGlobalUtils, ɵpublishGlobalUtil, ɵqud, ɵregisterLocaleData, ɵregisterModuleFactory, ɵregisterNgModuleType, ɵrenderComponent, ɵresetCompiledComponents, ɵresetJitOptions, ɵresolveComponentResources, ɵsetClassMetadata, ɵsetCurrentInjector, ɵsetDocument, ɵsetLocaleId, ɵstore, ɵstringify, ɵted, ɵtransitiveScopesFor, ɵunregisterLocaleData, ɵunv, ɵunwrapSafeValue, ɵvid, ɵwhenRendered, ɵɵCopyDefinitionFeature, ɵɵInheritDefinitionFeature, ɵɵNgOnChangesFeature, ɵɵProvidersFeature, ɵɵadvance, ɵɵattribute, ɵɵattributeInterpolate1, ɵɵattributeInterpolate2, ɵɵattributeInterpolate3, ɵɵattributeInterpolate4, ɵɵattributeInterpolate5, ɵɵattributeInterpolate6, ɵɵattributeInterpolate7, ɵɵattributeInterpolate8, ɵɵattributeInterpolateV, ɵɵclassMap, ɵɵclassMapInterpolate1, ɵɵclassMapInterpolate2, ɵɵclassMapInterpolate3, ɵɵclassMapInterpolate4, ɵɵclassMapInterpolate5, ɵɵclassMapInterpolate6, ɵɵclassMapInterpolate7, ɵɵclassMapInterpolate8, ɵɵclassMapInterpolateV, ɵɵclassProp, ɵɵcomponentHostSyntheticListener, ɵɵcontentQuery, ɵɵdefaultStyleSanitizer, ɵɵdefineComponent, ɵɵdefineDirective, ɵɵdefineInjectable, ɵɵdefineInjector, ɵɵdefineNgModule, ɵɵdefinePipe, ɵɵdirectiveInject, ɵɵdisableBindings, ɵɵelement, ɵɵelementContainer, ɵɵelementContainerEnd, ɵɵelementContainerStart, ɵɵelementEnd, ɵɵelementStart, ɵɵenableBindings, ɵɵgetCurrentView, ɵɵgetFactoryOf, ɵɵgetInheritedFactory, ɵɵhostProperty, ɵɵi18n, ɵɵi18nApply, ɵɵi18nAttributes, ɵɵi18nEnd, ɵɵi18nExp, ɵɵi18nPostprocess, ɵɵi18nStart, ɵɵinject, ɵɵinjectAttribute, ɵɵinjectPipeChangeDetectorRef, ɵɵinvalidFactory, ɵɵinvalidFactoryDep, ɵɵlistener, ɵɵloadQuery, ɵɵnamespaceHTML, ɵɵnamespaceMathML, ɵɵnamespaceSVG, ɵɵnextContext, ɵɵpipe, ɵɵpipeBind1, ɵɵpipeBind2, ɵɵpipeBind3, ɵɵpipeBind4, ɵɵpipeBindV, ɵɵprojection, ɵɵprojectionDef, ɵɵproperty, ɵɵpropertyInterpolate, ɵɵpropertyInterpolate1, ɵɵpropertyInterpolate2, ɵɵpropertyInterpolate3, ɵɵpropertyInterpolate4, ɵɵpropertyInterpolate5, ɵɵpropertyInterpolate6, ɵɵpropertyInterpolate7, ɵɵpropertyInterpolate8, ɵɵpropertyInterpolateV, ɵɵpureFunction0, ɵɵpureFunction1, ɵɵpureFunction2, ɵɵpureFunction3, ɵɵpureFunction4, ɵɵpureFunction5, ɵɵpureFunction6, ɵɵpureFunction7, ɵɵpureFunction8, ɵɵpureFunctionV, ɵɵqueryRefresh, ɵɵreference, ɵɵresolveBody, ɵɵresolveDocument, ɵɵresolveWindow, ɵɵrestoreView, ɵɵsanitizeHtml, ɵɵsanitizeResourceUrl, ɵɵsanitizeScript, ɵɵsanitizeStyle, ɵɵsanitizeUrl, ɵɵsanitizeUrlOrResourceUrl, ɵɵselect, ɵɵsetComponentScope, ɵɵsetNgModuleScope, ɵɵstaticContentQuery, ɵɵstaticViewQuery, ɵɵstyleMap, ɵɵstyleMapInterpolate1, ɵɵstyleMapInterpolate2, ɵɵstyleMapInterpolate3, ɵɵstyleMapInterpolate4, ɵɵstyleMapInterpolate5, ɵɵstyleMapInterpolate6, ɵɵstyleMapInterpolate7, ɵɵstyleMapInterpolate8, ɵɵstyleMapInterpolateV, ɵɵstyleProp, ɵɵstylePropInterpolate1, ɵɵstylePropInterpolate2, ɵɵstylePropInterpolate3, ɵɵstylePropInterpolate4, ɵɵstylePropInterpolate5, ɵɵstylePropInterpolate6, ɵɵstylePropInterpolate7, ɵɵstylePropInterpolate8, ɵɵstylePropInterpolateV, ɵɵstyleSanitizer, ɵɵtemplate, ɵɵtemplateRefExtractor, ɵɵtext, ɵɵtextInterpolate, ɵɵtextInterpolate1, ɵɵtextInterpolate2, ɵɵtextInterpolate3, ɵɵtextInterpolate4, ɵɵtextInterpolate5, ɵɵtextInterpolate6, ɵɵtextInterpolate7, ɵɵtextInterpolate8, ɵɵtextInterpolateV, ɵɵupdateSyntheticHostBinding, ɵɵviewQuery */
 
   /***/
-  function node_modulesAngularCoreFesm2015CoreJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesAngularCore__ivy_ngcc__Fesm2015CoreJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -10886,24 +11583,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ɵɵcontainer", function () {
-      return ɵɵcontainer;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ɵɵcontainerRefreshEnd", function () {
-      return ɵɵcontainerRefreshEnd;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ɵɵcontainerRefreshStart", function () {
-      return ɵɵcontainerRefreshStart;
-    });
-    /* harmony export (binding) */
-
-
     __webpack_require__.d(__webpack_exports__, "ɵɵcontentQuery", function () {
       return ɵɵcontentQuery;
     });
@@ -10996,18 +11675,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "ɵɵelementStart", function () {
       return ɵɵelementStart;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ɵɵembeddedViewEnd", function () {
-      return ɵɵembeddedViewEnd;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ɵɵembeddedViewStart", function () {
-      return ɵɵembeddedViewStart;
     });
     /* harmony export (binding) */
 
@@ -11652,7 +12319,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! rxjs/operators */
     "../../node_modules/rxjs/_esm2015/operators/index.js");
     /**
-     * @license Angular v9.1.6
+     * @license Angular v9.1.12
      * (c) 2010-2020 Google LLC. https://angular.io/
      * License: MIT
      */
@@ -14570,13 +15237,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var TYPE = 1;
     /**
-     * Below are constants for LContainer indices to help us look up LContainer members
-     * without having to remember the specific indices.
-     * Uglify will inline these when minifying so there shouldn't be a cost.
+     * Flag to signify that this `LContainer` may have transplanted views which need to be change
+     * detected. (see: `LView[DECLARATION_COMPONENT_VIEW])`.
+     *
+     * This flag, once set, is never unset for the `LContainer`. This means that when unset we can skip
+     * a lot of work in `refreshEmbeddedViews`. But when set we still need to verify
+     * that the `MOVED_VIEWS` are transplanted and on-push.
      * @type {?}
      */
 
-    var ACTIVE_INDEX = 2; // PARENT, NEXT, TRANSPLANTED_VIEWS_TO_REFRESH are indices 3, 4, and 5
+    var HAS_TRANSPLANTED_VIEWS = 2; // PARENT, NEXT, TRANSPLANTED_VIEWS_TO_REFRESH are indices 3, 4, and 5
     // As we already have these constants in LView, we don't need to re-create them.
     // T_HOST is index 6
     // We already have this constants in LView, we don't need to re-create it.
@@ -14599,35 +15269,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
     var CONTAINER_HEADER_OFFSET = 10;
-    /** @enum {number} */
-
-    var ActiveIndexFlag = {
-      /**
-       * Flag which signifies that the `LContainer` does not have any inline embedded views.
-       */
-      DYNAMIC_EMBEDDED_VIEWS_ONLY: -1,
-
-      /**
-       * Flag to signify that this `LContainer` may have transplanted views which need to be change
-       * detected. (see: `LView[DECLARATION_COMPONENT_VIEW])`.
-       *
-       * This flag once set is never unset for the `LContainer`. This means that when unset we can skip
-       * a lot of work in `refreshDynamicEmbeddedViews`. But when set we still need to verify
-       * that the `MOVED_VIEWS` are transplanted and on-push.
-       */
-      HAS_TRANSPLANTED_VIEWS: 1,
-
-      /**
-       * Number of bits to shift inline embedded views counter to make space for other flags.
-       */
-      SHIFT: 1,
-
-      /**
-       * When incrementing the active index for inline embedded views, the amount to increment to leave
-       * space for other flags.
-       */
-      INCREMENT: 2
-    };
     /**
      * The state associated with a container.
      *
@@ -14815,15 +15456,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function assertDataNext(lView, index, arr) {
       if (arr == null) arr = lView;
       assertEqual(arr.length, index, "index ".concat(index, " expected to be at the end of arr (length ").concat(arr.length, ")"));
-    }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-
-
-    function assertLContainerOrUndefined(value) {
-      value && assertEqual(isLContainer(value), true, 'Expecting LContainer or undefined or null');
     }
     /**
      * @param {?} value
@@ -15434,29 +16066,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function resetPreOrderHookFlags(lView) {
       lView[PREORDER_HOOK_FLAGS] = 0;
-    }
-    /**
-     * @param {?} lContainer
-     * @return {?}
-     */
-
-
-    function getLContainerActiveIndex(lContainer) {
-      return lContainer[ACTIVE_INDEX] >> 1
-      /* SHIFT */
-      ;
-    }
-    /**
-     * @param {?} lContainer
-     * @param {?} index
-     * @return {?}
-     */
-
-
-    function setLContainerActiveIndex(lContainer, index) {
-      lContainer[ACTIVE_INDEX] = index << 1
-      /* SHIFT */
-      ;
     }
     /**
      * Updates the `TRANSPLANTED_VIEWS_TO_REFRESH` counter on the `LContainer` as well as the parents
@@ -18144,32 +18753,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       */
       function () {
         /** @type {?} */
-        var proto =
-        /** @type {?} */
-        Object.getPrototypeOf(type.prototype).constructor;
+        var ownConstructor = type.prototype.constructor;
         /** @type {?} */
 
-        var factory =
+        var ownFactory = ownConstructor[NG_FACTORY_DEF] || ɵɵgetFactoryOf(ownConstructor);
         /** @type {?} */
-        proto[NG_FACTORY_DEF] || ɵɵgetFactoryOf(proto);
 
-        if (factory !== null) {
-          return factory;
-        } else {
-          // There is no factory defined. Either this was improper usage of inheritance
-          // (no Angular decorator on the superclass) or there is no constructor at all
-          // in the inheritance chain. Since the two cases cannot be distinguished, the
-          // latter has to be assumed.
-          return (
-            /**
-            * @param {?} t
-            * @return {?}
-            */
-            function (t) {
-              return new t();
-            }
-          );
-        }
+        var objectPrototype = Object.prototype;
+        /** @type {?} */
+
+        var parent = Object.getPrototypeOf(type.prototype).constructor; // Go up the prototype until we hit `Object`.
+
+        while (parent && parent !== objectPrototype) {
+          /** @type {?} */
+          var factory = parent[NG_FACTORY_DEF] || ɵɵgetFactoryOf(parent); // If we hit something that has a factory and the factory isn't the same as the type,
+          // we've found the inherited factory. Note the check that the factory isn't the type's
+          // own factory is redundant in most cases, but if the user has custom decorators on the
+          // class, this lookup will start one level down in the prototype chain, causing us to
+          // find the own factory first and potentially triggering an infinite loop downstream.
+
+          if (factory && factory !== ownFactory) {
+            return factory;
+          }
+
+          parent = Object.getPrototypeOf(parent);
+        } // There is no factory defined. Either this was improper usage of inheritance
+        // (no Angular decorator on the superclass) or there is no constructor at all
+        // in the inheritance chain. Since the two cases cannot be distinguished, the
+        // latter has to be assumed.
+
+
+        return (
+          /**
+          * @param {?} t
+          * @return {?}
+          */
+          function (t) {
+            return new t();
+          }
+        );
       });
     }
     /**
@@ -21994,6 +22616,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       );
     }
     /**
+     * Gets the first `LContainer` in the LView or `null` if none exists.
+     * @param {?} lView
+     * @return {?}
+     */
+
+
+    function getFirstLContainer(lView) {
+      return getNearestLContainer(lView[CHILD_HEAD]);
+    }
+    /**
+     * Gets the next `LContainer` that is a sibling of the given container.
+     * @param {?} container
+     * @return {?}
+     */
+
+
+    function getNextLContainer(container) {
+      return getNearestLContainer(container[NEXT]);
+    }
+    /**
+     * @param {?} viewOrContainer
+     * @return {?}
+     */
+
+
+    function getNearestLContainer(viewOrContainer) {
+      while (viewOrContainer !== null && !isLContainer(viewOrContainer)) {
+        viewOrContainer = viewOrContainer[NEXT];
+      }
+
+      return viewOrContainer;
+    }
+    /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/render3/instructions/advance.ts
      * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -23030,8 +23685,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        * @param {?} parent
        * @param {?} projection
        * @param {?} styles
+       * @param {?} stylesWithoutHost
        * @param {?} residualStyles
        * @param {?} classes
+       * @param {?} classesWithoutHost
        * @param {?} residualClasses
        * @param {?} classBindings
        * @param {?} styleBindings
@@ -23060,8 +23717,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       parent, //
       projection, //
       styles, //
+      stylesWithoutHost, //
       residualStyles, //
       classes, //
+      classesWithoutHost, //
       residualClasses, //
       classBindings, //
       styleBindings) {
@@ -23091,8 +23750,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.parent = parent;
         this.projection = projection;
         this.styles = styles;
+        this.stylesWithoutHost = stylesWithoutHost;
         this.residualStyles = residualStyles;
         this.classes = classes;
+        this.classesWithoutHost = classesWithoutHost;
         this.residualClasses = residualClasses;
         this.classBindings = classBindings;
         this.styleBindings = styleBindings;
@@ -23811,22 +24472,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
       _createClass2(LContainerDebug, [{
-        key: "activeIndex",
-        get: function get() {
-          return getLContainerActiveIndex(this._raw_lContainer);
-        }
-        /**
-         * @return {?}
-         */
-
-      }, {
         key: "hasTransplantedViews",
         get: function get() {
-          return (this._raw_lContainer[ACTIVE_INDEX] & 1
-          /* HAS_TRANSPLANTED_VIEWS */
-          ) === 1
-          /* HAS_TRANSPLANTED_VIEWS */
-          ;
+          return this._raw_lContainer[HAS_TRANSPLANTED_VIEWS];
         }
         /**
          * @return {?}
@@ -24633,7 +25281,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         , index, null, null);
       }
 
-      return lView[T_HOST] =
+      lView[T_HOST] =
       /** @type {?} */
       tNode;
     }
@@ -24843,7 +25491,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
         markTransplantedViewsForRefresh(lView);
-        refreshDynamicEmbeddedViews(lView); // Content query results must be refreshed before content hooks are called.
+        refreshEmbeddedViews(lView); // Content query results must be refreshed before content hooks are called.
 
         if (tView.contentQueries !== null) {
           refreshContentQueries(tView, lView);
@@ -25405,8 +26053,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       tParent, // parent: TElementNode|TContainerNode|null
       null, // projection: number|(ITNode|RNode[])[]|null
       null, // styles: string|null
+      null, // stylesWithoutHost: string|null
       undefined, // residualStyles: string|null
       null, // classes: string|null
+      null, // classesWithoutHost: string|null
       undefined,
       /** @type {?} */
       0,
@@ -25435,8 +26085,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         parent: tParent,
         projection: null,
         styles: null,
+        stylesWithoutHost: null,
         residualStyles: undefined,
         classes: null,
+        classesWithoutHost: null,
         residualClasses: undefined,
         classBindings:
         /** @type {?} */
@@ -26545,11 +27197,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       var lContainer = new (ngDevMode ? LContainerArray : Array)(hostNative, // host native
       true, // Boolean `true` in this position signifies that this is an `LContainer`
-      -1
-      /* DYNAMIC_EMBEDDED_VIEWS_ONLY */
-      << 1
-      /* SHIFT */
-      , // active index
+      false, // has transplanted views
       currentView, // parent
       null, // next
       0, // transplanted views to refresh count
@@ -26562,14 +27210,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return lContainer;
     }
     /**
-     * Goes over dynamic embedded views (ones created through ViewContainerRef APIs) and refreshes
+     * Goes over embedded views (ones created through ViewContainerRef APIs) and refreshes
      * them by executing an associated template function.
      * @param {?} lView
      * @return {?}
      */
 
 
-    function refreshDynamicEmbeddedViews(lView) {
+    function refreshEmbeddedViews(lView) {
       for (var lContainer = getFirstLContainer(lView); lContainer !== null; lContainer = getNextLContainer(lContainer)) {
         for (var i = CONTAINER_HEADER_OFFSET; i < lContainer.length; i++) {
           /** @type {?} */
@@ -26588,52 +27236,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
     /**
-     * Gets the first `LContainer` in the LView or `null` if none exists.
-     * @param {?} lView
-     * @return {?}
-     */
-
-
-    function getFirstLContainer(lView) {
-      /** @type {?} */
-      var viewOrContainer = lView[CHILD_HEAD];
-
-      while (viewOrContainer !== null && !(isLContainer(viewOrContainer) && viewOrContainer[ACTIVE_INDEX] >> 1
-      /* SHIFT */
-      === -1
-      /* DYNAMIC_EMBEDDED_VIEWS_ONLY */
-      )) {
-        viewOrContainer = viewOrContainer[NEXT];
-      }
-
-      return viewOrContainer;
-    }
-    /**
-     * Gets the next `LContainer` that is a sibling of the given container.
-     * @param {?} container
-     * @return {?}
-     */
-
-
-    function getNextLContainer(container) {
-      /** @type {?} */
-      var viewOrContainer = container[NEXT];
-
-      while (viewOrContainer !== null && !(isLContainer(viewOrContainer) && viewOrContainer[ACTIVE_INDEX] >> 1
-      /* SHIFT */
-      === -1
-      /* DYNAMIC_EMBEDDED_VIEWS_ONLY */
-      )) {
-        viewOrContainer = viewOrContainer[NEXT];
-      }
-
-      return viewOrContainer;
-    }
-    /**
      * Mark transplanted views as needing to be refreshed at their insertion points.
-     *
-     * See: `ActiveIndexFlag.HAS_TRANSPLANTED_VIEWS` and `LView[DECLARATION_COMPONENT_VIEW]` for
-     * explanation of transplanted views.
      *
      * @param {?} lView The `LView` that may have transplanted views.
      * @return {?}
@@ -26642,42 +27245,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function markTransplantedViewsForRefresh(lView) {
       for (var lContainer = getFirstLContainer(lView); lContainer !== null; lContainer = getNextLContainer(lContainer)) {
-        if ((lContainer[ACTIVE_INDEX] & 1
-        /* HAS_TRANSPLANTED_VIEWS */
-        ) !== 0) {
+        if (!lContainer[HAS_TRANSPLANTED_VIEWS]) continue;
+        /** @type {?} */
+
+        var movedViews =
+        /** @type {?} */
+        lContainer[MOVED_VIEWS];
+        ngDevMode && assertDefined(movedViews, 'Transplanted View flags set but missing MOVED_VIEWS');
+
+        for (var i = 0; i < movedViews.length; i++) {
           /** @type {?} */
-          var movedViews =
+          var movedLView =
           /** @type {?} */
-          lContainer[MOVED_VIEWS];
-          ngDevMode && assertDefined(movedViews, 'Transplanted View flags set but missing MOVED_VIEWS');
+          movedViews[i];
+          /** @type {?} */
 
-          for (var i = 0; i < movedViews.length; i++) {
-            /** @type {?} */
-            var movedLView =
-            /** @type {?} */
-            movedViews[i];
-            /** @type {?} */
+          var insertionLContainer =
+          /** @type {?} */
+          movedLView[PARENT];
+          ngDevMode && assertLContainer(insertionLContainer); // We don't want to increment the counter if the moved LView was already marked for
+          // refresh.
 
-            var insertionLContainer =
-            /** @type {?} */
-            movedLView[PARENT];
-            ngDevMode && assertLContainer(insertionLContainer); // We don't want to increment the counter if the moved LView was already marked for
-            // refresh.
-
-            if ((movedLView[FLAGS] & 1024
-            /* RefreshTransplantedView */
-            ) === 0) {
-              updateTransplantedViewCount(insertionLContainer, 1);
-            } // Note, it is possible that the `movedViews` is tracking views that are transplanted *and*
-            // those that aren't (declaration component === insertion component). In the latter case,
-            // it's fine to add the flag, as we will clear it immediately in
-            // `refreshDynamicEmbeddedViews` for the view currently being refreshed.
+          if ((movedLView[FLAGS] & 1024
+          /* RefreshTransplantedView */
+          ) === 0) {
+            updateTransplantedViewCount(insertionLContainer, 1);
+          } // Note, it is possible that the `movedViews` is tracking views that are transplanted *and*
+          // those that aren't (declaration component === insertion component). In the latter case,
+          // it's fine to add the flag, as we will clear it immediately in
+          // `refreshEmbeddedViews` for the view currently being refreshed.
 
 
-            movedLView[FLAGS] |= 1024
-            /* RefreshTransplantedView */
-            ;
-          }
+          movedLView[FLAGS] |= 1024
+          /* RefreshTransplantedView */
+          ;
         }
       }
     } /////////////
@@ -27604,9 +28205,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // At this point the declaration-component is not same as insertion-component; this means that
         // this is a transplanted view. Mark the declared lView as having transplanted views so that
         // those views can participate in CD.
-        declarationContainer[ACTIVE_INDEX] |= 1
-        /* HAS_TRANSPLANTED_VIEWS */
-        ;
+        declarationContainer[HAS_TRANSPLANTED_VIEWS] = true;
       }
 
       if (movedViews === null) {
@@ -28838,11 +29437,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._cdRefInjectingView = _cdRefInjectingView;
         this._appRef = null;
         this._viewContainerRef = null;
-        /**
-         * \@internal
-         */
-
-        this._tViewNode = null;
       }
       /**
        * @return {?}
@@ -29466,13 +30060,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
 
               renderView(embeddedTView, embeddedLView, context);
-              /** @type {?} */
-
-              var viewRef = new ViewRef(embeddedLView);
-              viewRef._tViewNode =
-              /** @type {?} */
-              embeddedLView[T_HOST];
-              return viewRef;
+              return new ViewRef(embeddedLView);
             }
           }]);
 
@@ -29868,9 +30456,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (isLContainer(slotValue)) {
         // If the host is a container, we don't need to create a new LContainer
         lContainer = slotValue;
-        setLContainerActiveIndex(lContainer, -1
-        /* DYNAMIC_EMBEDDED_VIEWS_ONLY */
-        );
       } else {
         /** @type {?} */
         var commentNode; // If the host is an element container, the native host element is guaranteed to be a
@@ -30096,10 +30681,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     */
     function SWITCH_CHANGE_DETECTOR_REF_FACTORY__PRE_R3__() {};
 
-    var ɵ0$5 = SWITCH_CHANGE_DETECTOR_REF_FACTORY__PRE_R3__;
+    var ɵ0$5 = SWITCH_CHANGE_DETECTOR_REF_FACTORY__POST_R3__;
     /** @type {?} */
 
-    var SWITCH_CHANGE_DETECTOR_REF_FACTORY = SWITCH_CHANGE_DETECTOR_REF_FACTORY__PRE_R3__;
+    var SWITCH_CHANGE_DETECTOR_REF_FACTORY = SWITCH_CHANGE_DETECTOR_REF_FACTORY__POST_R3__;
     /**
      * @license
      * Copyright Google Inc. All Rights Reserved.
@@ -30140,7 +30725,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var DELEGATE_CTOR = /^function\s+\S+\(\)\s*{[\s\S]+\.apply\(this,\s*arguments\)/;
     var INHERITED_CLASS = /^class\s+[A-Za-z\d$_]*\s*extends\s+[^{]+{/;
     var INHERITED_CLASS_WITH_CTOR = /^class\s+[A-Za-z\d$_]*\s*extends\s+[^{]+{[\s\S]*constructor\s*\(/;
-    var INHERITED_CLASS_WITH_DELEGATE_CTOR = /^class\s+[A-Za-z\d$_]*\s*extends\s+[^{]+{[\s\S]*constructor\s*\(\)\s*{\s+super\(\.\.\.arguments\)/;
+    var INHERITED_CLASS_WITH_DELEGATE_CTOR = /^class\s+[A-Za-z\d$_]*\s*extends\s+[^{]+{[\s\S]*constructor\s*\(\)\s*{\s*super\(\.\.\.arguments\)/;
     /**
      * Determine whether a stringified type is a class which delegates its constructor
      * to its parent.
@@ -30977,7 +31562,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_COMPILE_INJECTABLE__PRE_R3__ = render2CompileInjectable;
     /** @type {?} */
 
-    var SWITCH_COMPILE_INJECTABLE = SWITCH_COMPILE_INJECTABLE__PRE_R3__;
+    var SWITCH_COMPILE_INJECTABLE = SWITCH_COMPILE_INJECTABLE__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/di/scope.ts
@@ -31927,7 +32512,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var INJECTOR_IMPL = INJECTOR_IMPL__PRE_R3__;
+    var INJECTOR_IMPL = INJECTOR_IMPL__POST_R3__;
     /**
      * Concrete injectors implement this interface. Injectors are configured
      * with [providers](guide/glossary#provider) that associate
@@ -34522,52 +35107,57 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      *
      * @param {?} tNode The `TNode` into which the styling information should be loaded.
      * @param {?} attrs `TAttributes` containing the styling information.
+     * @param {?} writeToHost Where should the resulting static styles be written?
+     *   - `false` Write to `TNode.stylesWithoutHost` / `TNode.classesWithoutHost`
+     *   - `true` Write to `TNode.styles` / `TNode.classes`
      * @return {?}
      */
 
 
-    function computeStaticStyling(tNode, attrs) {
+    function computeStaticStyling(tNode, attrs, writeToHost) {
       ngDevMode && assertFirstCreatePass(getTView(), 'Expecting to be called in first template pass only');
       /** @type {?} */
 
-      var styles = tNode.styles;
+      var styles = writeToHost ? tNode.styles : null;
       /** @type {?} */
 
-      var classes = tNode.classes;
+      var classes = writeToHost ? tNode.classes : null;
       /** @type {?} */
 
       var mode = 0;
 
-      for (var i = 0; i < attrs.length; i++) {
-        /** @type {?} */
-        var value = attrs[i];
+      if (attrs !== null) {
+        for (var i = 0; i < attrs.length; i++) {
+          /** @type {?} */
+          var value = attrs[i];
 
-        if (typeof value === 'number') {
-          mode = value;
-        } else if (mode == 1
-        /* Classes */
-        ) {
-            classes = concatStringsWithSpace(classes,
-            /** @type {?} */
-            value);
-          } else if (mode == 2
-        /* Styles */
-        ) {
-            /** @type {?} */
-            var style =
-            /** @type {?} */
-            value;
-            /** @type {?} */
+          if (typeof value === 'number') {
+            mode = value;
+          } else if (mode == 1
+          /* Classes */
+          ) {
+              classes = concatStringsWithSpace(classes,
+              /** @type {?} */
+              value);
+            } else if (mode == 2
+          /* Styles */
+          ) {
+              /** @type {?} */
+              var style =
+              /** @type {?} */
+              value;
+              /** @type {?} */
 
-            var styleValue =
-            /** @type {?} */
-            attrs[++i];
-            styles = concatStringsWithSpace(styles, style + ': ' + styleValue + ';');
-          }
+              var styleValue =
+              /** @type {?} */
+              attrs[++i];
+              styles = concatStringsWithSpace(styles, style + ': ' + styleValue + ';');
+            }
+        }
       }
 
-      styles !== null && (tNode.styles = styles);
-      classes !== null && (tNode.classes = classes);
+      writeToHost ? tNode.styles = styles : tNode.stylesWithoutHost = styles;
+      writeToHost ? tNode.classes = classes : tNode.classesWithoutHost = classes;
     }
     /**
      * @license
@@ -35839,40 +36429,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
     /**
      * @fileoverview added by tsickle
-     * Generated from: packages/core/src/render3/instructions/container.ts
+     * Generated from: packages/core/src/render3/instructions/template.ts
      * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
 
-    /**
-     * Creates an LContainer for inline views, e.g.
-     *
-     * % if (showing) {
-     *   <div></div>
-     * % }
-     *
-     * \@codeGenApi
-     * @param {?} index The index of the container in the data array
-     *
-     * @return {?}
-     */
-
-
-    function ɵɵcontainer(index) {
-      /** @type {?} */
-      var lView = getLView();
-      /** @type {?} */
-
-      var tView = getTView();
-      /** @type {?} */
-
-      var tNode = containerInternal(tView, lView, index, null, null);
-
-      if (tView.firstCreatePass) {
-        tNode.tViews = [];
-      }
-
-      setIsNotParent();
-    }
     /**
      * @param {?} index
      * @param {?} tView
@@ -35974,144 +36534,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (localRefsIndex != null) {
         saveResolvedLocalsInData(lView, tNode, localRefExtractor);
       }
-    }
-    /**
-     * Sets a container up to receive views.
-     *
-     * \@codeGenApi
-     * @param {?} index The index of the container in the data array
-     *
-     * @return {?}
-     */
-
-
-    function ɵɵcontainerRefreshStart(index) {
-      /** @type {?} */
-      var lView = getLView();
-      /** @type {?} */
-
-      var tView = getTView();
-      /** @type {?} */
-
-      var previousOrParentTNode =
-      /** @type {?} */
-      load(tView.data, index);
-      ngDevMode && assertNodeType(previousOrParentTNode, 0
-      /* Container */
-      );
-      setPreviousOrParentTNode(previousOrParentTNode, true);
-      lView[index + HEADER_OFFSET][ACTIVE_INDEX] = 0; // We need to execute init hooks here so ngOnInit hooks are called in top level views
-      // before they are called in embedded views (for backwards compatibility).
-
-      if (!getCheckNoChangesMode()) {
-        /** @type {?} */
-        var hooksInitPhaseCompleted = (lView[FLAGS] & 3
-        /* InitPhaseStateMask */
-        ) === 3
-        /* InitPhaseCompleted */
-        ;
-
-        if (hooksInitPhaseCompleted) {
-          /** @type {?} */
-          var preOrderCheckHooks = tView.preOrderCheckHooks;
-
-          if (preOrderCheckHooks !== null) {
-            executeCheckHooks(lView, preOrderCheckHooks, null);
-          }
-        } else {
-          /** @type {?} */
-          var preOrderHooks = tView.preOrderHooks;
-
-          if (preOrderHooks !== null) {
-            executeInitAndCheckHooks(lView, preOrderHooks, 0
-            /* OnInitHooksToBeRun */
-            , null);
-          }
-
-          incrementInitPhaseFlags(lView, 0
-          /* OnInitHooksToBeRun */
-          );
-        }
-      }
-    }
-    /**
-     * Marks the end of the LContainer.
-     *
-     * Marking the end of LContainer is the time when to child views get inserted or removed.
-     *
-     * \@codeGenApi
-     * @return {?}
-     */
-
-
-    function ɵɵcontainerRefreshEnd() {
-      /** @type {?} */
-      var previousOrParentTNode = getPreviousOrParentTNode();
-
-      if (getIsParent()) {
-        setIsNotParent();
-      } else {
-        ngDevMode && assertNodeType(previousOrParentTNode, 2
-        /* View */
-        );
-        ngDevMode && assertHasParent(previousOrParentTNode);
-        previousOrParentTNode =
-        /** @type {?} */
-        previousOrParentTNode.parent;
-        setPreviousOrParentTNode(previousOrParentTNode, false);
-      }
-
-      ngDevMode && assertNodeType(previousOrParentTNode, 0
-      /* Container */
-      );
-      /** @type {?} */
-
-      var lContainer = getLView()[previousOrParentTNode.index];
-      /** @type {?} */
-
-      var nextIndex = getLContainerActiveIndex(lContainer); // remove extra views at the end of the container
-
-      while (nextIndex < lContainer.length - CONTAINER_HEADER_OFFSET) {
-        removeView(lContainer, nextIndex);
-      }
-    }
-    /**
-     * @param {?} tView
-     * @param {?} lView
-     * @param {?} nodeIndex
-     * @param {?} tagName
-     * @param {?} attrs
-     * @return {?}
-     */
-
-
-    function containerInternal(tView, lView, nodeIndex, tagName, attrs) {
-      ngDevMode && assertEqual(getBindingIndex(), tView.bindingStartIndex, 'container nodes should be created before any bindings');
-      /** @type {?} */
-
-      var adjustedIndex = nodeIndex + HEADER_OFFSET;
-      ngDevMode && assertDataInRange(lView, nodeIndex + HEADER_OFFSET);
-      ngDevMode && ngDevMode.rendererCreateComment++;
-      /** @type {?} */
-
-      var comment = lView[adjustedIndex] = lView[RENDERER].createComment(ngDevMode ? 'container' : '');
-      /** @type {?} */
-
-      var tNode = getOrCreateTNode(tView, lView[T_HOST], nodeIndex, 0
-      /* Container */
-      , tagName, attrs);
-      /** @type {?} */
-
-      var lContainer = lView[adjustedIndex] = createLContainer(comment, lView, comment, tNode);
-      appendChild(tView, lView, comment, tNode);
-      attachPatchData(comment, lView); // Containers are added to the current view tree instead of their embedded views
-      // because views can be removed and re-inserted.
-
-      addToViewTree(lView, lContainer);
-      ngDevMode && assertNodeType(getPreviousOrParentTNode(), 0
-      /* Container */
-      );
-      return tNode;
     }
     /**
      * @fileoverview added by tsickle
@@ -36330,8 +36752,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var hasDirectives = resolveDirectives(tView, lView, tNode, getConstant(tViewConsts, localRefsIndex));
       ngDevMode && warnAboutUnknownElement(tView, lView, _native12, tNode, hasDirectives);
 
+      if (tNode.attrs !== null) {
+        computeStaticStyling(tNode, tNode.attrs, false);
+      }
+
       if (tNode.mergedAttrs !== null) {
-        computeStaticStyling(tNode, tNode.mergedAttrs);
+        computeStaticStyling(tNode, tNode.mergedAttrs, true);
       }
 
       if (tView.queries !== null) {
@@ -36468,12 +36894,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
 
-      if (tNode.classes !== null && hasClassInput(tNode)) {
-        setDirectiveInputsWhichShadowsStyling(tView, tNode, getLView(), tNode.classes, true);
+      if (tNode.classesWithoutHost != null && hasClassInput(tNode)) {
+        setDirectiveInputsWhichShadowsStyling(tView, tNode, getLView(), tNode.classesWithoutHost, true);
       }
 
-      if (tNode.styles !== null && hasStyleInput(tNode)) {
-        setDirectiveInputsWhichShadowsStyling(tView, tNode, getLView(), tNode.styles, false);
+      if (tNode.stylesWithoutHost != null && hasStyleInput(tNode)) {
+        setDirectiveInputsWhichShadowsStyling(tView, tNode, getLView(), tNode.stylesWithoutHost, false);
       }
     }
     /**
@@ -36572,7 +36998,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // and execute directives on the ng-container.
 
       if (attrs !== null) {
-        computeStaticStyling(tNode, attrs);
+        computeStaticStyling(tNode, attrs, true);
       }
       /** @type {?} */
 
@@ -36691,193 +37117,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function ɵɵelementContainer(index, attrsIndex, localRefsIndex) {
       ɵɵelementContainerStart(index, attrsIndex, localRefsIndex);
       ɵɵelementContainerEnd();
-    }
-    /**
-     * @fileoverview added by tsickle
-     * Generated from: packages/core/src/render3/instructions/embedded_view.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
-     * Marks the start of an embedded view.
-     *
-     * \@codeGenApi
-     * @param {?} viewBlockId The ID of this view
-     * @param {?} decls
-     * @param {?} vars
-     * @return {?} boolean Whether or not this view is in creation mode
-     *
-     */
-
-
-    function ɵɵembeddedViewStart(viewBlockId, decls, vars) {
-      /** @type {?} */
-      var lView = getLView();
-      /** @type {?} */
-
-      var previousOrParentTNode = getPreviousOrParentTNode(); // The previous node can be a view node if we are processing an inline for loop
-
-      /** @type {?} */
-
-      var containerTNode = previousOrParentTNode.type === 2
-      /* View */
-      ?
-      /** @type {?} */
-      previousOrParentTNode.parent : previousOrParentTNode;
-      /** @type {?} */
-
-      var lContainer =
-      /** @type {?} */
-      lView[containerTNode.index];
-      ngDevMode && assertNodeType(containerTNode, 0
-      /* Container */
-      );
-      /** @type {?} */
-
-      var viewToRender = scanForView(lContainer, getLContainerActiveIndex(lContainer), viewBlockId);
-
-      if (viewToRender) {
-        setIsParent();
-        enterView(viewToRender, viewToRender[TVIEW].node);
-      } else {
-        // When we create a new LView, we always reset the state of the instructions.
-        viewToRender = createLView(lView, getOrCreateEmbeddedTView(viewBlockId, decls, vars,
-        /** @type {?} */
-        containerTNode), null, 16
-        /* CheckAlways */
-        , null, null);
-        /** @type {?} */
-
-        var tParentNode = getIsParent() ? previousOrParentTNode : previousOrParentTNode && previousOrParentTNode.parent;
-        assignTViewNodeToLView(viewToRender[TVIEW], tParentNode, viewBlockId, viewToRender);
-        enterView(viewToRender, viewToRender[TVIEW].node);
-      }
-
-      if (lContainer) {
-        if (isCreationMode(viewToRender)) {
-          // it is a new view, insert it into collection of views for a given container
-          insertView(viewToRender[TVIEW], viewToRender, lContainer, getLContainerActiveIndex(lContainer));
-        }
-
-        lContainer[ACTIVE_INDEX] += 2
-        /* INCREMENT */
-        ;
-      }
-
-      return isCreationMode(viewToRender) ? 1
-      /* Create */
-      | 2
-      /* Update */
-      : 2
-      /* Update */
-      ;
-    }
-    /**
-     * Initialize the TView (e.g. static data) for the active embedded view.
-     *
-     * Each embedded view block must create or retrieve its own TView. Otherwise, the embedded view's
-     * static data for a particular node would overwrite the static data for a node in the view above
-     * it with the same index (since it's in the same template).
-     *
-     * @param {?} viewIndex The index of the TView in TNode.tViews
-     * @param {?} decls The number of nodes, local refs, and pipes in this template
-     * @param {?} vars The number of bindings and pure function bindings in this template
-     * @param {?} parent
-     * @return {?} TView
-     */
-
-
-    function getOrCreateEmbeddedTView(viewIndex, decls, vars, parent) {
-      /** @type {?} */
-      var tView = getLView()[TVIEW];
-      ngDevMode && assertNodeType(parent, 0
-      /* Container */
-      );
-      /** @type {?} */
-
-      var containerTViews =
-      /** @type {?} */
-      parent.tViews;
-      ngDevMode && assertDefined(containerTViews, 'TView expected');
-      ngDevMode && assertEqual(Array.isArray(containerTViews), true, 'TViews should be in an array');
-
-      if (viewIndex >= containerTViews.length || containerTViews[viewIndex] == null) {
-        containerTViews[viewIndex] = createTView(2
-        /* Embedded */
-        , viewIndex, null, decls, vars, tView.directiveRegistry, tView.pipeRegistry, null, null, tView.consts);
-      }
-
-      return containerTViews[viewIndex];
-    }
-    /**
-     * Looks for a view with a given view block id inside a provided LContainer.
-     * Removes views that need to be deleted in the process.
-     *
-     * @param {?} lContainer to search for views
-     * @param {?} startIdx starting index in the views array to search from
-     * @param {?} viewBlockId exact view block id to look for
-     * @return {?}
-     */
-
-
-    function scanForView(lContainer, startIdx, viewBlockId) {
-      for (var i = startIdx + CONTAINER_HEADER_OFFSET; i < lContainer.length; i++) {
-        /** @type {?} */
-        var viewAtPositionId = lContainer[i][TVIEW].id;
-
-        if (viewAtPositionId === viewBlockId) {
-          return lContainer[i];
-        } else if (viewAtPositionId < viewBlockId) {
-          // found a view that should not be at this position - remove
-          removeView(lContainer, i - CONTAINER_HEADER_OFFSET);
-        } else {
-          // found a view with id greater than the one we are searching for
-          // which means that required view doesn't exist and can't be found at
-          // later positions in the views array - stop the searchdef.cont here
-          break;
-        }
-      }
-
-      return null;
-    }
-    /**
-     * Marks the end of an embedded view.
-     *
-     * \@codeGenApi
-     * @return {?}
-     */
-
-
-    function ɵɵembeddedViewEnd() {
-      /** @type {?} */
-      var lView = getLView();
-      /** @type {?} */
-
-      var tView = getTView();
-      /** @type {?} */
-
-      var viewHost = lView[T_HOST];
-      /** @type {?} */
-
-      var context = lView[CONTEXT];
-
-      if (isCreationMode(lView)) {
-        renderView(tView, lView, context); // creation mode pass
-      }
-
-      refreshView(tView, lView, tView.template, context); // update mode pass
-      // update mode pass
-
-      /** @type {?} */
-
-      var lContainer =
-      /** @type {?} */
-      lView[PARENT];
-      ngDevMode && assertLContainerOrUndefined(lContainer);
-      leaveView();
-      setPreviousOrParentTNode(
-      /** @type {?} */
-      viewHost, false);
     }
     /**
      * @fileoverview added by tsickle
@@ -39263,7 +39502,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           /** @type {?} */
 
 
-          var staticPrefix = isClassBased ? tNode.classes : tNode.styles;
+          var staticPrefix = isClassBased ? tNode.classesWithoutHost : tNode.stylesWithoutHost;
           ngDevMode && isClassBased === false && staticPrefix !== null && assertEqual(staticPrefix.endsWith(';'), true, 'Expecting static portion to end with \';\'');
 
           if (staticPrefix !== null) {
@@ -42602,7 +42841,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var mergedAttrs = tNode.mergedAttrs = def.hostAttrs;
 
       if (mergedAttrs !== null) {
-        computeStaticStyling(tNode, mergedAttrs);
+        computeStaticStyling(tNode, mergedAttrs, true);
 
         if (rNode !== null) {
           setUpAttributes(hostRenderer, rNode, mergedAttrs);
@@ -44018,8 +44257,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    function noop() {} // Do nothing.
-
+    function noop() {// Do nothing.
+    }
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/linker/element_ref.ts
@@ -44077,7 +44316,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_ELEMENT_REF_FACTORY__PRE_R3__ = noop;
     /** @type {?} */
 
-    var SWITCH_ELEMENT_REF_FACTORY = SWITCH_ELEMENT_REF_FACTORY__PRE_R3__;
+    var SWITCH_ELEMENT_REF_FACTORY = SWITCH_ELEMENT_REF_FACTORY__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/render/api.ts
@@ -44174,7 +44413,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_RENDERER2_FACTORY__PRE_R3__ = noop;
     /** @type {?} */
 
-    var SWITCH_RENDERER2_FACTORY = SWITCH_RENDERER2_FACTORY__PRE_R3__;
+    var SWITCH_RENDERER2_FACTORY = SWITCH_RENDERER2_FACTORY__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/sanitization/sanitizer.ts
@@ -44248,7 +44487,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var VERSION = new Version('9.1.6');
+    var VERSION = new Version('9.1.12');
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/change_detection/differs/default_iterable_differ.ts
@@ -46385,7 +46624,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_TEMPLATE_REF_FACTORY__PRE_R3__ = noop;
     /** @type {?} */
 
-    var SWITCH_TEMPLATE_REF_FACTORY = SWITCH_TEMPLATE_REF_FACTORY__PRE_R3__;
+    var SWITCH_TEMPLATE_REF_FACTORY = SWITCH_TEMPLATE_REF_FACTORY__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/linker/view_container_ref.ts
@@ -46436,7 +46675,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_VIEW_CONTAINER_REF_FACTORY__PRE_R3__ = noop;
     /** @type {?} */
 
-    var SWITCH_VIEW_CONTAINER_REF_FACTORY = SWITCH_VIEW_CONTAINER_REF_FACTORY__PRE_R3__;
+    var SWITCH_VIEW_CONTAINER_REF_FACTORY = SWITCH_VIEW_CONTAINER_REF_FACTORY__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/view/errors.ts
@@ -50944,9 +51183,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (!rootSelectorOrNode || isIsolated) {
             // The host element of the internal or isolated root view is attached to the component's host
             // view node.
+            ngDevMode && assertNodeOfPossibleTypes(rootTView.node, 2
+            /* View */
+            );
 
             /** @type {?} */
-            componentRef.hostView._tViewNode.child = tElementNode;
+            rootTView.node.child = tElementNode;
           }
 
           return componentRef;
@@ -51021,7 +51263,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _this31.destroyCbs = [];
         _this31.instance = instance;
         _this31.hostView = _this31.changeDetectorRef = new RootViewRef(_rootLView);
-        _this31.hostView._tViewNode = assignTViewNodeToLView(_rootLView[TVIEW], null, -1, _rootLView);
+        assignTViewNodeToLView(_rootLView[TVIEW], null, -1, _rootLView);
         _this31.componentType = componentType;
         return _this31;
       }
@@ -56345,10 +56587,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         'ɵɵProvidersFeature': ɵɵProvidersFeature,
         'ɵɵCopyDefinitionFeature': ɵɵCopyDefinitionFeature,
         'ɵɵInheritDefinitionFeature': ɵɵInheritDefinitionFeature,
-        'ɵɵcontainer': ɵɵcontainer,
         'ɵɵnextContext': ɵɵnextContext,
-        'ɵɵcontainerRefreshStart': ɵɵcontainerRefreshStart,
-        'ɵɵcontainerRefreshEnd': ɵɵcontainerRefreshEnd,
         'ɵɵnamespaceHTML': ɵɵnamespaceHTML,
         'ɵɵnamespaceMathML': ɵɵnamespaceMathML,
         'ɵɵnamespaceSVG': ɵɵnamespaceSVG,
@@ -56448,8 +56687,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         'ɵɵtextInterpolate7': ɵɵtextInterpolate7,
         'ɵɵtextInterpolate8': ɵɵtextInterpolate8,
         'ɵɵtextInterpolateV': ɵɵtextInterpolateV,
-        'ɵɵembeddedViewStart': ɵɵembeddedViewStart,
-        'ɵɵembeddedViewEnd': ɵɵembeddedViewEnd,
         'ɵɵi18n': ɵɵi18n,
         'ɵɵi18nAttributes': ɵɵi18nAttributes,
         'ɵɵi18nExp': ɵɵi18nExp,
@@ -58245,13 +58482,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_COMPILE_PIPE__PRE_R3__ = noop;
     /** @type {?} */
 
-    var SWITCH_COMPILE_COMPONENT = SWITCH_COMPILE_COMPONENT__PRE_R3__;
+    var SWITCH_COMPILE_COMPONENT = SWITCH_COMPILE_COMPONENT__POST_R3__;
     /** @type {?} */
 
-    var SWITCH_COMPILE_DIRECTIVE = SWITCH_COMPILE_DIRECTIVE__PRE_R3__;
+    var SWITCH_COMPILE_DIRECTIVE = SWITCH_COMPILE_DIRECTIVE__POST_R3__;
     /** @type {?} */
 
-    var SWITCH_COMPILE_PIPE = SWITCH_COMPILE_PIPE__PRE_R3__;
+    var SWITCH_COMPILE_PIPE = SWITCH_COMPILE_PIPE__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/metadata/ng_module.ts
@@ -58410,7 +58647,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_COMPILE_NGMODULE__PRE_R3__ = preR3NgModuleCompile;
     /** @type {?} */
 
-    var SWITCH_COMPILE_NGMODULE = SWITCH_COMPILE_NGMODULE__PRE_R3__;
+    var SWITCH_COMPILE_NGMODULE = SWITCH_COMPILE_NGMODULE__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/metadata.ts
@@ -58544,9 +58781,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return ApplicationInitStatus;
     }();
 
-    ApplicationInitStatus.decorators = [{
-      type: Injectable
-    }];
+    ApplicationInitStatus.ɵfac = function ApplicationInitStatus_Factory(t) {
+      return new (t || ApplicationInitStatus)(ɵɵinject(APP_INITIALIZER, 8));
+    };
+
+    ApplicationInitStatus.ɵprov = ɵɵdefineInjectable({
+      token: ApplicationInitStatus,
+      factory: ApplicationInitStatus.ɵfac
+    });
     /** @nocollapse */
 
     ApplicationInitStatus.ctorParameters = function () {
@@ -58560,6 +58802,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      setClassMetadata(ApplicationInitStatus, [{
+        type: Injectable
+      }], function () {
+        return [{
+          type: Array,
+          decorators: [{
+            type: Inject,
+            args: [APP_INITIALIZER]
+          }, {
+            type: Optional
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -58682,9 +58942,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Console;
     }();
 
-    Console.decorators = [{
-      type: Injectable
-    }];
+    Console.ɵfac = function Console_Factory(t) {
+      return new (t || Console)();
+    };
+
+    Console.ɵprov = ɵɵdefineInjectable({
+      token: Console,
+      factory: Console.ɵfac
+    });
+    /*@__PURE__*/
+
+    (function () {
+      setClassMetadata(Console, [{
+        type: Injectable
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/i18n/tokens.ts
@@ -58714,6 +58986,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * \@publicApi
      * @type {?}
      */
+
 
     var LOCALE_ID$1 = new InjectionToken('LocaleId');
     /**
@@ -58840,7 +59113,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SWITCH_IVY_ENABLED__PRE_R3__ = false;
     /** @type {?} */
 
-    var ivyEnabled = SWITCH_IVY_ENABLED__PRE_R3__;
+    var ivyEnabled = SWITCH_IVY_ENABLED__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/linker/compiler.ts
@@ -58895,7 +59168,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var Compiler_compileModuleSync = Compiler_compileModuleSync__PRE_R3__;
+    var Compiler_compileModuleSync = Compiler_compileModuleSync__POST_R3__;
     /** @type {?} */
 
     var Compiler_compileModuleAsync__PRE_R3__ =
@@ -58915,7 +59188,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var Compiler_compileModuleAsync = Compiler_compileModuleAsync__PRE_R3__;
+    var Compiler_compileModuleAsync = Compiler_compileModuleAsync__POST_R3__;
     /** @type {?} */
 
     var Compiler_compileModuleAndAllComponentsSync__PRE_R3__ =
@@ -58958,7 +59231,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var Compiler_compileModuleAndAllComponentsSync = Compiler_compileModuleAndAllComponentsSync__PRE_R3__;
+    var Compiler_compileModuleAndAllComponentsSync = Compiler_compileModuleAndAllComponentsSync__POST_R3__;
     /** @type {?} */
 
     var Compiler_compileModuleAndAllComponentsAsync__PRE_R3__ =
@@ -58978,7 +59251,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var Compiler_compileModuleAndAllComponentsAsync = Compiler_compileModuleAndAllComponentsAsync__PRE_R3__;
+    var Compiler_compileModuleAndAllComponentsAsync = Compiler_compileModuleAndAllComponentsAsync__POST_R3__;
     /**
      * Low-level service for running the angular compiler during runtime
      * to create {\@link ComponentFactory}s, which
@@ -59050,9 +59323,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Compiler;
     }();
 
-    Compiler.decorators = [{
-      type: Injectable
-    }];
+    Compiler.ɵfac = function Compiler_Factory(t) {
+      return new (t || Compiler)();
+    };
+
+    Compiler.ɵprov = ɵɵdefineInjectable({
+      token: Compiler,
+      factory: Compiler.ɵfac
+    });
+    /*@__PURE__*/
+
+    (function () {
+      setClassMetadata(Compiler, [{
+        type: Injectable
+      }], function () {
+        return [];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -60099,9 +60386,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Testability;
     }();
 
-    Testability.decorators = [{
-      type: Injectable
-    }];
+    Testability.ɵfac = function Testability_Factory(t) {
+      return new (t || Testability)(ɵɵinject(NgZone));
+    };
+
+    Testability.ɵprov = ɵɵdefineInjectable({
+      token: Testability,
+      factory: Testability.ɵfac
+    });
     /** @nocollapse */
 
     Testability.ctorParameters = function () {
@@ -60109,6 +60401,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: NgZone
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      setClassMetadata(Testability, [{
+        type: Injectable
+      }], function () {
+        return [{
+          type: NgZone
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -60212,14 +60516,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return TestabilityRegistry;
     }();
 
-    TestabilityRegistry.decorators = [{
-      type: Injectable
-    }];
+    TestabilityRegistry.ɵfac = function TestabilityRegistry_Factory(t) {
+      return new (t || TestabilityRegistry)();
+    };
+
+    TestabilityRegistry.ɵprov = ɵɵdefineInjectable({
+      token: TestabilityRegistry,
+      factory: TestabilityRegistry.ɵfac
+    });
     /** @nocollapse */
 
     TestabilityRegistry.ctorParameters = function () {
       return [];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      setClassMetadata(TestabilityRegistry, [{
+        type: Injectable
+      }], function () {
+        return [];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -60292,7 +60611,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var compileNgModuleFactory = compileNgModuleFactory__PRE_R3__;
+    var compileNgModuleFactory = compileNgModuleFactory__POST_R3__;
     /**
      * @template M
      * @param {?} injector
@@ -60426,10 +60745,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var publishDefaultGlobalUtils$1 = publishDefaultGlobalUtils__PRE_R3__;
+    var publishDefaultGlobalUtils$1 = publishDefaultGlobalUtils__POST_R3__;
     /** @type {?} */
 
-    var isBoundToModule = isBoundToModule__PRE_R3__;
+    var isBoundToModule = isBoundToModule__POST_R3__;
     /**
      * @template C
      * @param {?} cf
@@ -60918,9 +61237,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return PlatformRef;
     }();
 
-    PlatformRef.decorators = [{
-      type: Injectable
-    }];
+    PlatformRef.ɵfac = function PlatformRef_Factory(t) {
+      return new (t || PlatformRef)(ɵɵinject(Injector));
+    };
+
+    PlatformRef.ɵprov = ɵɵdefineInjectable({
+      token: PlatformRef,
+      factory: PlatformRef.ɵfac
+    });
     /** @nocollapse */
 
     PlatformRef.ctorParameters = function () {
@@ -60928,6 +61252,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: Injector
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      setClassMetadata(PlatformRef, [{
+        type: Injectable
+      }], function () {
+        return [{
+          type: Injector
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -61516,9 +61852,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return ApplicationRef;
     }();
 
-    ApplicationRef.decorators = [{
-      type: Injectable
-    }];
+    ApplicationRef.ɵfac = function ApplicationRef_Factory(t) {
+      return new (t || ApplicationRef)(ɵɵinject(NgZone), ɵɵinject(Console), ɵɵinject(Injector), ɵɵinject(ErrorHandler), ɵɵinject(ComponentFactoryResolver), ɵɵinject(ApplicationInitStatus));
+    };
+
+    ApplicationRef.ɵprov = ɵɵdefineInjectable({
+      token: ApplicationRef,
+      factory: ApplicationRef.ɵfac
+    });
     /** @nocollapse */
 
     ApplicationRef.ctorParameters = function () {
@@ -61536,6 +61877,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: ApplicationInitStatus
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      setClassMetadata(ApplicationRef, [{
+        type: Injectable
+      }], function () {
+        return [{
+          type: NgZone
+        }, {
+          type: Console
+        }, {
+          type: Injector
+        }, {
+          type: ErrorHandler
+        }, {
+          type: ComponentFactoryResolver
+        }, {
+          type: ApplicationInitStatus
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -61659,7 +62022,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var getModuleFactory = getModuleFactory__PRE_R3__;
+    var getModuleFactory = getModuleFactory__POST_R3__;
     /**
      * @param {?} id
      * @return {?}
@@ -61821,9 +62184,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return SystemJsNgModuleLoader;
     }();
 
-    SystemJsNgModuleLoader.decorators = [{
-      type: Injectable
-    }];
+    SystemJsNgModuleLoader.ɵfac = function SystemJsNgModuleLoader_Factory(t) {
+      return new (t || SystemJsNgModuleLoader)(ɵɵinject(Compiler), ɵɵinject(SystemJsNgModuleLoaderConfig, 8));
+    };
+
+    SystemJsNgModuleLoader.ɵprov = ɵɵdefineInjectable({
+      token: SystemJsNgModuleLoader,
+      factory: SystemJsNgModuleLoader.ɵfac
+    });
     /** @nocollapse */
 
     SystemJsNgModuleLoader.ctorParameters = function () {
@@ -61836,6 +62204,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      setClassMetadata(SystemJsNgModuleLoader, [{
+        type: Injectable
+      }], function () {
+        return [{
+          type: Compiler
+        }, {
+          type: SystemJsNgModuleLoaderConfig,
+          decorators: [{
+            type: Optional
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -63253,7 +63638,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var getDebugNode$1 = getDebugNode__PRE_R3__;
+    var getDebugNode$1 = getDebugNode__POST_R3__;
     /**
      * @param {?} nativeNode
      * @return {?}
@@ -63274,7 +63659,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /** @type {?} */
 
 
-    var getDebugNodeR2 = getDebugNodeR2__PRE_R3__;
+    var getDebugNodeR2 = getDebugNodeR2__POST_R3__;
     /**
      * @return {?}
      */
@@ -63317,13 +63702,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var DebugNode$1 = DebugNode__PRE_R3__;
+    var DebugNode$1 = DebugNode__POST_R3__;
     /**
      * \@publicApi
      * @type {?}
      */
 
-    var DebugElement = DebugElement__PRE_R3__;
+    var DebugElement = DebugElement__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/change_detection.ts
@@ -63519,12 +63904,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, ApplicationModule);
     };
 
-    ApplicationModule.decorators = [{
-      type: NgModule,
-      args: [{
-        providers: APPLICATION_MODULE_PROVIDERS
-      }]
-    }];
+    ApplicationModule.ɵmod = ɵɵdefineNgModule({
+      type: ApplicationModule
+    });
+    ApplicationModule.ɵinj = ɵɵdefineInjector({
+      factory: function ApplicationModule_Factory(t) {
+        return new (t || ApplicationModule)(ɵɵinject(ApplicationRef));
+      },
+      providers: APPLICATION_MODULE_PROVIDERS
+    });
     /** @nocollapse */
 
     ApplicationModule.ctorParameters = function () {
@@ -63532,6 +63920,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: ApplicationRef
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      setClassMetadata(ApplicationModule, [{
+        type: NgModule,
+        args: [{
+          providers: APPLICATION_MODULE_PROVIDERS
+        }]
+      }], function () {
+        return [{
+          type: ApplicationRef
+        }];
+      }, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/core/src/view/element.ts
@@ -68435,15 +68838,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "../../node_modules/@angular/platform-browser/fesm2015/platform-browser.js":
-  /*!*************************************************************************************************************************!*\
-    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/platform-browser/fesm2015/platform-browser.js ***!
-    \*************************************************************************************************************************/
+  "../../node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js":
+  /*!**************************************************************************************************************************************!*\
+    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js ***!
+    \**************************************************************************************************************************************/
 
   /*! exports provided: ɵgetDOM, BrowserModule, BrowserTransferStateModule, By, DomSanitizer, EVENT_MANAGER_PLUGINS, EventManager, HAMMER_GESTURE_CONFIG, HAMMER_LOADER, HammerGestureConfig, HammerModule, Meta, Title, TransferState, VERSION, disableDebugTools, enableDebugTools, makeStateKey, platformBrowser, ɵBROWSER_SANITIZATION_PROVIDERS, ɵBROWSER_SANITIZATION_PROVIDERS__POST_R3__, ɵBrowserDomAdapter, ɵBrowserGetTestability, ɵDomEventsPlugin, ɵDomRendererFactory2, ɵDomSanitizerImpl, ɵDomSharedStylesHost, ɵELEMENT_PROBE_PROVIDERS, ɵELEMENT_PROBE_PROVIDERS__POST_R3__, ɵHAMMER_PROVIDERS__POST_R3__, ɵHammerGesturesPlugin, ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS, ɵKeyEventsPlugin, ɵNAMESPACE_URIS, ɵSharedStylesHost, ɵTRANSITION_ID, ɵangular_packages_platform_browser_platform_browser_a, ɵangular_packages_platform_browser_platform_browser_b, ɵangular_packages_platform_browser_platform_browser_c, ɵangular_packages_platform_browser_platform_browser_d, ɵangular_packages_platform_browser_platform_browser_e, ɵangular_packages_platform_browser_platform_browser_f, ɵangular_packages_platform_browser_platform_browser_g, ɵangular_packages_platform_browser_platform_browser_h, ɵangular_packages_platform_browser_platform_browser_i, ɵangular_packages_platform_browser_platform_browser_j, ɵangular_packages_platform_browser_platform_browser_k, ɵangular_packages_platform_browser_platform_browser_l, ɵangular_packages_platform_browser_platform_browser_m, ɵangular_packages_platform_browser_platform_browser_n, ɵangular_packages_platform_browser_platform_browser_o, ɵescapeHtml, ɵflattenStyles, ɵinitDomAdapter, ɵshimContentAttribute, ɵshimHostAttribute */
 
   /***/
-  function node_modulesAngularPlatformBrowserFesm2015PlatformBrowserJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesAngularPlatformBrowser__ivy_ngcc__Fesm2015PlatformBrowserJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -68782,21 +69185,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! @angular/common */
-    "../../node_modules/@angular/common/fesm2015/common.js");
+    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
     /* harmony reexport (safe) */
 
 
     __webpack_require__.d(__webpack_exports__, "ɵgetDOM", function () {
       return _angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"];
     });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/fesm2015/core.js");
     /**
-     * @license Angular v9.1.6
+     * @license Angular v9.1.12
      * (c) 2010-2020 Google LLC. https://angular.io/
      * License: MIT
      */
@@ -69596,7 +69999,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }];
     /** @type {?} */
 
-    var ELEMENT_PROBE_PROVIDERS = ELEMENT_PROBE_PROVIDERS__PRE_R3__;
+    var ELEMENT_PROBE_PROVIDERS = ELEMENT_PROBE_PROVIDERS__POST_R3__;
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/platform-browser/src/dom/events/event_manager.ts
@@ -69728,9 +70131,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return EventManager;
     }();
 
-    EventManager.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    EventManager.ɵfac = function EventManager_Factory(t) {
+      return new (t || EventManager)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](EVENT_MANAGER_PLUGINS), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]));
+    };
+
+    EventManager.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: EventManager,
+      factory: EventManager.ɵfac
+    });
     /** @nocollapse */
 
     EventManager.ctorParameters = function () {
@@ -69744,6 +70152,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](EventManager, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: Array,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [EVENT_MANAGER_PLUGINS]
+          }]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -69851,9 +70277,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return SharedStylesHost;
     }();
 
-    SharedStylesHost.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    SharedStylesHost.ɵfac = function SharedStylesHost_Factory(t) {
+      return new (t || SharedStylesHost)();
+    };
+
+    SharedStylesHost.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: SharedStylesHost,
+      factory: SharedStylesHost.ɵfac
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](SharedStylesHost, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [];
+      }, null);
+    })();
 
     if (false) {}
 
@@ -69968,9 +70408,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return DomSharedStylesHost;
     }(SharedStylesHost);
 
-    DomSharedStylesHost.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    DomSharedStylesHost.ɵfac = function DomSharedStylesHost_Factory(t) {
+      return new (t || DomSharedStylesHost)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+    };
+
+    DomSharedStylesHost.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: DomSharedStylesHost,
+      factory: DomSharedStylesHost.ɵfac
+    });
     /** @nocollapse */
 
     DomSharedStylesHost.ctorParameters = function () {
@@ -69982,6 +70427,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSharedStylesHost, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -70176,9 +70637,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return DomRendererFactory2;
     }();
 
-    DomRendererFactory2.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    DomRendererFactory2.ɵfac = function DomRendererFactory2_Factory(t) {
+      return new (t || DomRendererFactory2)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](EventManager), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](DomSharedStylesHost), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"]));
+    };
+
+    DomRendererFactory2.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: DomRendererFactory2,
+      factory: DomRendererFactory2.ɵfac
+    });
     /** @nocollapse */
 
     DomRendererFactory2.ctorParameters = function () {
@@ -70194,6 +70660,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomRendererFactory2, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: EventManager
+        }, {
+          type: DomSharedStylesHost
+        }, {
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
 
@@ -70784,9 +71270,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return DomEventsPlugin;
     }(EventManagerPlugin);
 
-    DomEventsPlugin.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    DomEventsPlugin.ɵfac = function DomEventsPlugin_Factory(t) {
+      return new (t || DomEventsPlugin)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+    };
+
+    DomEventsPlugin.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: DomEventsPlugin,
+      factory: DomEventsPlugin.ɵfac
+    });
     /** @nocollapse */
 
     DomEventsPlugin.ctorParameters = function () {
@@ -70798,6 +71289,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomEventsPlugin, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+          }]
+        }];
+      }, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/platform-browser/src/dom/events/hammer_gestures.ts
@@ -70941,9 +71448,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return HammerGestureConfig;
     }();
 
-    HammerGestureConfig.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    HammerGestureConfig.ɵfac = function HammerGestureConfig_Factory(t) {
+      return new (t || HammerGestureConfig)();
+    };
+
+    HammerGestureConfig.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: HammerGestureConfig,
+      factory: HammerGestureConfig.ɵfac
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerGestureConfig, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -71141,9 +71662,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return HammerGesturesPlugin;
     }(EventManagerPlugin);
 
-    HammerGesturesPlugin.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    HammerGesturesPlugin.ɵfac = function HammerGesturesPlugin_Factory(t) {
+      return new (t || HammerGesturesPlugin)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](HAMMER_GESTURE_CONFIG), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵConsole"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](HAMMER_LOADER, 8));
+    };
+
+    HammerGesturesPlugin.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: HammerGesturesPlugin,
+      factory: HammerGesturesPlugin.ɵfac
+    });
     /** @nocollapse */
 
     HammerGesturesPlugin.ctorParameters = function () {
@@ -71171,6 +71697,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerGesturesPlugin, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+          }]
+        }, {
+          type: HammerGestureConfig,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [HAMMER_GESTURE_CONFIG]
+          }]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵConsole"]
+        }, {
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+          }, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [HAMMER_LOADER]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -71199,7 +71757,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }];
     /** @type {?} */
 
-    var HAMMER_PROVIDERS = HAMMER_PROVIDERS__PRE_R3__;
+    var HAMMER_PROVIDERS = HAMMER_PROVIDERS__POST_R3__;
     /**
      * Adds support for HammerJS.
      *
@@ -71216,12 +71774,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, HammerModule);
     };
 
-    HammerModule.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
-      args: [{
-        providers: HAMMER_PROVIDERS__PRE_R3__
-      }]
-    }];
+    HammerModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
+      type: HammerModule
+    });
+    HammerModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({
+      factory: function HammerModule_Factory(t) {
+        return new (t || HammerModule)();
+      },
+      providers: HAMMER_PROVIDERS__PRE_R3__
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+          providers: HAMMER_PROVIDERS__PRE_R3__
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/platform-browser/src/dom/events/key_events.ts
@@ -71232,6 +71803,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * Defines supported modifiers for key events.
      * @type {?}
      */
+
 
     var MODIFIER_KEYS = ['alt', 'control', 'meta', 'shift'];
     /** @type {?} */
@@ -71531,9 +72103,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return KeyEventsPlugin;
     }(EventManagerPlugin);
 
-    KeyEventsPlugin.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    KeyEventsPlugin.ɵfac = function KeyEventsPlugin_Factory(t) {
+      return new (t || KeyEventsPlugin)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+    };
+
+    KeyEventsPlugin.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: KeyEventsPlugin,
+      factory: KeyEventsPlugin.ɵfac
+    });
     /** @nocollapse */
 
     KeyEventsPlugin.ctorParameters = function () {
@@ -71545,6 +72122,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](KeyEventsPlugin, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+          }]
+        }];
+      }, null);
+    })();
     /**
      * @param {?} event
      * @return {?}
@@ -71678,20 +72271,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, DomSanitizer);
     };
 
-    DomSanitizer.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
-      args: [{
-        providedIn: 'root',
-        useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(
-        /**
-        * @return {?}
-        */
-        function () {
-          return DomSanitizerImpl;
-        })
-      }]
-    }];
+    DomSanitizer.ɵfac = function DomSanitizer_Factory(t) {
+      return new (t || DomSanitizer)();
+    };
     /** @nocollapse */
+
 
     DomSanitizer.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({
       factory: function DomSanitizer_Factory() {
@@ -71700,6 +72284,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       token: DomSanitizer,
       providedIn: "root"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSanitizer, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{
+          providedIn: 'root',
+          useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return DomSanitizerImpl;
+          })
+        }]
+      }], null, null);
+    })();
 
     if (false) {}
     /**
@@ -71857,15 +72458,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return DomSanitizerImpl;
     }(DomSanitizer);
 
-    DomSanitizerImpl.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
-      args: [{
-        providedIn: 'root',
-        useFactory: domSanitizerImplFactory,
-        deps: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]]
-      }]
-    }];
+    DomSanitizerImpl.ɵfac = function DomSanitizerImpl_Factory(t) {
+      return new (t || DomSanitizerImpl)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+    };
     /** @nocollapse */
+
 
     DomSanitizerImpl.ctorParameters = function () {
       return [{
@@ -71886,6 +72483,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       token: DomSanitizerImpl,
       providedIn: "root"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSanitizerImpl, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{
+          providedIn: 'root',
+          useFactory: domSanitizerImplFactory,
+          deps: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]]
+        }]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -71958,7 +72575,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @type {?}
      */
 
-    var BROWSER_SANITIZATION_PROVIDERS = BROWSER_SANITIZATION_PROVIDERS__PRE_R3__;
+    var BROWSER_SANITIZATION_PROVIDERS = BROWSER_SANITIZATION_PROVIDERS__POST_R3__;
     /**
      * \@publicApi
      * @type {?}
@@ -72057,13 +72674,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return BrowserModule;
     }();
 
-    BrowserModule.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
-      args: [{
-        providers: BROWSER_MODULE_PROVIDERS,
-        exports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationModule"]]
-      }]
-    }];
+    BrowserModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
+      type: BrowserModule
+    });
+    BrowserModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({
+      factory: function BrowserModule_Factory(t) {
+        return new (t || BrowserModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](BrowserModule, 12));
+      },
+      providers: BROWSER_MODULE_PROVIDERS,
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationModule"]]
+    });
     /** @nocollapse */
 
     BrowserModule.ctorParameters = function () {
@@ -72079,6 +72699,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+
+    (function () {
+      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](BrowserModule, {
+        exports: function exports() {
+          return [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationModule"]];
+        }
+      });
+    })();
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](BrowserModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+          providers: BROWSER_MODULE_PROVIDERS,
+          exports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationModule"]]
+        }]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+          }, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"]
+          }, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [BrowserModule]
+          }]
+        }];
+      }, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/platform-browser/src/browser/meta.ts
@@ -72326,15 +72978,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Meta;
     }();
 
-    Meta.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
-      args: [{
-        providedIn: 'root',
-        useFactory: createMeta,
-        deps: []
-      }]
-    }];
+    Meta.ɵfac = function Meta_Factory(t) {
+      return new (t || Meta)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+    };
     /** @nocollapse */
+
 
     Meta.ctorParameters = function () {
       return [{
@@ -72353,6 +73001,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       token: Meta,
       providedIn: "root"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Meta, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{
+          providedIn: 'root',
+          useFactory: createMeta,
+          deps: []
+        }]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -72418,15 +73086,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Title;
     }();
 
-    Title.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
-      args: [{
-        providedIn: 'root',
-        useFactory: createTitle,
-        deps: []
-      }]
-    }];
+    Title.ɵfac = function Title_Factory(t) {
+      return new (t || Title)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+    };
     /** @nocollapse */
+
 
     Title.ctorParameters = function () {
       return [{
@@ -72445,6 +73109,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       token: Title,
       providedIn: "root"
     });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Title, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{
+          providedIn: 'root',
+          useFactory: createTitle,
+          deps: []
+        }]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+          }]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -72821,9 +73505,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return TransferState;
     }();
 
-    TransferState.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    TransferState.ɵfac = function TransferState_Factory(t) {
+      return new (t || TransferState)();
+    };
+
+    TransferState.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: TransferState,
+      factory: TransferState.ɵfac
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](TransferState, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -72865,16 +73563,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, BrowserTransferStateModule);
     };
 
-    BrowserTransferStateModule.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
-      args: [{
-        providers: [{
-          provide: TransferState,
-          useFactory: initTransferState,
-          deps: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"]]
-        }]
+    BrowserTransferStateModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
+      type: BrowserTransferStateModule
+    });
+    BrowserTransferStateModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({
+      factory: function BrowserTransferStateModule_Factory(t) {
+        return new (t || BrowserTransferStateModule)();
+      },
+      providers: [{
+        provide: TransferState,
+        useFactory: initTransferState,
+        deps: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"]]
       }]
-    }];
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](BrowserTransferStateModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+          providers: [{
+            provide: TransferState,
+            useFactory: initTransferState,
+            deps: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"]]
+          }]
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/platform-browser/src/dom/debug/by.ts
@@ -72886,6 +73601,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      *
      * \@publicApi
      */
+
 
     var By = /*#__PURE__*/function () {
       function By() {
@@ -73001,7 +73717,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('9.1.6');
+    var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('9.1.12');
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/platform-browser/src/platform-browser.ts
@@ -73029,15 +73745,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "../../node_modules/@angular/router/fesm2015/router.js":
-  /*!*****************************************************************************************************!*\
-    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/router/fesm2015/router.js ***!
-    \*****************************************************************************************************/
+  "../../node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js":
+  /*!******************************************************************************************************************!*\
+    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js ***!
+    \******************************************************************************************************************/
 
   /*! exports provided: ActivatedRoute, ActivatedRouteSnapshot, ActivationEnd, ActivationStart, ChildActivationEnd, ChildActivationStart, ChildrenOutletContexts, DefaultUrlSerializer, GuardsCheckEnd, GuardsCheckStart, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, NoPreloading, OutletContext, PRIMARY_OUTLET, PreloadAllModules, PreloadingStrategy, ROUTER_CONFIGURATION, ROUTER_INITIALIZER, ROUTES, ResolveEnd, ResolveStart, RouteConfigLoadEnd, RouteConfigLoadStart, RouteReuseStrategy, Router, RouterEvent, RouterLink, RouterLinkActive, RouterLinkWithHref, RouterModule, RouterOutlet, RouterPreloader, RouterState, RouterStateSnapshot, RoutesRecognized, Scroll, UrlHandlingStrategy, UrlSegment, UrlSegmentGroup, UrlSerializer, UrlTree, VERSION, convertToParamMap, provideRoutes, ɵEmptyOutletComponent, ɵROUTER_PROVIDERS, ɵangular_packages_router_router_a, ɵangular_packages_router_router_b, ɵangular_packages_router_router_c, ɵangular_packages_router_router_d, ɵangular_packages_router_router_e, ɵangular_packages_router_router_f, ɵangular_packages_router_router_g, ɵangular_packages_router_router_h, ɵangular_packages_router_router_i, ɵangular_packages_router_router_j, ɵangular_packages_router_router_k, ɵangular_packages_router_router_l, ɵangular_packages_router_router_m, ɵangular_packages_router_router_n, ɵangular_packages_router_router_o, ɵflatten */
 
   /***/
-  function node_modulesAngularRouterFesm2015RouterJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesAngularRouter__ivy_ngcc__Fesm2015RouterJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -73436,13 +74152,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! @angular/common */
-    "../../node_modules/@angular/common/fesm2015/common.js");
+    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
-    "../../node_modules/@angular/core/fesm2015/core.js");
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
     /* harmony import */
 
 
@@ -73456,7 +74172,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! rxjs/operators */
     "../../node_modules/rxjs/_esm2015/operators/index.js");
     /**
-     * @license Angular v9.1.6
+     * @license Angular v9.1.12
      * (c) 2010-2020 Google LLC. https://angular.io/
      * License: MIT
      */
@@ -73485,8 +74201,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * class MyService {
      *   constructor(public router: Router, logger: Logger) {
      *     router.events.pipe(
-     *       filter(e => e instanceof RouterEvent)
-     *     ).subscribe(e => {
+     *        filter((e: Event): e is RouterEvent => e instanceof RouterEvent)
+     *     ).subscribe((e: RouterEvent) => {
      *       logger.log(e.id, e.url);
      *     });
      *   }
@@ -74224,12 +74940,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, ɵEmptyOutletComponent);
     };
 
-    ɵEmptyOutletComponent.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
-      args: [{
-        template: "<router-outlet></router-outlet>"
-      }]
-    }];
+    ɵEmptyOutletComponent.ɵfac = function ɵEmptyOutletComponent_Factory(t) {
+      return new (t || ɵEmptyOutletComponent)();
+    };
+
+    ɵEmptyOutletComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+      type: ɵEmptyOutletComponent,
+      selectors: [["ng-component"]],
+      decls: 1,
+      vars: 0,
+      template: function ɵEmptyOutletComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "router-outlet");
+        }
+      },
+      directives: function directives() {
+        return [RouterOutlet];
+      },
+      encapsulation: 2
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ɵEmptyOutletComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+        args: [{
+          template: "<router-outlet></router-outlet>"
+        }]
+      }], null, null);
+    })();
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/router/src/shared.ts
@@ -74250,6 +74989,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * \@publicApi
      * @type {?}
      */
+
 
     var PRIMARY_OUTLET = 'primary';
     /**
@@ -82601,6 +83341,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Router;
     }();
 
+    Router.ɵfac = function Router_Factory(t) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinvalidFactory"]();
+    };
+
+    Router.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
+      type: Router
+    });
+
     if (false) {}
     /**
      * @param {?} commands
@@ -82740,7 +83488,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
       /**
-       * @param {?} commands
+       * @see {\@link Router#createUrlTree Router#createUrlTree}
+       * @param {?} commands An array of commands to pass to {\@link Router#createUrlTree
+       *     Router#createUrlTree}.
+       *   - **array**: commands to pass to {\@link Router#createUrlTree Router#createUrlTree}.
+       *   - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
+       *   - **null|undefined**: shorthand for an empty array of commands, i.e. `[]`
        * @return {?}
        */
 
@@ -82775,7 +83528,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
         /**
-         * @deprecated 4.0.0 use `queryParamsHandling` instead.
+         * @deprecated As of Angular v4.0 use `queryParamsHandling` instead.
          * @param {?} value
          * @return {?}
          */
@@ -82810,12 +83563,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RouterLink;
     }();
 
-    RouterLink.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
-      args: [{
-        selector: ':not(a):not(area)[routerLink]'
-      }]
-    }];
+    RouterLink.ɵfac = function RouterLink_Factory(t) {
+      return new (t || RouterLink)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ActivatedRoute), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinjectAttribute"]('tabindex'), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]));
+    };
+
+    RouterLink.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
+      type: RouterLink,
+      selectors: [["", "routerLink", "", 5, "a", 5, "area"]],
+      hostBindings: function RouterLink_HostBindings(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RouterLink_click_HostBindingHandler() {
+            return ctx.onClick();
+          });
+        }
+      },
+      inputs: {
+        routerLink: "routerLink",
+        preserveQueryParams: "preserveQueryParams",
+        queryParams: "queryParams",
+        fragment: "fragment",
+        queryParamsHandling: "queryParamsHandling",
+        preserveFragment: "preserveFragment",
+        skipLocationChange: "skipLocationChange",
+        replaceUrl: "replaceUrl",
+        state: "state"
+      }
+    });
     /** @nocollapse */
 
     RouterLink.ctorParameters = function () {
@@ -82869,6 +83642,64 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         args: ['click']
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RouterLink, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+          selector: ':not(a):not(area)[routerLink]'
+        }]
+      }], function () {
+        return [{
+          type: Router
+        }, {
+          type: ActivatedRoute
+        }, {
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Attribute"],
+            args: ['tabindex']
+          }]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]
+        }];
+      }, {
+        routerLink: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        preserveQueryParams: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        onClick: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+          args: ['click']
+        }],
+        queryParams: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        fragment: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        queryParamsHandling: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        preserveFragment: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        skipLocationChange: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        replaceUrl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        state: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -82911,7 +83742,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       }
       /**
-       * @param {?} commands
+       * @see {\@link Router#createUrlTree Router#createUrlTree}
+       * @param {?} commands An array of commands to pass to {\@link Router#createUrlTree
+       *     Router#createUrlTree}.
+       *   - **array**: commands to pass to {\@link Router#createUrlTree Router#createUrlTree}.
+       *   - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
+       *   - **null|undefined**: shorthand for an empty array of commands, i.e. `[]`
        * @return {?}
        */
 
@@ -82988,6 +83824,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
         /**
+         * @deprecated As of Angular v4.0 use `queryParamsHandling` instead.
          * @param {?} value
          * @return {?}
          */
@@ -83022,12 +83859,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RouterLinkWithHref;
     }();
 
-    RouterLinkWithHref.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
-      args: [{
-        selector: 'a[routerLink],area[routerLink]'
-      }]
-    }];
+    RouterLinkWithHref.ɵfac = function RouterLinkWithHref_Factory(t) {
+      return new (t || RouterLinkWithHref)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ActivatedRoute), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["LocationStrategy"]));
+    };
+
+    RouterLinkWithHref.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
+      type: RouterLinkWithHref,
+      selectors: [["a", "routerLink", ""], ["area", "routerLink", ""]],
+      hostVars: 2,
+      hostBindings: function RouterLinkWithHref_HostBindings(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RouterLinkWithHref_click_HostBindingHandler($event) {
+            return ctx.onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey);
+          });
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵhostProperty"]("href", ctx.href, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("target", ctx.target);
+        }
+      },
+      inputs: {
+        routerLink: "routerLink",
+        preserveQueryParams: "preserveQueryParams",
+        target: "target",
+        queryParams: "queryParams",
+        fragment: "fragment",
+        queryParamsHandling: "queryParamsHandling",
+        preserveFragment: "preserveFragment",
+        skipLocationChange: "skipLocationChange",
+        replaceUrl: "replaceUrl",
+        state: "state"
+      },
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵNgOnChangesFeature"]]
+    });
     /** @nocollapse */
 
     RouterLinkWithHref.ctorParameters = function () {
@@ -83082,6 +83948,65 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         args: ['click', ['$event.button', '$event.ctrlKey', '$event.metaKey', '$event.shiftKey']]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RouterLinkWithHref, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+          selector: 'a[routerLink],area[routerLink]'
+        }]
+      }], function () {
+        return [{
+          type: Router
+        }, {
+          type: ActivatedRoute
+        }, {
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_0__["LocationStrategy"]
+        }];
+      }, {
+        routerLink: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        preserveQueryParams: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        onClick: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+          args: ['click', ['$event.button', '$event.ctrlKey', '$event.metaKey', '$event.shiftKey']]
+        }],
+        href: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"]
+        }],
+        target: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"],
+          args: ['attr.target']
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        queryParams: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        fragment: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        queryParamsHandling: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        preserveFragment: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        skipLocationChange: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        replaceUrl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        state: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -83334,13 +84259,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RouterLinkActive;
     }();
 
-    RouterLinkActive.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
-      args: [{
-        selector: '[routerLinkActive]',
-        exportAs: 'routerLinkActive'
-      }]
-    }];
+    RouterLinkActive.ɵfac = function RouterLinkActive_Factory(t) {
+      return new (t || RouterLinkActive)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](RouterLink, 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](RouterLinkWithHref, 8));
+    };
+
+    RouterLinkActive.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
+      type: RouterLinkActive,
+      selectors: [["", "routerLinkActive", ""]],
+      contentQueries: function RouterLinkActive_ContentQueries(rf, ctx, dirIndex) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵcontentQuery"](dirIndex, RouterLink, true);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵcontentQuery"](dirIndex, RouterLinkWithHref, true);
+        }
+
+        if (rf & 2) {
+          var _t;
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.links = _t);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.linksWithHrefs = _t);
+        }
+      },
+      inputs: {
+        routerLinkActiveOptions: "routerLinkActiveOptions",
+        routerLinkActive: "routerLinkActive"
+      },
+      exportAs: ["routerLinkActive"],
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵNgOnChangesFeature"]]
+    });
     /** @nocollapse */
 
     RouterLinkActive.ctorParameters = function () {
@@ -83383,6 +84329,54 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RouterLinkActive, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+          selector: '[routerLinkActive]',
+          exportAs: 'routerLinkActive'
+        }]
+      }], function () {
+        return [{
+          type: Router
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]
+        }, {
+          type: RouterLink,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+          }]
+        }, {
+          type: RouterLinkWithHref,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+          }]
+        }];
+      }, {
+        routerLinkActiveOptions: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        routerLinkActive: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }],
+        links: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ContentChildren"],
+          args: [RouterLink, {
+            descendants: true
+          }]
+        }],
+        linksWithHrefs: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ContentChildren"],
+          args: [RouterLinkWithHref, {
+            descendants: true
+          }]
+        }]
+      });
+    })();
 
     if (false) {}
     /**
@@ -83751,13 +84745,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RouterOutlet;
     }();
 
-    RouterOutlet.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
-      args: [{
-        selector: 'router-outlet',
-        exportAs: 'outlet'
-      }]
-    }];
+    RouterOutlet.ɵfac = function RouterOutlet_Factory(t) {
+      return new (t || RouterOutlet)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ChildrenOutletContexts), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinjectAttribute"]('name'), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]));
+    };
+
+    RouterOutlet.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
+      type: RouterOutlet,
+      selectors: [["router-outlet"]],
+      outputs: {
+        activateEvents: "activate",
+        deactivateEvents: "deactivate"
+      },
+      exportAs: ["outlet"]
+    });
     /** @nocollapse */
 
     RouterOutlet.ctorParameters = function () {
@@ -83788,6 +84788,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         args: ['deactivate']
       }]
     };
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RouterOutlet, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+          selector: 'router-outlet',
+          exportAs: 'outlet'
+        }]
+      }], function () {
+        return [{
+          type: ChildrenOutletContexts
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"]
+        }, {
+          type: String,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Attribute"],
+            args: ['name']
+          }]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]
+        }];
+      }, {
+        activateEvents: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"],
+          args: ['activate']
+        }],
+        deactivateEvents: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"],
+          args: ['deactivate']
+        }]
+      });
+    })();
 
     if (false) {}
 
@@ -84107,9 +85143,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RouterPreloader;
     }();
 
-    RouterPreloader.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    RouterPreloader.ɵfac = function RouterPreloader_Factory(t) {
+      return new (t || RouterPreloader)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModuleFactoryLoader"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["Compiler"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](PreloadingStrategy));
+    };
+
+    RouterPreloader.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: RouterPreloader,
+      factory: RouterPreloader.ɵfac
+    });
     /** @nocollapse */
 
     RouterPreloader.ctorParameters = function () {
@@ -84125,6 +85166,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: PreloadingStrategy
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RouterPreloader, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: Router
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModuleFactoryLoader"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Compiler"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]
+        }, {
+          type: PreloadingStrategy
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -84267,6 +85328,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return RouterScroller;
     }();
+
+    RouterScroller.ɵfac = function RouterScroller_Factory(t) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinvalidFactory"]();
+    };
+
+    RouterScroller.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
+      type: RouterScroller
+    });
 
     if (false) {}
     /**
@@ -84448,14 +85517,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RouterModule;
     }();
 
-    RouterModule.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
-      args: [{
-        declarations: ROUTER_DIRECTIVES,
-        exports: ROUTER_DIRECTIVES,
-        entryComponents: [ɵEmptyOutletComponent]
-      }]
-    }];
+    RouterModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
+      type: RouterModule
+    });
+    RouterModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({
+      factory: function RouterModule_Factory(t) {
+        return new (t || RouterModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](ROUTER_FORROOT_GUARD, 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](Router, 8));
+      }
+    });
     /** @nocollapse */
 
     RouterModule.ctorParameters = function () {
@@ -84474,6 +85543,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }];
     };
+
+    (function () {
+      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](RouterModule, {
+        declarations: [RouterOutlet, RouterLink, RouterLinkWithHref, RouterLinkActive, ɵEmptyOutletComponent],
+        exports: [RouterOutlet, RouterLink, RouterLinkWithHref, RouterLinkActive, ɵEmptyOutletComponent]
+      });
+    })();
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RouterModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+          declarations: ROUTER_DIRECTIVES,
+          exports: ROUTER_DIRECTIVES,
+          entryComponents: [ɵEmptyOutletComponent]
+        }]
+      }], function () {
+        return [{
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+          }, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+            args: [ROUTER_FORROOT_GUARD]
+          }]
+        }, {
+          type: Router,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+          }]
+        }];
+      }, null);
+    })();
     /**
      * @param {?} router
      * @param {?} viewportScroller
@@ -84803,9 +85907,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RouterInitializer;
     }();
 
-    RouterInitializer.decorators = [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
-    }];
+    RouterInitializer.ɵfac = function RouterInitializer_Factory(t) {
+      return new (t || RouterInitializer)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]));
+    };
+
+    RouterInitializer.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      token: RouterInitializer,
+      factory: RouterInitializer.ɵfac
+    });
     /** @nocollapse */
 
     RouterInitializer.ctorParameters = function () {
@@ -84813,6 +85922,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]
       }];
     };
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RouterInitializer, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
+      }], function () {
+        return [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]
+        }];
+      }, null);
+    })();
 
     if (false) {}
     /**
@@ -84875,7 +85996,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
 
 
-    var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('9.1.6');
+    var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('9.1.12');
     /**
      * @fileoverview added by tsickle
      * Generated from: packages/router/src/private_export.ts
@@ -84906,96 +86027,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     //# sourceMappingURL=router.js.map
 
     /***/
-  },
-
-  /***/
-  "../../node_modules/@angular/router/router.ngfactory.js":
-  /*!******************************************************************************************************!*\
-    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/@angular/router/router.ngfactory.js ***!
-    \******************************************************************************************************/
-
-  /*! exports provided: RouterModuleNgFactory, RenderType_ɵangular_packages_router_router_l, View_ɵangular_packages_router_router_l_0, View_ɵangular_packages_router_router_l_Host_0, ɵangular_packages_router_router_lNgFactory */
-
-  /***/
-  function node_modulesAngularRouterRouterNgfactoryJs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "RouterModuleNgFactory", function () {
-      return RouterModuleNgFactory;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "RenderType_ɵangular_packages_router_router_l", function () {
-      return RenderType_ɵangular_packages_router_router_l;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "View_ɵangular_packages_router_router_l_0", function () {
-      return View_ɵangular_packages_router_router_l_0;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "View_ɵangular_packages_router_router_l_Host_0", function () {
-      return View_ɵangular_packages_router_router_l_Host_0;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ɵangular_packages_router_router_lNgFactory", function () {
-      return ɵangular_packages_router_router_lNgFactory;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/router */
-    "../../node_modules/@angular/router/fesm2015/router.js");
-    /**
-     * @fileoverview This file was generated by the Angular template compiler. Do not edit.
-     *
-     * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes,extraRequire}
-     * tslint:disable
-     */
-
-
-    var RouterModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"], [], function (_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, [ɵangular_packages_router_router_lNgFactory]], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"], [[2, _angular_router__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_router_router_a"]], [2, _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]]])]);
-    });
-
-    var styles_ɵangular_packages_router_router_l = [];
-
-    var RenderType_ɵangular_packages_router_router_l = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
-      encapsulation: 2,
-      styles: styles_ɵangular_packages_router_router_l,
-      data: {}
-    });
-
-    function View_ɵangular_packages_router_router_l_0(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 212992, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"], [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ChildrenOutletContexts"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], [8, null], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]], null, null)], function (_ck, _v) {
-        _ck(_v, 1, 0);
-      }, null);
-    }
-
-    function View_ɵangular_packages_router_router_l_Host_0(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "ng-component", [], null, null, null, View_ɵangular_packages_router_router_l_0, RenderType_ɵangular_packages_router_router_l)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 49152, null, 0, _angular_router__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_router_router_l"], [], null, null)], null, null);
-    }
-
-    var ɵangular_packages_router_router_lNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("ng-component", _angular_router__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_router_router_l"], View_ɵangular_packages_router_router_l_Host_0, {}, {}, []);
-    /***/
-
   },
 
   /***/
@@ -85098,7 +86129,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   function node_modulesMomentLocaleArDzJs(module, exports, __webpack_require__) {
     //! moment.js locale configuration
     //! locale : Arabic (Algeria) [ar-dz]
-    //! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
+    //! author : Amine Roukh: https://github.com/Amine27
+    //! author : Abdel Said: https://github.com/abdelsaid
+    //! author : Ahmed Elkhatib
+    //! author : forabi https://github.com/forabi
+    //! author : Noureddine LOUAHEDJ : https://github.com/noureddinem
     ;
 
     (function (global, factory) {
@@ -85108,44 +86143,83 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     })(this, function (moment) {
       'use strict'; //! moment.js locale configuration
 
+      var pluralForm = function pluralForm(n) {
+        return n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5;
+      },
+          plurals = {
+        s: ['أقل من ثانية', 'ثانية واحدة', ['ثانيتان', 'ثانيتين'], '%d ثوان', '%d ثانية', '%d ثانية'],
+        m: ['أقل من دقيقة', 'دقيقة واحدة', ['دقيقتان', 'دقيقتين'], '%d دقائق', '%d دقيقة', '%d دقيقة'],
+        h: ['أقل من ساعة', 'ساعة واحدة', ['ساعتان', 'ساعتين'], '%d ساعات', '%d ساعة', '%d ساعة'],
+        d: ['أقل من يوم', 'يوم واحد', ['يومان', 'يومين'], '%d أيام', '%d يومًا', '%d يوم'],
+        M: ['أقل من شهر', 'شهر واحد', ['شهران', 'شهرين'], '%d أشهر', '%d شهرا', '%d شهر'],
+        y: ['أقل من عام', 'عام واحد', ['عامان', 'عامين'], '%d أعوام', '%d عامًا', '%d عام']
+      },
+          pluralize = function pluralize(u) {
+        return function (number, withoutSuffix, string, isFuture) {
+          var f = pluralForm(number),
+              str = plurals[u][pluralForm(number)];
+
+          if (f === 2) {
+            str = str[withoutSuffix ? 0 : 1];
+          }
+
+          return str.replace(/%d/i, number);
+        };
+      },
+          months = ['جانفي', 'فيفري', 'مارس', 'أفريل', 'ماي', 'جوان', 'جويلية', 'أوت', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+
       var arDz = moment.defineLocale('ar-dz', {
-        months: 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
-        monthsShort: 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
+        months: months,
+        monthsShort: months,
         weekdays: 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
-        weekdaysShort: 'احد_اثنين_ثلاثاء_اربعاء_خميس_جمعة_سبت'.split('_'),
-        weekdaysMin: 'أح_إث_ثلا_أر_خم_جم_سب'.split('_'),
+        weekdaysShort: 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
+        weekdaysMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
         weekdaysParseExact: true,
         longDateFormat: {
           LT: 'HH:mm',
           LTS: 'HH:mm:ss',
-          L: 'DD/MM/YYYY',
+          L: "D/\u200FM/\u200FYYYY",
           LL: 'D MMMM YYYY',
           LLL: 'D MMMM YYYY HH:mm',
           LLLL: 'dddd D MMMM YYYY HH:mm'
         },
+        meridiemParse: /ص|م/,
+        isPM: function isPM(input) {
+          return 'م' === input;
+        },
+        meridiem: function meridiem(hour, minute, isLower) {
+          if (hour < 12) {
+            return 'ص';
+          } else {
+            return 'م';
+          }
+        },
         calendar: {
-          sameDay: '[اليوم على الساعة] LT',
-          nextDay: '[غدا على الساعة] LT',
-          nextWeek: 'dddd [على الساعة] LT',
-          lastDay: '[أمس على الساعة] LT',
-          lastWeek: 'dddd [على الساعة] LT',
+          sameDay: '[اليوم عند الساعة] LT',
+          nextDay: '[غدًا عند الساعة] LT',
+          nextWeek: 'dddd [عند الساعة] LT',
+          lastDay: '[أمس عند الساعة] LT',
+          lastWeek: 'dddd [عند الساعة] LT',
           sameElse: 'L'
         },
         relativeTime: {
-          future: 'في %s',
+          future: 'بعد %s',
           past: 'منذ %s',
-          s: 'ثوان',
-          ss: '%d ثانية',
-          m: 'دقيقة',
-          mm: '%d دقائق',
-          h: 'ساعة',
-          hh: '%d ساعات',
-          d: 'يوم',
-          dd: '%d أيام',
-          M: 'شهر',
-          MM: '%d أشهر',
-          y: 'سنة',
-          yy: '%d سنوات'
+          s: pluralize('s'),
+          ss: pluralize('s'),
+          m: pluralize('m'),
+          mm: pluralize('m'),
+          h: pluralize('h'),
+          hh: pluralize('h'),
+          d: pluralize('d'),
+          dd: pluralize('d'),
+          M: pluralize('M'),
+          MM: pluralize('M'),
+          y: pluralize('y'),
+          yy: pluralize('y')
+        },
+        postformat: function postformat(string) {
+          return string.replace(/,/g, '،');
         },
         week: {
           dow: 0,
@@ -86572,13 +87646,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return mutationTable[text.charAt(0)] + text.substring(1);
       }
 
+      var monthsParse = [/^gen/i, /^c[ʼ\']hwe/i, /^meu/i, /^ebr/i, /^mae/i, /^(mez|eve)/i, /^gou/i, /^eos/i, /^gwe/i, /^her/i, /^du/i, /^ker/i],
+          monthsRegex = /^(genver|c[ʼ\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu|gen|c[ʼ\']hwe|meu|ebr|mae|eve|gou|eos|gwe|her|du|ker)/i,
+          monthsStrictRegex = /^(genver|c[ʼ\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu)/i,
+          monthsShortStrictRegex = /^(gen|c[ʼ\']hwe|meu|ebr|mae|eve|gou|eos|gwe|her|du|ker)/i,
+          fullWeekdaysParse = [/^sul/i, /^lun/i, /^meurzh/i, /^merc[ʼ\']her/i, /^yaou/i, /^gwener/i, /^sadorn/i],
+          shortWeekdaysParse = [/^Sul/i, /^Lun/i, /^Meu/i, /^Mer/i, /^Yao/i, /^Gwe/i, /^Sad/i],
+          minWeekdaysParse = [/^Su/i, /^Lu/i, /^Me([^r]|$)/i, /^Mer/i, /^Ya/i, /^Gw/i, /^Sa/i];
       var br = moment.defineLocale('br', {
-        months: "Genver_C'hwevrer_Meurzh_Ebrel_Mae_Mezheven_Gouere_Eost_Gwengolo_Here_Du_Kerzu".split('_'),
-        monthsShort: "Gen_C'hwe_Meu_Ebr_Mae_Eve_Gou_Eos_Gwe_Her_Du_Ker".split('_'),
-        weekdays: "Sul_Lun_Meurzh_Merc'her_Yaou_Gwener_Sadorn".split('_'),
+        months: 'Genver_Cʼhwevrer_Meurzh_Ebrel_Mae_Mezheven_Gouere_Eost_Gwengolo_Here_Du_Kerzu'.split('_'),
+        monthsShort: 'Gen_Cʼhwe_Meu_Ebr_Mae_Eve_Gou_Eos_Gwe_Her_Du_Ker'.split('_'),
+        weekdays: 'Sul_Lun_Meurzh_Mercʼher_Yaou_Gwener_Sadorn'.split('_'),
         weekdaysShort: 'Sul_Lun_Meu_Mer_Yao_Gwe_Sad'.split('_'),
         weekdaysMin: 'Su_Lu_Me_Mer_Ya_Gw_Sa'.split('_'),
-        weekdaysParseExact: true,
+        weekdaysParse: minWeekdaysParse,
+        fullWeekdaysParse: fullWeekdaysParse,
+        shortWeekdaysParse: shortWeekdaysParse,
+        minWeekdaysParse: minWeekdaysParse,
+        monthsRegex: monthsRegex,
+        monthsShortRegex: monthsRegex,
+        monthsStrictRegex: monthsStrictRegex,
+        monthsShortStrictRegex: monthsShortStrictRegex,
+        monthsParse: monthsParse,
+        longMonthsParse: monthsParse,
+        shortMonthsParse: monthsParse,
         longDateFormat: {
           LT: 'HH:mm',
           LTS: 'HH:mm:ss',
@@ -86589,15 +87680,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         },
         calendar: {
           sameDay: '[Hiziv da] LT',
-          nextDay: "[Warc'hoazh da] LT",
+          nextDay: '[Warcʼhoazh da] LT',
           nextWeek: 'dddd [da] LT',
-          lastDay: "[Dec'h da] LT",
+          lastDay: '[Decʼh da] LT',
           lastWeek: 'dddd [paset da] LT',
           sameElse: 'L'
         },
         relativeTime: {
           future: 'a-benn %s',
-          past: "%s 'zo",
+          past: '%s ʼzo',
           s: 'un nebeud segondennoù',
           ss: '%d eilenn',
           m: 'ur vunutenn',
@@ -86621,6 +87712,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // Monday is the first day of the week.
           doy: 4 // The week that contains Jan 4th is the first week of the year.
 
+        },
+        meridiemParse: /a.m.|g.m./,
+        // goude merenn | a-raok merenn
+        isPM: function isPM(token) {
+          return token === 'g.m.';
+        },
+        meridiem: function meridiem(hour, minute, isLower) {
+          return hour < 12 ? 'a.m.' : 'g.m.';
         }
       });
       return br;
@@ -87413,6 +88512,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           h: ['eine Stunde', 'einer Stunde'],
           d: ['ein Tag', 'einem Tag'],
           dd: [number + ' Tage', number + ' Tagen'],
+          w: ['eine Woche', 'einer Woche'],
           M: ['ein Monat', 'einem Monat'],
           MM: [number + ' Monate', number + ' Monaten'],
           y: ['ein Jahr', 'einem Jahr'],
@@ -87456,6 +88556,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           hh: '%d Stunden',
           d: processRelativeTime,
           dd: processRelativeTime,
+          w: processRelativeTime,
+          ww: '%d Wochen',
           M: processRelativeTime,
           MM: processRelativeTime,
           y: processRelativeTime,
@@ -87504,6 +88606,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           h: ['eine Stunde', 'einer Stunde'],
           d: ['ein Tag', 'einem Tag'],
           dd: [number + ' Tage', number + ' Tagen'],
+          w: ['eine Woche', 'einer Woche'],
           M: ['ein Monat', 'einem Monat'],
           MM: [number + ' Monate', number + ' Monaten'],
           y: ['ein Jahr', 'einem Jahr'],
@@ -87547,6 +88650,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           hh: '%d Stunden',
           d: processRelativeTime,
           dd: processRelativeTime,
+          w: processRelativeTime,
+          ww: '%d Wochen',
           M: processRelativeTime,
           MM: processRelativeTime,
           y: processRelativeTime,
@@ -87597,6 +88702,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           h: ['eine Stunde', 'einer Stunde'],
           d: ['ein Tag', 'einem Tag'],
           dd: [number + ' Tage', number + ' Tagen'],
+          w: ['eine Woche', 'einer Woche'],
           M: ['ein Monat', 'einem Monat'],
           MM: [number + ' Monate', number + ' Monaten'],
           y: ['ein Jahr', 'einem Jahr'],
@@ -87640,6 +88746,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           hh: '%d Stunden',
           d: processRelativeTime,
           dd: processRelativeTime,
+          w: processRelativeTime,
+          ww: '%d Wochen',
           M: processRelativeTime,
           MM: processRelativeTime,
           y: processRelativeTime,
@@ -87938,8 +89046,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return number + output;
         },
         week: {
-          dow: 1,
-          // Monday is the first day of the week.
+          dow: 0,
+          // Sunday is the first day of the week.
           doy: 4 // The week that contains Jan 4th is the first week of the year.
 
         }
@@ -88321,9 +89429,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return number + output;
         },
         week: {
-          dow: 1,
-          // Monday is the first day of the week.
-          doy: 4 // The week that contains Jan 4th is the first week of the year.
+          dow: 0,
+          // Sunday is the first day of the week.
+          doy: 6 // The week that contains Jan 1st is the first week of the year.
 
         }
       });
@@ -89234,7 +90342,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return isFuture ? 'muutaman sekunnin' : 'muutama sekunti';
 
           case 'ss':
-            return isFuture ? 'sekunnin' : 'sekuntia';
+            result = isFuture ? 'sekunnin' : 'sekuntia';
+            break;
 
           case 'm':
             return isFuture ? 'minuutin' : 'minuutti';
@@ -89693,10 +90802,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     })(this, function (moment) {
       'use strict'; //! moment.js locale configuration
 
+      var monthsStrictRegex = /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
+          monthsShortStrictRegex = /(janv\.?|févr\.?|mars|avr\.?|mai|juin|juil\.?|août|sept\.?|oct\.?|nov\.?|déc\.?)/i,
+          monthsRegex = /(janv\.?|févr\.?|mars|avr\.?|mai|juin|juil\.?|août|sept\.?|oct\.?|nov\.?|déc\.?|janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
+          monthsParse = [/^janv/i, /^févr/i, /^mars/i, /^avr/i, /^mai/i, /^juin/i, /^juil/i, /^août/i, /^sept/i, /^oct/i, /^nov/i, /^déc/i];
       var fr = moment.defineLocale('fr', {
         months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
         monthsShort: 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
-        monthsParseExact: true,
+        monthsRegex: monthsRegex,
+        monthsShortRegex: monthsRegex,
+        monthsStrictRegex: monthsStrictRegex,
+        monthsShortStrictRegex: monthsShortStrictRegex,
+        monthsParse: monthsParse,
+        longMonthsParse: monthsParse,
+        shortMonthsParse: monthsParse,
         weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
         weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
         weekdaysMin: 'di_lu_ma_me_je_ve_sa'.split('_'),
@@ -90478,7 +91597,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         },
         relativeTime: {
           future: '%s મા',
-          past: '%s પેહલા',
+          past: '%s પહેલા',
           s: 'અમુક પળો',
           ss: '%d સેકંડ',
           m: 'એક મિનિટ',
@@ -91330,9 +92449,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           yy: '%d tahun'
         },
         week: {
-          dow: 1,
-          // Monday is the first day of the week.
-          doy: 7 // The week that contains Jan 7th is the first week of the year.
+          dow: 0,
+          // Sunday is the first day of the week.
+          doy: 6 // The week that contains Jan 6th is the first week of the year.
 
         }
       });
@@ -91660,9 +92779,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           sameElse: 'L'
         },
         relativeTime: {
-          future: function future(s) {
-            return (/^[0-9].+$/.test(s) ? 'tra' : 'in') + ' ' + s;
-          },
+          future: 'tra %s',
           past: '%s fa',
           s: 'alcuni secondi',
           ss: '%d secondi',
@@ -95532,7 +96649,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     //! moment.js locale configuration
     //! locale : Russian [ru]
     //! author : Viktorminator : https://github.com/Viktorminator
-    //! Author : Menelion Elensúle : https://github.com/Oire
+    //! author : Menelion Elensúle : https://github.com/Oire
     //! author : Коренберг Марк : https://github.com/socketpair
     ;
 
@@ -95575,14 +96692,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           standalone: 'январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь'.split('_')
         },
         monthsShort: {
-          // по CLDR именно "июл." и "июн.", но какой смысл менять букву на точку ?
+          // по CLDR именно "июл." и "июн.", но какой смысл менять букву на точку?
           format: 'янв._февр._мар._апр._мая_июня_июля_авг._сент._окт._нояб._дек.'.split('_'),
           standalone: 'янв._февр._март_апр._май_июнь_июль_авг._сент._окт._нояб._дек.'.split('_')
         },
         weekdays: {
           standalone: 'воскресенье_понедельник_вторник_среда_четверг_пятница_суббота'.split('_'),
           format: 'воскресенье_понедельник_вторник_среду_четверг_пятницу_субботу'.split('_'),
-          isFormat: /\[ ?[Вв] ?(?:прошлую|следующую|эту)? ?\] ?dddd/
+          isFormat: /\[ ?[Вв] ?(?:прошлую|следующую|эту)? ?] ?dddd/
         },
         weekdaysShort: 'вс_пн_вт_ср_чт_пт_сб'.split('_'),
         weekdaysMin: 'вс_пн_вт_ср_чт_пт_сб'.split('_'),
@@ -95595,7 +96712,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         monthsShortRegex: /^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|марта?|мар\.?|апрел[ья]|апр\.?|ма[йя]|июн[ья]|июн\.?|июл[ья]|июл\.?|августа?|авг\.?|сентябр[ья]|сент?\.?|октябр[ья]|окт\.?|ноябр[ья]|нояб?\.?|декабр[ья]|дек\.?)/i,
         // полные названия с падежами
         monthsStrictRegex: /^(январ[яь]|феврал[яь]|марта?|апрел[яь]|ма[яй]|июн[яь]|июл[яь]|августа?|сентябр[яь]|октябр[яь]|ноябр[яь]|декабр[яь])/i,
-        // Выражение, которое соотвествует только сокращённым формам
+        // Выражение, которое соответствует только сокращённым формам
         monthsShortStrictRegex: /^(янв\.|февр?\.|мар[т.]|апр\.|ма[яй]|июн[ья.]|июл[ья.]|авг\.|сент?\.|окт\.|нояб?\.|дек\.)/i,
         longDateFormat: {
           LT: 'H:mm',
@@ -96932,7 +98049,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         weekdaysMin: 'J2_J3_J4_J5_Al_Ij_J1'.split('_'),
         weekdaysParseExact: true,
         longDateFormat: {
-          LT: 'HH:mm',
+          LT: 'hh:mm A',
           LTS: 'HH:mm:ss',
           L: 'DD.MM.YYYY',
           LL: 'D MMMM YYYY',
@@ -96957,7 +98074,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           h: 'saa limoja',
           hh: 'masaa %d',
           d: 'siku moja',
-          dd: 'masiku %d',
+          dd: 'siku %d',
           M: 'mwezi mmoja',
           MM: 'miezi %d',
           y: 'mwaka mmoja',
@@ -97520,6 +98637,118 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "../../node_modules/moment/locale/tk.js":
+  /*!**************************************************************************************!*\
+    !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/moment/locale/tk.js ***!
+    \**************************************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesMomentLocaleTkJs(module, exports, __webpack_require__) {
+    //! moment.js locale configuration
+    //! locale : Turkmen [trk]
+    //! author : Atamyrat Abdyrahmanov : https://github.com/atamyratabdy
+    ;
+
+    (function (global, factory) {
+      true ? factory(__webpack_require__(
+      /*! ../moment */
+      "../../node_modules/moment/moment.js")) : undefined;
+    })(this, function (moment) {
+      'use strict'; //! moment.js locale configuration
+
+      var suffixes = {
+        1: "'inji",
+        5: "'inji",
+        8: "'inji",
+        70: "'inji",
+        80: "'inji",
+        2: "'nji",
+        7: "'nji",
+        20: "'nji",
+        50: "'nji",
+        3: "'ünji",
+        4: "'ünji",
+        100: "'ünji",
+        6: "'njy",
+        9: "'unjy",
+        10: "'unjy",
+        30: "'unjy",
+        60: "'ynjy",
+        90: "'ynjy"
+      };
+      var tk = moment.defineLocale('tk', {
+        months: 'Ýanwar_Fewral_Mart_Aprel_Maý_Iýun_Iýul_Awgust_Sentýabr_Oktýabr_Noýabr_Dekabr'.split('_'),
+        monthsShort: 'Ýan_Few_Mar_Apr_Maý_Iýn_Iýl_Awg_Sen_Okt_Noý_Dek'.split('_'),
+        weekdays: 'Ýekşenbe_Duşenbe_Sişenbe_Çarşenbe_Penşenbe_Anna_Şenbe'.split('_'),
+        weekdaysShort: 'Ýek_Duş_Siş_Çar_Pen_Ann_Şen'.split('_'),
+        weekdaysMin: 'Ýk_Dş_Sş_Çr_Pn_An_Şn'.split('_'),
+        longDateFormat: {
+          LT: 'HH:mm',
+          LTS: 'HH:mm:ss',
+          L: 'DD.MM.YYYY',
+          LL: 'D MMMM YYYY',
+          LLL: 'D MMMM YYYY HH:mm',
+          LLLL: 'dddd, D MMMM YYYY HH:mm'
+        },
+        calendar: {
+          sameDay: '[bugün sagat] LT',
+          nextDay: '[ertir sagat] LT',
+          nextWeek: '[indiki] dddd [sagat] LT',
+          lastDay: '[düýn] LT',
+          lastWeek: '[geçen] dddd [sagat] LT',
+          sameElse: 'L'
+        },
+        relativeTime: {
+          future: '%s soň',
+          past: '%s öň',
+          s: 'birnäçe sekunt',
+          m: 'bir minut',
+          mm: '%d minut',
+          h: 'bir sagat',
+          hh: '%d sagat',
+          d: 'bir gün',
+          dd: '%d gün',
+          M: 'bir aý',
+          MM: '%d aý',
+          y: 'bir ýyl',
+          yy: '%d ýyl'
+        },
+        ordinal: function ordinal(number, period) {
+          switch (period) {
+            case 'd':
+            case 'D':
+            case 'Do':
+            case 'DD':
+              return number;
+
+            default:
+              if (number === 0) {
+                // special case for zero
+                return number + "'unjy";
+              }
+
+              var a = number % 10,
+                  b = number % 100 - a,
+                  c = number >= 100 ? 100 : null;
+              return number + (suffixes[a] || suffixes[b] || suffixes[c]);
+          }
+        },
+        week: {
+          dow: 1,
+          // Monday is the first day of the week.
+          doy: 7 // The week that contains Jan 7th is the first week of the year.
+
+        }
+      });
+      return tk;
+    });
+    /***/
+
+  },
+
+  /***/
   "../../node_modules/moment/locale/tl-ph.js":
   /*!*****************************************************************************************!*\
     !*** /home/runner/work/ng-time-chart/ng-time-chart/node_modules/moment/locale/tl-ph.js ***!
@@ -97780,6 +99009,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         weekdays: 'Pazar_Pazartesi_Salı_Çarşamba_Perşembe_Cuma_Cumartesi'.split('_'),
         weekdaysShort: 'Paz_Pts_Sal_Çar_Per_Cum_Cts'.split('_'),
         weekdaysMin: 'Pz_Pt_Sa_Ça_Pe_Cu_Ct'.split('_'),
+        meridiem: function meridiem(hours, minutes, isLower) {
+          if (hours < 12) {
+            return isLower ? 'öö' : 'ÖÖ';
+          } else {
+            return isLower ? 'ös' : 'ÖS';
+          }
+        },
+        meridiemParse: /öö|ÖÖ|ös|ÖS/,
+        isPM: function isPM(input) {
+          return input === 'ös' || input === 'ÖS';
+        },
         longDateFormat: {
           LT: 'HH:mm',
           LTS: 'HH:mm:ss',
@@ -98663,7 +99903,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       var vi = moment.defineLocale('vi', {
         months: 'tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12'.split('_'),
-        monthsShort: 'Th01_Th02_Th03_Th04_Th05_Th06_Th07_Th08_Th09_Th10_Th11_Th12'.split('_'),
+        monthsShort: 'Thg 01_Thg 02_Thg 03_Thg 04_Thg 05_Thg 06_Thg 07_Thg 08_Thg 09_Thg 10_Thg 11_Thg 12'.split('_'),
         monthsParseExact: true,
         weekdays: 'chủ nhật_thứ hai_thứ ba_thứ tư_thứ năm_thứ sáu_thứ bảy'.split('_'),
         weekdaysShort: 'CN_T2_T3_T4_T5_T6_T7'.split('_'),
@@ -98902,6 +100142,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     //! locale : Chinese (China) [zh-cn]
     //! author : suupic : https://github.com/suupic
     //! author : Zeno Zeng : https://github.com/zenozeng
+    //! author : uu109 : https://github.com/uu109
     ;
 
     (function (global, factory) {
@@ -98964,9 +100205,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         calendar: {
           sameDay: '[今天]LT',
           nextDay: '[明天]LT',
-          nextWeek: '[下]ddddLT',
+          nextWeek: function nextWeek(now) {
+            if (now.week() !== this.week()) {
+              return '[下]dddLT';
+            } else {
+              return '[本]dddLT';
+            }
+          },
           lastDay: '[昨天]LT',
-          lastWeek: '[上]ddddLT',
+          lastWeek: function lastWeek(now) {
+            if (this.week() !== now.week()) {
+              return '[上]dddLT';
+            } else {
+              return '[本]dddLT';
+            }
+          },
           sameElse: 'L'
         },
         dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
@@ -99400,7 +100653,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* WEBPACK VAR INJECTION */
     (function (module) {
       var require; //! moment.js
-      //! version : 2.25.3
+      //! version : 2.27.0
       //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
       //! license : MIT
       //! momentjs.com
@@ -101896,8 +103149,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           for (i = 0; i < tokens.length; i++) {
             token = tokens[i];
-            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0]; // console.log('token', token, 'parsedInput', parsedInput,
-            //         'regex', getParseRegexForToken(token, config));
+            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
 
             if (parsedInput) {
               skipped = string.substr(0, string.indexOf(parsedInput));
@@ -104455,7 +105707,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           config._d = new Date(toInt(input));
         }); //! moment.js
 
-        hooks.version = '2.25.3';
+        hooks.version = '2.27.0';
         setHookCallback(createLocal);
         hooks.fn = proto;
         hooks.min = min;
