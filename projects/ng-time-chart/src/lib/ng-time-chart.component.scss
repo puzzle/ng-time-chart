@@ -190,6 +190,8 @@ $brand-danger: #399383;
   flex: auto;
   box-sizing: border-box;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .month:first-child {

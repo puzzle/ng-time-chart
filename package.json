@@ -11,7 +11,8 @@
     "copy:readme": "copyfiles ./README.md ./dist/ng-time-chart",
     "copy:license": "copyfiles ./LICENSE ./dist/ng-time-chart",
     "publish:showcase": "npx angular-cli-ghpages --dir=./dist/ng-time-chart",
-    "build:showcase": "ng build ng-time-chart-showcase --base-href='https://puzzle.github.io/ng-time-chart/'"
+    "build:showcase": "ng build ng-time-chart-showcase --base-href='https://puzzle.github.io/ng-time-chart/'",
+    "build:lib": "ng-packagr -p projects/ng-time-chart/package.json"
   },
   "private": false,
   "dependencies": {
