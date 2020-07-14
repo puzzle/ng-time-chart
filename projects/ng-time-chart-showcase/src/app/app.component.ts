@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Group } from '../../../ng-time-chart/src/lib/group';
+import {Component} from '@angular/core';
+import {Group} from '../../../ng-time-chart/src/lib/group';
 import * as moment from 'moment';
 import 'moment/locale/de-ch';
 
@@ -13,8 +13,8 @@ export class AppComponent {
 
   groups: Group[];
 
-  startDate = moment('2020-01-01');
-  endDate = moment('2020-12-31');
+  startDate = moment('2020-05-01');
+  endDate = moment('2020-08-31');
 
   constructor() {
     moment.locale('de-ch');
@@ -212,5 +212,13 @@ export class AppComponent {
         onClick: () => console.log('clicked')
       }
     ];
+  }
+
+  setStartDate(value: string) {
+    this.startDate = (!!value && value.length > 0) ? moment((value)) : null;
+  }
+
+  setEndDate(value: string) {
+    this.endDate = (!!value && value.length > 0) ? moment((value)) : null;
   }
 }

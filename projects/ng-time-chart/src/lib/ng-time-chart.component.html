@@ -2,7 +2,7 @@
   <div class="timetable-header"
        [style.width.px]="days.length * dayWidth">
     <div class="year-selector label-bar">
-      <div [style.visibility]="startDate && endDate ? 'hidden' : ''">
+      <div [style.visibility]="!startDate && !endDate ? '' : 'hidden'">
         <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear-1)">&lt; </h3>
         <h1 style="display: inline-block">{{currentYear}}</h1>
         <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear+1)"> &gt; </h3>

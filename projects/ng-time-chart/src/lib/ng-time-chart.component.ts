@@ -12,18 +12,34 @@ const moment = moment_;
 @Component({
   selector: 'ng-time-chart',
   templateUrl: './ng-time-chart.component.html',
-  styleUrls: ['./ng-time-chart.component.scss', './ng-time-chart.component.print.scss']
+  styleUrls: ['./ng-time-chart.component.scss']
 })
 export class NgTimeChartComponent implements OnInit, AfterViewInit {
 
   @Input()
   groups: Group[];
+  private _startDate?: moment_.Moment;
+  private _endDate?: moment_.Moment;
 
   @Input()
-  startDate: moment_.Moment;
+  set startDate(date: moment_.Moment) {
+    this._startDate = date;
+    this.changePeriod(this._startDate, this._endDate);
+  }
+
+  get startDate(): moment_.Moment {
+    return this._startDate;
+  }
 
   @Input()
-  endDate: moment_.Moment;
+  set endDate(date: moment_.Moment) {
+    this._endDate = date;
+    this.changePeriod(this._startDate, this._endDate);
+  }
+
+  get endDate(): moment_.Moment {
+    return this._endDate;
+  }
 
   @Output()
   yearChange: EventEmitter<number>;
@@ -198,11 +214,35 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
   changeYear(year: number) {
     this.yearChange.next(year);
     this.currentYear = year;
-    if (this.startDate && this.endDate) {
-      this.periodChange.next(new Period(this.startDate.hour(12), this.endDate.hour(23)));
-    } else {
+    if (!this._startDate && !this._endDate) {
       this.periodChange.next(new Period(moment(`${year}-01-01`).hour(12), moment(`${year}-12-31`).hour(23)));
+    } else {
+      this.changePeriod(this._startDate, this._endDate);
+      this.periodChange.next(new Period(this._startDate.hour(12), this._endDate.hour(23)));
     }
+  }
+
+  private changePeriod(startDate: moment_.Moment, endDate: moment_.Moment) {
+    if (startDate == null && endDate == null) {
+      console.log('start and endDate are null, nothing we can do here');
+      return;
+    }
+    let myStartDate;
+    if (startDate != null) {
+      myStartDate = startDate;
+    } else {
+      myStartDate = endDate.clone();
+      myStartDate.subtract(1, 'year');
+    }
+
+    let myEndDate;
+    if (endDate != null) {
+      myEndDate = endDate;
+    } else {
+      myEndDate = myStartDate.clone();
+      myEndDate.add(1, 'year');
+    }
+    this.periodChange.next(new Period(myStartDate.hour(12), myEndDate.hour(23)));
   }
 
   open(group: Group) {

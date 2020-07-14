@@ -61,7 +61,7 @@
 `ng-time-chart` takes all the available space from the parent element. If wrapped in a smaller element vertical and horizontal scrolling is available
 
 
-3. The visible period can be configured by setting endDate and startDate. Both dates have to be set. If dates are set, switching years is disabled.
+3. The visible period can be configured by setting endDate and startDate. If the values are changed the calendar will be redrawn. If a date is set, switching years is disabled.
 
 ```typescript
   startDate = moment('2019-10-10');
