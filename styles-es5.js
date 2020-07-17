@@ -16,13 +16,13 @@
 
     exports = ___CSS_LOADER_API_IMPORT___(true); // Module
 
-    exports.push([module.i, "/* You can add global styles to this file, and also import other style files */", "", {
+    exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n.my-class-a {\n  border-color: #CB561E;\n  background-color: #f2c1a9;\n}\n.my-class-a .blockade-day {\n  background-color: #CB561E;\n}", "", {
       "version": 3,
-      "sources": ["/home/runner/work/ng-time-chart/ng-time-chart/projects/ng-time-chart-showcase/src/styles.scss"],
+      "sources": ["/home/runner/work/ng-time-chart/ng-time-chart/projects/ng-time-chart-showcase/src/styles.scss", "styles.scss"],
       "names": [],
-      "mappings": "AAAA,8EAAA",
+      "mappings": "AAAA,8EAAA;AAEA;EACE,qBAAA;EACA,yBAAA;ACAF;ADEE;EACE,yBAAA;ACAJ",
       "file": "styles.scss",
-      "sourcesContent": ["/* You can add global styles to this file, and also import other style files */\n"]
+      "sourcesContent": ["/* You can add global styles to this file, and also import other style files */\n\n.my-class-a {\n  border-color: #CB561E;\n  background-color: lighten(#CB561E, 35%);\n\n  .blockade-day {\n    background-color: #CB561E;\n  }\n\n}\n", "/* You can add global styles to this file, and also import other style files */\n.my-class-a {\n  border-color: #CB561E;\n  background-color: #f2c1a9;\n}\n.my-class-a .blockade-day {\n  background-color: #CB561E;\n}"]
     }]); // Exports
 
     module.exports = exports;
