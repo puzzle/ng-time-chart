@@ -1,6 +1,11 @@
 {
   "name": "ng-time-chart-showcase",
-  "version": "0.0.0",
+  "version": "0.2.0",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puzzle/ng-time-chart.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

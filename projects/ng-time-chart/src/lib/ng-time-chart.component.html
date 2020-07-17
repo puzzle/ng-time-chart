@@ -44,10 +44,8 @@
       </div>
       <div class="items">
         <ng-container *ngFor="let item of group.items">
-          <div class="item"
+          <div class="item {{item.class}}"
                *ngIf="isInPeriod(item.startTime) || isInPeriod(item.endTime)"
-               [style.borderColor]="item.color || defaultColor"
-               [style.backgroundColor]="item.color || defaultColor"
                [style.left.px]="(getDayOfPeriod(item.startTime) * dayWidth)"
                [style.minWidth.px]="(getDuration(item) * dayWidth)"
                [style.maxWidth.px]="(getDuration(item) * dayWidth)"
@@ -57,7 +55,6 @@
                (click)="open(group)">
             <ng-container *ngFor="let day of item.dates">
               <div class="blockade-day day-width-1"
-                   [style.backgroundColor]="item.color || defaultColor"
                    *ngIf="isInPeriod(day)"
                    [style.left.px]="getDaysSince(item.startTime,day)*dayWidth">
                 &nbsp;
