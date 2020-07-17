@@ -5,5 +5,5 @@ export interface Item {
   startTime: moment.Moment;
   endTime: moment.Moment;
   dates?: moment.Moment[];
-  color?: string;
+  class?: string;
 }

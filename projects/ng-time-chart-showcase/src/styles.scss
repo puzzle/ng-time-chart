@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+.my-class-a {
+  border-color: #CB561E;
+  background-color: lighten(#CB561E, 35%);
+
+  .blockade-day {
+    background-color: #CB561E;
+  }
+
+}

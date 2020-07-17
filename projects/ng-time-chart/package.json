@@ -28,9 +28,7 @@
   },
   "ngPackage": {
     "dest": "../../dist/ng-time-chart",
-    "assets": [
-      "./styles/**/*.theme.scss"
-    ],
+    "assets": [],
     "lib": {
       "entryFile": "src/public-api.ts"
     }

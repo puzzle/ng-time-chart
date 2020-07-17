@@ -1,3 +1,5 @@
+@import "../styles/style";
+
 $day-width: 20px;
 $item-vertical-padding: 2px;
 $item-vertical-margin: 4px;
@@ -116,20 +118,32 @@ $brand-danger: #399383;
         }
       }
 
-      .SMALL_TYPE4 {
-        border-color: $brand-primary;
-        background-color: lighten($brand-primary, 35%);
+      .type-a {
+        border-color: $color-a;
+        background-color: lighten($color-a, 35%);
+        color: white;
+
+        .blockade-day {
+          background-color: $color-a;
+        }
       }
 
-      .BIG_TYPE5 {
-        border-color: $brand-info;
-        background-color: lighten($brand-info, 35%);
-        color: $gray-lighter;
+      .type-b {
+        border-color: $color-b;
+        background-color: lighten($color-b, 35%);
+
+        .blockade-day {
+          background-color: $color-b;
+        }
       }
 
-      .BIG_NVZ {
-        border-color: $brand-danger;
-        background-color: lighten($brand-danger, 35%);
+      .type-c {
+        border-color: $color-c;
+        background-color: lighten($color-c, 35%);
+
+        .blockade-day {
+          background-color: $color-c;
+        }
       }
 
       .blockade-day {
@@ -137,18 +151,6 @@ $brand-danger: #399383;
         display: inline-block;
         margin-top: -$item-vertical-padding;
         height: 100%;
-      }
-
-      .blockade-day.SMALL_TYPE4 {
-        background-color: $brand-primary
-      }
-
-      .blockade-day.BIG_TYPE5 {
-        background-color: $brand-info;
-      }
-
-      .blockade-day.BIG_NVZ {
-        background-color: $brand-danger;
       }
 
       .open-left {
