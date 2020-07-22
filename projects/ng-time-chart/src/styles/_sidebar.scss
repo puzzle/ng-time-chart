@@ -1,0 +1,9 @@
+@import "variables";
+
+.label-bar {
+  background-color: white;
+  z-index: 1000;
+  flex: 1 0 $sidebar-width;
+  min-width: $sidebar-width;
+  max-width: $sidebar-width;
+}
