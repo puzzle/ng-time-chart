@@ -1,9 +1,9 @@
 import {TestBed} from '@angular/core/testing';
 
 import {TiledLayoutService} from './tiled-layout.service';
-import {Item} from 'ng-timeline/lib/item';
 import * as moment from 'moment';
 import {LayoutService} from './layout.service';
+import {Item} from '../item';
 
 describe('TiledLayoutService', () => {
   let service: LayoutService;

@@ -1,7 +1,7 @@
-import { Item } from './item';
+import {Item} from './item';
 
 export interface Group {
   name: string;
   items: Item[];
-  onClick: () => void;
+  onClick?: () => void;
 }

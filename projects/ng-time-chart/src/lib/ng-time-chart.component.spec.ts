@@ -4,6 +4,7 @@ import {NgTimeChartComponent} from './ng-time-chart.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TimeChartDateFormatterPipe} from './pipes/time-chart-date-formatter.pipe';
 import * as moment from 'moment';
+import {TimeTableBodyComponent} from './time-table-body/time-table-body.component';
 
 describe('NgTimeChartComponent', () => {
   let component: NgTimeChartComponent;
@@ -13,6 +14,7 @@ describe('NgTimeChartComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         NgTimeChartComponent,
+        TimeTableBodyComponent,
         TimeChartDateFormatterPipe
       ],
       imports: [

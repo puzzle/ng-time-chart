@@ -1,8 +1,8 @@
 import {TestBed} from '@angular/core/testing';
 
 import {StackedLayoutService} from './stacked-layout.service';
-import {Item} from 'ng-timeline/lib/item';
 import * as moment from 'moment';
+import {Item} from '../item';
 
 describe('StackedLayoutService', () => {
   let service: StackedLayoutService;
@@ -45,5 +45,10 @@ describe('StackedLayoutService', () => {
     expect(ordered[0][0]).toEqual(item0);
     expect(ordered[1][0]).toEqual(item2);
     expect(ordered[2][0]).toEqual(item1);
+  });
+
+  it('should handle empty lists', () => {
+    const ordered = service.doLayout([]);
+    expect(ordered.length).toEqual(0);
   });
 });

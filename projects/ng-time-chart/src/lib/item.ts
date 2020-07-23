@@ -6,4 +6,5 @@ export interface Item {
   endTime: moment.Moment;
   dates?: moment.Moment[];
   class?: string;
+  onClick?: () => void;
 }

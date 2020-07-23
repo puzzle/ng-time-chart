@@ -35,7 +35,8 @@ export class AppComponent {
             name: 'Testitem 1',
             startTime: moment(`${this.currentYear}-03-25`),
             endTime: moment(`${this.currentYear}-03-30`),
-            class: 'type-b'
+            class: 'type-a',
+            onClick: () => alert('I was clicked 😊')
           },
           {
             name: 'Testitem 2',
@@ -113,7 +114,7 @@ export class AppComponent {
           {
             name: 'Testitem 1',
             startTime: moment(`${this.currentYear}-12-11`),
-            endTime: moment(`2021-03-02`)
+            endTime: moment(`${this.currentYear + 1}-03-02`)
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         onClick: () => console.log('clicked')
       },

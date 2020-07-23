@@ -40,11 +40,8 @@ class ItemOrder {
   }
 
   private getFreeQueue(date: moment_.Moment): Item[] {
-    // FIXME: code duplication
     if (this._queues.length === 0) {
-      const newQueue: Item[] = [];
-      this._queues.push(newQueue);
-      return newQueue;
+      return this.createNewSubQueue();
     }
 
     const queuesWithFreeSpace = this._queues.filter(queue => queue[queue.length - 1].endTime.isBefore(date));
@@ -52,6 +49,10 @@ class ItemOrder {
       return queuesWithFreeSpace[0];
     }
 
+    return this.createNewSubQueue();
+  }
+
+  private createNewSubQueue(): Item[] {
     const myQueue: Item[] = [];
     this._queues.push(myQueue);
     return myQueue;
