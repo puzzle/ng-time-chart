@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as moment_ from 'moment';
 import {map} from 'rxjs/operators';
 import {Period} from './period';
 import {Subject} from 'rxjs';
-import {Moment} from 'moment';
 import {Group} from './group';
-import {Item} from './item';
+import {Constants} from './constants';
+import {LayoutStrategy} from './layout/layout-selector.service';
 
 const moment = moment_;
 
@@ -14,12 +14,11 @@ const moment = moment_;
   templateUrl: './ng-time-chart.component.html',
   styleUrls: ['./ng-time-chart.component.scss']
 })
-export class NgTimeChartComponent implements OnInit, AfterViewInit {
+export class NgTimeChartComponent implements OnInit {
 
   @Input()
   groups: Group[];
-  private _startDate?: moment_.Moment;
-  private _endDate?: moment_.Moment;
+
 
   @Input()
   set startDate(date: moment_.Moment) {
@@ -41,32 +40,29 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
     return this._endDate;
   }
 
+  @Input()
+  layoutStrategy: LayoutStrategy;
+
   @Output()
-  yearChange: EventEmitter<number>;
+  readonly yearChange: EventEmitter<number>;
+  readonly periodChange: Subject<Period>;
 
-  @ViewChild('todaymarker') todayMarker;
-
-  periodChange: Subject<Period>;
+  private _startDate?: moment_.Moment;
+  private _endDate?: moment_.Moment;
 
   months: moment_.Moment[];
   weeks: moment_.Moment[];
   days: moment_.Moment[];
-  today: moment_.Moment;
+  readonly today: moment_.Moment;
   currentYear: number;
   period: Period;
 
-  defaultColor = '#dead00';
-  dayWidth = 20;
-  sidebarWidth = 200;
+  readonly DAY_WIDTH = Constants.DAY_WIDTH;
 
   constructor() {
     this.yearChange = new EventEmitter<number>();
     this.periodChange = new Subject<Period>();
     this.today = moment();
-  }
-
-  ngAfterViewInit(): void {
-    this.scrollTodayIntoView();
   }
 
   ngOnInit() {
@@ -88,7 +84,7 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
     this.changeYear(moment().year());
   }
 
-  isToday(day: Moment): boolean {
+  isToday(day: moment_.Moment): boolean {
     if (!this.isInPeriod(this.today)) {
       return false;
     }
@@ -96,7 +92,7 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
   }
 
   private enumerateMonths(period: Period): moment_.Moment[] {
-    function enumerate(currentDate: moment_.Moment, expanded: Moment[]) {
+    function enumerate(currentDate: moment_.Moment, expanded: moment_.Moment[]) {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
         expanded.push(currentDate.clone());
         const advanceDate = currentDate.clone().add(1, 'month');
@@ -109,7 +105,7 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
   }
 
   private enumerateWeeks(period: Period): moment_.Moment[] {
-    function enumerate(currentDate: moment_.Moment, expanded: Moment[]) {
+    function enumerate(currentDate: moment_.Moment, expanded: moment_.Moment[]) {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
         expanded.push(currentDate.clone().isoWeekday(1));
         const advanceDate = currentDate.clone().add(1, 'week');
@@ -167,25 +163,6 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
     return Math.ceil(lastDay.diff(firstDay, 'days', true));
   }
 
-  getDayOfPeriod(date: Moment): number {
-    if (!this.period.containsDate(date)) {
-      return 0;
-    }
-    return Math.round(date.diff(this.period.startDate, 'days', true));
-  }
-
-  getDaysSince(referenceDate: string | Moment, date: string | Moment): number {
-    const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
-    const myDate = this.getStartDateInCurrentPeriod(moment(date));
-    return Math.ceil(myDate.diff(moment(refDate), 'days', true));
-  }
-
-  getDuration(item: Item): number {
-    const startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);
-    const endDate = this.getEndDateCurrentPeriod(item.endTime).hour(12);
-    return Math.round(endDate.diff(startDate, 'days', true)) + 1;
-  }
-
   getOldPeriodDaysBeforeFirstWeek(): number {
     if (this.period.startDate.isoWeekday() <= 4) {
       return 0;
@@ -198,17 +175,8 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
     return difference > 0 ? difference : 0;
   }
 
-  isInPeriod(time: Moment): boolean {
+  isInPeriod(time: moment_.Moment): boolean {
     return this.period.containsDate(time);
-  }
-
-  startsBeforePeriod(time: Moment): boolean {
-    return !this.period.containsDate(time);
-  }
-
-  // TODO: Merge with startBeforePeriod and isInPeriod
-  endsAfterPeriod(time: Moment): boolean {
-    return !this.period.containsDate(time);
   }
 
   changeYear(year: number) {
@@ -243,31 +211,5 @@ export class NgTimeChartComponent implements OnInit, AfterViewInit {
       myEndDate.add(1, 'year');
     }
     this.periodChange.next(new Period(myStartDate.hour(12), myEndDate.hour(23)));
-  }
-
-  open(group: Group) {
-    group.onClick();
-  }
-
-  private getStartDateInCurrentPeriod(startDate: moment_.Moment) {
-    const date = startDate.clone();
-    if (date.isBefore(this.period.startDate)) {
-      return this.period.startDate.clone();
-    }
-    return date;
-  }
-
-  private getEndDateCurrentPeriod(endDate: moment_.Moment) {
-    const date = endDate.clone();
-    if (date.isAfter(this.period.endDate)) {
-      return this.period.endDate.clone();
-    }
-    return date;
-  }
-
-  private scrollTodayIntoView() {
-    if (!!this.todayMarker && this.isInPeriod(this.today)) {
-      this.todayMarker.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'center'});
-    }
   }
 }

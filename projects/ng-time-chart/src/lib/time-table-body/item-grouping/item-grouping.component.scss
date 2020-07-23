@@ -1,0 +1,86 @@
+@import "../../../styles/variables";
+@import "../../../styles/sidebar";
+
+.item-grouping {
+  display: flex;
+  flex-direction: column;
+
+  .items {
+    display: block;
+    height: 2.5em;
+
+    .item {
+      cursor: pointer;
+      position: absolute;
+      border-radius: 10px;
+      border-width: 2px;
+      border-style: solid;
+      text-align: center;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-top: $item-vertical-padding;
+      padding-bottom: $item-vertical-padding;
+      margin: 4px 0;
+      transition: 0.5s;
+      display: inline-block;
+
+      .blockade-title {
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .type-a {
+      border-color: $color-a;
+      background-color: lighten($color-a, 35%);
+      color: white;
+
+      .blockade-day {
+        background-color: $color-a;
+      }
+    }
+
+    .type-b {
+      border-color: $color-b;
+      background-color: lighten($color-b, 35%);
+
+      .blockade-day {
+        background-color: $color-b;
+      }
+    }
+
+    .type-c {
+      border-color: $color-c;
+      background-color: lighten($color-c, 35%);
+
+      .blockade-day {
+        background-color: $color-c;
+      }
+    }
+
+    .blockade-day {
+      position: absolute;
+      display: inline-block;
+      margin-top: -$item-vertical-padding;
+      height: 100%;
+    }
+
+    .open-left {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .open-right {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .item:hover {
+      filter: brightness(110%);
+      transform: scaleY(1.1);
+    }
+  }
+}

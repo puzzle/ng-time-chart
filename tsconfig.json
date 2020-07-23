@@ -24,7 +24,7 @@
       "ng-time-chart": [
         "dist/ng-time-chart"
       ],
-      "ng-timeline/*": [
+      "ng-time-chart/*": [
         "dist/ng-time-chart/*"
       ]
     }

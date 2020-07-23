@@ -1,17 +1,5 @@
-@import "../styles/style";
-
-$day-width: 20px;
-$item-vertical-padding: 2px;
-$item-vertical-margin: 4px;
-$sidebar-width: 200px;
-$header-height: 70px;
-$gray-dark: #888;
-$gray-base: #aaa;
-$gray-light: #ccc;
-$gray-lighter: #eee;
-$brand-info: #dead00;
-$brand-primary: #b00b1e;
-$brand-danger: #399383;
+@import "../styles/variables";
+@import "../styles/sidebar";
 
 .timetable {
   display: flex;
@@ -22,13 +10,6 @@ $brand-danger: #399383;
   overflow-y: auto;
 }
 
-.label-bar {
-  background-color: white;
-  z-index: 1000;
-  flex: 1 0 $sidebar-width;
-  min-width: $sidebar-width;
-  max-width: $sidebar-width;
-}
 
 .timetable-header {
   display: flex;
@@ -65,120 +46,6 @@ $brand-danger: #399383;
       rgba(255, 255, 255, 0.4) 100%);
 }
 
-.timetable-body {
-  padding-top: 0;
-  margin-top: 0;
-  margin-bottom: $item-vertical-margin;
-  position: relative;
-  z-index: 0;
-
-  .item-group {
-    display: flex;
-    flex-direction: row;
-
-
-    .item-label {
-      position: sticky;
-      left: 0;
-      flex: 1 0 $sidebar-width;
-      text-align: left;
-      color: $gray-base;
-      margin: 0;
-      padding-top: calc(#{$item-vertical-padding} + #{$item-vertical-margin} + 1px);
-      padding-bottom: calc(#{$item-vertical-padding} + #{$item-vertical-margin} + 1px);
-      z-index: 1000;
-    }
-
-    .items {
-      display: flex;
-      flex-direction: column;
-      border-top: solid 1px $gray-light;
-      width: 100%;
-
-      .item {
-        cursor: pointer;
-        position: relative;
-        border-radius: 10px;
-        border-width: 2px;
-        border-style: solid;
-        text-align: center;
-        font-weight: bold;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding-top: $item-vertical-padding;
-        padding-bottom: $item-vertical-padding;
-        margin: 4px 0;
-        transition: 0.5s;
-
-        .blockade-title {
-          position: relative;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-
-      .type-a {
-        border-color: $color-a;
-        background-color: lighten($color-a, 35%);
-        color: white;
-
-        .blockade-day {
-          background-color: $color-a;
-        }
-      }
-
-      .type-b {
-        border-color: $color-b;
-        background-color: lighten($color-b, 35%);
-
-        .blockade-day {
-          background-color: $color-b;
-        }
-      }
-
-      .type-c {
-        border-color: $color-c;
-        background-color: lighten($color-c, 35%);
-
-        .blockade-day {
-          background-color: $color-c;
-        }
-      }
-
-      .blockade-day {
-        position: absolute;
-        display: inline-block;
-        margin-top: -$item-vertical-padding;
-        height: 100%;
-      }
-
-      .open-left {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-
-      .open-right {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      .item:hover {
-        filter: brightness(110%);
-        transform: scaleY(1.1);
-      }
-    }
-  }
-
-  .item-group:first-child {
-    margin-top: 0;
-    padding-top: 0;
-  }
-
-  .item-group:nth-child(odd) {
-    background-color: $gray-lighter;
-  }
-}
 
 .months {
   display: flex;
@@ -252,16 +119,4 @@ $brand-danger: #399383;
 .today {
   background-color: $brand-primary;
   position: relative;
-}
-
-.today-marker {
-  width: 4px;
-  background-color: $brand-primary;
-  display: block;
-  border-left: solid white 1px;
-  border-right: solid white 1px;
-  box-sizing: content-box;
-  position: absolute;
-  top: -40px;
-  bottom: 0;
 }

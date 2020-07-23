@@ -1,18 +1,18 @@
 <div class="timetable">
   <div class="timetable-header"
-       [style.width.px]="days.length * dayWidth">
+       [style.width.px]="days.length * DAY_WIDTH">
     <div class="year-selector label-bar">
       <div [style.visibility]="!startDate && !endDate ? '' : 'hidden'">
         <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear-1)">&lt; </h3>
         <h1 style="display: inline-block">{{currentYear}}</h1>
-        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear+1)"> &gt; </h3>
+        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear+1)"> &gt;</h3>
       </div>
     </div>
     <div class="calendar-header"
-         [style.width.px]="days.length * dayWidth">
+         [style.width.px]="days.length * DAY_WIDTH">
       <div class="months">
         <div *ngFor="let month of months"
-             [style.width.px]="daysInMonth(month) * dayWidth"
+             [style.width.px]="daysInMonth(month) * DAY_WIDTH"
              class="month">
           {{month.format('MMMM YYYY')}}
         </div>
@@ -21,10 +21,10 @@
         <div class="weeks">
           <div class="week-offset"
                *ngIf="getOldPeriodDaysBeforeFirstWeek()>0"
-               [style.width.px]="getOldPeriodDaysBeforeFirstWeek() * dayWidth"></div>
+               [style.width.px]="getOldPeriodDaysBeforeFirstWeek() * DAY_WIDTH"></div>
           <div class="week"
                *ngFor="let week of weeks"
-               [style.width.px]="getLengthOfWeekInPeriod(week) * dayWidth">({{week.isoWeek()}}
+               [style.width.px]="getLengthOfWeekInPeriod(week) * DAY_WIDTH">({{week.isoWeek()}}
             ){{week.format('L')}}</div>
         </div>
       </div>
@@ -35,42 +35,9 @@
       </div>
     </div>
   </div>
-  <div class="timetable-body"
-       [style.minWidth.px]="days.length * dayWidth + sidebarWidth">
-    <div class="item-group"
-         *ngFor="let group of groups">
-      <div class="item-label label-bar">
-        {{group.name}}
-      </div>
-      <div class="items">
-        <ng-container *ngFor="let item of group.items">
-          <div class="item {{item.class}}"
-               *ngIf="isInPeriod(item.startTime) || isInPeriod(item.endTime)"
-               [style.left.px]="(getDayOfPeriod(item.startTime) * dayWidth)"
-               [style.minWidth.px]="(getDuration(item) * dayWidth)"
-               [style.maxWidth.px]="(getDuration(item) * dayWidth)"
-               [ngClass]="['lighten']"
-               [class.open-left]="startsBeforePeriod(item.startTime)"
-               [class.open-right]="endsAfterPeriod(item.endTime)"
-               (click)="open(group)">
-            <ng-container *ngFor="let day of item.dates">
-              <div class="blockade-day day-width-1"
-                   *ngIf="isInPeriod(day)"
-                   [style.left.px]="getDaysSince(item.startTime,day)*dayWidth">
-                &nbsp;
-              </div>
-            </ng-container>
-            <div class="blockade-title">
-              {{item.name}}
-              ({{item.startTime | timeChartDateFormatter}} - {{item.endTime | timeChartDateFormatter}})
-            </div>
-          </div>
-
-        </ng-container>
-      </div>
-    </div>
-    <div class="today-marker"
-         *ngIf="isInPeriod(this.today)"
-         [style.left.px]="(getDayOfPeriod(this.today) * dayWidth) + sidebarWidth + 7" #todaymarker></div>
-  </div>
+  <ng-time-table-body [groups]="groups"
+                      [today]="today"
+                      [period]="period"
+                      [days]="days"
+                      [layoutStrategy]="layoutStrategy"></ng-time-table-body>
 </div>

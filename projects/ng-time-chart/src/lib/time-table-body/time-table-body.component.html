@@ -1,0 +1,17 @@
+<div class="timetable-body"
+     [style.minWidth.px]="days.length * DAY_WIDTH + SIDEBAR_WIDTH">
+  <div class="item-group"
+       *ngFor="let group of groups">
+    <div class="item-label label-bar">
+      {{group.name}}
+    </div>
+    <div class="item-display">
+      <ng-container *ngFor="let itemGrouping of doLayout(group.items)">
+        <ng-item-grouping [itemGrouping]="itemGrouping" [period]="period"></ng-item-grouping>
+      </ng-container>
+    </div>
+  </div>
+  <div class="today-marker"
+       *ngIf="isInPeriod(this.today)"
+       [style.left.px]="(getDayOfPeriod(this.today) * DAY_WIDTH) + SIDEBAR_WIDTH + 7" #todaymarker></div>
+</div>
