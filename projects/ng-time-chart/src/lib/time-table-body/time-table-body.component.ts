@@ -5,7 +5,7 @@ import {Group} from '../group';
 import {Item} from '../item';
 import {Period} from '../period';
 import {LayoutSelectorService} from '../layout/layout-selector.service';
-import {LayoutStrategy} from 'ng-time-chart';
+import {LayoutStrategy} from '../layout/layout-strategy.enum';
 
 @Component({
   selector: 'ng-time-table-body',

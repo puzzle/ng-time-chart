@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {StackedLayoutService} from './stacked-layout.service';
 import {TiledLayoutService} from './tiled-layout.service';
 import {Item} from '../item';
-import {LayoutStrategy} from 'ng-time-chart';
+import {LayoutStrategy} from './layout-strategy.enum';
 
 @Injectable({
   providedIn: 'root'
