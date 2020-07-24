@@ -5,7 +5,7 @@ import {Period} from './period';
 import {Subject} from 'rxjs';
 import {Group} from './group';
 import {Constants} from './constants';
-import {LayoutStrategy} from './layout/layout-selector.service';
+import {LayoutStrategy} from 'ng-time-chart';
 
 const moment = moment_;
 

@@ -4,7 +4,8 @@ import * as moment_ from 'moment';
 import {Group} from '../group';
 import {Item} from '../item';
 import {Period} from '../period';
-import {LayoutSelectorService, LayoutStrategy} from '../layout/layout-selector.service';
+import {LayoutSelectorService} from '../layout/layout-selector.service';
+import {LayoutStrategy} from 'ng-time-chart';
 
 @Component({
   selector: 'ng-time-table-body',

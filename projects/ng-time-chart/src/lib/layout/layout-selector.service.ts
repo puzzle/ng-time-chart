@@ -2,17 +2,7 @@ import {Injectable} from '@angular/core';
 import {StackedLayoutService} from './stacked-layout.service';
 import {TiledLayoutService} from './tiled-layout.service';
 import {Item} from '../item';
-
-export enum LayoutStrategy {
-  /**
-   * Stack items one on top of the other
-   */
-  Stacked,
-  /**
-   * Try to tile items if their start and end dates do not overlap
-   */
-  Tiled
-}
+import {LayoutStrategy} from 'ng-time-chart';
 
 @Injectable({
   providedIn: 'root'
