@@ -34,7 +34,9 @@ export class TimeTableBodyComponent implements OnInit, AfterViewInit {
 
   @ViewChild('todaymarker') todayMarker;
 
+
   constructor(readonly layoutSelectorService: LayoutSelectorService) {
+    this.groups = [];
   }
 
   ngOnInit(): void {
@@ -60,7 +62,7 @@ export class TimeTableBodyComponent implements OnInit, AfterViewInit {
   }
 
   open(group: Group) {
-    group.onClick();
+    group.onClick?.apply(null);
   }
 
   private scrollTodayIntoView() {

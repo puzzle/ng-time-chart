@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@import "../styles/settings/variables";
 @import "../styles/sidebar";
 
 .timetable {
@@ -38,14 +38,6 @@
     background-color: white;
   }
 }
-
-.lighten {
-  background-image: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(255, 255, 255, 0.4) 100%);
-}
-
 
 .months {
   display: flex;

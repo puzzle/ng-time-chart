@@ -6,7 +6,6 @@
            [style.left.px]="(getDayOfPeriod(item.startTime) * DAY_WIDTH + SIDEBAR_WIDTH)"
            [style.minWidth.px]="(getDuration(item) * DAY_WIDTH)"
            [style.maxWidth.px]="(getDuration(item) * DAY_WIDTH)"
-           [ngClass]="['lighten']"
            [class.open-left]="isNotInPeriod(item.startTime)"
            [class.open-right]="isNotInPeriod(item.endTime)"
            (click)="open(item)">

@@ -1,4 +1,6 @@
 import * as moment_ from 'moment';
+import {max, min} from 'moment';
+
 const moment = moment_;
 
 export class Period {
@@ -62,6 +64,22 @@ export class Period {
 
   containsWeek(week: moment_.Moment): boolean {
     return this.containsDate(week) && this.containsDate(week.clone().add(7, 'days'));
+  }
+
+  public overlaps(period: Period): boolean {
+    return !!this.getOverlap(period);
+  }
+
+  private getOverlap(period: Period): Period {
+    const latestStart = max(this.startDate, period.startDate);
+    const earliestEnd = min(this.endDate, period.endDate);
+    if (!latestStart || !earliestEnd) {
+      return null;
+    }
+    if (latestStart.isAfter(earliestEnd)) {
+      return null;
+    }
+    return new Period(latestStart, earliestEnd);
   }
 
 }

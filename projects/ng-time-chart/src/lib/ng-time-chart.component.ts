@@ -18,7 +18,7 @@ export class NgTimeChartComponent implements OnInit {
 
   @Input()
   groups: Group[];
-
+  filteredGroups: Group[];
 
   @Input()
   set startDate(date: moment_.Moment) {
@@ -45,7 +45,8 @@ export class NgTimeChartComponent implements OnInit {
 
   @Output()
   readonly yearChange: EventEmitter<number>;
-  readonly periodChange: Subject<Period>;
+
+  readonly period$: Subject<Period>;
 
   private _startDate?: moment_.Moment;
   private _endDate?: moment_.Moment;
@@ -61,26 +62,30 @@ export class NgTimeChartComponent implements OnInit {
 
   constructor() {
     this.yearChange = new EventEmitter<number>();
-    this.periodChange = new Subject<Period>();
+    this.period$ = new Subject<Period>();
     this.today = moment();
-  }
 
-  ngOnInit() {
-    this.periodChange
+    this.period$
       .subscribe(period => this.period = period);
 
-    this.periodChange
+    this.period$
       .pipe(map(period => this.enumerateMonths(period)))
       .subscribe(months => this.months = months);
 
-    this.periodChange
+    this.period$
       .pipe(map(period => this.enumerateWeeks(period)))
       .subscribe(weeks => this.weeks = weeks);
 
-    this.periodChange
+    this.period$
       .pipe(map(period => this.enumerateDays(period)))
       .subscribe(days => this.days = days);
 
+    this.period$
+      .pipe(map(period => this.groups.filter(group => period.overlaps(group.duration))))
+      .subscribe(filtered => this.filteredGroups = filtered);
+  }
+
+  ngOnInit() {
     this.changeYear(moment().year());
   }
 
@@ -183,16 +188,15 @@ export class NgTimeChartComponent implements OnInit {
     this.yearChange.next(year);
     this.currentYear = year;
     if (!this._startDate && !this._endDate) {
-      this.periodChange.next(new Period(moment(`${year}-01-01`).hour(12), moment(`${year}-12-31`).hour(23)));
+      this.period$.next(new Period(moment(`${year}-01-01`).hour(12), moment(`${year}-12-31`).hour(23)));
     } else {
       this.changePeriod(this._startDate, this._endDate);
-      this.periodChange.next(new Period(this._startDate.hour(12), this._endDate.hour(23)));
+      this.period$.next(new Period(this._startDate.hour(12), this._endDate.hour(23)));
     }
   }
 
   private changePeriod(startDate: moment_.Moment, endDate: moment_.Moment) {
     if (startDate == null && endDate == null) {
-      console.log('start and endDate are null, nothing we can do here');
       return;
     }
     let myStartDate;
@@ -210,6 +214,6 @@ export class NgTimeChartComponent implements OnInit {
       myEndDate = myStartDate.clone();
       myEndDate.add(1, 'year');
     }
-    this.periodChange.next(new Period(myStartDate.hour(12), myEndDate.hour(23)));
+    this.period$.next(new Period(myStartDate.hour(0), myEndDate.hour(23)));
   }
 }

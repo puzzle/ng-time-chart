@@ -2,7 +2,7 @@
      [style.minWidth.px]="days.length * DAY_WIDTH + SIDEBAR_WIDTH">
   <div class="item-group"
        *ngFor="let group of groups">
-    <div class="item-label label-bar">
+    <div class="item-label label-bar" (click)="open(group)">
       {{group.name}}
     </div>
     <div class="item-display">
