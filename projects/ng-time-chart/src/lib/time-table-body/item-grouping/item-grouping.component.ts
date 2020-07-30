@@ -3,7 +3,7 @@ import {Period} from '../../period';
 import {Item} from '../../item';
 import * as moment_ from 'moment';
 import {Constants} from '../../constants';
-import {MomentUtilities} from '../../moment-utilities';
+import {max, min} from 'moment';
 
 const moment = moment_;
 
@@ -64,8 +64,8 @@ export class ItemGroupingComponent implements OnInit {
     if (!itemGrouping || itemGrouping.length === 0) {
       return false;
     }
-    const earliestDate = MomentUtilities.getLatestStart(itemGrouping);
-    const latestDate = MomentUtilities.getEarliestEnd(itemGrouping);
+    const earliestDate = min(itemGrouping.map(item => item.startTime));
+    const latestDate = max(itemGrouping.map(item => item.endTime));
     if (this.isInPeriod(earliestDate) || this.isInPeriod(latestDate)) {
       return true;
     }

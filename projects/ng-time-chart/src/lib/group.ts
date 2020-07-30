@@ -1,6 +1,6 @@
 import {Item} from './item';
 import {Period} from './period';
-import {MomentUtilities} from './moment-utilities';
+import * as moment from 'moment';
 
 export class Group {
   readonly name: string;
@@ -17,13 +17,12 @@ export class Group {
   }
 
   private static calculateDuration(items: Item[]) {
-    const startDate = MomentUtilities.getLatestStart(items);
-    const endDate = MomentUtilities.getEarliestEnd(items);
+    const startDate = moment.min(items.map(item => item.startTime));
+    const endDate = moment.max(items.map(item => item.endTime));
     if (!startDate || !endDate) {
       return null;
     }
     return new Period(startDate, endDate);
   }
-
 
 }

@@ -58,19 +58,23 @@ export class Period {
       .reduceRight((previousValue, currentValue) => previousValue + currentValue);
   }
 
-  containsDate(date: moment_.Moment): boolean {
+  public containsDate(date: moment_.Moment): boolean {
     return date.isSameOrAfter(this.startDate) && date.isSameOrBefore(this.endDate);
   }
 
-  containsWeek(week: moment_.Moment): boolean {
+  public containsWeek(week: moment_.Moment): boolean {
     return this.containsDate(week) && this.containsDate(week.clone().add(7, 'days'));
   }
 
-  public overlaps(period: Period): boolean {
-    return !!this.getOverlap(period);
+  public toString() {
+    return `Period (${this.startDate} - ${this.endDate})`;
   }
 
-  private getOverlap(period: Period): Period {
+  public overlaps(period: Period): boolean {
+    return !!this.intersect(period);
+  }
+
+  intersect(period: Period): Period {
     const latestStart = max(this.startDate, period.startDate);
     const earliestEnd = min(this.endDate, period.endDate);
     if (!latestStart || !earliestEnd) {

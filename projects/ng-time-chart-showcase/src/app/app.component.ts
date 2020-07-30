@@ -16,7 +16,8 @@ export class AppComponent {
   groups: Group[];
   startDate = moment(`${this.currentYear}-05-01`);
   endDate = moment(`${this.currentYear}-08-31`);
-  readonly layoutStrategy = LayoutStrategy.Tiled;
+  readonly tiledLayoutStrategy = LayoutStrategy.Tiled;
+  readonly stackedLayoutStrategy = LayoutStrategy.Stacked;
 
   constructor() {
     moment.locale('de-ch');

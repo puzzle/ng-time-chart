@@ -30,6 +30,9 @@
         position: relative;
         overflow: hidden;
         text-overflow: ellipsis;
+        :hover{
+          text-overflow: unset;
+        }
       }
     }
 
