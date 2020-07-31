@@ -1,5 +1,5 @@
 <div class="timetable-body"
-     [style.minWidth.px]="days.length * DAY_WIDTH + SIDEBAR_WIDTH">
+     [style.minWidth.px]="durationInDays * DAY_WIDTH + SIDEBAR_WIDTH">
   <div class="item-group"
        *ngFor="let group of groups">
     <div class="item-label label-bar" (click)="open(group)">
@@ -13,5 +13,5 @@
   </div>
   <div class="today-marker"
        *ngIf="isInPeriod(this.today)"
-       [style.left.px]="(getDayOfPeriod(this.today) * DAY_WIDTH) + SIDEBAR_WIDTH + 7" #todaymarker></div>
+       [style.left.px]="(getDayOfPeriod(this.today) * DAY_WIDTH) + SIDEBAR_WIDTH + 7"></div>
 </div>

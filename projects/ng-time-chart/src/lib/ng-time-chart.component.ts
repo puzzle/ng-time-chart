@@ -1,42 +1,41 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import * as moment_ from 'moment';
-import {map} from 'rxjs/operators';
+import {AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import * as moment from 'moment';
+import {filter, map} from 'rxjs/operators';
 import {Period} from './period';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {Group} from './group';
 import {Constants} from './constants';
 import {LayoutStrategy} from './layout/layout-strategy.enum';
 
-const moment = moment_;
-
 @Component({
   selector: 'ng-time-chart',
   templateUrl: './ng-time-chart.component.html',
-  styleUrls: ['./ng-time-chart.component.scss']
+  styleUrls: ['./ng-time-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgTimeChartComponent implements OnInit {
+export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
 
   @Input()
   groups: Group[];
-  filteredGroups: Group[];
+  filteredGroups$: Observable<Group[]>;
 
   @Input()
-  set startDate(date: moment_.Moment) {
+  set startDate(date: moment.Moment) {
     this._startDate = date;
     this.changePeriod(this._startDate, this._endDate);
   }
 
-  get startDate(): moment_.Moment {
+  get startDate(): moment.Moment {
     return this._startDate;
   }
 
   @Input()
-  set endDate(date: moment_.Moment) {
+  set endDate(date: moment.Moment) {
     this._endDate = date;
     this.changePeriod(this._startDate, this._endDate);
   }
 
-  get endDate(): moment_.Moment {
+  get endDate(): moment.Moment {
     return this._endDate;
   }
 
@@ -46,89 +45,95 @@ export class NgTimeChartComponent implements OnInit {
   @Output()
   readonly yearChange: EventEmitter<number>;
 
+  @ViewChild('todayMarker') todayMarker;
+
   readonly period$: Subject<Period>;
 
-  private _startDate?: moment_.Moment;
-  private _endDate?: moment_.Moment;
+  private _startDate?: moment.Moment;
+  private _endDate?: moment.Moment;
 
-  months: moment_.Moment[];
-  weeks: moment_.Moment[];
-  days: moment_.Moment[];
-  readonly today: moment_.Moment;
+  readonly months$: Observable<Period[]>;
+  readonly weeks$: Observable<Period[]>;
+  readonly days$: Observable<moment.Moment[]>;
+  readonly durationInDays$: Observable<number>;
+  readonly precedingPeriodDaysBeforeFirstWeek$: Observable<number>;
+  readonly today: moment.Moment;
   currentYear: number;
-  period: Period;
 
   readonly DAY_WIDTH = Constants.DAY_WIDTH;
 
   constructor() {
     this.yearChange = new EventEmitter<number>();
-    this.period$ = new Subject<Period>();
+    this.period$ = new BehaviorSubject<Period>(new Period(this._startDate, this._endDate));
     this.today = moment();
 
-    this.period$
-      .subscribe(period => this.period = period);
+    const periodChange$ = this.period$.asObservable().pipe(filter(period => period.isValid()));
 
-    this.period$
-      .pipe(map(period => this.enumerateMonths(period)))
-      .subscribe(months => this.months = months);
+    this.months$ = periodChange$.pipe(map(period => NgTimeChartComponent.enumerateMonths(period)));
+    this.weeks$ = periodChange$.pipe(map(period => NgTimeChartComponent.enumerateWeeks(period)));
+    this.days$ = periodChange$.pipe(map(period => NgTimeChartComponent.enumerateDays(period)));
+    this.durationInDays$ = this.days$.pipe(map(days => days.length));
+    this.precedingPeriodDaysBeforeFirstWeek$ = periodChange$.pipe(
+      map(period => NgTimeChartComponent.getOldPeriodDaysBeforeFirstWeek(period))
+    );
 
-    this.period$
-      .pipe(map(period => this.enumerateWeeks(period)))
-      .subscribe(weeks => this.weeks = weeks);
-
-    this.period$
-      .pipe(map(period => this.enumerateDays(period)))
-      .subscribe(days => this.days = days);
-
-    this.period$
-      .pipe(map(period => this.groups.filter(group => period.overlaps(group.duration))))
-      .subscribe(filtered => this.filteredGroups = filtered);
+    this.filteredGroups$ = this.period$
+      .pipe(map(period => this.groups.filter(group => period.overlaps(group.duration))));
   }
 
-  ngOnInit() {
-    this.changeYear(moment().year());
-  }
 
-  isToday(day: moment_.Moment): boolean {
-    if (!this.isInPeriod(this.today)) {
-      return false;
+  private static getOldPeriodDaysBeforeFirstWeek(period: Period): number {
+    if (!period.isValid()) {
+      return 0;
     }
-    return this.today.isSame(day, 'day');
+    if (period.startDate.isoWeekday() <= 4) {
+      return 0;
+    }
+    const weekStart = period.startDate.clone().isoWeekday(1);
+    if (!period.containsDate(weekStart)) {
+      weekStart.add(1, 'week');
+    }
+    const difference = Math.ceil(weekStart.diff(period.startDate, 'days', true));
+    return difference > 0 ? difference : 0;
   }
 
-  private enumerateMonths(period: Period): moment_.Moment[] {
-    function enumerate(currentDate: moment_.Moment, expanded: moment_.Moment[]) {
+  static enumerateMonths(period: Period): Period[] {
+    function enumerate(currentDate: moment.Moment, expanded: Period[]): Period[] {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
-        expanded.push(currentDate.clone());
+        const endDate = currentDate.clone().endOf('month');
+        expanded.push(new Period(currentDate, endDate));
         const advanceDate = currentDate.clone().add(1, 'month');
         enumerate(advanceDate, expanded);
       }
       return expanded;
     }
 
-    return enumerate(period.startDate.clone(), []);
+    return !period ? null : enumerate(period.startDate.clone(), []);
   }
 
-  private enumerateWeeks(period: Period): moment_.Moment[] {
-    function enumerate(currentDate: moment_.Moment, expanded: moment_.Moment[]) {
+  static enumerateWeeks(period: Period): Period[] {
+    function enumerate(currentDate: moment.Moment, expanded: Period[]): Period[] {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
-        expanded.push(currentDate.clone().isoWeekday(1));
+        const endDate = currentDate.clone().endOf('isoWeek');
+        const startDate = currentDate.clone().startOf('isoWeek');
+        const week = new Period(startDate, endDate);
+        expanded.push(period.intersect(week));
         const advanceDate = currentDate.clone().add(1, 'week');
         enumerate(advanceDate, expanded);
       }
       return expanded;
     }
 
-    function firstWeekInPeriod(): moment_.Moment {
-      const date = period.startDate.clone().isoWeekday(4);
+    function firstWeekInPeriod(): moment.Moment {
+      const date = period?.startDate.clone().isoWeekday(4);
       return period.containsDate(date) ? date : date.add(1, 'week');
     }
 
-    return enumerate(firstWeekInPeriod(), []);
+    return !period ? null : enumerate(firstWeekInPeriod(), []);
   }
 
-  private enumerateDays(period: Period): moment_.Moment[] {
-    function enumerate(currentDate: moment_.Moment, expanded: moment_.Moment[]) {
+  static enumerateDays(period: Period): moment.Moment[] {
+    function enumerate(currentDate: moment.Moment, expanded: moment.Moment[]) {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
         expanded.push(currentDate);
         const advanceDate = currentDate.clone().add(1, 'day');
@@ -137,51 +142,19 @@ export class NgTimeChartComponent implements OnInit {
       return expanded;
     }
 
-    return enumerate(period.startDate.clone(), []);
+    return !period ? null : enumerate(period.startDate.clone(), []);
   }
 
-  daysInMonth(month: any): number {
-    if (month && month.month() === this.period.startDate.month() && month.year() === this.period.startDate.year()) {
-      return month.daysInMonth() - this.period.startDate.date();
-    } else if (month && month.month() === this.period.endDate.month() && month.year() === this.period.endDate.year()) {
-      return this.period.endDate.date() + 1;
-    } else {
-      return month.daysInMonth();
-    }
+  ngAfterContentInit(): void {
+    this.changeYear(moment().year());
   }
 
-  getLengthOfWeekInPeriod(week: moment_.Moment): number {
-    if (this.period.containsWeek(week)) {
-      return 7;
-    }
-    let firstDay = week.clone();
-    if (!this.period.containsDate(firstDay)) {
-      firstDay = this.period.startDate.clone();
-    }
-    let lastDay = week.clone().add(7, 'days');
-    if (firstDay.isSameOrAfter(lastDay)) {
-      return 0;
-    }
-    if (!this.period.containsDate(lastDay)) {
-      lastDay = this.period.endDate.clone();
-    }
-    return Math.ceil(lastDay.diff(firstDay, 'days', true));
+  ngAfterViewInit() {
+    this.scrollTodayIntoView();
   }
 
-  getOldPeriodDaysBeforeFirstWeek(): number {
-    if (this.period.startDate.isoWeekday() <= 4) {
-      return 0;
-    }
-    const weekStart = this.period.startDate.clone().isoWeekday(1);
-    if (!this.period.containsDate(weekStart)) {
-      weekStart.add(1, 'week');
-    }
-    const difference = Math.ceil(weekStart.diff(this.period.startDate, 'days', true));
-    return difference > 0 ? difference : 0;
-  }
-
-  isInPeriod(time: moment_.Moment): boolean {
-    return this.period.containsDate(time);
+  isToday(day: moment.Moment): boolean {
+    return this.today.isSame(day, 'day');
   }
 
   changeYear(year: number) {
@@ -195,7 +168,7 @@ export class NgTimeChartComponent implements OnInit {
     }
   }
 
-  private changePeriod(startDate: moment_.Moment, endDate: moment_.Moment) {
+  private changePeriod(startDate: moment.Moment, endDate: moment.Moment) {
     if (startDate == null && endDate == null) {
       return;
     }
@@ -215,5 +188,11 @@ export class NgTimeChartComponent implements OnInit {
       myEndDate.add(1, 'year');
     }
     this.period$.next(new Period(myStartDate.hour(0), myEndDate.hour(23)));
+  }
+
+  private scrollTodayIntoView() {
+    if (!!this.todayMarker) {
+      this.todayMarker.nativeElement.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'});
+    }
   }
 }

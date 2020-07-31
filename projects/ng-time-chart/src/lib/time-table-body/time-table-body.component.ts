@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {Constants} from '../constants';
 import * as moment_ from 'moment';
 import {Group} from '../group';
@@ -12,7 +12,7 @@ import {LayoutStrategy} from '../layout/layout-strategy.enum';
   templateUrl: './time-table-body.component.html',
   styleUrls: ['./time-table-body.component.scss']
 })
-export class TimeTableBodyComponent implements OnInit, AfterViewInit {
+export class TimeTableBodyComponent {
 
   readonly DAY_WIDTH = Constants.DAY_WIDTH;
   readonly SIDEBAR_WIDTH = Constants.SIDEBAR_WIDTH;
@@ -27,7 +27,7 @@ export class TimeTableBodyComponent implements OnInit, AfterViewInit {
   today: moment_.Moment;
 
   @Input()
-  days: moment_.Moment[];
+  durationInDays: number;
 
   @Input()
   layoutStrategy: LayoutStrategy;
@@ -37,13 +37,6 @@ export class TimeTableBodyComponent implements OnInit, AfterViewInit {
 
   constructor(readonly layoutSelectorService: LayoutSelectorService) {
     this.groups = [];
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    this.scrollTodayIntoView();
   }
 
   doLayout(items: Item[]): Item[][] {
@@ -63,11 +56,5 @@ export class TimeTableBodyComponent implements OnInit, AfterViewInit {
 
   open(group: Group) {
     group.onClick?.apply(null);
-  }
-
-  private scrollTodayIntoView() {
-    if (!!this.todayMarker && this.isInPeriod(this.today)) {
-      this.todayMarker.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'center'});
-    }
   }
 }

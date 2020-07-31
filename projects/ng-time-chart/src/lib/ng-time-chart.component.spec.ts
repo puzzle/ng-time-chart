@@ -38,33 +38,50 @@ describe('NgTimeChartComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change period with new start date', () => {
-    component.setStartDate(moment('2020-04-23'));
-    fixture.detectChanges();
-    const days = component.ngTimeChartComponent.days;
-    expect(moment('2020-04-23').isSame(days[0], 'day')).toBeTrue();
-    expect(days.length).toEqual(366, 'Should generate 365 days');
-    expect(moment('2021-04-23').isSame(days[days.length - 1], 'day'))
-      .toBeTruthy(`${days[days.length - 1]} should be '2021-04-23'`);
+  it('should enumerate months', () => {
+    const period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    const months = NgTimeChartComponent.enumerateMonths(period);
+    expect(months.length).toEqual(12, 'Should enumerate 12 months');
+    expect(months[0].startDate.isSame(period.startDate, 'day'))
+      .toBeTruthy(`Expected first day of first month to be 2020-01-01 but was ${months[0].startDate}`);
+    expect(months[11].endDate.isSame(period.endDate, 'day'))
+      .toBeTruthy(`Expected last day of last month to be 2020-012-31 but was ${months[11].endDate}`);
   });
 
-  it('should change period with new end date', () => {
-    component.setEndDate(moment('2020-04-23'));
-    fixture.detectChanges();
-    const days = component.ngTimeChartComponent.days;
-    expect(moment('2019-04-23').isSame(days[0], 'day'))
-      .toBeTruthy(`${days[0]} should be '2019-04-23'`);
-    expect(moment('2020-04-23').isSame(days[days.length - 1], 'day'))
-      .toBeTruthy(`${days[days.length - 1]} should be '2020-04-23'`);
+  it('should handle empty periods when enumerating months', () => {
+    const months = NgTimeChartComponent.enumerateMonths(null);
+    expect(months).toBeNull();
   });
 
-  it('should use the current year if no start and end dates are set', ()=>{
-    const days = component.ngTimeChartComponent.days;
-    expect(moment('2020-01-01').isSame(days[0], 'day')).toBeTrue();
-    expect(days.length).toEqual(366, 'Should generate 365 days');
-    expect(moment('2020-12-31').isSame(days[days.length - 1], 'day'))
-      .toBeTruthy(`${days[days.length - 1]} should be '2020-12-31'`);
-  })
+  it('should enumerate weeks', () => {
+    const period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    const weeks = NgTimeChartComponent.enumerateWeeks(period);
+    expect(weeks.length).toEqual(53, 'Should enumerate 53 weeks');
+    expect(weeks[0].startDate.isSame(moment('2020-01-01'), 'day'))
+      .toBeTruthy(`Expected first day of first week to be 2020-01-01 but was ${weeks[0].startDate}`);
+    expect(weeks[52].endDate.isSame(moment('2020-12-31'), 'day'))
+      .toBeTruthy(`Expected last day of last week to be 2020-12-31 but was ${weeks[52].endDate}`);
+  });
+
+  it('should handle empty periods when enumerating weeks', () => {
+    const weeks = NgTimeChartComponent.enumerateWeeks(null);
+    expect(weeks).toBeNull();
+  });
+
+  it('should enumerate days', () => {
+    const period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    const days = NgTimeChartComponent.enumerateDays(period);
+    expect(days.length).toEqual(366);
+    expect(days[0].isSame(moment('2020-01-01'), 'day'))
+      .toBeTruthy(`Expected first day to be 2020-01-01 but was ${days[0]}`);
+    expect(days[days.length - 1].isSame(moment('2020-12-31'), 'day'))
+      .toBeTruthy(`Expected last day to be 2020-12-31 but was ${days[days.length - 1]}`);
+  });
+
+  it('should handle empty periods when enumerating days', () => {
+    const days = NgTimeChartComponent.enumerateDays(null);
+    expect(days).toBeNull();
+  });
 
   @Component({
     selector: 'ng-host-component',
