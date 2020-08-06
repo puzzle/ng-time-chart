@@ -1,6 +1,6 @@
 {
   "name": "ng-time-chart-showcase",
-  "version": "0.4.1",
+  "version": "0.4.2-SNAPSHOT",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "copy:license": "copyfiles ./LICENSE ./dist/ng-time-chart",
     "publish:showcase": "npx angular-cli-ghpages --dir=./dist/ng-time-chart",
     "build:showcase": "ng build ng-time-chart-showcase --base-href='https://puzzle.github.io/ng-time-chart/'",
-    "build:lib": "ng-packagr -p projects/ng-time-chart/package.json"
+    "build:lib": "ng-packagr -p projects/ng-time-chart/package.json && npm run copy:readme && npm run copy:license"
   },
   "private": false,
   "dependencies": {
@@ -50,13 +50,14 @@
     "copyfiles": "^2.2.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.2",
+    "jasmine-marbles": "^0.6.0",
     "karma": "~5.0.5",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "^3.0.2",
     "karma-jasmine": "~3.1.1",
     "karma-jasmine-html-reporter": "^1.5.3",
     "ng-packagr": "^9.0.0",
-    "protractor": "^5.4.4",
+    "protractor": "^7.0.0",
     "ts-node": "~8.10.1",
     "tslint": "~6.1.2",
     "typescript": "~3.8.3"

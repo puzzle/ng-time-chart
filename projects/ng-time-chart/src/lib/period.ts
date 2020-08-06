@@ -1,10 +1,11 @@
-import * as moment_ from 'moment';
-const moment = moment_;
+import * as moment from 'moment';
+import {max, min} from 'moment';
+
 
 export class Period {
 
-  private readonly _startDate: moment_.Moment;
-  private readonly _endDate: moment_.Moment;
+  private readonly _startDate: moment.Moment;
+  private readonly _endDate: moment.Moment;
 
   private static splitAtNewYear(period: Period): Period[] {
     const periods: Period[] = [];
@@ -17,16 +18,16 @@ export class Period {
     return periods;
   }
 
-  constructor(startDate: moment_.Moment, endDate: moment_.Moment) {
-    this._startDate = startDate.clone();
-    this._endDate = endDate.clone();
+  constructor(startDate: moment.Moment, endDate: moment.Moment) {
+    this._startDate = startDate?.clone();
+    this._endDate = endDate?.clone();
   }
 
-  get startDate(): moment_.Moment {
+  get startDate(): moment.Moment {
     return this._startDate;
   }
 
-  get endDate(): moment_.Moment {
+  get endDate(): moment.Moment {
     return this._endDate;
   }
 
@@ -56,12 +57,32 @@ export class Period {
       .reduceRight((previousValue, currentValue) => previousValue + currentValue);
   }
 
-  containsDate(date: moment_.Moment): boolean {
+  public isValid(): boolean {
+    return !!this.startDate && !!this.endDate && this.startDate.isBefore(this.endDate);
+  }
+
+  public containsDate(date: moment.Moment): boolean {
     return date.isSameOrAfter(this.startDate) && date.isSameOrBefore(this.endDate);
   }
 
-  containsWeek(week: moment_.Moment): boolean {
-    return this.containsDate(week) && this.containsDate(week.clone().add(7, 'days'));
+  public toString() {
+    return `Period (${this.startDate} - ${this.endDate})`;
+  }
+
+  public overlaps(period: Period): boolean {
+    return !!this.intersect(period);
+  }
+
+  intersect(period: Period): Period {
+    const latestStart = max(this.startDate, period.startDate);
+    const earliestEnd = min(this.endDate, period.endDate);
+    if (!latestStart || !earliestEnd) {
+      return null;
+    }
+    if (latestStart.isAfter(earliestEnd)) {
+      return null;
+    }
+    return new Period(latestStart, earliestEnd);
   }
 
 }

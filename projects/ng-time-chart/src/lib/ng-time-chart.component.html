@@ -1,6 +1,6 @@
 <div class="timetable">
   <div class="timetable-header"
-       [style.width.px]="days.length * DAY_WIDTH">
+       [style.width.px]="(durationInDays$ | async) * DAY_WIDTH">
     <div class="year-selector label-bar">
       <div [style.visibility]="!startDate && !endDate ? '' : 'hidden'">
         <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear-1)">&lt; </h3>
@@ -9,35 +9,42 @@
       </div>
     </div>
     <div class="calendar-header"
-         [style.width.px]="days.length * DAY_WIDTH">
+         [style.width.px]="(durationInDays$ | async) * DAY_WIDTH">
       <div class="months">
-        <div *ngFor="let month of months"
-             [style.width.px]="daysInMonth(month) * DAY_WIDTH"
+        <div *ngFor="let month of months$ | async"
+             [style.width.px]="month.days * DAY_WIDTH"
              class="month">
-          {{month.format('MMMM YYYY')}}
+          {{month.startDate.format('MMMM YYYY')}}
         </div>
       </div>
       <div class="week-bar">
         <div class="weeks">
           <div class="week-offset"
-               *ngIf="getOldPeriodDaysBeforeFirstWeek()>0"
-               [style.width.px]="getOldPeriodDaysBeforeFirstWeek() * DAY_WIDTH"></div>
+               *ngIf="(precedingPeriodDaysBeforeFirstWeek$ |async)>0"
+               [style.width.px]="(precedingPeriodDaysBeforeFirstWeek$ | async) * DAY_WIDTH"></div>
           <div class="week"
-               *ngFor="let week of weeks"
-               [style.width.px]="getLengthOfWeekInPeriod(week) * DAY_WIDTH">({{week.isoWeek()}}
-            ){{week.format('L')}}</div>
+               *ngFor="let week of weeks$ | async"
+               [style.width.px]="week.days * DAY_WIDTH">({{week.startDate.isoWeek()}}
+            ){{week.startDate.startOf('isoWeek').format('L')}}</div>
         </div>
       </div>
       <div class="days">
-        <div class="day" [ngClass]="{'today': isToday(day)}" *ngFor="let day of days">
-          {{day.format('dd')}}
-        </div>
+        <ng-container *ngFor="let day of days$ | async">
+          <div class="day today" *ngIf="isToday(day); else normalDay" [ngClass]="{'today': isToday(day)}" #todayMarker>
+            {{day.format('dd')}}
+          </div>
+          <ng-template #normalDay>
+            <div class="day">
+              {{day.format('dd')}}
+            </div>
+          </ng-template>
+        </ng-container>
       </div>
     </div>
   </div>
-  <ng-time-table-body [groups]="groups"
+  <ng-time-table-body [groups]="filteredGroups$ | async"
                       [today]="today"
-                      [period]="period"
-                      [days]="days"
+                      [period]="period$ | async"
+                      [durationInDays]="durationInDays$ | async"
                       [layoutStrategy]="layoutStrategy"></ng-time-table-body>
 </div>

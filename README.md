@@ -1,6 +1,7 @@
 # NgTimeChart
 
 * A library to display durations in a horizontally scrolling calendar. Similar to a Gantt-chart.
+* Groups with no active dates in the selected time period are filtered out
 * Durations are part of groups and are displayed together
 * Durations can have 'active' days which are displayed in a darker color
 * Colors can be configured
@@ -26,9 +27,9 @@
 
 **2.1 create a group**
 ```typescript
-{
-        name: 'Group',
-        items: [
+new Group(
+        'Group 0',
+        [
           {
             name: 'Timeframe with 4 active days and color set',
             startTime: moment('2019-02-12'),
@@ -47,20 +48,31 @@
             endTime: moment('2019-03-02')
           }
         ],
-        onClick: () => console.log('clicked'),
-      }
+        () => console.log('clicked'),
+      )
 ```
 
-**2.2 Add HTML Code**
+**2.2 Pick a layout strategy**
+The items within a group can be laid out using two different methods:
+- **Stacked**: Items in a group are stacked in the order that they are in the group. Every item has its own row.
+- **Tiled**: If possible, items of a group are displayed in the same row. This does not preserve the order of the items in the group but saves on space.
+
+Select the appropriate LayoutStrategy by either passing `LayoutStrategy.Stacked` or `LayoutStrategy.Tiled` to ng-time-chart.
+
+```typescript
+public layoutStrategy: LayoutStrategy = LayoutStrategy.Tiled
+```
+
+**2.3 Add HTML Code**
 ```angular2html
-<ng-time-chart [groups]="groups">
+<ng-time-chart [groups]="groups" [layoutStrategy]="layoutStrategy">
 
 </ng-time-chart>
 ```
 
 `ng-time-chart` takes all the available space from the parent element. If wrapped in a smaller element vertical and horizontal scrolling is available
 
-**2.3 Add scss style**
+**2.4 Add scss style**
 
 In your `styles.scss`, add the style definition for the classes you have added in the item.
 ```scss
