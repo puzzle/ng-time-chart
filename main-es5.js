@@ -386,6 +386,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 
+    var moment = moment__WEBPACK_IMPORTED_MODULE_1__;
+
     var Group = /*#__PURE__*/function () {
       function Group(name, items) {
         var onClick = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
@@ -401,10 +403,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(Group, null, [{
         key: "calculateDuration",
         value: function calculateDuration(items) {
-          var startDate = moment__WEBPACK_IMPORTED_MODULE_1__["min"](items.map(function (item) {
+          var startDate = moment.min(items.map(function (item) {
             return item.startTime;
           }));
-          var endDate = moment__WEBPACK_IMPORTED_MODULE_1__["max"](items.map(function (item) {
+          var endDate = moment.max(items.map(function (item) {
             return item.endTime;
           }));
 
@@ -960,6 +962,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
+    var moment = moment__WEBPACK_IMPORTED_MODULE_1__;
+
     var NgTimeChartComponent = /*#__PURE__*/function () {
       function NgTimeChartComponent() {
         var _this = this;
@@ -969,7 +973,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_5__["Constants"].DAY_WIDTH;
         this.yearChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.period$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](this._startDate, this._endDate));
-        this.today = moment__WEBPACK_IMPORTED_MODULE_1__();
+        this.today = moment();
         var periodChange$ = this.period$.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (period) {
           return period.isValid();
         }));
@@ -998,7 +1002,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(NgTimeChartComponent, [{
         key: "ngAfterContentInit",
         value: function ngAfterContentInit() {
-          this.changeYear(moment__WEBPACK_IMPORTED_MODULE_1__().year());
+          this.changeYear(moment().year());
         }
       }, {
         key: "ngAfterViewInit",
@@ -1017,7 +1021,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.currentYear = year;
 
           if (!this._startDate && !this._endDate) {
-            this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](moment__WEBPACK_IMPORTED_MODULE_1__("".concat(year, "-01-01")).hour(12), moment__WEBPACK_IMPORTED_MODULE_1__("".concat(year, "-12-31")).hour(23)));
+            this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](moment("".concat(year, "-01-01")).hour(12), moment("".concat(year, "-12-31")).hour(23)));
           } else {
             this.changePeriod(this._startDate, this._endDate);
             this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](this._startDate.hour(12), this._endDate.hour(23)));
@@ -1475,6 +1479,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 
+    var moment = moment__WEBPACK_IMPORTED_MODULE_0__;
+
     var Period = /*#__PURE__*/function () {
       function Period(startDate, endDate) {
         _classCallCheck(this, Period);
@@ -1568,8 +1574,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var periods = [];
 
           if (period.endDate.year() > period.startDate.year()) {
-            periods.push(new Period(period.startDate.clone(), moment__WEBPACK_IMPORTED_MODULE_0__("".concat(period.startDate.year(), "-12-31"))));
-            periods.push.apply(periods, _toConsumableArray(Period.splitAtNewYear(new Period(moment__WEBPACK_IMPORTED_MODULE_0__("".concat(period.endDate.year(), "-01-01")), period.endDate.clone()))));
+            periods.push(new Period(period.startDate.clone(), moment("".concat(period.startDate.year(), "-12-31"))));
+            periods.push.apply(periods, _toConsumableArray(Period.splitAtNewYear(new Period(moment("".concat(period.endDate.year(), "-01-01")), period.endDate.clone()))));
           } else {
             periods.push(period);
           }
@@ -2523,191 +2529,193 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/router */
     "../../node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
+    var moment = moment__WEBPACK_IMPORTED_MODULE_1__;
+
     var AppComponent = /*#__PURE__*/function () {
       function AppComponent() {
         _classCallCheck(this, AppComponent);
 
-        this.currentYear = moment__WEBPACK_IMPORTED_MODULE_1__().year();
+        this.currentYear = moment().year();
         this.title = 'NgTimeChartLibrary';
-        this.startDate = moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-05-01"));
-        this.endDate = moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-08-31"));
+        this.startDate = moment("".concat(this.currentYear, "-05-01"));
+        this.endDate = moment("".concat(this.currentYear, "-08-31"));
         this.tiledLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_4__["LayoutStrategy"].Tiled;
         this.stackedLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_4__["LayoutStrategy"].Stacked;
-        moment__WEBPACK_IMPORTED_MODULE_1__["locale"]('de-ch');
+        moment.locale('de-ch');
         this.groups = [new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 0', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-02-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-03-23")),
+          startTime: moment("".concat(this.currentYear, "-02-12")),
+          endTime: moment("".concat(this.currentYear, "-03-23")),
           "class": 'type-b'
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-03-25")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-03-30")),
+          startTime: moment("".concat(this.currentYear, "-03-25")),
+          endTime: moment("".concat(this.currentYear, "-03-30")),
           "class": 'type-a',
           onClick: function onClick() {
             return alert('I was clicked 😊');
           }
         }, {
           name: 'Testitem 2',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-01")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-07")),
+          startTime: moment("".concat(this.currentYear, "-04-01")),
+          endTime: moment("".concat(this.currentYear, "-04-07")),
           "class": 'type-b'
         }, {
           name: 'Testitem 3',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-08")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-12")),
+          startTime: moment("".concat(this.currentYear, "-04-08")),
+          endTime: moment("".concat(this.currentYear, "-04-12")),
           "class": 'type-b'
         }, {
           name: 'Testitem 4',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-02")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-05")),
+          startTime: moment("".concat(this.currentYear, "-04-02")),
+          endTime: moment("".concat(this.currentYear, "-04-05")),
           "class": 'type-b'
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return alert('Group clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 1', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-02-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-05-23"))
+          startTime: moment("".concat(this.currentYear, "-02-12")),
+          endTime: moment("".concat(this.currentYear, "-05-23"))
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-05-02"))
+          startTime: moment("".concat(this.currentYear, "-04-11")),
+          endTime: moment("".concat(this.currentYear, "-05-02"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 2', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-07-23"))
+          startTime: moment("".concat(this.currentYear, "-06-12")),
+          endTime: moment("".concat(this.currentYear, "-07-23"))
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 1, "-08-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-09-02"))
+          startTime: moment("".concat(this.currentYear - 1, "-08-11")),
+          endTime: moment("".concat(this.currentYear, "-09-02"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 3', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-09-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-10-23"))
+          startTime: moment("".concat(this.currentYear, "-09-12")),
+          endTime: moment("".concat(this.currentYear, "-10-23"))
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-10-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-11-02"))
+          startTime: moment("".concat(this.currentYear, "-10-11")),
+          endTime: moment("".concat(this.currentYear, "-11-02"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 4', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-02-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-05-23"))
+          startTime: moment("".concat(this.currentYear, "-02-12")),
+          endTime: moment("".concat(this.currentYear, "-05-23"))
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-12-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear + 1, "-03-02"))
+          startTime: moment("".concat(this.currentYear, "-12-11")),
+          endTime: moment("".concat(this.currentYear + 1, "-03-02"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 5', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-03-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-03-23"))
+          startTime: moment("".concat(this.currentYear, "-03-12")),
+          endTime: moment("".concat(this.currentYear, "-03-23"))
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-03-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-02"))
+          startTime: moment("".concat(this.currentYear, "-03-11")),
+          endTime: moment("".concat(this.currentYear, "-04-02"))
         }, {
           name: 'Testitem 2',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-01")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-04"))
+          startTime: moment("".concat(this.currentYear, "-04-01")),
+          endTime: moment("".concat(this.currentYear, "-04-04"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 6', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-07-23")),
+          startTime: moment("".concat(this.currentYear, "-06-12")),
+          endTime: moment("".concat(this.currentYear, "-07-23")),
           "class": 'type-c'
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 1, "-08-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-09-02")),
+          startTime: moment("".concat(this.currentYear - 1, "-08-11")),
+          endTime: moment("".concat(this.currentYear, "-09-02")),
           "class": 'type-a'
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 7', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 1, "-09-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 1, "-10-23")),
+          startTime: moment("".concat(this.currentYear - 1, "-09-12")),
+          endTime: moment("".concat(this.currentYear - 1, "-10-23")),
           "class": 'my-class-a'
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 2, "-10-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 1, "-11-02")),
+          startTime: moment("".concat(this.currentYear - 2, "-10-11")),
+          endTime: moment("".concat(this.currentYear - 1, "-11-02")),
           "class": 'my-class-a'
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 8', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-02-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-23"))
+          startTime: moment("".concat(this.currentYear, "-02-12")),
+          endTime: moment("".concat(this.currentYear, "-04-23"))
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-05-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-02"))
+          startTime: moment("".concat(this.currentYear, "-05-11")),
+          endTime: moment("".concat(this.currentYear, "-06-02"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 9', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-02-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-05-23")),
-          dates: [moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-11")), moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-12"))]
+          startTime: moment("".concat(this.currentYear, "-02-12")),
+          endTime: moment("".concat(this.currentYear, "-05-23")),
+          dates: [moment("".concat(this.currentYear, "-04-11")), moment("".concat(this.currentYear, "-04-12"))]
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-04-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-05-02"))
+          startTime: moment("".concat(this.currentYear, "-04-11")),
+          endTime: moment("".concat(this.currentYear, "-05-02"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 10', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-07-23")),
+          startTime: moment("".concat(this.currentYear, "-06-12")),
+          endTime: moment("".concat(this.currentYear, "-07-23")),
           "class": 'type-a',
-          dates: [moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-18")), moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-19")), moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-23")), moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-06-24"))]
+          dates: [moment("".concat(this.currentYear, "-06-18")), moment("".concat(this.currentYear, "-06-19")), moment("".concat(this.currentYear, "-06-23")), moment("".concat(this.currentYear, "-06-24"))]
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 1, "-08-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-09-02")),
+          startTime: moment("".concat(this.currentYear - 1, "-08-11")),
+          endTime: moment("".concat(this.currentYear, "-09-02")),
           "class": 'type-a'
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 11', [{
           name: 'Testitem 0',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-09-12")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("2021-01-23")
+          startTime: moment("".concat(this.currentYear, "-09-12")),
+          endTime: moment("2021-01-23")
         }, {
           name: 'Testitem 1',
-          startTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear - 1, "-10-11")),
-          endTime: moment__WEBPACK_IMPORTED_MODULE_1__("".concat(this.currentYear, "-11-02"))
+          startTime: moment("".concat(this.currentYear - 1, "-10-11")),
+          endTime: moment("".concat(this.currentYear, "-11-02"))
         }].sort(function (a, b) {
-          return moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds();
+          return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
           return console.log('clicked');
         })];
@@ -2716,12 +2724,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AppComponent, [{
         key: "setStartDate",
         value: function setStartDate(value) {
-          this.startDate = !!value && value.length > 0 ? moment__WEBPACK_IMPORTED_MODULE_1__(value) : null;
+          this.startDate = !!value && value.length > 0 ? moment(value) : null;
         }
       }, {
         key: "setEndDate",
         value: function setEndDate(value) {
-          this.endDate = !!value && value.length > 0 ? moment__WEBPACK_IMPORTED_MODULE_1__(value) : null;
+          this.endDate = !!value && value.length > 0 ? moment(value) : null;
         }
       }]);
 

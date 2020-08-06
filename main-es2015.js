@@ -331,6 +331,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 
 
+const moment = moment__WEBPACK_IMPORTED_MODULE_1__;
 class Group {
     constructor(name, items, onClick = () => {
     }) {
@@ -340,8 +341,8 @@ class Group {
         this.onClick = onClick;
     }
     static calculateDuration(items) {
-        const startDate = moment__WEBPACK_IMPORTED_MODULE_1__["min"](items.map(item => item.startTime));
-        const endDate = moment__WEBPACK_IMPORTED_MODULE_1__["max"](items.map(item => item.endTime));
+        const startDate = moment.min(items.map(item => item.startTime));
+        const endDate = moment.max(items.map(item => item.endTime));
         if (!startDate || !endDate) {
             return null;
         }
@@ -615,12 +616,13 @@ function NgTimeChartComponent_ng_container_23_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r3.isToday(day_r6))("ngIfElse", _r8);
 } }
+const moment = moment__WEBPACK_IMPORTED_MODULE_1__;
 class NgTimeChartComponent {
     constructor() {
         this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_5__["Constants"].DAY_WIDTH;
         this.yearChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.period$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](this._startDate, this._endDate));
-        this.today = moment__WEBPACK_IMPORTED_MODULE_1__();
+        this.today = moment();
         const periodChange$ = this.period$.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(period => period.isValid()));
         this.months$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(period => NgTimeChartComponent.enumerateMonths(period)));
         this.weeks$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(period => NgTimeChartComponent.enumerateWeeks(period)));
@@ -700,7 +702,7 @@ class NgTimeChartComponent {
         return !period ? null : enumerate(period.startDate.clone(), []);
     }
     ngAfterContentInit() {
-        this.changeYear(moment__WEBPACK_IMPORTED_MODULE_1__().year());
+        this.changeYear(moment().year());
     }
     ngAfterViewInit() {
         this.scrollTodayIntoView();
@@ -712,7 +714,7 @@ class NgTimeChartComponent {
         this.yearChange.next(year);
         this.currentYear = year;
         if (!this._startDate && !this._endDate) {
-            this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](moment__WEBPACK_IMPORTED_MODULE_1__(`${year}-01-01`).hour(12), moment__WEBPACK_IMPORTED_MODULE_1__(`${year}-12-31`).hour(23)));
+            this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](moment(`${year}-01-01`).hour(12), moment(`${year}-12-31`).hour(23)));
         }
         else {
             this.changePeriod(this._startDate, this._endDate);
@@ -904,6 +906,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 
 
+const moment = moment__WEBPACK_IMPORTED_MODULE_0__;
 class Period {
     constructor(startDate, endDate) {
         this._startDate = startDate === null || startDate === void 0 ? void 0 : startDate.clone();
@@ -912,8 +915,8 @@ class Period {
     static splitAtNewYear(period) {
         const periods = [];
         if (period.endDate.year() > period.startDate.year()) {
-            periods.push(new Period(period.startDate.clone(), moment__WEBPACK_IMPORTED_MODULE_0__(`${period.startDate.year()}-12-31`)));
-            periods.push(...Period.splitAtNewYear(new Period(moment__WEBPACK_IMPORTED_MODULE_0__(`${period.endDate.year()}-01-01`), period.endDate.clone())));
+            periods.push(new Period(period.startDate.clone(), moment(`${period.startDate.year()}-12-31`)));
+            periods.push(...Period.splitAtNewYear(new Period(moment(`${period.endDate.year()}-01-01`), period.endDate.clone())));
         }
         else {
             periods.push(period);
@@ -1438,209 +1441,210 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const moment = moment__WEBPACK_IMPORTED_MODULE_1__;
 class AppComponent {
     constructor() {
-        this.currentYear = moment__WEBPACK_IMPORTED_MODULE_1__().year();
+        this.currentYear = moment().year();
         this.title = 'NgTimeChartLibrary';
-        this.startDate = moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-05-01`);
-        this.endDate = moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-08-31`);
+        this.startDate = moment(`${this.currentYear}-05-01`);
+        this.endDate = moment(`${this.currentYear}-08-31`);
         this.tiledLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_4__["LayoutStrategy"].Tiled;
         this.stackedLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_4__["LayoutStrategy"].Stacked;
-        moment__WEBPACK_IMPORTED_MODULE_1__["locale"]('de-ch');
+        moment.locale('de-ch');
         this.groups = [
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 0', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-02-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-03-23`),
+                    startTime: moment(`${this.currentYear}-02-12`),
+                    endTime: moment(`${this.currentYear}-03-23`),
                     class: 'type-b'
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-03-25`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-03-30`),
+                    startTime: moment(`${this.currentYear}-03-25`),
+                    endTime: moment(`${this.currentYear}-03-30`),
                     class: 'type-a',
                     onClick: () => alert('I was clicked 😊')
                 },
                 {
                     name: 'Testitem 2',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-01`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-07`),
+                    startTime: moment(`${this.currentYear}-04-01`),
+                    endTime: moment(`${this.currentYear}-04-07`),
                     class: 'type-b'
                 },
                 {
                     name: 'Testitem 3',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-08`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-12`),
+                    startTime: moment(`${this.currentYear}-04-08`),
+                    endTime: moment(`${this.currentYear}-04-12`),
                     class: 'type-b'
                 },
                 {
                     name: 'Testitem 4',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-02`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-05`),
+                    startTime: moment(`${this.currentYear}-04-02`),
+                    endTime: moment(`${this.currentYear}-04-05`),
                     class: 'type-b'
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => alert('Group clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => alert('Group clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 1', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-02-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-05-23`)
+                    startTime: moment(`${this.currentYear}-02-12`),
+                    endTime: moment(`${this.currentYear}-05-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-05-02`)
+                    startTime: moment(`${this.currentYear}-04-11`),
+                    endTime: moment(`${this.currentYear}-05-02`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 2', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-07-23`)
+                    startTime: moment(`${this.currentYear}-06-12`),
+                    endTime: moment(`${this.currentYear}-07-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 1}-08-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-09-02`)
+                    startTime: moment(`${this.currentYear - 1}-08-11`),
+                    endTime: moment(`${this.currentYear}-09-02`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 3', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-09-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-10-23`)
+                    startTime: moment(`${this.currentYear}-09-12`),
+                    endTime: moment(`${this.currentYear}-10-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-10-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-11-02`)
+                    startTime: moment(`${this.currentYear}-10-11`),
+                    endTime: moment(`${this.currentYear}-11-02`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 4', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-02-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-05-23`)
+                    startTime: moment(`${this.currentYear}-02-12`),
+                    endTime: moment(`${this.currentYear}-05-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-12-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear + 1}-03-02`)
+                    startTime: moment(`${this.currentYear}-12-11`),
+                    endTime: moment(`${this.currentYear + 1}-03-02`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 5', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-03-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-03-23`)
+                    startTime: moment(`${this.currentYear}-03-12`),
+                    endTime: moment(`${this.currentYear}-03-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-03-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-02`)
+                    startTime: moment(`${this.currentYear}-03-11`),
+                    endTime: moment(`${this.currentYear}-04-02`)
                 },
                 {
                     name: 'Testitem 2',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-01`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-04`)
+                    startTime: moment(`${this.currentYear}-04-01`),
+                    endTime: moment(`${this.currentYear}-04-04`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 6', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-07-23`),
+                    startTime: moment(`${this.currentYear}-06-12`),
+                    endTime: moment(`${this.currentYear}-07-23`),
                     class: 'type-c'
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 1}-08-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-09-02`),
+                    startTime: moment(`${this.currentYear - 1}-08-11`),
+                    endTime: moment(`${this.currentYear}-09-02`),
                     class: 'type-a'
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 7', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 1}-09-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 1}-10-23`),
+                    startTime: moment(`${this.currentYear - 1}-09-12`),
+                    endTime: moment(`${this.currentYear - 1}-10-23`),
                     class: 'my-class-a'
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 2}-10-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 1}-11-02`),
+                    startTime: moment(`${this.currentYear - 2}-10-11`),
+                    endTime: moment(`${this.currentYear - 1}-11-02`),
                     class: 'my-class-a'
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 8', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-02-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-23`)
+                    startTime: moment(`${this.currentYear}-02-12`),
+                    endTime: moment(`${this.currentYear}-04-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-05-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-02`)
+                    startTime: moment(`${this.currentYear}-05-11`),
+                    endTime: moment(`${this.currentYear}-06-02`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 9', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-02-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-05-23`),
+                    startTime: moment(`${this.currentYear}-02-12`),
+                    endTime: moment(`${this.currentYear}-05-23`),
                     dates: [
-                        moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-11`),
-                        moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-12`)
+                        moment(`${this.currentYear}-04-11`),
+                        moment(`${this.currentYear}-04-12`)
                     ]
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-04-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-05-02`)
+                    startTime: moment(`${this.currentYear}-04-11`),
+                    endTime: moment(`${this.currentYear}-05-02`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 10', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-07-23`),
+                    startTime: moment(`${this.currentYear}-06-12`),
+                    endTime: moment(`${this.currentYear}-07-23`),
                     class: 'type-a',
                     dates: [
-                        moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-18`),
-                        moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-19`),
-                        moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-23`),
-                        moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-06-24`)
+                        moment(`${this.currentYear}-06-18`),
+                        moment(`${this.currentYear}-06-19`),
+                        moment(`${this.currentYear}-06-23`),
+                        moment(`${this.currentYear}-06-24`)
                     ]
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 1}-08-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-09-02`),
+                    startTime: moment(`${this.currentYear - 1}-08-11`),
+                    endTime: moment(`${this.currentYear}-09-02`),
                     class: 'type-a'
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 11', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-09-12`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`2021-01-23`)
+                    startTime: moment(`${this.currentYear}-09-12`),
+                    endTime: moment(`2021-01-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear - 1}-10-11`),
-                    endTime: moment__WEBPACK_IMPORTED_MODULE_1__(`${this.currentYear}-11-02`)
+                    startTime: moment(`${this.currentYear - 1}-10-11`),
+                    endTime: moment(`${this.currentYear}-11-02`)
                 }
-            ].sort((a, b) => moment__WEBPACK_IMPORTED_MODULE_1__["duration"](a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked'))
+            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked'))
         ];
     }
     setStartDate(value) {
-        this.startDate = (!!value && value.length > 0) ? moment__WEBPACK_IMPORTED_MODULE_1__((value)) : null;
+        this.startDate = (!!value && value.length > 0) ? moment((value)) : null;
     }
     setEndDate(value) {
-        this.endDate = (!!value && value.length > 0) ? moment__WEBPACK_IMPORTED_MODULE_1__((value)) : null;
+        this.endDate = (!!value && value.length > 0) ? moment((value)) : null;
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
