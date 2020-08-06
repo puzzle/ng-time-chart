@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import * as moment from 'moment';
 import 'moment/locale/de-ch';
-import {Group, LayoutStrategy} from 'ng-time-chart';
+import {Group} from '../../../ng-time-chart/src/lib/group';
+import {LayoutStrategy} from '../../../ng-time-chart/src/lib/layout/layout-strategy.enum';
 
 @Component({
   selector: 'ng-tl-root',
