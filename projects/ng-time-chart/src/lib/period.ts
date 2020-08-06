@@ -1,11 +1,12 @@
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import {max, min} from 'moment';
 
+const moment = moment_;
 
 export class Period {
 
-  private readonly _startDate: moment.Moment;
-  private readonly _endDate: moment.Moment;
+  private readonly _startDate: moment_.Moment;
+  private readonly _endDate: moment_.Moment;
 
   private static splitAtNewYear(period: Period): Period[] {
     const periods: Period[] = [];
@@ -18,16 +19,16 @@ export class Period {
     return periods;
   }
 
-  constructor(startDate: moment.Moment, endDate: moment.Moment) {
+  constructor(startDate: moment_.Moment, endDate: moment_.Moment) {
     this._startDate = startDate?.clone();
     this._endDate = endDate?.clone();
   }
 
-  get startDate(): moment.Moment {
+  get startDate(): moment_.Moment {
     return this._startDate;
   }
 
-  get endDate(): moment.Moment {
+  get endDate(): moment_.Moment {
     return this._endDate;
   }
 

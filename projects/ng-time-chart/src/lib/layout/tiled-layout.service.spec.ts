@@ -1,9 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 
 import {TiledLayoutService} from './tiled-layout.service';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import {LayoutService} from './layout.service';
 import {Item} from '../item';
+
+const moment = moment_;
 
 describe('TiledLayoutService', () => {
   let service: LayoutService;

@@ -1,10 +1,10 @@
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 
 export interface Item {
   name: string;
-  startTime: moment.Moment;
-  endTime: moment.Moment;
-  dates?: moment.Moment[];
+  startTime: moment_.Moment;
+  endTime: moment_.Moment;
+  dates?: moment_.Moment[];
   class?: string;
   onClick?: () => void;
 }

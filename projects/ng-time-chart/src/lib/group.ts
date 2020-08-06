@@ -1,6 +1,8 @@
 import {Item} from './item';
 import {Period} from './period';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+
+const moment = moment_;
 
 export class Group {
   readonly name: string;

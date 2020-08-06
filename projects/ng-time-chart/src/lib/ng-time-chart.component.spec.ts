@@ -3,12 +3,14 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NgTimeChartComponent} from './ng-time-chart.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TimeChartDateFormatterPipe} from './pipes/time-chart-date-formatter.pipe';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import {TimeTableBodyComponent} from './time-table-body/time-table-body.component';
 import {Component, ViewChild} from '@angular/core';
 import {Period} from './period';
 import {Group} from './group';
 import {LayoutStrategy} from './layout/layout-strategy.enum';
+
+const moment = moment_;
 
 describe('NgTimeChartComponent', () => {
   let component: TestHostComponent;
@@ -96,11 +98,11 @@ describe('NgTimeChartComponent', () => {
     endDate = null;
     readonly strategy: LayoutStrategy = LayoutStrategy.Stacked;
 
-    setStartDate(date: moment.Moment) {
+    setStartDate(date: moment_.Moment) {
       this.startDate = date;
     }
 
-    setEndDate(date: moment.Moment) {
+    setEndDate(date: moment_.Moment) {
       this.endDate = date;
     }
   }

@@ -1,11 +1,13 @@
 import {AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import {filter, map} from 'rxjs/operators';
 import {Period} from './period';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {Group} from './group';
 import {Constants} from './constants';
 import {LayoutStrategy} from './layout/layout-strategy.enum';
+
+const moment = moment_;
 
 @Component({
   selector: 'ng-time-chart',
@@ -20,22 +22,22 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
   filteredGroups$: Observable<Group[]>;
 
   @Input()
-  set startDate(date: moment.Moment) {
+  set startDate(date: moment_.Moment) {
     this._startDate = date;
     this.changePeriod(this._startDate, this._endDate);
   }
 
-  get startDate(): moment.Moment {
+  get startDate(): moment_.Moment {
     return this._startDate;
   }
 
   @Input()
-  set endDate(date: moment.Moment) {
+  set endDate(date: moment_.Moment) {
     this._endDate = date;
     this.changePeriod(this._startDate, this._endDate);
   }
 
-  get endDate(): moment.Moment {
+  get endDate(): moment_.Moment {
     return this._endDate;
   }
 
@@ -49,15 +51,15 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
 
   readonly period$: Subject<Period>;
 
-  private _startDate?: moment.Moment;
-  private _endDate?: moment.Moment;
+  private _startDate?: moment_.Moment;
+  private _endDate?: moment_.Moment;
 
   readonly months$: Observable<Period[]>;
   readonly weeks$: Observable<Period[]>;
-  readonly days$: Observable<moment.Moment[]>;
+  readonly days$: Observable<moment_.Moment[]>;
   readonly durationInDays$: Observable<number>;
   readonly precedingPeriodDaysBeforeFirstWeek$: Observable<number>;
-  readonly today: moment.Moment;
+  readonly today: moment_.Moment;
   currentYear: number;
 
   readonly DAY_WIDTH = Constants.DAY_WIDTH;
@@ -98,7 +100,7 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
   }
 
   static enumerateMonths(period: Period): Period[] {
-    function enumerate(currentDate: moment.Moment, expanded: Period[]): Period[] {
+    function enumerate(currentDate: moment_.Moment, expanded: Period[]): Period[] {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
         const endDate = currentDate.clone().endOf('month');
         expanded.push(new Period(currentDate, endDate));
@@ -112,7 +114,7 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
   }
 
   static enumerateWeeks(period: Period): Period[] {
-    function enumerate(currentDate: moment.Moment, expanded: Period[]): Period[] {
+    function enumerate(currentDate: moment_.Moment, expanded: Period[]): Period[] {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
         const endDate = currentDate.clone().endOf('isoWeek');
         const startDate = currentDate.clone().startOf('isoWeek');
@@ -124,7 +126,7 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
       return expanded;
     }
 
-    function firstWeekInPeriod(): moment.Moment {
+    function firstWeekInPeriod(): moment_.Moment {
       const date = period?.startDate.clone().isoWeekday(4);
       return period.containsDate(date) ? date : date.add(1, 'week');
     }
@@ -132,8 +134,8 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
     return !period ? null : enumerate(firstWeekInPeriod(), []);
   }
 
-  static enumerateDays(period: Period): moment.Moment[] {
-    function enumerate(currentDate: moment.Moment, expanded: moment.Moment[]) {
+  static enumerateDays(period: Period): moment_.Moment[] {
+    function enumerate(currentDate: moment_.Moment, expanded: moment_.Moment[]) {
       if (currentDate.isSameOrBefore(period.endDate, 'day')) {
         expanded.push(currentDate);
         const advanceDate = currentDate.clone().add(1, 'day');
@@ -153,7 +155,7 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
     this.scrollTodayIntoView();
   }
 
-  isToday(day: moment.Moment): boolean {
+  isToday(day: moment_.Moment): boolean {
     return this.today.isSame(day, 'day');
   }
 
@@ -168,7 +170,7 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
     }
   }
 
-  private changePeriod(startDate: moment.Moment, endDate: moment.Moment) {
+  private changePeriod(startDate: moment_.Moment, endDate: moment_.Moment) {
     if (startDate == null && endDate == null) {
       return;
     }

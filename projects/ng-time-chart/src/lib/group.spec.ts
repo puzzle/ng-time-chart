@@ -1,5 +1,7 @@
 import {Group} from './group';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+
+const moment = moment_;
 
 describe('group', () => {
   it('should calculate its duration based on its items', () => {

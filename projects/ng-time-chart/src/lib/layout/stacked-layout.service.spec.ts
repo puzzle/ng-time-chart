@@ -1,8 +1,10 @@
 import {TestBed} from '@angular/core/testing';
 
 import {StackedLayoutService} from './stacked-layout.service';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import {Item} from '../item';
+
+const moment = moment_;
 
 describe('StackedLayoutService', () => {
   let service: StackedLayoutService;

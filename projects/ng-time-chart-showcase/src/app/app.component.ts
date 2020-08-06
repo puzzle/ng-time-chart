@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import 'moment/locale/de-ch';
 import {Group} from '../../../ng-time-chart/src/lib/group';
 import {LayoutStrategy} from '../../../ng-time-chart/src/lib/layout/layout-strategy.enum';
+
+const moment = moment_;
 
 @Component({
   selector: 'ng-tl-root',
