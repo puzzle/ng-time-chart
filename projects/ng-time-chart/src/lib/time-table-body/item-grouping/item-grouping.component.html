@@ -8,6 +8,7 @@
            [style.maxWidth.px]="(getDuration(item) * DAY_WIDTH)"
            [class.open-left]="isNotInPeriod(item.startTime)"
            [class.open-right]="isNotInPeriod(item.endTime)"
+           status="Hello TimeChart"
            (click)="open(item)">
         <ng-container *ngFor="let day of item.dates">
           <div class="blockade-day day-width-1"

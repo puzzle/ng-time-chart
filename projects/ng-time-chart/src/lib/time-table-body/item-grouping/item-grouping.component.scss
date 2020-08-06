@@ -30,9 +30,12 @@
         position: relative;
         overflow: hidden;
         text-overflow: ellipsis;
-        :hover{
-          text-overflow: unset;
-        }
+
+      }
+
+      .blockade-title:hover {
+        overflow: auto;
+        text-overflow: unset;
       }
     }
 
@@ -84,6 +87,16 @@
     .item:hover {
       filter: brightness(110%);
       transform: scaleY(1.1);
+      max-width: unset !important;
+      z-index: 999;
+      padding-left: 8px;
+      padding-right: 8px;
+      transition: all ease-in-out .2s;
+    }
+
+    .item:hover::after {
+      content: attr(status);
+      transition: all ease-in-out 1s;
     }
   }
 }
