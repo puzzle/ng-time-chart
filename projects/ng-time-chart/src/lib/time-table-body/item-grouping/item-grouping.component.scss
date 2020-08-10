@@ -1,5 +1,6 @@
-@import "../../../styles/settings/variables";
-@import "../../../styles/sidebar";
+@import "../../../styles/1_settings/variables";
+@import "../../../styles/5_objects/day";
+@import "../../../styles/6_components/sidebar";
 
 .item-grouping {
   display: flex;
@@ -33,9 +34,9 @@
 
       }
 
-      .blockade-title:hover {
-        overflow: auto;
-        text-overflow: unset;
+      .blockade-details {
+        display: none;
+
       }
     }
 
@@ -92,11 +93,18 @@
       padding-left: 8px;
       padding-right: 8px;
       transition: all ease-in-out .2s;
-    }
+      opacity: 0.95;
 
-    .item:hover::after {
-      content: attr(status);
-      transition: all ease-in-out 1s;
+      .blockade-details {
+        display: block;
+        font-weight: normal;
+        width: 40em;
+        white-space: normal;
+        margin-top: 8px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+      }
     }
   }
 }

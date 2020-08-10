@@ -1,0 +1,6 @@
+@import "../1_settings/variables";
+
+.day-width-1 {
+  min-width: $day-width;
+  max-width: $day-width;
+}

@@ -2,6 +2,7 @@ import * as moment_ from 'moment';
 
 export interface Item {
   name: string;
+  details?: string;
   startTime: moment_.Moment;
   endTime: moment_.Moment;
   dates?: moment_.Moment[];
