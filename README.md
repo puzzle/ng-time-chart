@@ -125,3 +125,7 @@ This represents a bar in the time chart.
 - _class_: The optional css-class of the item.
 _ _onClick_: The optional action to take if the bar is clicked in the chart.
  
+##Known Issues
+
+- `Warning: Type LayoutStrategy is not assignable to type LayoutStrategy`
+This is a warning displayed by IntelliJ. We have no idea why this is happening. It does not seem to cause any actual problems in code however.

@@ -1,0 +1,13 @@
+@import "../../../styles/1_settings/variables";
+@import "../../../styles/5_objects/day";
+@import "../../../styles/6_components/sidebar";
+
+.item-grouping {
+  display: flex;
+  flex-direction: column;
+
+  .items {
+    display: block;
+    height: 2.5em;
+  }
+}

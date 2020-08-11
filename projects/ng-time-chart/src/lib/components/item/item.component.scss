@@ -1,0 +1,98 @@
+@import "../../../styles/1_settings/variables";
+
+.item {
+  cursor: pointer;
+  position: absolute;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: $item-vertical-padding;
+  padding-bottom: $item-vertical-padding;
+  margin: 4px 0;
+  transition: 0.5s;
+  display: inline-block;
+
+  .blockade-title {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+  .blockade-details {
+    display: none;
+
+  }
+}
+
+.item:hover {
+  filter: brightness(110%);
+  transform: scaleY(1.1);
+  max-width: unset !important;
+  z-index: 999;
+  padding-left: 8px;
+  padding-right: 8px;
+  transition: all ease-in-out .2s;
+  opacity: 0.95;
+
+  .blockade-details {
+    display: block;
+    font-weight: normal;
+    width: 40em;
+    white-space: normal;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+}
+
+.type-a {
+  border-color: $color-a;
+  background-color: lighten($color-a, 35%);
+  color: white;
+
+  .blockade-day {
+    background-color: $color-a;
+  }
+}
+
+.type-b {
+  border-color: $color-b;
+  background-color: lighten($color-b, 35%);
+
+  .blockade-day {
+    background-color: $color-b;
+  }
+}
+
+.type-c {
+  border-color: $color-c;
+  background-color: lighten($color-c, 35%);
+
+  .blockade-day {
+    background-color: $color-c;
+  }
+}
+
+.blockade-day {
+  position: absolute;
+  display: inline-block;
+  margin-top: -$item-vertical-padding;
+  height: 100%;
+}
+
+.open-left {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.open-right {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}

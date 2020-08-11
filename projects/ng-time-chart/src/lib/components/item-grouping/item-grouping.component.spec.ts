@@ -4,6 +4,7 @@ import {ItemGroupingComponent} from './item-grouping.component';
 import {Component} from '@angular/core';
 import {Period} from '../../period';
 import {Item} from '../../item';
+import {ItemComponent} from '../item/item.component';
 import * as moment_ from 'moment';
 
 const moment = moment_;
@@ -16,7 +17,7 @@ describe('ItemGroupingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ItemGroupingComponent, TestHostComponent]
+      declarations: [ItemComponent, ItemGroupingComponent, TestHostComponent]
     })
       .compileComponents();
   }));
