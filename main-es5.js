@@ -10,11 +10,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
   /***/
@@ -322,454 +322,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "../ng-time-chart/src/lib/constants.ts":
-  /*!*********************************************!*\
-    !*** ../ng-time-chart/src/lib/constants.ts ***!
-    \*********************************************/
-
-  /*! exports provided: Constants */
-
-  /***/
-  function ngTimeChartSrcLibConstantsTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "Constants", function () {
-      return Constants;
-    });
-
-    var Constants = function Constants() {
-      _classCallCheck(this, Constants);
-    };
-
-    Constants.DAY_WIDTH = 20;
-    Constants.SIDEBAR_WIDTH = 200;
-    /***/
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/group.ts":
-  /*!*****************************************!*\
-    !*** ../ng-time-chart/src/lib/group.ts ***!
-    \*****************************************/
-
-  /*! exports provided: Group */
-
-  /***/
-  function ngTimeChartSrcLibGroupTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "Group", function () {
-      return Group;
-    });
-    /* harmony import */
-
-
-    var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./period */
-    "../ng-time-chart/src/lib/period.ts");
-    /* harmony import */
-
-
-    var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! moment */
-    "../../node_modules/moment/moment.js");
-    /* harmony import */
-
-
-    var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-
-    var moment = moment__WEBPACK_IMPORTED_MODULE_1__;
-
-    var Group = /*#__PURE__*/function () {
-      function Group(name, items) {
-        var onClick = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
-
-        _classCallCheck(this, Group);
-
-        this.name = name;
-        this.items = items;
-        this.duration = Group.calculateDuration(items);
-        this.onClick = onClick;
-      }
-
-      _createClass(Group, null, [{
-        key: "calculateDuration",
-        value: function calculateDuration(items) {
-          var startDate = moment.min(items.map(function (item) {
-            return item.startTime;
-          }));
-          var endDate = moment.max(items.map(function (item) {
-            return item.endTime;
-          }));
-
-          if (!startDate || !endDate) {
-            return null;
-          }
-
-          return new _period__WEBPACK_IMPORTED_MODULE_0__["Period"](startDate, endDate);
-        }
-      }]);
-
-      return Group;
-    }();
-    /***/
-
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/layout/layout-selector.service.ts":
-  /*!******************************************************************!*\
-    !*** ../ng-time-chart/src/lib/layout/layout-selector.service.ts ***!
-    \******************************************************************/
-
-  /*! exports provided: LayoutSelectorService */
-
-  /***/
-  function ngTimeChartSrcLibLayoutLayoutSelectorServiceTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "LayoutSelectorService", function () {
-      return LayoutSelectorService;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./layout-strategy.enum */
-    "../ng-time-chart/src/lib/layout/layout-strategy.enum.ts");
-    /* harmony import */
-
-
-    var _stacked_layout_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./stacked-layout.service */
-    "../ng-time-chart/src/lib/layout/stacked-layout.service.ts");
-    /* harmony import */
-
-
-    var _tiled_layout_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./tiled-layout.service */
-    "../ng-time-chart/src/lib/layout/tiled-layout.service.ts");
-
-    var LayoutSelectorService = /*#__PURE__*/function () {
-      function LayoutSelectorService(stackedLayout, tiledLayout) {
-        _classCallCheck(this, LayoutSelectorService);
-
-        this.stackedLayout = stackedLayout;
-        this.tiledLayout = tiledLayout;
-      }
-      /**
-       * Does the layout of the an {@link Item} list using the selected strategy
-       * @param items The Items to lay out
-       * @param strategy The {@link LayoutStrategy} to use to layout the items
-       */
-
-
-      _createClass(LayoutSelectorService, [{
-        key: "doLayout",
-        value: function doLayout(items) {
-          var strategy = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__["LayoutStrategy"].Stacked;
-
-          switch (strategy) {
-            case _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__["LayoutStrategy"].Stacked:
-              return this.stackedLayout.doLayout(items);
-
-            case _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__["LayoutStrategy"].Tiled:
-              return this.tiledLayout.doLayout(items);
-          }
-        }
-      }]);
-
-      return LayoutSelectorService;
-    }();
-
-    LayoutSelectorService.ɵfac = function LayoutSelectorService_Factory(t) {
-      return new (t || LayoutSelectorService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_stacked_layout_service__WEBPACK_IMPORTED_MODULE_2__["StackedLayoutService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_tiled_layout_service__WEBPACK_IMPORTED_MODULE_3__["TiledLayoutService"]));
-    };
-
-    LayoutSelectorService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-      token: LayoutSelectorService,
-      factory: LayoutSelectorService.ɵfac,
-      providedIn: 'root'
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LayoutSelectorService, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-        args: [{
-          providedIn: 'root'
-        }]
-      }], function () {
-        return [{
-          type: _stacked_layout_service__WEBPACK_IMPORTED_MODULE_2__["StackedLayoutService"]
-        }, {
-          type: _tiled_layout_service__WEBPACK_IMPORTED_MODULE_3__["TiledLayoutService"]
-        }];
-      }, null);
-    })();
-    /***/
-
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/layout/layout-strategy.enum.ts":
-  /*!***************************************************************!*\
-    !*** ../ng-time-chart/src/lib/layout/layout-strategy.enum.ts ***!
-    \***************************************************************/
-
-  /*! exports provided: LayoutStrategy */
-
-  /***/
-  function ngTimeChartSrcLibLayoutLayoutStrategyEnumTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "LayoutStrategy", function () {
-      return LayoutStrategy;
-    });
-
-    var LayoutStrategy;
-
-    (function (LayoutStrategy) {
-      /**
-       * Stack items one on top of the other
-       */
-      LayoutStrategy[LayoutStrategy["Stacked"] = 0] = "Stacked";
-      /**
-       * Try to tile items if their start and end dates do not overlap
-       */
-
-      LayoutStrategy[LayoutStrategy["Tiled"] = 1] = "Tiled";
-    })(LayoutStrategy || (LayoutStrategy = {}));
-    /***/
-
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/layout/stacked-layout.service.ts":
-  /*!*****************************************************************!*\
-    !*** ../ng-time-chart/src/lib/layout/stacked-layout.service.ts ***!
-    \*****************************************************************/
-
-  /*! exports provided: StackedLayoutService */
-
-  /***/
-  function ngTimeChartSrcLibLayoutStackedLayoutServiceTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "StackedLayoutService", function () {
-      return StackedLayoutService;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-    var StackedLayoutService = /*#__PURE__*/function () {
-      function StackedLayoutService() {
-        _classCallCheck(this, StackedLayoutService);
-      }
-
-      _createClass(StackedLayoutService, [{
-        key: "doLayout",
-        value: function doLayout(items) {
-          return items.map(function (item) {
-            return [item];
-          });
-        }
-      }]);
-
-      return StackedLayoutService;
-    }();
-
-    StackedLayoutService.ɵfac = function StackedLayoutService_Factory(t) {
-      return new (t || StackedLayoutService)();
-    };
-
-    StackedLayoutService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-      token: StackedLayoutService,
-      factory: StackedLayoutService.ɵfac,
-      providedIn: 'root'
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](StackedLayoutService, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-        args: [{
-          providedIn: 'root'
-        }]
-      }], function () {
-        return [];
-      }, null);
-    })();
-    /***/
-
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/layout/tiled-layout.service.ts":
-  /*!***************************************************************!*\
-    !*** ../ng-time-chart/src/lib/layout/tiled-layout.service.ts ***!
-    \***************************************************************/
-
-  /*! exports provided: TiledLayoutService */
-
-  /***/
-  function ngTimeChartSrcLibLayoutTiledLayoutServiceTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "TiledLayoutService", function () {
-      return TiledLayoutService;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-    var TiledLayoutService = /*#__PURE__*/function () {
-      function TiledLayoutService() {
-        _classCallCheck(this, TiledLayoutService);
-      }
-      /**
-       * Tries to layout items in the most compact way
-       * @param items The {@link Item}s to lay out.
-       */
-
-
-      _createClass(TiledLayoutService, [{
-        key: "doLayout",
-        value: function doLayout(items) {
-          var itemOrder = new ItemOrder();
-          var sorted = items.sort(function (a, b) {
-            return a.startTime.diff(b.startTime);
-          });
-          sorted.forEach(function (item) {
-            return itemOrder.add(item);
-          });
-          return itemOrder.queues;
-        }
-      }]);
-
-      return TiledLayoutService;
-    }();
-
-    TiledLayoutService.ɵfac = function TiledLayoutService_Factory(t) {
-      return new (t || TiledLayoutService)();
-    };
-
-    TiledLayoutService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-      token: TiledLayoutService,
-      factory: TiledLayoutService.ɵfac,
-      providedIn: 'root'
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TiledLayoutService, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-        args: [{
-          providedIn: 'root'
-        }]
-      }], function () {
-        return [];
-      }, null);
-    })();
-
-    var ItemOrder = /*#__PURE__*/function () {
-      function ItemOrder() {
-        _classCallCheck(this, ItemOrder);
-
-        this._queues = [];
-      }
-
-      _createClass(ItemOrder, [{
-        key: "add",
-        value: function add(item) {
-          this.getFreeQueue(item.startTime).push(item);
-        }
-      }, {
-        key: "getFreeQueue",
-        value: function getFreeQueue(date) {
-          if (this._queues.length === 0) {
-            return this.createNewSubQueue();
-          }
-
-          var queuesWithFreeSpace = this._queues.filter(function (queue) {
-            return queue[queue.length - 1].endTime.isBefore(date);
-          });
-
-          if (queuesWithFreeSpace.length > 0) {
-            return queuesWithFreeSpace[0];
-          }
-
-          return this.createNewSubQueue();
-        }
-      }, {
-        key: "createNewSubQueue",
-        value: function createNewSubQueue() {
-          var myQueue = [];
-
-          this._queues.push(myQueue);
-
-          return myQueue;
-        }
-      }, {
-        key: "queues",
-        get: function get() {
-          return this._queues;
-        }
-      }]);
-
-      return ItemOrder;
-    }();
-    /***/
-
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/ng-time-chart.component.ts":
-  /*!***********************************************************!*\
-    !*** ../ng-time-chart/src/lib/ng-time-chart.component.ts ***!
-    \***********************************************************/
+  "../ng-time-chart/src/lib/components/chart/ng-time-chart.component.ts":
+  /*!****************************************************************************!*\
+    !*** ../ng-time-chart/src/lib/components/chart/ng-time-chart.component.ts ***!
+    \****************************************************************************/
 
   /*! exports provided: NgTimeChartComponent */
 
   /***/
-  function ngTimeChartSrcLibNgTimeChartComponentTs(module, __webpack_exports__, __webpack_require__) {
+  function ngTimeChartSrcLibComponentsChartNgTimeChartComponentTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -805,7 +366,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var _period__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./period */
+    /*! ../../period */
     "../ng-time-chart/src/lib/period.ts");
     /* harmony import */
 
@@ -817,7 +378,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./constants */
+    /*! ../../constants */
     "../ng-time-chart/src/lib/constants.ts");
     /* harmony import */
 
@@ -829,8 +390,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ./time-table-body/time-table-body.component */
-    "../ng-time-chart/src/lib/time-table-body/time-table-body.component.ts");
+    /*! ../time-table-body/time-table-body.component */
+    "../ng-time-chart/src/lib/components/time-table-body/time-table-body.component.ts");
 
     var _c0 = ["todayMarker"];
 
@@ -1325,7 +886,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_7__["TimeTableBodyComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgClass"]],
       pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["AsyncPipe"]],
-      styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.timetable[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.timetable-header[_ngcontent-%COMP%] {\n  display: flex;\n  padding-bottom: 0;\n  margin-bottom: 0;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  height: 70px;\n  max-height: 70px;\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .calendar-header[_ngcontent-%COMP%] {\n  height: 70px;\n  max-height: 70px;\n  background-color: white;\n}\n\n.months[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.month[_ngcontent-%COMP%] {\n  border: solid 1px #888;\n  border-left-width: 0;\n  flex: auto;\n  box-sizing: border-box;\n  text-align: center;\n  white-space: nowrap;\n  overflow: hidden;\n}\n\n.month[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.day-width-1[_ngcontent-%COMP%] {\n  min-width: 20px;\n  max-width: 20px;\n}\n\n.week-offset[_ngcontent-%COMP%] {\n  border-right: solid #888 1px;\n  box-sizing: border-box;\n}\n\n.weeks[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.week[_ngcontent-%COMP%] {\n  border: 0 solid;\n  border-right-width: 1px;\n  text-align: center;\n  display: inline-block;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\n.week[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.days[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.day[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  border: solid 1px #888;\n  border-left-width: 0;\n  min-width: 20px;\n  display: inline-block;\n  text-align: center;\n  margin: 0;\n  font-size: 10px;\n}\n\n.day[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.today[_ngcontent-%COMP%] {\n  background-color: #b00b1e;\n  position: relative;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvX3NpZGViYXIuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvc2V0dGluZ3MvX3ZhcmlhYmxlcy5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL25nLXRpbWUtY2hhcnQuY29tcG9uZW50LnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL25nLXRpbWUtY2hhcnQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSx1QkFBQTtFQUNBLGFBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JDSGM7RURJZCxnQkNKYztBQ0doQjs7QUNIQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtBRE1GOztBQ0ZBO0VBQ0UsYUFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7RUFDQSx3QkFBQTtFQUFBLGdCQUFBO0VBQ0EsTUFBQTtFQUNBLFdBQUE7QURLRjs7QUNIRTtFQUNFLHNCQUFBO0VBQ0EsWUZuQlk7RUVvQlosZ0JGcEJZO0VFcUJaLHdCQUFBO0VBQUEsZ0JBQUE7RUFDQSxPQUFBO0FES0o7O0FDSEk7RUFDRSxnQkFBQTtFQUNBLGlCQUFBO0FES047O0FDREU7RUFDRSxZRi9CWTtFRWdDWixnQkZoQ1k7RUVpQ1osdUJBQUE7QURHSjs7QUNDQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHNCQUFBO0FERUY7O0FDQ0E7RUFDRSxzQkFBQTtFQUNBLG9CQUFBO0VBQ0EsVUFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLGdCQUFBO0FERUY7O0FDQ0E7RUFDRSxzQkFBQTtBREVGOztBQ0NBO0VBQ0UsZUY5RFU7RUUrRFYsZUYvRFU7QUNpRVo7O0FDQ0E7RUFDRSw0QkFBQTtFQUNBLHNCQUFBO0FERUY7O0FDQ0E7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBREVGOztBQ0NBO0VBQ0UsZUFBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUNBLHNCQUFBO0VBQ0EsZUFBQTtBREVGOztBQ0NBO0VBQ0Usc0JBQUE7QURFRjs7QUNDQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtBREVGOztBQ0NBO0VBQ0Usc0JBQUE7RUFDQSxzQkFBQTtFQUNBLG9CQUFBO0VBQ0EsZUZuR1U7RUVvR1YscUJBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxlQUFBO0FERUY7O0FDQ0E7RUFDRSxzQkFBQTtBREVGOztBQ0NBO0VBQ0UseUJGckdjO0VFc0dkLGtCQUFBO0FERUYiLCJmaWxlIjoicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL25nLXRpbWUtY2hhcnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IFwic2V0dGluZ3MvdmFyaWFibGVzXCI7XG5cbi5sYWJlbC1iYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgei1pbmRleDogMTAwMDtcbiAgZmxleDogMSAwICRzaWRlYmFyLXdpZHRoO1xuICBtaW4td2lkdGg6ICRzaWRlYmFyLXdpZHRoO1xuICBtYXgtd2lkdGg6ICRzaWRlYmFyLXdpZHRoO1xufVxuIiwiJGRheS13aWR0aDogMjBweDtcbiRpdGVtLXZlcnRpY2FsLXBhZGRpbmc6IDJweDtcbiRpdGVtLXZlcnRpY2FsLW1hcmdpbjogNHB4O1xuJHNpZGViYXItd2lkdGg6IDIwMHB4O1xuJGhlYWRlci1oZWlnaHQ6IDcwcHg7XG4kZ3JheS1kYXJrOiAjODg4O1xuJGdyYXktYmFzZTogI2FhYTtcbiRncmF5LWxpZ2h0OiAjY2NjO1xuJGdyYXktbGlnaHRlcjogI2VlZTtcbiRicmFuZC1pbmZvOiAjZGVhZDAwO1xuJGJyYW5kLXByaW1hcnk6ICNiMDBiMWU7XG4kYnJhbmQtZGFuZ2VyOiAjMzk5MzgzO1xuJGNvbG9yLWE6ICNiMDBiMWU7XG4kY29sb3ItYjogI2ZhMGFhYTtcbiRjb2xvci1jOiAjMzk5MzgzO1xuIiwiLmxhYmVsLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB6LWluZGV4OiAxMDAwO1xuICBmbGV4OiAxIDAgMjAwcHg7XG4gIG1pbi13aWR0aDogMjAwcHg7XG4gIG1heC13aWR0aDogMjAwcHg7XG59XG5cbi50aW1ldGFibGUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdy14OiBhdXRvO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG4udGltZXRhYmxlLWhlYWRlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBhZGRpbmctYm90dG9tOiAwO1xuICBtYXJnaW4tYm90dG9tOiAwO1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICB0b3A6IDA7XG4gIHotaW5kZXg6IDEwO1xufVxuLnRpbWV0YWJsZS1oZWFkZXIgLnllYXItc2VsZWN0b3Ige1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBoZWlnaHQ6IDcwcHg7XG4gIG1heC1oZWlnaHQ6IDcwcHg7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIGxlZnQ6IDA7XG59XG4udGltZXRhYmxlLWhlYWRlciAueWVhci1zZWxlY3RvciBoMyB7XG4gIG1hcmdpbi1sZWZ0OiA0cHg7XG4gIG1hcmdpbi1yaWdodDogNHB4O1xufVxuLnRpbWV0YWJsZS1oZWFkZXIgLmNhbGVuZGFyLWhlYWRlciB7XG4gIGhlaWdodDogNzBweDtcbiAgbWF4LWhlaWdodDogNzBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5tb250aHMge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xufVxuXG4ubW9udGgge1xuICBib3JkZXI6IHNvbGlkIDFweCAjODg4O1xuICBib3JkZXItbGVmdC13aWR0aDogMDtcbiAgZmxleDogYXV0bztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuXG4ubW9udGg6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4uZGF5LXdpZHRoLTEge1xuICBtaW4td2lkdGg6IDIwcHg7XG4gIG1heC13aWR0aDogMjBweDtcbn1cblxuLndlZWstb2Zmc2V0IHtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCAjODg4IDFweDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLndlZWtzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLndlZWsge1xuICBib3JkZXI6IDAgc29saWQ7XG4gIGJvcmRlci1yaWdodC13aWR0aDogMXB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuXG4ud2VlazpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi5kYXlzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbn1cblxuLmRheSB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGJvcmRlcjogc29saWQgMXB4ICM4ODg7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAwO1xuICBtaW4td2lkdGg6IDIwcHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW46IDA7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLmRheTpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi50b2RheSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiMDBiMWU7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn0iLCJAaW1wb3J0IFwiLi4vc3R5bGVzL3NldHRpbmdzL3ZhcmlhYmxlc1wiO1xuQGltcG9ydCBcIi4uL3N0eWxlcy9zaWRlYmFyXCI7XG5cbi50aW1ldGFibGUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdy14OiBhdXRvO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG5cbi50aW1ldGFibGUtaGVhZGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZy1ib3R0b206IDA7XG4gIG1hcmdpbi1ib3R0b206IDA7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTA7XG5cbiAgLnllYXItc2VsZWN0b3Ige1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xuICAgIGxlZnQ6IDA7XG5cbiAgICBoMyB7XG4gICAgICBtYXJnaW4tbGVmdDogNHB4O1xuICAgICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG4gICAgfVxuICB9XG5cbiAgLmNhbGVuZGFyLWhlYWRlciB7XG4gICAgaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgfVxufVxuXG4ubW9udGhzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLm1vbnRoIHtcbiAgYm9yZGVyOiBzb2xpZCAxcHggJGdyYXktZGFyaztcbiAgYm9yZGVyLWxlZnQtd2lkdGg6IDA7XG4gIGZsZXg6IGF1dG87XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLm1vbnRoOmZpcnN0LWNoaWxkIHtcbiAgYm9yZGVyLWxlZnQtd2lkdGg6IDFweDtcbn1cblxuLmRheS13aWR0aC0xIHtcbiAgbWluLXdpZHRoOiAkZGF5LXdpZHRoO1xuICBtYXgtd2lkdGg6ICRkYXktd2lkdGg7XG59XG5cbi53ZWVrLW9mZnNldCB7XG4gIGJvcmRlci1yaWdodDogc29saWQgJGdyYXktZGFyayAxcHg7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrcyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrIHtcbiAgYm9yZGVyOiAwIHNvbGlkO1xuICBib3JkZXItcmlnaHQtd2lkdGg6IDFweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLndlZWs6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4uZGF5cyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG59XG5cbi5kYXkge1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBib3JkZXI6IHNvbGlkIDFweCAkZ3JheS1kYXJrO1xuICBib3JkZXItbGVmdC13aWR0aDogMDtcbiAgbWluLXdpZHRoOiAkZGF5LXdpZHRoO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luOiAwO1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5kYXk6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4udG9kYXkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkYnJhbmQtcHJpbWFyeTtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuIl19 */"],
+      styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.day-width-1[_ngcontent-%COMP%] {\n  min-width: 20px;\n  max-width: 20px;\n}\n\n.timetable[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.timetable-header[_ngcontent-%COMP%] {\n  display: flex;\n  padding-bottom: 0;\n  margin-bottom: 0;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  height: 70px;\n  max-height: 70px;\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .calendar-header[_ngcontent-%COMP%] {\n  height: 70px;\n  max-height: 70px;\n  background-color: white;\n}\n\n.months[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.month[_ngcontent-%COMP%] {\n  border: solid 1px #888;\n  border-left-width: 0;\n  flex: auto;\n  box-sizing: border-box;\n  text-align: center;\n  white-space: nowrap;\n  overflow: hidden;\n}\n\n.month[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.week-offset[_ngcontent-%COMP%] {\n  border-right: solid #888 1px;\n  box-sizing: border-box;\n}\n\n.weeks[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.week[_ngcontent-%COMP%] {\n  border: 0 solid;\n  border-right-width: 1px;\n  text-align: center;\n  display: inline-block;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\n.week[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.days[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.day[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  border: solid 1px #888;\n  border-left-width: 0;\n  min-width: 20px;\n  display: inline-block;\n  text-align: center;\n  margin: 0;\n  font-size: 10px;\n}\n\n.day[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.today[_ngcontent-%COMP%] {\n  background-color: #b00b1e;\n  position: relative;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvNl9jb21wb25lbnRzL19zaWRlYmFyLnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvc3R5bGVzLzFfc2V0dGluZ3MvX3ZhcmlhYmxlcy5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL2NvbXBvbmVudHMvY2hhcnQvbmctdGltZS1jaGFydC5jb21wb25lbnQuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvNV9vYmplY3RzL19kYXkuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9saWIvY29tcG9uZW50cy9jaGFydC9uZy10aW1lLWNoYXJ0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsdUJBQUE7RUFDQSxhQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQ0hjO0VESWQsZ0JDSmM7QUNHaEI7O0FDSkE7RUFDRSxlRkhVO0VFSVYsZUZKVTtBQ1daOztBRVBBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FGVUY7O0FFTkE7RUFDRSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLHdCQUFBO0VBQUEsZ0JBQUE7RUFDQSxNQUFBO0VBQ0EsV0FBQTtBRlNGOztBRVBFO0VBQ0Usc0JBQUE7RUFDQSxZSHBCWTtFR3FCWixnQkhyQlk7RUdzQlosd0JBQUE7RUFBQSxnQkFBQTtFQUNBLE9BQUE7QUZTSjs7QUVQSTtFQUNFLGdCQUFBO0VBQ0EsaUJBQUE7QUZTTjs7QUVMRTtFQUNFLFlIaENZO0VHaUNaLGdCSGpDWTtFR2tDWix1QkFBQTtBRk9KOztBRUhBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7QUZNRjs7QUVIQTtFQUNFLHNCQUFBO0VBQ0Esb0JBQUE7RUFDQSxVQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7QUZNRjs7QUVIQTtFQUNFLHNCQUFBO0FGTUY7O0FFSEE7RUFDRSw0QkFBQTtFQUNBLHNCQUFBO0FGTUY7O0FFSEE7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBRk1GOztBRUhBO0VBQ0UsZUFBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUNBLHNCQUFBO0VBQ0EsZUFBQTtBRk1GOztBRUhBO0VBQ0Usc0JBQUE7QUZNRjs7QUVIQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtBRk1GOztBRUhBO0VBQ0Usc0JBQUE7RUFDQSxzQkFBQTtFQUNBLG9CQUFBO0VBQ0EsZUgvRlU7RUdnR1YscUJBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxlQUFBO0FGTUY7O0FFSEE7RUFDRSxzQkFBQTtBRk1GOztBRUhBO0VBQ0UseUJIakdjO0VHa0dkLGtCQUFBO0FGTUYiLCJmaWxlIjoicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL2NvbXBvbmVudHMvY2hhcnQvbmctdGltZS1jaGFydC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCIuLi8xX3NldHRpbmdzL3ZhcmlhYmxlc1wiO1xuXG4ubGFiZWwtYmFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGZsZXg6IDEgMCAkc2lkZWJhci13aWR0aDtcbiAgbWluLXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbiAgbWF4LXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbn1cbiIsIiRkYXktd2lkdGg6IDIwcHg7XG4kaXRlbS12ZXJ0aWNhbC1wYWRkaW5nOiAycHg7XG4kaXRlbS12ZXJ0aWNhbC1tYXJnaW46IDRweDtcbiRzaWRlYmFyLXdpZHRoOiAyMDBweDtcbiRoZWFkZXItaGVpZ2h0OiA3MHB4O1xuJGdyYXktZGFyazogIzg4ODtcbiRncmF5LWJhc2U6ICNhYWE7XG4kZ3JheS1saWdodDogI2NjYztcbiRncmF5LWxpZ2h0ZXI6ICNlZWU7XG4kYnJhbmQtaW5mbzogI2RlYWQwMDtcbiRicmFuZC1wcmltYXJ5OiAjYjAwYjFlO1xuJGJyYW5kLWRhbmdlcjogIzM5OTM4MztcbiRjb2xvci1hOiAjYjAwYjFlO1xuJGNvbG9yLWI6ICNmYTBhYWE7XG4kY29sb3ItYzogIzM5OTM4MztcbiIsIi5sYWJlbC1iYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgei1pbmRleDogMTAwMDtcbiAgZmxleDogMSAwIDIwMHB4O1xuICBtaW4td2lkdGg6IDIwMHB4O1xuICBtYXgtd2lkdGg6IDIwMHB4O1xufVxuXG4uZGF5LXdpZHRoLTEge1xuICBtaW4td2lkdGg6IDIwcHg7XG4gIG1heC13aWR0aDogMjBweDtcbn1cblxuLnRpbWV0YWJsZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93LXg6IGF1dG87XG4gIG92ZXJmbG93LXk6IGF1dG87XG59XG5cbi50aW1ldGFibGUtaGVhZGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZy1ib3R0b206IDA7XG4gIG1hcmdpbi1ib3R0b206IDA7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTA7XG59XG4udGltZXRhYmxlLWhlYWRlciAueWVhci1zZWxlY3RvciB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGhlaWdodDogNzBweDtcbiAgbWF4LWhlaWdodDogNzBweDtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgbGVmdDogMDtcbn1cbi50aW1ldGFibGUtaGVhZGVyIC55ZWFyLXNlbGVjdG9yIGgzIHtcbiAgbWFyZ2luLWxlZnQ6IDRweDtcbiAgbWFyZ2luLXJpZ2h0OiA0cHg7XG59XG4udGltZXRhYmxlLWhlYWRlciAuY2FsZW5kYXItaGVhZGVyIHtcbiAgaGVpZ2h0OiA3MHB4O1xuICBtYXgtaGVpZ2h0OiA3MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuLm1vbnRocyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi5tb250aCB7XG4gIGJvcmRlcjogc29saWQgMXB4ICM4ODg7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAwO1xuICBmbGV4OiBhdXRvO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5tb250aDpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi53ZWVrLW9mZnNldCB7XG4gIGJvcmRlci1yaWdodDogc29saWQgIzg4OCAxcHg7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrcyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrIHtcbiAgYm9yZGVyOiAwIHNvbGlkO1xuICBib3JkZXItcmlnaHQtd2lkdGg6IDFweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLndlZWs6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4uZGF5cyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG59XG5cbi5kYXkge1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBib3JkZXI6IHNvbGlkIDFweCAjODg4O1xuICBib3JkZXItbGVmdC13aWR0aDogMDtcbiAgbWluLXdpZHRoOiAyMHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luOiAwO1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5kYXk6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4udG9kYXkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjAwYjFlO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59IiwiQGltcG9ydCBcIi4uLzFfc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5cbi5kYXktd2lkdGgtMSB7XG4gIG1pbi13aWR0aDogJGRheS13aWR0aDtcbiAgbWF4LXdpZHRoOiAkZGF5LXdpZHRoO1xufVxuIiwiQGltcG9ydCBcIi4uLy4uLy4uL3N0eWxlcy8xX3NldHRpbmdzL3ZhcmlhYmxlc1wiO1xuQGltcG9ydCBcIi4uLy4uLy4uL3N0eWxlcy82X2NvbXBvbmVudHMvc2lkZWJhclwiO1xuQGltcG9ydCBcIi4uLy4uLy4uL3N0eWxlcy81X29iamVjdHMvZGF5XCI7XG5cbi50aW1ldGFibGUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdy14OiBhdXRvO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG5cbi50aW1ldGFibGUtaGVhZGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZy1ib3R0b206IDA7XG4gIG1hcmdpbi1ib3R0b206IDA7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTA7XG5cbiAgLnllYXItc2VsZWN0b3Ige1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xuICAgIGxlZnQ6IDA7XG5cbiAgICBoMyB7XG4gICAgICBtYXJnaW4tbGVmdDogNHB4O1xuICAgICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG4gICAgfVxuICB9XG5cbiAgLmNhbGVuZGFyLWhlYWRlciB7XG4gICAgaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgfVxufVxuXG4ubW9udGhzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLm1vbnRoIHtcbiAgYm9yZGVyOiBzb2xpZCAxcHggJGdyYXktZGFyaztcbiAgYm9yZGVyLWxlZnQtd2lkdGg6IDA7XG4gIGZsZXg6IGF1dG87XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLm1vbnRoOmZpcnN0LWNoaWxkIHtcbiAgYm9yZGVyLWxlZnQtd2lkdGg6IDFweDtcbn1cblxuLndlZWstb2Zmc2V0IHtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCAkZ3JheS1kYXJrIDFweDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLndlZWtzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLndlZWsge1xuICBib3JkZXI6IDAgc29saWQ7XG4gIGJvcmRlci1yaWdodC13aWR0aDogMXB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuXG4ud2VlazpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi5kYXlzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbn1cblxuLmRheSB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGJvcmRlcjogc29saWQgMXB4ICRncmF5LWRhcms7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAwO1xuICBtaW4td2lkdGg6ICRkYXktd2lkdGg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW46IDA7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLmRheTpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi50b2RheSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRicmFuZC1wcmltYXJ5O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG4iXX0= */"],
       changeDetection: 0
     });
     /*@__PURE__*/
@@ -1368,15 +929,501 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "../ng-time-chart/src/lib/ng-time-chart.module.ts":
-  /*!********************************************************!*\
-    !*** ../ng-time-chart/src/lib/ng-time-chart.module.ts ***!
-    \********************************************************/
+  "../ng-time-chart/src/lib/components/item-grouping/item-grouping.component.ts":
+  /*!************************************************************************************!*\
+    !*** ../ng-time-chart/src/lib/components/item-grouping/item-grouping.component.ts ***!
+    \************************************************************************************/
+
+  /*! exports provided: ItemGroupingComponent */
+
+  /***/
+  function ngTimeChartSrcLibComponentsItemGroupingItemGroupingComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ItemGroupingComponent", function () {
+      return ItemGroupingComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! moment */
+    "../../node_modules/moment/moment.js");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _item_item_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../item/item.component */
+    "../ng-time-chart/src/lib/components/item/item.component.ts");
+
+    function ItemGroupingComponent_div_0_ng_container_2_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "ng-item", 4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var item_r2 = ctx.$implicit;
+
+        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("period", ctx_r1.period)("item", item_r2);
+      }
+    }
+
+    function ItemGroupingComponent_div_0_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ItemGroupingComponent_div_0_ng_container_2_Template, 2, 2, "ng-container", 3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.itemGrouping);
+      }
+    }
+
+    var ItemGroupingComponent = /*#__PURE__*/function () {
+      function ItemGroupingComponent() {
+        _classCallCheck(this, ItemGroupingComponent);
+      }
+
+      _createClass(ItemGroupingComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "isInPeriod",
+        value: function isInPeriod(time) {
+          return this.period.containsDate(time);
+        }
+      }, {
+        key: "open",
+        value: function open(item) {
+          var _a;
+
+          (_a = item.onClick) === null || _a === void 0 ? void 0 : _a.apply(null);
+        }
+      }, {
+        key: "visibleInPeriod",
+        value: function visibleInPeriod(itemGrouping) {
+          if (!itemGrouping || itemGrouping.length === 0) {
+            return false;
+          }
+
+          var earliestDate = Object(moment__WEBPACK_IMPORTED_MODULE_1__["min"])(itemGrouping.map(function (item) {
+            return item.startTime;
+          }));
+          var latestDate = Object(moment__WEBPACK_IMPORTED_MODULE_1__["max"])(itemGrouping.map(function (item) {
+            return item.endTime;
+          }));
+
+          if (this.isInPeriod(earliestDate) || this.isInPeriod(latestDate)) {
+            return true;
+          }
+
+          return !(!this.isInPeriod(earliestDate) && !this.isInPeriod(latestDate));
+        }
+      }]);
+
+      return ItemGroupingComponent;
+    }();
+
+    ItemGroupingComponent.ɵfac = function ItemGroupingComponent_Factory(t) {
+      return new (t || ItemGroupingComponent)();
+    };
+
+    ItemGroupingComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: ItemGroupingComponent,
+      selectors: [["ng-item-grouping"]],
+      inputs: {
+        period: "period",
+        itemGrouping: "itemGrouping"
+      },
+      decls: 1,
+      vars: 1,
+      consts: [["class", "item-grouping", 4, "ngIf"], [1, "item-grouping"], [1, "items"], [4, "ngFor", "ngForOf"], [3, "period", "item"]],
+      template: function ItemGroupingComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, ItemGroupingComponent_div_0_Template, 3, 1, "div", 0);
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.visibleInPeriod(ctx.itemGrouping));
+        }
+      },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _item_item_component__WEBPACK_IMPORTED_MODULE_3__["ItemComponent"]],
+      styles: [".day-width-1[_ngcontent-%COMP%] {\n  min-width: 20px;\n  max-width: 20px;\n}\n\n.label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.item-grouping[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%] {\n  display: block;\n  height: 2.5em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvNV9vYmplY3RzL19kYXkuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvMV9zZXR0aW5ncy9fdmFyaWFibGVzLnNjc3MiLCJwcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9saWIvY29tcG9uZW50cy9pdGVtLWdyb3VwaW5nL2l0ZW0tZ3JvdXBpbmcuY29tcG9uZW50LnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvc3R5bGVzLzZfY29tcG9uZW50cy9fc2lkZWJhci5zY3NzIiwiL2hvbWUvcnVubmVyL3dvcmsvbmctdGltZS1jaGFydC9uZy10aW1lLWNoYXJ0L3Byb2plY3RzL25nLXRpbWUtY2hhcnQvc3JjL2xpYi9jb21wb25lbnRzL2l0ZW0tZ3JvdXBpbmcvaXRlbS1ncm91cGluZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLGVDSFU7RURJVixlQ0pVO0FDR1o7O0FDREE7RUFDRSx1QkFBQTtFQUNBLGFBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JGSGM7RUVJZCxnQkZKYztBQ1FoQjs7QUVQQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtBRlVGOztBRVJFO0VBQ0UsY0FBQTtFQUNBLGFBQUE7QUZVSiIsImZpbGUiOiJwcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9saWIvY29tcG9uZW50cy9pdGVtLWdyb3VwaW5nL2l0ZW0tZ3JvdXBpbmcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IFwiLi4vMV9zZXR0aW5ncy92YXJpYWJsZXNcIjtcblxuLmRheS13aWR0aC0xIHtcbiAgbWluLXdpZHRoOiAkZGF5LXdpZHRoO1xuICBtYXgtd2lkdGg6ICRkYXktd2lkdGg7XG59XG4iLCIkZGF5LXdpZHRoOiAyMHB4O1xuJGl0ZW0tdmVydGljYWwtcGFkZGluZzogMnB4O1xuJGl0ZW0tdmVydGljYWwtbWFyZ2luOiA0cHg7XG4kc2lkZWJhci13aWR0aDogMjAwcHg7XG4kaGVhZGVyLWhlaWdodDogNzBweDtcbiRncmF5LWRhcms6ICM4ODg7XG4kZ3JheS1iYXNlOiAjYWFhO1xuJGdyYXktbGlnaHQ6ICNjY2M7XG4kZ3JheS1saWdodGVyOiAjZWVlO1xuJGJyYW5kLWluZm86ICNkZWFkMDA7XG4kYnJhbmQtcHJpbWFyeTogI2IwMGIxZTtcbiRicmFuZC1kYW5nZXI6ICMzOTkzODM7XG4kY29sb3ItYTogI2IwMGIxZTtcbiRjb2xvci1iOiAjZmEwYWFhO1xuJGNvbG9yLWM6ICMzOTkzODM7XG4iLCIuZGF5LXdpZHRoLTEge1xuICBtaW4td2lkdGg6IDIwcHg7XG4gIG1heC13aWR0aDogMjBweDtcbn1cblxuLmxhYmVsLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB6LWluZGV4OiAxMDAwO1xuICBmbGV4OiAxIDAgMjAwcHg7XG4gIG1pbi13aWR0aDogMjAwcHg7XG4gIG1heC13aWR0aDogMjAwcHg7XG59XG5cbi5pdGVtLWdyb3VwaW5nIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbn1cbi5pdGVtLWdyb3VwaW5nIC5pdGVtcyB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBoZWlnaHQ6IDIuNWVtO1xufSIsIkBpbXBvcnQgXCIuLi8xX3NldHRpbmdzL3ZhcmlhYmxlc1wiO1xuXG4ubGFiZWwtYmFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGZsZXg6IDEgMCAkc2lkZWJhci13aWR0aDtcbiAgbWluLXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbiAgbWF4LXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbn1cbiIsIkBpbXBvcnQgXCIuLi8uLi8uLi9zdHlsZXMvMV9zZXR0aW5ncy92YXJpYWJsZXNcIjtcbkBpbXBvcnQgXCIuLi8uLi8uLi9zdHlsZXMvNV9vYmplY3RzL2RheVwiO1xuQGltcG9ydCBcIi4uLy4uLy4uL3N0eWxlcy82X2NvbXBvbmVudHMvc2lkZWJhclwiO1xuXG4uaXRlbS1ncm91cGluZyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG5cbiAgLml0ZW1zIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBoZWlnaHQ6IDIuNWVtO1xuICB9XG59XG4iXX0= */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ItemGroupingComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'ng-item-grouping',
+          templateUrl: './item-grouping.component.html',
+          styleUrls: ['./item-grouping.component.scss']
+        }]
+      }], function () {
+        return [];
+      }, {
+        period: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        itemGrouping: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/components/item/item.component.ts":
+  /*!******************************************************************!*\
+    !*** ../ng-time-chart/src/lib/components/item/item.component.ts ***!
+    \******************************************************************/
+
+  /*! exports provided: ItemComponent */
+
+  /***/
+  function ngTimeChartSrcLibComponentsItemItemComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ItemComponent", function () {
+      return ItemComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ../../constants */
+    "../ng-time-chart/src/lib/constants.ts");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! moment */
+    "../../node_modules/moment/moment.js");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/common */
+    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../pipes/time-chart-date-formatter.pipe */
+    "../ng-time-chart/src/lib/pipes/time-chart-date-formatter.pipe.ts");
+
+    function ItemComponent_div_0_ng_container_1_div_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " \xA0 ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var day_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+        var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("left", ctx_r4.getDaysSince(ctx_r4.item.startTime, day_r3) * ctx_r4.DAY_WIDTH, "px");
+      }
+    }
+
+    function ItemComponent_div_0_ng_container_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ItemComponent_div_0_ng_container_1_div_1_Template, 2, 2, "div", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var day_r3 = ctx.$implicit;
+
+        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.isInPeriod(day_r3));
+      }
+    }
+
+    function ItemComponent_div_0_div_6_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.item.details);
+      }
+    }
+
+    function ItemComponent_div_0_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ItemComponent_div_0_Template_div_click_0_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7);
+
+          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r6.open(ctx_r6.item);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ItemComponent_div_0_ng_container_1_Template, 2, 1, "ng-container", 2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "timeChartDateFormatter");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](5, "timeChartDateFormatter");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, ItemComponent_div_0_div_6_Template, 3, 1, "div", 4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("item ", ctx_r0.item["class"], "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("left", ctx_r0.getDayOfPeriod(ctx_r0.item.startTime) * ctx_r0.DAY_WIDTH + ctx_r0.SIDEBAR_WIDTH, "px")("min-width", ctx_r0.getDuration(ctx_r0.item) * ctx_r0.DAY_WIDTH, "px")("max-width", ctx_r0.getDuration(ctx_r0.item) * ctx_r0.DAY_WIDTH, "px");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("open-left", ctx_r0.isNotInPeriod(ctx_r0.item.startTime))("open-right", ctx_r0.isNotInPeriod(ctx_r0.item.endTime));
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.item.dates);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate3"](" ", ctx_r0.item.name, " (", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 18, ctx_r0.item.startTime), " - ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](5, 20, ctx_r0.item.endTime), ") ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.item.details);
+      }
+    }
+
+    var moment = moment__WEBPACK_IMPORTED_MODULE_2__;
+
+    var ItemComponent = /*#__PURE__*/function () {
+      function ItemComponent() {
+        _classCallCheck(this, ItemComponent);
+
+        this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_1__["Constants"].DAY_WIDTH;
+        this.SIDEBAR_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_1__["Constants"].SIDEBAR_WIDTH;
+      }
+
+      _createClass(ItemComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "isInPeriod",
+        value: function isInPeriod(time) {
+          return this.period.containsDate(time);
+        }
+      }, {
+        key: "getDayOfPeriod",
+        value: function getDayOfPeriod(date) {
+          if (!this.period.containsDate(date)) {
+            return 0;
+          }
+
+          return Math.round(date.diff(this.period.startDate, 'days', true));
+        }
+      }, {
+        key: "getDuration",
+        value: function getDuration(item) {
+          var startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);
+          var endDate = this.getEndDateCurrentPeriod(item.endTime).hour(12);
+          return Math.round(endDate.diff(startDate, 'days', true)) + 1;
+        }
+      }, {
+        key: "isNotInPeriod",
+        value: function isNotInPeriod(time) {
+          return !this.period.containsDate(time);
+        }
+      }, {
+        key: "getDaysSince",
+        value: function getDaysSince(referenceDate, date) {
+          var refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
+          var myDate = this.getStartDateInCurrentPeriod(moment(date));
+          return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+        }
+      }, {
+        key: "open",
+        value: function open(item) {
+          var _a;
+
+          (_a = item.onClick) === null || _a === void 0 ? void 0 : _a.apply(null);
+        }
+      }, {
+        key: "getStartDateInCurrentPeriod",
+        value: function getStartDateInCurrentPeriod(startDate) {
+          var date = startDate.clone();
+
+          if (date.isBefore(this.period.startDate)) {
+            return this.period.startDate.clone();
+          }
+
+          return date;
+        }
+      }, {
+        key: "getEndDateCurrentPeriod",
+        value: function getEndDateCurrentPeriod(endDate) {
+          var date = endDate.clone();
+
+          if (date.isAfter(this.period.endDate)) {
+            return this.period.endDate.clone();
+          }
+
+          return date;
+        }
+      }]);
+
+      return ItemComponent;
+    }();
+
+    ItemComponent.ɵfac = function ItemComponent_Factory(t) {
+      return new (t || ItemComponent)();
+    };
+
+    ItemComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: ItemComponent,
+      selectors: [["ng-item"]],
+      inputs: {
+        period: "period",
+        item: "item"
+      },
+      decls: 1,
+      vars: 1,
+      consts: [[3, "class", "left", "minWidth", "maxWidth", "open-left", "open-right", "click", 4, "ngIf"], [3, "click"], [4, "ngFor", "ngForOf"], [1, "blockade-title"], ["class", "blockade-details", 4, "ngIf"], ["class", "blockade-day day-width-1", 3, "left", 4, "ngIf"], [1, "blockade-day", "day-width-1"], [1, "blockade-details"]],
+      template: function ItemComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, ItemComponent_div_0_Template, 7, 22, "div", 0);
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isInPeriod(ctx.item.startTime) || ctx.isInPeriod(ctx.item.endTime));
+        }
+      },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]],
+      pipes: [_pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_4__["TimeChartDateFormatterPipe"]],
+      styles: [".item[_ngcontent-%COMP%] {\n  cursor: pointer;\n  position: absolute;\n  border-radius: 10px;\n  border-width: 2px;\n  border-style: solid;\n  text-align: center;\n  font-weight: bold;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  margin: 4px 0;\n  transition: 0.5s;\n  display: inline-block;\n}\n.item[_ngcontent-%COMP%]   .blockade-title[_ngcontent-%COMP%] {\n  position: relative;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.item[_ngcontent-%COMP%]   .blockade-details[_ngcontent-%COMP%] {\n  display: none;\n}\n.item[_ngcontent-%COMP%]:hover {\n  -webkit-filter: brightness(110%);\n          filter: brightness(110%);\n  transform: scaleY(1.1);\n  max-width: unset !important;\n  z-index: 999;\n  padding-left: 8px;\n  padding-right: 8px;\n  transition: all ease-in-out 0.2s;\n  opacity: 0.95;\n}\n.item[_ngcontent-%COMP%]:hover   .blockade-details[_ngcontent-%COMP%] {\n  display: block;\n  font-weight: normal;\n  width: 40em;\n  white-space: normal;\n  margin-top: 8px;\n  margin-left: auto;\n  margin-right: auto;\n  text-align: left;\n}\n.type-a[_ngcontent-%COMP%] {\n  border-color: #b00b1e;\n  background-color: #f77786;\n  color: white;\n}\n.type-a[_ngcontent-%COMP%]   .blockade-day[_ngcontent-%COMP%] {\n  background-color: #b00b1e;\n}\n.type-b[_ngcontent-%COMP%] {\n  border-color: #fa0aaa;\n  background-color: #feb9e7;\n}\n.type-b[_ngcontent-%COMP%]   .blockade-day[_ngcontent-%COMP%] {\n  background-color: #fa0aaa;\n}\n.type-c[_ngcontent-%COMP%] {\n  border-color: #399383;\n  background-color: #a3dbd1;\n}\n.type-c[_ngcontent-%COMP%]   .blockade-day[_ngcontent-%COMP%] {\n  background-color: #399383;\n}\n.blockade-day[_ngcontent-%COMP%] {\n  position: absolute;\n  display: inline-block;\n  margin-top: -2px;\n  height: 100%;\n}\n.open-left[_ngcontent-%COMP%] {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.open-right[_ngcontent-%COMP%] {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9saWIvY29tcG9uZW50cy9pdGVtL2l0ZW0uY29tcG9uZW50LnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvc3R5bGVzLzFfc2V0dGluZ3MvX3ZhcmlhYmxlcy5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL2NvbXBvbmVudHMvaXRlbS9pdGVtLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsZUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtFQUNBLGdCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLGdCQ1pzQjtFRGF0QixtQkNic0I7RURjdEIsYUFBQTtFQUNBLGdCQUFBO0VBQ0EscUJBQUE7QUVERjtBRkdFO0VBQ0Usa0JBQUE7RUFDQSxnQkFBQTtFQUNBLHVCQUFBO0FFREo7QUZLRTtFQUNFLGFBQUE7QUVISjtBRlFBO0VBQ0UsZ0NBQUE7VUFBQSx3QkFBQTtFQUNBLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGdDQUFBO0VBQ0EsYUFBQTtBRUxGO0FGT0U7RUFDRSxjQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0VBQ0EsbUJBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0FFTEo7QUZTQTtFQUNFLHFCQzNDUTtFRDRDUix5QkFBQTtFQUNBLFlBQUE7QUVORjtBRlFFO0VBQ0UseUJDaERNO0FDMENWO0FGVUE7RUFDRSxxQkNwRFE7RURxRFIseUJBQUE7QUVQRjtBRlNFO0VBQ0UseUJDeERNO0FDaURWO0FGV0E7RUFDRSxxQkM1RFE7RUQ2RFIseUJBQUE7QUVSRjtBRlVFO0VBQ0UseUJDaEVNO0FDd0RWO0FGWUE7RUFDRSxrQkFBQTtFQUNBLHFCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0FFVEY7QUZZQTtFQUNFLHlCQUFBO0VBQ0EsNEJBQUE7QUVURjtBRllBO0VBQ0UsMEJBQUE7RUFDQSw2QkFBQTtBRVRGIiwiZmlsZSI6InByb2plY3RzL25nLXRpbWUtY2hhcnQvc3JjL2xpYi9jb21wb25lbnRzL2l0ZW0vaXRlbS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCIuLi8uLi8uLi9zdHlsZXMvMV9zZXR0aW5ncy92YXJpYWJsZXNcIjtcblxuLml0ZW0ge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgYm9yZGVyLXdpZHRoOiAycHg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBwYWRkaW5nLXRvcDogJGl0ZW0tdmVydGljYWwtcGFkZGluZztcbiAgcGFkZGluZy1ib3R0b206ICRpdGVtLXZlcnRpY2FsLXBhZGRpbmc7XG4gIG1hcmdpbjogNHB4IDA7XG4gIHRyYW5zaXRpb246IDAuNXM7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcblxuICAuYmxvY2thZGUtdGl0bGUge1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuXG4gIH1cblxuICAuYmxvY2thZGUtZGV0YWlscyB7XG4gICAgZGlzcGxheTogbm9uZTtcblxuICB9XG59XG5cbi5pdGVtOmhvdmVyIHtcbiAgZmlsdGVyOiBicmlnaHRuZXNzKDExMCUpO1xuICB0cmFuc2Zvcm06IHNjYWxlWSgxLjEpO1xuICBtYXgtd2lkdGg6IHVuc2V0ICFpbXBvcnRhbnQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgcGFkZGluZy1sZWZ0OiA4cHg7XG4gIHBhZGRpbmctcmlnaHQ6IDhweDtcbiAgdHJhbnNpdGlvbjogYWxsIGVhc2UtaW4tb3V0IC4ycztcbiAgb3BhY2l0eTogMC45NTtcblxuICAuYmxvY2thZGUtZGV0YWlscyB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICB3aWR0aDogNDBlbTtcbiAgICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuICAgIG1hcmdpbi10b3A6IDhweDtcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgfVxufVxuXG4udHlwZS1hIHtcbiAgYm9yZGVyLWNvbG9yOiAkY29sb3ItYTtcbiAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRlbigkY29sb3ItYSwgMzUlKTtcbiAgY29sb3I6IHdoaXRlO1xuXG4gIC5ibG9ja2FkZS1kYXkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1hO1xuICB9XG59XG5cbi50eXBlLWIge1xuICBib3JkZXItY29sb3I6ICRjb2xvci1iO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGVuKCRjb2xvci1iLCAzNSUpO1xuXG4gIC5ibG9ja2FkZS1kYXkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1iO1xuICB9XG59XG5cbi50eXBlLWMge1xuICBib3JkZXItY29sb3I6ICRjb2xvci1jO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGVuKCRjb2xvci1jLCAzNSUpO1xuXG4gIC5ibG9ja2FkZS1kYXkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1jO1xuICB9XG59XG5cbi5ibG9ja2FkZS1kYXkge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbWFyZ2luLXRvcDogLSRpdGVtLXZlcnRpY2FsLXBhZGRpbmc7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLm9wZW4tbGVmdCB7XG4gIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDA7XG4gIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDA7XG59XG5cbi5vcGVuLXJpZ2h0IHtcbiAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDA7XG4gIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiAwO1xufVxuIiwiJGRheS13aWR0aDogMjBweDtcbiRpdGVtLXZlcnRpY2FsLXBhZGRpbmc6IDJweDtcbiRpdGVtLXZlcnRpY2FsLW1hcmdpbjogNHB4O1xuJHNpZGViYXItd2lkdGg6IDIwMHB4O1xuJGhlYWRlci1oZWlnaHQ6IDcwcHg7XG4kZ3JheS1kYXJrOiAjODg4O1xuJGdyYXktYmFzZTogI2FhYTtcbiRncmF5LWxpZ2h0OiAjY2NjO1xuJGdyYXktbGlnaHRlcjogI2VlZTtcbiRicmFuZC1pbmZvOiAjZGVhZDAwO1xuJGJyYW5kLXByaW1hcnk6ICNiMDBiMWU7XG4kYnJhbmQtZGFuZ2VyOiAjMzk5MzgzO1xuJGNvbG9yLWE6ICNiMDBiMWU7XG4kY29sb3ItYjogI2ZhMGFhYTtcbiRjb2xvci1jOiAjMzk5MzgzO1xuIiwiLml0ZW0ge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgYm9yZGVyLXdpZHRoOiAycHg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBwYWRkaW5nLXRvcDogMnB4O1xuICBwYWRkaW5nLWJvdHRvbTogMnB4O1xuICBtYXJnaW46IDRweCAwO1xuICB0cmFuc2l0aW9uOiAwLjVzO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG59XG4uaXRlbSAuYmxvY2thZGUtdGl0bGUge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xufVxuLml0ZW0gLmJsb2NrYWRlLWRldGFpbHMge1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4uaXRlbTpob3ZlciB7XG4gIGZpbHRlcjogYnJpZ2h0bmVzcygxMTAlKTtcbiAgdHJhbnNmb3JtOiBzY2FsZVkoMS4xKTtcbiAgbWF4LXdpZHRoOiB1bnNldCAhaW1wb3J0YW50O1xuICB6LWluZGV4OiA5OTk7XG4gIHBhZGRpbmctbGVmdDogOHB4O1xuICBwYWRkaW5nLXJpZ2h0OiA4cHg7XG4gIHRyYW5zaXRpb246IGFsbCBlYXNlLWluLW91dCAwLjJzO1xuICBvcGFjaXR5OiAwLjk1O1xufVxuLml0ZW06aG92ZXIgLmJsb2NrYWRlLWRldGFpbHMge1xuICBkaXNwbGF5OiBibG9jaztcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgd2lkdGg6IDQwZW07XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIG1hcmdpbi10b3A6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgdGV4dC1hbGlnbjogbGVmdDtcbn1cblxuLnR5cGUtYSB7XG4gIGJvcmRlci1jb2xvcjogI2IwMGIxZTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y3Nzc4NjtcbiAgY29sb3I6IHdoaXRlO1xufVxuLnR5cGUtYSAuYmxvY2thZGUtZGF5IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2IwMGIxZTtcbn1cblxuLnR5cGUtYiB7XG4gIGJvcmRlci1jb2xvcjogI2ZhMGFhYTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZlYjllNztcbn1cbi50eXBlLWIgLmJsb2NrYWRlLWRheSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYTBhYWE7XG59XG5cbi50eXBlLWMge1xuICBib3JkZXItY29sb3I6ICMzOTkzODM7XG4gIGJhY2tncm91bmQtY29sb3I6ICNhM2RiZDE7XG59XG4udHlwZS1jIC5ibG9ja2FkZS1kYXkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzk5MzgzO1xufVxuXG4uYmxvY2thZGUtZGF5IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1hcmdpbi10b3A6IC0ycHg7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLm9wZW4tbGVmdCB7XG4gIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDA7XG4gIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDA7XG59XG5cbi5vcGVuLXJpZ2h0IHtcbiAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDA7XG4gIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiAwO1xufSJdfQ== */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ItemComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'ng-item',
+          templateUrl: './item.component.html',
+          styleUrls: ['./item.component.scss']
+        }]
+      }], function () {
+        return [];
+      }, {
+        period: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        item: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
+    })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/components/ng-time-chart.module.ts":
+  /*!*******************************************************************!*\
+    !*** ../ng-time-chart/src/lib/components/ng-time-chart.module.ts ***!
+    \*******************************************************************/
 
   /*! exports provided: NgTimeChartModule */
 
   /***/
-  function ngTimeChartSrcLibNgTimeChartModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function ngTimeChartSrcLibComponentsNgTimeChartModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -1395,9 +1442,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./ng-time-chart.component */
-    "../ng-time-chart/src/lib/ng-time-chart.component.ts");
+    var _chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./chart/ng-time-chart.component */
+    "../ng-time-chart/src/lib/components/chart/ng-time-chart.component.ts");
     /* harmony import */
 
 
@@ -1407,9 +1454,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _time_table_body_time_table_body_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./time-table-body/time-table-body.module */
-    "../ng-time-chart/src/lib/time-table-body/time-table-body.module.ts");
+    var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./time-table-body/time-table-body.component */
+    "../ng-time-chart/src/lib/components/time-table-body/time-table-body.component.ts");
+    /* harmony import */
+
+
+    var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./item-grouping/item-grouping.component */
+    "../ng-time-chart/src/lib/components/item-grouping/item-grouping.component.ts");
+    /* harmony import */
+
+
+    var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../pipes/time-chart-date-formatter.pipe */
+    "../ng-time-chart/src/lib/pipes/time-chart-date-formatter.pipe.ts");
+    /* harmony import */
+
+
+    var _item_item_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./item/item.component */
+    "../ng-time-chart/src/lib/components/item/item.component.ts");
 
     var NgTimeChartModule = function NgTimeChartModule() {
       _classCallCheck(this, NgTimeChartModule);
@@ -1422,14 +1487,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       factory: function NgTimeChartModule_Factory(t) {
         return new (t || NgTimeChartModule)();
       },
-      imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _time_table_body_time_table_body_module__WEBPACK_IMPORTED_MODULE_3__["TimeTableBodyModule"]]]
+      imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]]]
     });
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NgTimeChartModule, {
-        declarations: [_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _time_table_body_time_table_body_module__WEBPACK_IMPORTED_MODULE_3__["TimeTableBodyModule"]],
-        exports: [_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]]
+        declarations: [_time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_3__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__["ItemGroupingComponent"], _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_5__["TimeChartDateFormatterPipe"], _item_item_component__WEBPACK_IMPORTED_MODULE_6__["ItemComponent"], _chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+        exports: [_item_item_component__WEBPACK_IMPORTED_MODULE_6__["ItemComponent"], _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_3__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__["ItemGroupingComponent"], _chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]]
       });
     })();
     /*@__PURE__*/
@@ -1439,12 +1504,716 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgTimeChartModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-          declarations: [_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]],
-          imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _time_table_body_time_table_body_module__WEBPACK_IMPORTED_MODULE_3__["TimeTableBodyModule"]],
-          exports: [_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]]
+          declarations: [_time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_3__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__["ItemGroupingComponent"], _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_5__["TimeChartDateFormatterPipe"], _item_item_component__WEBPACK_IMPORTED_MODULE_6__["ItemComponent"], _chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]],
+          imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+          exports: [_item_item_component__WEBPACK_IMPORTED_MODULE_6__["ItemComponent"], _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_3__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__["ItemGroupingComponent"], _chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_1__["NgTimeChartComponent"]]
         }]
       }], null, null);
     })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/components/time-table-body/time-table-body.component.ts":
+  /*!****************************************************************************************!*\
+    !*** ../ng-time-chart/src/lib/components/time-table-body/time-table-body.component.ts ***!
+    \****************************************************************************************/
+
+  /*! exports provided: TimeTableBodyComponent */
+
+  /***/
+  function ngTimeChartSrcLibComponentsTimeTableBodyTimeTableBodyComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TimeTableBodyComponent", function () {
+      return TimeTableBodyComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ../../constants */
+    "../ng-time-chart/src/lib/constants.ts");
+    /* harmony import */
+
+
+    var _layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../../layout/layout-selector.service */
+    "../ng-time-chart/src/lib/layout/layout-selector.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/common */
+    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../item-grouping/item-grouping.component */
+    "../ng-time-chart/src/lib/components/item-grouping/item-grouping.component.ts");
+
+    var _c0 = ["todaymarker"];
+
+    function TimeTableBodyComponent_div_1_ng_container_4_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "ng-item-grouping", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var itemGrouping_r4 = ctx.$implicit;
+
+        var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("itemGrouping", itemGrouping_r4)("period", ctx_r3.period);
+      }
+    }
+
+    function TimeTableBodyComponent_div_1_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function TimeTableBodyComponent_div_1_Template_div_click_1_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6);
+
+          var group_r2 = ctx.$implicit;
+
+          var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r5.open(group_r2);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, TimeTableBodyComponent_div_1_ng_container_4_Template, 2, 2, "ng-container", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var group_r2 = ctx.$implicit;
+
+        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", group_r2.name, " ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.doLayout(group_r2.items));
+      }
+    }
+
+    function TimeTableBodyComponent_div_2_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 8);
+      }
+
+      if (rf & 2) {
+        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("left", ctx_r1.getDayOfPeriod(ctx_r1.today) * ctx_r1.DAY_WIDTH + ctx_r1.SIDEBAR_WIDTH + 7, "px");
+      }
+    }
+
+    var TimeTableBodyComponent = /*#__PURE__*/function () {
+      function TimeTableBodyComponent(layoutSelectorService) {
+        _classCallCheck(this, TimeTableBodyComponent);
+
+        this.layoutSelectorService = layoutSelectorService;
+        this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_1__["Constants"].DAY_WIDTH;
+        this.SIDEBAR_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_1__["Constants"].SIDEBAR_WIDTH;
+        this.groups = [];
+      }
+
+      _createClass(TimeTableBodyComponent, [{
+        key: "doLayout",
+        value: function doLayout(items) {
+          return this.layoutSelectorService.doLayout(items, this.layoutStrategy);
+        }
+      }, {
+        key: "getDayOfPeriod",
+        value: function getDayOfPeriod(date) {
+          if (!this.period.containsDate(date)) {
+            return 0;
+          }
+
+          return Math.round(date.diff(this.period.startDate, 'days', true));
+        }
+      }, {
+        key: "isInPeriod",
+        value: function isInPeriod(time) {
+          return this.period.containsDate(time);
+        }
+      }, {
+        key: "open",
+        value: function open(group) {
+          var _a;
+
+          (_a = group.onClick) === null || _a === void 0 ? void 0 : _a.apply(null);
+        }
+      }]);
+
+      return TimeTableBodyComponent;
+    }();
+
+    TimeTableBodyComponent.ɵfac = function TimeTableBodyComponent_Factory(t) {
+      return new (t || TimeTableBodyComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_2__["LayoutSelectorService"]));
+    };
+
+    TimeTableBodyComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: TimeTableBodyComponent,
+      selectors: [["ng-time-table-body"]],
+      viewQuery: function TimeTableBodyComponent_Query(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c0, true);
+        }
+
+        if (rf & 2) {
+          var _t;
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.todayMarker = _t.first);
+        }
+      },
+      inputs: {
+        groups: "groups",
+        period: "period",
+        today: "today",
+        durationInDays: "durationInDays",
+        layoutStrategy: "layoutStrategy"
+      },
+      decls: 3,
+      vars: 4,
+      consts: [[1, "timetable-body"], ["class", "item-group", 4, "ngFor", "ngForOf"], ["class", "today-marker", 3, "left", 4, "ngIf"], [1, "item-group"], [1, "item-label", "label-bar", 3, "click"], [1, "item-display"], [4, "ngFor", "ngForOf"], [3, "itemGrouping", "period"], [1, "today-marker"]],
+      template: function TimeTableBodyComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, TimeTableBodyComponent_div_1_Template, 5, 2, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, TimeTableBodyComponent_div_2_Template, 1, 2, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("min-width", ctx.durationInDays * ctx.DAY_WIDTH + ctx.SIDEBAR_WIDTH, "px");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.groups);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isInPeriod(ctx.today));
+        }
+      },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__["ItemGroupingComponent"]],
+      styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.timetable-body[_ngcontent-%COMP%] {\n  padding-top: 0;\n  margin-top: 0;\n  margin-bottom: 4px;\n  position: relative;\n  z-index: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-label[_ngcontent-%COMP%] {\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n  flex: 1 0 200px;\n  text-align: left;\n  color: #aaa;\n  margin: 0;\n  padding-top: calc(2px + 4px + 1px);\n  padding-bottom: calc(2px + 4px + 1px);\n  z-index: 1000;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-display[_ngcontent-%COMP%] {\n  border-top: solid 1px #ccc;\n  width: 100%;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:first-child {\n  margin-top: 0;\n  padding-top: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:nth-child(odd) {\n  background-color: #eee;\n}\n\n.today-marker[_ngcontent-%COMP%] {\n  width: 4px;\n  background-color: #b00b1e;\n  display: block;\n  border-left: solid white 1px;\n  border-right: solid white 1px;\n  box-sizing: content-box;\n  position: absolute;\n  top: -40px;\n  bottom: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvNl9jb21wb25lbnRzL19zaWRlYmFyLnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvc3R5bGVzLzFfc2V0dGluZ3MvX3ZhcmlhYmxlcy5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL2NvbXBvbmVudHMvdGltZS10YWJsZS1ib2R5L3RpbWUtdGFibGUtYm9keS5jb21wb25lbnQuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9saWIvY29tcG9uZW50cy90aW1lLXRhYmxlLWJvZHkvdGltZS10YWJsZS1ib2R5LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsdUJBQUE7RUFDQSxhQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQ0hjO0VESWQsZ0JDSmM7QUNHaEI7O0FDSEE7RUFDRSxjQUFBO0VBQ0EsYUFBQTtFQUNBLGtCRkpxQjtFRUtyQixrQkFBQTtFQUNBLFVBQUE7QURNRjs7QUNKRTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtBRE1KOztBQ0pJO0VBQ0Usd0JBQUE7RUFBQSxnQkFBQTtFQUNBLE9BQUE7RUFDQSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXRmJNO0VFY04sU0FBQTtFQUNBLGtDQUFBO0VBQ0EscUNBQUE7RUFDQSxhQUFBO0FETU47O0FDSEk7RUFDRSwwQkFBQTtFQUNBLFdBQUE7QURLTjs7QUNERTtFQUNFLGFBQUE7RUFDQSxjQUFBO0FER0o7O0FDQUU7RUFDRSxzQkY5Qlc7QUNnQ2Y7O0FDRUE7RUFDRSxVQUFBO0VBQ0EseUJGbENjO0VFbUNkLGNBQUE7RUFDQSw0QkFBQTtFQUNBLDZCQUFBO0VBQ0EsdUJBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxTQUFBO0FEQ0YiLCJmaWxlIjoicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL2NvbXBvbmVudHMvdGltZS10YWJsZS1ib2R5L3RpbWUtdGFibGUtYm9keS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCIuLi8xX3NldHRpbmdzL3ZhcmlhYmxlc1wiO1xuXG4ubGFiZWwtYmFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGZsZXg6IDEgMCAkc2lkZWJhci13aWR0aDtcbiAgbWluLXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbiAgbWF4LXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbn1cbiIsIiRkYXktd2lkdGg6IDIwcHg7XG4kaXRlbS12ZXJ0aWNhbC1wYWRkaW5nOiAycHg7XG4kaXRlbS12ZXJ0aWNhbC1tYXJnaW46IDRweDtcbiRzaWRlYmFyLXdpZHRoOiAyMDBweDtcbiRoZWFkZXItaGVpZ2h0OiA3MHB4O1xuJGdyYXktZGFyazogIzg4ODtcbiRncmF5LWJhc2U6ICNhYWE7XG4kZ3JheS1saWdodDogI2NjYztcbiRncmF5LWxpZ2h0ZXI6ICNlZWU7XG4kYnJhbmQtaW5mbzogI2RlYWQwMDtcbiRicmFuZC1wcmltYXJ5OiAjYjAwYjFlO1xuJGJyYW5kLWRhbmdlcjogIzM5OTM4MztcbiRjb2xvci1hOiAjYjAwYjFlO1xuJGNvbG9yLWI6ICNmYTBhYWE7XG4kY29sb3ItYzogIzM5OTM4MztcbiIsIi5sYWJlbC1iYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgei1pbmRleDogMTAwMDtcbiAgZmxleDogMSAwIDIwMHB4O1xuICBtaW4td2lkdGg6IDIwMHB4O1xuICBtYXgtd2lkdGg6IDIwMHB4O1xufVxuXG4udGltZXRhYmxlLWJvZHkge1xuICBwYWRkaW5nLXRvcDogMDtcbiAgbWFyZ2luLXRvcDogMDtcbiAgbWFyZ2luLWJvdHRvbTogNHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHotaW5kZXg6IDA7XG59XG4udGltZXRhYmxlLWJvZHkgLml0ZW0tZ3JvdXAge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xufVxuLnRpbWV0YWJsZS1ib2R5IC5pdGVtLWdyb3VwIC5pdGVtLWxhYmVsIHtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgbGVmdDogMDtcbiAgZmxleDogMSAwIDIwMHB4O1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICBjb2xvcjogI2FhYTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nLXRvcDogY2FsYygycHggKyA0cHggKyAxcHgpO1xuICBwYWRkaW5nLWJvdHRvbTogY2FsYygycHggKyA0cHggKyAxcHgpO1xuICB6LWluZGV4OiAxMDAwO1xufVxuLnRpbWV0YWJsZS1ib2R5IC5pdGVtLWdyb3VwIC5pdGVtLWRpc3BsYXkge1xuICBib3JkZXItdG9wOiBzb2xpZCAxcHggI2NjYztcbiAgd2lkdGg6IDEwMCU7XG59XG4udGltZXRhYmxlLWJvZHkgLml0ZW0tZ3JvdXA6Zmlyc3QtY2hpbGQge1xuICBtYXJnaW4tdG9wOiAwO1xuICBwYWRkaW5nLXRvcDogMDtcbn1cbi50aW1ldGFibGUtYm9keSAuaXRlbS1ncm91cDpudGgtY2hpbGQob2RkKSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG59XG5cbi50b2RheS1tYXJrZXIge1xuICB3aWR0aDogNHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjAwYjFlO1xuICBkaXNwbGF5OiBibG9jaztcbiAgYm9yZGVyLWxlZnQ6IHNvbGlkIHdoaXRlIDFweDtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCB3aGl0ZSAxcHg7XG4gIGJveC1zaXppbmc6IGNvbnRlbnQtYm94O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTQwcHg7XG4gIGJvdHRvbTogMDtcbn0iLCJAaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzFfc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5AaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzZfY29tcG9uZW50cy9zaWRlYmFyXCI7XG5cbi50aW1ldGFibGUtYm9keSB7XG4gIHBhZGRpbmctdG9wOiAwO1xuICBtYXJnaW4tdG9wOiAwO1xuICBtYXJnaW4tYm90dG9tOiAkaXRlbS12ZXJ0aWNhbC1tYXJnaW47XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgei1pbmRleDogMDtcblxuICAuaXRlbS1ncm91cCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuXG4gICAgLml0ZW0tbGFiZWwge1xuICAgICAgcG9zaXRpb246IHN0aWNreTtcbiAgICAgIGxlZnQ6IDA7XG4gICAgICBmbGV4OiAxIDAgJHNpZGViYXItd2lkdGg7XG4gICAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgICAgY29sb3I6ICRncmF5LWJhc2U7XG4gICAgICBtYXJnaW46IDA7XG4gICAgICBwYWRkaW5nLXRvcDogY2FsYygjeyRpdGVtLXZlcnRpY2FsLXBhZGRpbmd9ICsgI3skaXRlbS12ZXJ0aWNhbC1tYXJnaW59ICsgMXB4KTtcbiAgICAgIHBhZGRpbmctYm90dG9tOiBjYWxjKCN7JGl0ZW0tdmVydGljYWwtcGFkZGluZ30gKyAjeyRpdGVtLXZlcnRpY2FsLW1hcmdpbn0gKyAxcHgpO1xuICAgICAgei1pbmRleDogMTAwMDtcbiAgICB9XG5cbiAgICAuaXRlbS1kaXNwbGF5IHtcbiAgICAgIGJvcmRlci10b3A6IHNvbGlkIDFweCAkZ3JheS1saWdodDtcbiAgICAgIHdpZHRoOiAxMDAlO1xuICAgIH1cbiAgfVxuXG4gIC5pdGVtLWdyb3VwOmZpcnN0LWNoaWxkIHtcbiAgICBtYXJnaW4tdG9wOiAwO1xuICAgIHBhZGRpbmctdG9wOiAwO1xuICB9XG5cbiAgLml0ZW0tZ3JvdXA6bnRoLWNoaWxkKG9kZCkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRncmF5LWxpZ2h0ZXI7XG4gIH1cbn1cblxuLnRvZGF5LW1hcmtlciB7XG4gIHdpZHRoOiA0cHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICRicmFuZC1wcmltYXJ5O1xuICBkaXNwbGF5OiBibG9jaztcbiAgYm9yZGVyLWxlZnQ6IHNvbGlkIHdoaXRlIDFweDtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCB3aGl0ZSAxcHg7XG4gIGJveC1zaXppbmc6IGNvbnRlbnQtYm94O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTQwcHg7XG4gIGJvdHRvbTogMDtcbn1cbiJdfQ== */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TimeTableBodyComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'ng-time-table-body',
+          templateUrl: './time-table-body.component.html',
+          styleUrls: ['./time-table-body.component.scss']
+        }]
+      }], function () {
+        return [{
+          type: _layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_2__["LayoutSelectorService"]
+        }];
+      }, {
+        groups: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        period: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        today: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        durationInDays: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        layoutStrategy: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        todayMarker: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+          args: ['todaymarker']
+        }]
+      });
+    })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/constants.ts":
+  /*!*********************************************!*\
+    !*** ../ng-time-chart/src/lib/constants.ts ***!
+    \*********************************************/
+
+  /*! exports provided: Constants */
+
+  /***/
+  function ngTimeChartSrcLibConstantsTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Constants", function () {
+      return Constants;
+    });
+
+    var Constants = function Constants() {
+      _classCallCheck(this, Constants);
+    };
+
+    Constants.DAY_WIDTH = 20;
+    Constants.SIDEBAR_WIDTH = 200;
+    /***/
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/group.ts":
+  /*!*****************************************!*\
+    !*** ../ng-time-chart/src/lib/group.ts ***!
+    \*****************************************/
+
+  /*! exports provided: Group */
+
+  /***/
+  function ngTimeChartSrcLibGroupTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Group", function () {
+      return Group;
+    });
+    /* harmony import */
+
+
+    var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./period */
+    "../ng-time-chart/src/lib/period.ts");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! moment */
+    "../../node_modules/moment/moment.js");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+
+    var moment = moment__WEBPACK_IMPORTED_MODULE_1__;
+
+    var Group = /*#__PURE__*/function () {
+      function Group(name, items) {
+        var onClick = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
+
+        _classCallCheck(this, Group);
+
+        this.name = name;
+        this.items = items;
+        this.duration = Group.calculateDuration(items);
+        this.onClick = onClick;
+      }
+
+      _createClass(Group, null, [{
+        key: "calculateDuration",
+        value: function calculateDuration(items) {
+          var startDate = moment.min(items.map(function (item) {
+            return item.startTime;
+          }));
+          var endDate = moment.max(items.map(function (item) {
+            return item.endTime;
+          }));
+
+          if (!startDate || !endDate) {
+            return null;
+          }
+
+          return new _period__WEBPACK_IMPORTED_MODULE_0__["Period"](startDate, endDate);
+        }
+      }]);
+
+      return Group;
+    }();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/layout/layout-selector.service.ts":
+  /*!******************************************************************!*\
+    !*** ../ng-time-chart/src/lib/layout/layout-selector.service.ts ***!
+    \******************************************************************/
+
+  /*! exports provided: LayoutSelectorService */
+
+  /***/
+  function ngTimeChartSrcLibLayoutLayoutSelectorServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LayoutSelectorService", function () {
+      return LayoutSelectorService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./layout-strategy.enum */
+    "../ng-time-chart/src/lib/layout/layout-strategy.enum.ts");
+    /* harmony import */
+
+
+    var _stacked_layout_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./stacked-layout.service */
+    "../ng-time-chart/src/lib/layout/stacked-layout.service.ts");
+    /* harmony import */
+
+
+    var _tiled_layout_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./tiled-layout.service */
+    "../ng-time-chart/src/lib/layout/tiled-layout.service.ts");
+
+    var LayoutSelectorService = /*#__PURE__*/function () {
+      function LayoutSelectorService(stackedLayout, tiledLayout) {
+        _classCallCheck(this, LayoutSelectorService);
+
+        this.stackedLayout = stackedLayout;
+        this.tiledLayout = tiledLayout;
+      }
+      /**
+       * Does the layout of the an {@link Item} list using the selected strategy
+       * @param items The Items to lay out
+       * @param strategy The {@link LayoutStrategy} to use to layout the items
+       */
+
+
+      _createClass(LayoutSelectorService, [{
+        key: "doLayout",
+        value: function doLayout(items) {
+          var strategy = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__["LayoutStrategy"].Stacked;
+
+          switch (strategy) {
+            case _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__["LayoutStrategy"].Stacked:
+              return this.stackedLayout.doLayout(items);
+
+            case _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__["LayoutStrategy"].Tiled:
+              return this.tiledLayout.doLayout(items);
+          }
+        }
+      }]);
+
+      return LayoutSelectorService;
+    }();
+
+    LayoutSelectorService.ɵfac = function LayoutSelectorService_Factory(t) {
+      return new (t || LayoutSelectorService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_stacked_layout_service__WEBPACK_IMPORTED_MODULE_2__["StackedLayoutService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_tiled_layout_service__WEBPACK_IMPORTED_MODULE_3__["TiledLayoutService"]));
+    };
+
+    LayoutSelectorService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: LayoutSelectorService,
+      factory: LayoutSelectorService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LayoutSelectorService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [{
+          type: _stacked_layout_service__WEBPACK_IMPORTED_MODULE_2__["StackedLayoutService"]
+        }, {
+          type: _tiled_layout_service__WEBPACK_IMPORTED_MODULE_3__["TiledLayoutService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/layout/layout-strategy.enum.ts":
+  /*!***************************************************************!*\
+    !*** ../ng-time-chart/src/lib/layout/layout-strategy.enum.ts ***!
+    \***************************************************************/
+
+  /*! exports provided: LayoutStrategy */
+
+  /***/
+  function ngTimeChartSrcLibLayoutLayoutStrategyEnumTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LayoutStrategy", function () {
+      return LayoutStrategy;
+    });
+
+    var LayoutStrategy;
+
+    (function (LayoutStrategy) {
+      /**
+       * Stack items one on top of the other
+       */
+      LayoutStrategy[LayoutStrategy["Stacked"] = 0] = "Stacked";
+      /**
+       * Try to tile items if their start and end dates do not overlap
+       */
+
+      LayoutStrategy[LayoutStrategy["Tiled"] = 1] = "Tiled";
+    })(LayoutStrategy || (LayoutStrategy = {}));
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/layout/stacked-layout.service.ts":
+  /*!*****************************************************************!*\
+    !*** ../ng-time-chart/src/lib/layout/stacked-layout.service.ts ***!
+    \*****************************************************************/
+
+  /*! exports provided: StackedLayoutService */
+
+  /***/
+  function ngTimeChartSrcLibLayoutStackedLayoutServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "StackedLayoutService", function () {
+      return StackedLayoutService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+    var StackedLayoutService = /*#__PURE__*/function () {
+      function StackedLayoutService() {
+        _classCallCheck(this, StackedLayoutService);
+      }
+
+      _createClass(StackedLayoutService, [{
+        key: "doLayout",
+        value: function doLayout(items) {
+          return items.map(function (item) {
+            return [item];
+          });
+        }
+      }]);
+
+      return StackedLayoutService;
+    }();
+
+    StackedLayoutService.ɵfac = function StackedLayoutService_Factory(t) {
+      return new (t || StackedLayoutService)();
+    };
+
+    StackedLayoutService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: StackedLayoutService,
+      factory: StackedLayoutService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](StackedLayoutService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/layout/tiled-layout.service.ts":
+  /*!***************************************************************!*\
+    !*** ../ng-time-chart/src/lib/layout/tiled-layout.service.ts ***!
+    \***************************************************************/
+
+  /*! exports provided: TiledLayoutService */
+
+  /***/
+  function ngTimeChartSrcLibLayoutTiledLayoutServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TiledLayoutService", function () {
+      return TiledLayoutService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+    var TiledLayoutService = /*#__PURE__*/function () {
+      function TiledLayoutService() {
+        _classCallCheck(this, TiledLayoutService);
+      }
+      /**
+       * Tries to layout items in the most compact way
+       * @param items The {@link Item}s to lay out.
+       */
+
+
+      _createClass(TiledLayoutService, [{
+        key: "doLayout",
+        value: function doLayout(items) {
+          var itemOrder = new ItemOrder();
+          var sorted = items.sort(function (a, b) {
+            return a.startTime.diff(b.startTime);
+          });
+          sorted.forEach(function (item) {
+            return itemOrder.add(item);
+          });
+          return itemOrder.queues;
+        }
+      }]);
+
+      return TiledLayoutService;
+    }();
+
+    TiledLayoutService.ɵfac = function TiledLayoutService_Factory(t) {
+      return new (t || TiledLayoutService)();
+    };
+
+    TiledLayoutService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: TiledLayoutService,
+      factory: TiledLayoutService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TiledLayoutService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [];
+      }, null);
+    })();
+
+    var ItemOrder = /*#__PURE__*/function () {
+      function ItemOrder() {
+        _classCallCheck(this, ItemOrder);
+
+        this._queues = [];
+      }
+
+      _createClass(ItemOrder, [{
+        key: "add",
+        value: function add(item) {
+          this.getFreeQueue(item.startTime).push(item);
+        }
+      }, {
+        key: "getFreeQueue",
+        value: function getFreeQueue(date) {
+          if (this._queues.length === 0) {
+            return this.createNewSubQueue();
+          }
+
+          var queuesWithFreeSpace = this._queues.filter(function (queue) {
+            return queue[queue.length - 1].endTime.isBefore(date);
+          });
+
+          if (queuesWithFreeSpace.length > 0) {
+            return queuesWithFreeSpace[0];
+          }
+
+          return this.createNewSubQueue();
+        }
+      }, {
+        key: "createNewSubQueue",
+        value: function createNewSubQueue() {
+          var myQueue = [];
+
+          this._queues.push(myQueue);
+
+          return myQueue;
+        }
+      }, {
+        key: "queues",
+        get: function get() {
+          return this._queues;
+        }
+      }]);
+
+      return ItemOrder;
+    }();
     /***/
 
   },
@@ -1667,699 +2436,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "../ng-time-chart/src/lib/time-table-body/item-grouping/item-grouping.component.ts":
-  /*!*****************************************************************************************!*\
-    !*** ../ng-time-chart/src/lib/time-table-body/item-grouping/item-grouping.component.ts ***!
-    \*****************************************************************************************/
-
-  /*! exports provided: ItemGroupingComponent */
-
-  /***/
-  function ngTimeChartSrcLibTimeTableBodyItemGroupingItemGroupingComponentTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "ItemGroupingComponent", function () {
-      return ItemGroupingComponent;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! moment */
-    "../../node_modules/moment/moment.js");
-    /* harmony import */
-
-
-    var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-    /* harmony import */
-
-
-    var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../../constants */
-    "../ng-time-chart/src/lib/constants.ts");
-    /* harmony import */
-
-
-    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @angular/common */
-    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-    /* harmony import */
-
-
-    var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../../pipes/time-chart-date-formatter.pipe */
-    "../ng-time-chart/src/lib/pipes/time-chart-date-formatter.pipe.ts");
-
-    function ItemGroupingComponent_div_0_ng_container_2_div_1_ng_container_1_div_1_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " \xA0 ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var day_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
-
-        var item_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
-
-        var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("left", ctx_r6.getDaysSince(item_r2.startTime, day_r5) * ctx_r6.DAY_WIDTH, "px");
-      }
-    }
-
-    function ItemGroupingComponent_div_0_ng_container_2_div_1_ng_container_1_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ItemGroupingComponent_div_0_ng_container_2_div_1_ng_container_1_div_1_Template, 2, 2, "div", 7);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
-      }
-
-      if (rf & 2) {
-        var day_r5 = ctx.$implicit;
-
-        var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](4);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r4.isInPeriod(day_r5));
-      }
-    }
-
-    function ItemGroupingComponent_div_0_ng_container_2_div_1_Template(rf, ctx) {
-      if (rf & 1) {
-        var _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 5);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ItemGroupingComponent_div_0_ng_container_2_div_1_Template_div_click_0_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11);
-
-          var item_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
-
-          var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
-          return ctx_r9.open(item_r2);
-        });
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ItemGroupingComponent_div_0_ng_container_2_div_1_ng_container_1_Template, 2, 1, "ng-container", 3);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 6);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](4, "timeChartDateFormatter");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](5, "timeChartDateFormatter");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var item_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
-
-        var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("item ", item_r2["class"], "");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("left", ctx_r3.getDayOfPeriod(item_r2.startTime) * ctx_r3.DAY_WIDTH + ctx_r3.SIDEBAR_WIDTH, "px")("min-width", ctx_r3.getDuration(item_r2) * ctx_r3.DAY_WIDTH, "px")("max-width", ctx_r3.getDuration(item_r2) * ctx_r3.DAY_WIDTH, "px");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("open-left", ctx_r3.isNotInPeriod(item_r2.startTime))("open-right", ctx_r3.isNotInPeriod(item_r2.endTime));
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", item_r2.dates);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate3"](" ", item_r2.name, " (", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](4, 17, item_r2.startTime), " - ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](5, 19, item_r2.endTime), ") ");
-      }
-    }
-
-    function ItemGroupingComponent_div_0_ng_container_2_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ItemGroupingComponent_div_0_ng_container_2_div_1_Template, 6, 21, "div", 4);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
-      }
-
-      if (rf & 2) {
-        var item_r2 = ctx.$implicit;
-
-        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.isInPeriod(item_r2.startTime) || ctx_r1.isInPeriod(item_r2.endTime));
-      }
-    }
-
-    function ItemGroupingComponent_div_0_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ItemGroupingComponent_div_0_ng_container_2_Template, 2, 1, "ng-container", 3);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.itemGrouping);
-      }
-    }
-
-    var moment = moment__WEBPACK_IMPORTED_MODULE_1__;
-
-    var ItemGroupingComponent = /*#__PURE__*/function () {
-      function ItemGroupingComponent() {
-        _classCallCheck(this, ItemGroupingComponent);
-
-        this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_2__["Constants"].DAY_WIDTH;
-        this.SIDEBAR_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_2__["Constants"].SIDEBAR_WIDTH;
-      }
-
-      _createClass(ItemGroupingComponent, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
-      }, {
-        key: "isInPeriod",
-        value: function isInPeriod(time) {
-          return this.period.containsDate(time);
-        }
-      }, {
-        key: "getDayOfPeriod",
-        value: function getDayOfPeriod(date) {
-          if (!this.period.containsDate(date)) {
-            return 0;
-          }
-
-          return Math.round(date.diff(this.period.startDate, 'days', true));
-        }
-      }, {
-        key: "getDuration",
-        value: function getDuration(item) {
-          var startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);
-          var endDate = this.getEndDateCurrentPeriod(item.endTime).hour(12);
-          return Math.round(endDate.diff(startDate, 'days', true)) + 1;
-        }
-      }, {
-        key: "isNotInPeriod",
-        value: function isNotInPeriod(time) {
-          return !this.period.containsDate(time);
-        }
-      }, {
-        key: "getDaysSince",
-        value: function getDaysSince(referenceDate, date) {
-          var refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
-          var myDate = this.getStartDateInCurrentPeriod(moment(date));
-          return Math.ceil(myDate.diff(moment(refDate), 'days', true));
-        }
-      }, {
-        key: "open",
-        value: function open(item) {
-          var _a;
-
-          (_a = item.onClick) === null || _a === void 0 ? void 0 : _a.apply(null);
-        }
-      }, {
-        key: "visibleInPeriod",
-        value: function visibleInPeriod(itemGrouping) {
-          if (!itemGrouping || itemGrouping.length === 0) {
-            return false;
-          }
-
-          var earliestDate = Object(moment__WEBPACK_IMPORTED_MODULE_1__["min"])(itemGrouping.map(function (item) {
-            return item.startTime;
-          }));
-          var latestDate = Object(moment__WEBPACK_IMPORTED_MODULE_1__["max"])(itemGrouping.map(function (item) {
-            return item.endTime;
-          }));
-
-          if (this.isInPeriod(earliestDate) || this.isInPeriod(latestDate)) {
-            return true;
-          }
-
-          return !(!this.isInPeriod(earliestDate) && !this.isInPeriod(latestDate));
-        }
-      }, {
-        key: "getStartDateInCurrentPeriod",
-        value: function getStartDateInCurrentPeriod(startDate) {
-          var date = startDate.clone();
-
-          if (date.isBefore(this.period.startDate)) {
-            return this.period.startDate.clone();
-          }
-
-          return date;
-        }
-      }, {
-        key: "getEndDateCurrentPeriod",
-        value: function getEndDateCurrentPeriod(endDate) {
-          var date = endDate.clone();
-
-          if (date.isAfter(this.period.endDate)) {
-            return this.period.endDate.clone();
-          }
-
-          return date;
-        }
-      }]);
-
-      return ItemGroupingComponent;
-    }();
-
-    ItemGroupingComponent.ɵfac = function ItemGroupingComponent_Factory(t) {
-      return new (t || ItemGroupingComponent)();
-    };
-
-    ItemGroupingComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-      type: ItemGroupingComponent,
-      selectors: [["ng-item-grouping"]],
-      inputs: {
-        period: "period",
-        itemGrouping: "itemGrouping"
-      },
-      decls: 1,
-      vars: 1,
-      consts: [["class", "item-grouping", 4, "ngIf"], [1, "item-grouping"], [1, "items"], [4, "ngFor", "ngForOf"], [3, "class", "left", "minWidth", "maxWidth", "open-left", "open-right", "click", 4, "ngIf"], [3, "click"], [1, "blockade-title"], ["class", "blockade-day day-width-1", 3, "left", 4, "ngIf"], [1, "blockade-day", "day-width-1"]],
-      template: function ItemGroupingComponent_Template(rf, ctx) {
-        if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, ItemGroupingComponent_div_0_Template, 3, 1, "div", 0);
-        }
-
-        if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.visibleInPeriod(ctx.itemGrouping));
-        }
-      },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]],
-      pipes: [_pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_4__["TimeChartDateFormatterPipe"]],
-      styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.item-grouping[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%] {\n  display: block;\n  height: 2.5em;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .item[_ngcontent-%COMP%] {\n  cursor: pointer;\n  position: absolute;\n  border-radius: 10px;\n  border-width: 2px;\n  border-style: solid;\n  text-align: center;\n  font-weight: bold;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  margin: 4px 0;\n  transition: 0.5s;\n  display: inline-block;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .item[_ngcontent-%COMP%]   .blockade-title[_ngcontent-%COMP%] {\n  position: relative;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .item[_ngcontent-%COMP%]   .blockade-title[_ngcontent-%COMP%]   [_ngcontent-%COMP%]:hover {\n  text-overflow: unset;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .type-a[_ngcontent-%COMP%] {\n  border-color: #b00b1e;\n  background-color: #f77786;\n  color: white;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .type-a[_ngcontent-%COMP%]   .blockade-day[_ngcontent-%COMP%] {\n  background-color: #b00b1e;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .type-b[_ngcontent-%COMP%] {\n  border-color: #fa0aaa;\n  background-color: #feb9e7;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .type-b[_ngcontent-%COMP%]   .blockade-day[_ngcontent-%COMP%] {\n  background-color: #fa0aaa;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .type-c[_ngcontent-%COMP%] {\n  border-color: #399383;\n  background-color: #a3dbd1;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .type-c[_ngcontent-%COMP%]   .blockade-day[_ngcontent-%COMP%] {\n  background-color: #399383;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .blockade-day[_ngcontent-%COMP%] {\n  position: absolute;\n  display: inline-block;\n  margin-top: -2px;\n  height: 100%;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .open-left[_ngcontent-%COMP%] {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .open-right[_ngcontent-%COMP%] {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n\n.item-grouping[_ngcontent-%COMP%]   .items[_ngcontent-%COMP%]   .item[_ngcontent-%COMP%]:hover {\n  -webkit-filter: brightness(110%);\n          filter: brightness(110%);\n  transform: scaleY(1.1);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvX3NpZGViYXIuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvc2V0dGluZ3MvX3ZhcmlhYmxlcy5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL3RpbWUtdGFibGUtYm9keS9pdGVtLWdyb3VwaW5nL2l0ZW0tZ3JvdXBpbmcuY29tcG9uZW50LnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL3RpbWUtdGFibGUtYm9keS9pdGVtLWdyb3VwaW5nL2l0ZW0tZ3JvdXBpbmcuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSx1QkFBQTtFQUNBLGFBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JDSGM7RURJZCxnQkNKYztBQ0doQjs7QUNIQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtBRE1GOztBQ0pFO0VBQ0UsY0FBQTtFQUNBLGFBQUE7QURNSjs7QUNKSTtFQUNFLGVBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsaUJBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkZyQmtCO0VFc0JsQixtQkZ0QmtCO0VFdUJsQixhQUFBO0VBQ0EsZ0JBQUE7RUFDQSxxQkFBQTtBRE1OOztBQ0pNO0VBQ0Usa0JBQUE7RUFDQSxnQkFBQTtFQUNBLHVCQUFBO0FETVI7O0FDTFE7RUFDRSxvQkFBQTtBRE9WOztBQ0ZJO0VBQ0UscUJGM0JJO0VFNEJKLHlCQUFBO0VBQ0EsWUFBQTtBRElOOztBQ0ZNO0VBQ0UseUJGaENFO0FDb0NWOztBQ0FJO0VBQ0UscUJGcENJO0VFcUNKLHlCQUFBO0FERU47O0FDQU07RUFDRSx5QkZ4Q0U7QUMwQ1Y7O0FDRUk7RUFDRSxxQkY1Q0k7RUU2Q0oseUJBQUE7QURBTjs7QUNFTTtFQUNFLHlCRmhERTtBQ2dEVjs7QUNJSTtFQUNFLGtCQUFBO0VBQ0EscUJBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7QURGTjs7QUNLSTtFQUNFLHlCQUFBO0VBQ0EsNEJBQUE7QURITjs7QUNNSTtFQUNFLDBCQUFBO0VBQ0EsNkJBQUE7QURKTjs7QUNPSTtFQUNFLGdDQUFBO1VBQUEsd0JBQUE7RUFDQSxzQkFBQTtBRExOIiwiZmlsZSI6InByb2plY3RzL25nLXRpbWUtY2hhcnQvc3JjL2xpYi90aW1lLXRhYmxlLWJvZHkvaXRlbS1ncm91cGluZy9pdGVtLWdyb3VwaW5nLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCBcInNldHRpbmdzL3ZhcmlhYmxlc1wiO1xuXG4ubGFiZWwtYmFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGZsZXg6IDEgMCAkc2lkZWJhci13aWR0aDtcbiAgbWluLXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbiAgbWF4LXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbn1cbiIsIiRkYXktd2lkdGg6IDIwcHg7XG4kaXRlbS12ZXJ0aWNhbC1wYWRkaW5nOiAycHg7XG4kaXRlbS12ZXJ0aWNhbC1tYXJnaW46IDRweDtcbiRzaWRlYmFyLXdpZHRoOiAyMDBweDtcbiRoZWFkZXItaGVpZ2h0OiA3MHB4O1xuJGdyYXktZGFyazogIzg4ODtcbiRncmF5LWJhc2U6ICNhYWE7XG4kZ3JheS1saWdodDogI2NjYztcbiRncmF5LWxpZ2h0ZXI6ICNlZWU7XG4kYnJhbmQtaW5mbzogI2RlYWQwMDtcbiRicmFuZC1wcmltYXJ5OiAjYjAwYjFlO1xuJGJyYW5kLWRhbmdlcjogIzM5OTM4MztcbiRjb2xvci1hOiAjYjAwYjFlO1xuJGNvbG9yLWI6ICNmYTBhYWE7XG4kY29sb3ItYzogIzM5OTM4MztcbiIsIi5sYWJlbC1iYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgei1pbmRleDogMTAwMDtcbiAgZmxleDogMSAwIDIwMHB4O1xuICBtaW4td2lkdGg6IDIwMHB4O1xuICBtYXgtd2lkdGg6IDIwMHB4O1xufVxuXG4uaXRlbS1ncm91cGluZyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG4uaXRlbS1ncm91cGluZyAuaXRlbXMge1xuICBkaXNwbGF5OiBibG9jaztcbiAgaGVpZ2h0OiAyLjVlbTtcbn1cbi5pdGVtLWdyb3VwaW5nIC5pdGVtcyAuaXRlbSB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBib3JkZXItd2lkdGg6IDJweDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIHBhZGRpbmctdG9wOiAycHg7XG4gIHBhZGRpbmctYm90dG9tOiAycHg7XG4gIG1hcmdpbjogNHB4IDA7XG4gIHRyYW5zaXRpb246IDAuNXM7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbn1cbi5pdGVtLWdyb3VwaW5nIC5pdGVtcyAuaXRlbSAuYmxvY2thZGUtdGl0bGUge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xufVxuLml0ZW0tZ3JvdXBpbmcgLml0ZW1zIC5pdGVtIC5ibG9ja2FkZS10aXRsZSA6aG92ZXIge1xuICB0ZXh0LW92ZXJmbG93OiB1bnNldDtcbn1cbi5pdGVtLWdyb3VwaW5nIC5pdGVtcyAudHlwZS1hIHtcbiAgYm9yZGVyLWNvbG9yOiAjYjAwYjFlO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjc3Nzg2O1xuICBjb2xvcjogd2hpdGU7XG59XG4uaXRlbS1ncm91cGluZyAuaXRlbXMgLnR5cGUtYSAuYmxvY2thZGUtZGF5IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2IwMGIxZTtcbn1cbi5pdGVtLWdyb3VwaW5nIC5pdGVtcyAudHlwZS1iIHtcbiAgYm9yZGVyLWNvbG9yOiAjZmEwYWFhO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmViOWU3O1xufVxuLml0ZW0tZ3JvdXBpbmcgLml0ZW1zIC50eXBlLWIgLmJsb2NrYWRlLWRheSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYTBhYWE7XG59XG4uaXRlbS1ncm91cGluZyAuaXRlbXMgLnR5cGUtYyB7XG4gIGJvcmRlci1jb2xvcjogIzM5OTM4MztcbiAgYmFja2dyb3VuZC1jb2xvcjogI2EzZGJkMTtcbn1cbi5pdGVtLWdyb3VwaW5nIC5pdGVtcyAudHlwZS1jIC5ibG9ja2FkZS1kYXkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzk5MzgzO1xufVxuLml0ZW0tZ3JvdXBpbmcgLml0ZW1zIC5ibG9ja2FkZS1kYXkge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbWFyZ2luLXRvcDogLTJweDtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuLml0ZW0tZ3JvdXBpbmcgLml0ZW1zIC5vcGVuLWxlZnQge1xuICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAwO1xuICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiAwO1xufVxuLml0ZW0tZ3JvdXBpbmcgLml0ZW1zIC5vcGVuLXJpZ2h0IHtcbiAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDA7XG4gIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiAwO1xufVxuLml0ZW0tZ3JvdXBpbmcgLml0ZW1zIC5pdGVtOmhvdmVyIHtcbiAgZmlsdGVyOiBicmlnaHRuZXNzKDExMCUpO1xuICB0cmFuc2Zvcm06IHNjYWxlWSgxLjEpO1xufSIsIkBpbXBvcnQgXCIuLi8uLi8uLi9zdHlsZXMvc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5AaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzL3NpZGViYXJcIjtcblxuLml0ZW0tZ3JvdXBpbmcge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuXG4gIC5pdGVtcyB7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgaGVpZ2h0OiAyLjVlbTtcblxuICAgIC5pdGVtIHtcbiAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gICAgICBib3JkZXItd2lkdGg6IDJweDtcbiAgICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gICAgICBwYWRkaW5nLXRvcDogJGl0ZW0tdmVydGljYWwtcGFkZGluZztcbiAgICAgIHBhZGRpbmctYm90dG9tOiAkaXRlbS12ZXJ0aWNhbC1wYWRkaW5nO1xuICAgICAgbWFyZ2luOiA0cHggMDtcbiAgICAgIHRyYW5zaXRpb246IDAuNXM7XG4gICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG5cbiAgICAgIC5ibG9ja2FkZS10aXRsZSB7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG4gICAgICAgIDpob3ZlcntcbiAgICAgICAgICB0ZXh0LW92ZXJmbG93OiB1bnNldDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cblxuICAgIC50eXBlLWEge1xuICAgICAgYm9yZGVyLWNvbG9yOiAkY29sb3ItYTtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0ZW4oJGNvbG9yLWEsIDM1JSk7XG4gICAgICBjb2xvcjogd2hpdGU7XG5cbiAgICAgIC5ibG9ja2FkZS1kYXkge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkY29sb3ItYTtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAudHlwZS1iIHtcbiAgICAgIGJvcmRlci1jb2xvcjogJGNvbG9yLWI7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGVuKCRjb2xvci1iLCAzNSUpO1xuXG4gICAgICAuYmxvY2thZGUtZGF5IHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWI7XG4gICAgICB9XG4gICAgfVxuXG4gICAgLnR5cGUtYyB7XG4gICAgICBib3JkZXItY29sb3I6ICRjb2xvci1jO1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRlbigkY29sb3ItYywgMzUlKTtcblxuICAgICAgLmJsb2NrYWRlLWRheSB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1jO1xuICAgICAgfVxuICAgIH1cblxuICAgIC5ibG9ja2FkZS1kYXkge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgICAgbWFyZ2luLXRvcDogLSRpdGVtLXZlcnRpY2FsLXBhZGRpbmc7XG4gICAgICBoZWlnaHQ6IDEwMCU7XG4gICAgfVxuXG4gICAgLm9wZW4tbGVmdCB7XG4gICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAwO1xuICAgICAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMDtcbiAgICB9XG5cbiAgICAub3Blbi1yaWdodCB7XG4gICAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMDtcbiAgICAgIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiAwO1xuICAgIH1cblxuICAgIC5pdGVtOmhvdmVyIHtcbiAgICAgIGZpbHRlcjogYnJpZ2h0bmVzcygxMTAlKTtcbiAgICAgIHRyYW5zZm9ybTogc2NhbGVZKDEuMSk7XG4gICAgfVxuICB9XG59XG4iXX0= */"]
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ItemGroupingComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-          selector: 'ng-item-grouping',
-          templateUrl: './item-grouping.component.html',
-          styleUrls: ['./item-grouping.component.scss']
-        }]
-      }], function () {
-        return [];
-      }, {
-        period: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        itemGrouping: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }]
-      });
-    })();
-    /***/
-
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/time-table-body/time-table-body.component.ts":
-  /*!*****************************************************************************!*\
-    !*** ../ng-time-chart/src/lib/time-table-body/time-table-body.component.ts ***!
-    \*****************************************************************************/
-
-  /*! exports provided: TimeTableBodyComponent */
-
-  /***/
-  function ngTimeChartSrcLibTimeTableBodyTimeTableBodyComponentTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "TimeTableBodyComponent", function () {
-      return TimeTableBodyComponent;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ../constants */
-    "../ng-time-chart/src/lib/constants.ts");
-    /* harmony import */
-
-
-    var _layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../layout/layout-selector.service */
-    "../ng-time-chart/src/lib/layout/layout-selector.service.ts");
-    /* harmony import */
-
-
-    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @angular/common */
-    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-    /* harmony import */
-
-
-    var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./item-grouping/item-grouping.component */
-    "../ng-time-chart/src/lib/time-table-body/item-grouping/item-grouping.component.ts");
-
-    var _c0 = ["todaymarker"];
-
-    function TimeTableBodyComponent_div_1_ng_container_4_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "ng-item-grouping", 7);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
-      }
-
-      if (rf & 2) {
-        var itemGrouping_r4 = ctx.$implicit;
-
-        var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("itemGrouping", itemGrouping_r4)("period", ctx_r3.period);
-      }
-    }
-
-    function TimeTableBodyComponent_div_1_Template(rf, ctx) {
-      if (rf & 1) {
-        var _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 3);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 4);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function TimeTableBodyComponent_div_1_Template_div_click_1_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6);
-
-          var group_r2 = ctx.$implicit;
-
-          var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-
-          return ctx_r5.open(group_r2);
-        });
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 5);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, TimeTableBodyComponent_div_1_ng_container_4_Template, 2, 2, "ng-container", 6);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var group_r2 = ctx.$implicit;
-
-        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", group_r2.name, " ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.doLayout(group_r2.items));
-      }
-    }
-
-    function TimeTableBodyComponent_div_2_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 8);
-      }
-
-      if (rf & 2) {
-        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("left", ctx_r1.getDayOfPeriod(ctx_r1.today) * ctx_r1.DAY_WIDTH + ctx_r1.SIDEBAR_WIDTH + 7, "px");
-      }
-    }
-
-    var TimeTableBodyComponent = /*#__PURE__*/function () {
-      function TimeTableBodyComponent(layoutSelectorService) {
-        _classCallCheck(this, TimeTableBodyComponent);
-
-        this.layoutSelectorService = layoutSelectorService;
-        this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_1__["Constants"].DAY_WIDTH;
-        this.SIDEBAR_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_1__["Constants"].SIDEBAR_WIDTH;
-        this.groups = [];
-      }
-
-      _createClass(TimeTableBodyComponent, [{
-        key: "doLayout",
-        value: function doLayout(items) {
-          return this.layoutSelectorService.doLayout(items, this.layoutStrategy);
-        }
-      }, {
-        key: "getDayOfPeriod",
-        value: function getDayOfPeriod(date) {
-          if (!this.period.containsDate(date)) {
-            return 0;
-          }
-
-          return Math.round(date.diff(this.period.startDate, 'days', true));
-        }
-      }, {
-        key: "isInPeriod",
-        value: function isInPeriod(time) {
-          return this.period.containsDate(time);
-        }
-      }, {
-        key: "open",
-        value: function open(group) {
-          var _a;
-
-          (_a = group.onClick) === null || _a === void 0 ? void 0 : _a.apply(null);
-        }
-      }]);
-
-      return TimeTableBodyComponent;
-    }();
-
-    TimeTableBodyComponent.ɵfac = function TimeTableBodyComponent_Factory(t) {
-      return new (t || TimeTableBodyComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_2__["LayoutSelectorService"]));
-    };
-
-    TimeTableBodyComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-      type: TimeTableBodyComponent,
-      selectors: [["ng-time-table-body"]],
-      viewQuery: function TimeTableBodyComponent_Query(rf, ctx) {
-        if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c0, true);
-        }
-
-        if (rf & 2) {
-          var _t;
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.todayMarker = _t.first);
-        }
-      },
-      inputs: {
-        groups: "groups",
-        period: "period",
-        today: "today",
-        durationInDays: "durationInDays",
-        layoutStrategy: "layoutStrategy"
-      },
-      decls: 3,
-      vars: 4,
-      consts: [[1, "timetable-body"], ["class", "item-group", 4, "ngFor", "ngForOf"], ["class", "today-marker", 3, "left", 4, "ngIf"], [1, "item-group"], [1, "item-label", "label-bar", 3, "click"], [1, "item-display"], [4, "ngFor", "ngForOf"], [3, "itemGrouping", "period"], [1, "today-marker"]],
-      template: function TimeTableBodyComponent_Template(rf, ctx) {
-        if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, TimeTableBodyComponent_div_1_Template, 5, 2, "div", 1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, TimeTableBodyComponent_div_2_Template, 1, 2, "div", 2);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        }
-
-        if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("min-width", ctx.durationInDays * ctx.DAY_WIDTH + ctx.SIDEBAR_WIDTH, "px");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.groups);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isInPeriod(ctx.today));
-        }
-      },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_4__["ItemGroupingComponent"]],
-      styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.timetable-body[_ngcontent-%COMP%] {\n  padding-top: 0;\n  margin-top: 0;\n  margin-bottom: 4px;\n  position: relative;\n  z-index: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-label[_ngcontent-%COMP%] {\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n  flex: 1 0 200px;\n  text-align: left;\n  color: #aaa;\n  margin: 0;\n  padding-top: calc(2px + 4px + 1px);\n  padding-bottom: calc(2px + 4px + 1px);\n  z-index: 1000;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-display[_ngcontent-%COMP%] {\n  border-top: solid 1px #ccc;\n  width: 100%;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:first-child {\n  margin-top: 0;\n  padding-top: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:nth-child(odd) {\n  background-color: #eee;\n}\n\n.today-marker[_ngcontent-%COMP%] {\n  width: 4px;\n  background-color: #b00b1e;\n  display: block;\n  border-left: solid white 1px;\n  border-right: solid white 1px;\n  box-sizing: content-box;\n  position: absolute;\n  top: -40px;\n  bottom: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvX3NpZGViYXIuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvc2V0dGluZ3MvX3ZhcmlhYmxlcy5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL3RpbWUtdGFibGUtYm9keS90aW1lLXRhYmxlLWJvZHkuY29tcG9uZW50LnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL3RpbWUtdGFibGUtYm9keS90aW1lLXRhYmxlLWJvZHkuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSx1QkFBQTtFQUNBLGFBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JDSGM7RURJZCxnQkNKYztBQ0doQjs7QUNIQTtFQUNFLGNBQUE7RUFDQSxhQUFBO0VBQ0Esa0JGSnFCO0VFS3JCLGtCQUFBO0VBQ0EsVUFBQTtBRE1GOztBQ0pFO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0FETUo7O0FDSkk7RUFDRSx3QkFBQTtFQUFBLGdCQUFBO0VBQ0EsT0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFdGYk07RUVjTixTQUFBO0VBQ0Esa0NBQUE7RUFDQSxxQ0FBQTtFQUNBLGFBQUE7QURNTjs7QUNISTtFQUNFLDBCQUFBO0VBQ0EsV0FBQTtBREtOOztBQ0RFO0VBQ0UsYUFBQTtFQUNBLGNBQUE7QURHSjs7QUNBRTtFQUNFLHNCRjlCVztBQ2dDZjs7QUNFQTtFQUNFLFVBQUE7RUFDQSx5QkZsQ2M7RUVtQ2QsY0FBQTtFQUNBLDRCQUFBO0VBQ0EsNkJBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFNBQUE7QURDRiIsImZpbGUiOiJwcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9saWIvdGltZS10YWJsZS1ib2R5L3RpbWUtdGFibGUtYm9keS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCJzZXR0aW5ncy92YXJpYWJsZXNcIjtcblxuLmxhYmVsLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB6LWluZGV4OiAxMDAwO1xuICBmbGV4OiAxIDAgJHNpZGViYXItd2lkdGg7XG4gIG1pbi13aWR0aDogJHNpZGViYXItd2lkdGg7XG4gIG1heC13aWR0aDogJHNpZGViYXItd2lkdGg7XG59XG4iLCIkZGF5LXdpZHRoOiAyMHB4O1xuJGl0ZW0tdmVydGljYWwtcGFkZGluZzogMnB4O1xuJGl0ZW0tdmVydGljYWwtbWFyZ2luOiA0cHg7XG4kc2lkZWJhci13aWR0aDogMjAwcHg7XG4kaGVhZGVyLWhlaWdodDogNzBweDtcbiRncmF5LWRhcms6ICM4ODg7XG4kZ3JheS1iYXNlOiAjYWFhO1xuJGdyYXktbGlnaHQ6ICNjY2M7XG4kZ3JheS1saWdodGVyOiAjZWVlO1xuJGJyYW5kLWluZm86ICNkZWFkMDA7XG4kYnJhbmQtcHJpbWFyeTogI2IwMGIxZTtcbiRicmFuZC1kYW5nZXI6ICMzOTkzODM7XG4kY29sb3ItYTogI2IwMGIxZTtcbiRjb2xvci1iOiAjZmEwYWFhO1xuJGNvbG9yLWM6ICMzOTkzODM7XG4iLCIubGFiZWwtYmFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGZsZXg6IDEgMCAyMDBweDtcbiAgbWluLXdpZHRoOiAyMDBweDtcbiAgbWF4LXdpZHRoOiAyMDBweDtcbn1cblxuLnRpbWV0YWJsZS1ib2R5IHtcbiAgcGFkZGluZy10b3A6IDA7XG4gIG1hcmdpbi10b3A6IDA7XG4gIG1hcmdpbi1ib3R0b206IDRweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB6LWluZGV4OiAwO1xufVxuLnRpbWV0YWJsZS1ib2R5IC5pdGVtLWdyb3VwIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbn1cbi50aW1ldGFibGUtYm9keSAuaXRlbS1ncm91cCAuaXRlbS1sYWJlbCB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIGxlZnQ6IDA7XG4gIGZsZXg6IDEgMCAyMDBweDtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgY29sb3I6ICNhYWE7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZy10b3A6IGNhbGMoMnB4ICsgNHB4ICsgMXB4KTtcbiAgcGFkZGluZy1ib3R0b206IGNhbGMoMnB4ICsgNHB4ICsgMXB4KTtcbiAgei1pbmRleDogMTAwMDtcbn1cbi50aW1ldGFibGUtYm9keSAuaXRlbS1ncm91cCAuaXRlbS1kaXNwbGF5IHtcbiAgYm9yZGVyLXRvcDogc29saWQgMXB4ICNjY2M7XG4gIHdpZHRoOiAxMDAlO1xufVxuLnRpbWV0YWJsZS1ib2R5IC5pdGVtLWdyb3VwOmZpcnN0LWNoaWxkIHtcbiAgbWFyZ2luLXRvcDogMDtcbiAgcGFkZGluZy10b3A6IDA7XG59XG4udGltZXRhYmxlLWJvZHkgLml0ZW0tZ3JvdXA6bnRoLWNoaWxkKG9kZCkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWVlO1xufVxuXG4udG9kYXktbWFya2VyIHtcbiAgd2lkdGg6IDRweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2IwMGIxZTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGJvcmRlci1sZWZ0OiBzb2xpZCB3aGl0ZSAxcHg7XG4gIGJvcmRlci1yaWdodDogc29saWQgd2hpdGUgMXB4O1xuICBib3gtc2l6aW5nOiBjb250ZW50LWJveDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IC00MHB4O1xuICBib3R0b206IDA7XG59IiwiQGltcG9ydCBcIi4uLy4uL3N0eWxlcy9zZXR0aW5ncy92YXJpYWJsZXNcIjtcbkBpbXBvcnQgXCIuLi8uLi9zdHlsZXMvc2lkZWJhclwiO1xuXG4udGltZXRhYmxlLWJvZHkge1xuICBwYWRkaW5nLXRvcDogMDtcbiAgbWFyZ2luLXRvcDogMDtcbiAgbWFyZ2luLWJvdHRvbTogJGl0ZW0tdmVydGljYWwtbWFyZ2luO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHotaW5kZXg6IDA7XG5cbiAgLml0ZW0tZ3JvdXAge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcblxuICAgIC5pdGVtLWxhYmVsIHtcbiAgICAgIHBvc2l0aW9uOiBzdGlja3k7XG4gICAgICBsZWZ0OiAwO1xuICAgICAgZmxleDogMSAwICRzaWRlYmFyLXdpZHRoO1xuICAgICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICAgIGNvbG9yOiAkZ3JheS1iYXNlO1xuICAgICAgbWFyZ2luOiAwO1xuICAgICAgcGFkZGluZy10b3A6IGNhbGMoI3skaXRlbS12ZXJ0aWNhbC1wYWRkaW5nfSArICN7JGl0ZW0tdmVydGljYWwtbWFyZ2lufSArIDFweCk7XG4gICAgICBwYWRkaW5nLWJvdHRvbTogY2FsYygjeyRpdGVtLXZlcnRpY2FsLXBhZGRpbmd9ICsgI3skaXRlbS12ZXJ0aWNhbC1tYXJnaW59ICsgMXB4KTtcbiAgICAgIHotaW5kZXg6IDEwMDA7XG4gICAgfVxuXG4gICAgLml0ZW0tZGlzcGxheSB7XG4gICAgICBib3JkZXItdG9wOiBzb2xpZCAxcHggJGdyYXktbGlnaHQ7XG4gICAgICB3aWR0aDogMTAwJTtcbiAgICB9XG4gIH1cblxuICAuaXRlbS1ncm91cDpmaXJzdC1jaGlsZCB7XG4gICAgbWFyZ2luLXRvcDogMDtcbiAgICBwYWRkaW5nLXRvcDogMDtcbiAgfVxuXG4gIC5pdGVtLWdyb3VwOm50aC1jaGlsZChvZGQpIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkZ3JheS1saWdodGVyO1xuICB9XG59XG5cbi50b2RheS1tYXJrZXIge1xuICB3aWR0aDogNHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkYnJhbmQtcHJpbWFyeTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGJvcmRlci1sZWZ0OiBzb2xpZCB3aGl0ZSAxcHg7XG4gIGJvcmRlci1yaWdodDogc29saWQgd2hpdGUgMXB4O1xuICBib3gtc2l6aW5nOiBjb250ZW50LWJveDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IC00MHB4O1xuICBib3R0b206IDA7XG59XG4iXX0= */"]
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TimeTableBodyComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-          selector: 'ng-time-table-body',
-          templateUrl: './time-table-body.component.html',
-          styleUrls: ['./time-table-body.component.scss']
-        }]
-      }], function () {
-        return [{
-          type: _layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_2__["LayoutSelectorService"]
-        }];
-      }, {
-        groups: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        period: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        today: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        durationInDays: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        layoutStrategy: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }],
-        todayMarker: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
-          args: ['todaymarker']
-        }]
-      });
-    })();
-    /***/
-
-  },
-
-  /***/
-  "../ng-time-chart/src/lib/time-table-body/time-table-body.module.ts":
-  /*!**************************************************************************!*\
-    !*** ../ng-time-chart/src/lib/time-table-body/time-table-body.module.ts ***!
-    \**************************************************************************/
-
-  /*! exports provided: TimeTableBodyModule */
-
-  /***/
-  function ngTimeChartSrcLibTimeTableBodyTimeTableBodyModuleTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "TimeTableBodyModule", function () {
-      return TimeTableBodyModule;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/common */
-    "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-    /* harmony import */
-
-
-    var _time_table_body_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./time-table-body.component */
-    "../ng-time-chart/src/lib/time-table-body/time-table-body.component.ts");
-    /* harmony import */
-
-
-    var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./item-grouping/item-grouping.component */
-    "../ng-time-chart/src/lib/time-table-body/item-grouping/item-grouping.component.ts");
-    /* harmony import */
-
-
-    var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../pipes/time-chart-date-formatter.pipe */
-    "../ng-time-chart/src/lib/pipes/time-chart-date-formatter.pipe.ts");
-
-    var TimeTableBodyModule = function TimeTableBodyModule() {
-      _classCallCheck(this, TimeTableBodyModule);
-    };
-
-    TimeTableBodyModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
-      type: TimeTableBodyModule
-    });
-    TimeTableBodyModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
-      factory: function TimeTableBodyModule_Factory(t) {
-        return new (t || TimeTableBodyModule)();
-      },
-      imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]]]
-    });
-
-    (function () {
-      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](TimeTableBodyModule, {
-        declarations: [_time_table_body_component__WEBPACK_IMPORTED_MODULE_2__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_3__["ItemGroupingComponent"], _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_4__["TimeChartDateFormatterPipe"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
-        exports: [_time_table_body_component__WEBPACK_IMPORTED_MODULE_2__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_3__["ItemGroupingComponent"]]
-      });
-    })();
-    /*@__PURE__*/
-
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TimeTableBodyModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
-        args: [{
-          declarations: [_time_table_body_component__WEBPACK_IMPORTED_MODULE_2__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_3__["ItemGroupingComponent"], _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_4__["TimeChartDateFormatterPipe"]],
-          imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
-          exports: [_time_table_body_component__WEBPACK_IMPORTED_MODULE_2__["TimeTableBodyComponent"], _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_3__["ItemGroupingComponent"]]
-        }]
-      }], null, null);
-    })();
-    /***/
-
-  },
-
-  /***/
   "./$$_lazy_route_resource lazy recursive":
   /*!******************************************************!*\
     !*** ./$$_lazy_route_resource lazy namespace object ***!
@@ -2519,9 +2595,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ng_time_chart_src_lib_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ../../../ng-time-chart/src/lib/ng-time-chart.component */
-    "../ng-time-chart/src/lib/ng-time-chart.component.ts");
+    var _ng_time_chart_src_lib_components_chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../../ng-time-chart/src/lib/components/chart/ng-time-chart.component */
+    "../ng-time-chart/src/lib/components/chart/ng-time-chart.component.ts");
     /* harmony import */
 
 
@@ -2552,6 +2628,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           startTime: moment("".concat(this.currentYear, "-03-25")),
           endTime: moment("".concat(this.currentYear, "-03-30")),
           "class": 'type-a',
+          details: 'More information of Testitem 1',
           onClick: function onClick() {
             return alert('I was clicked 😊');
           }
@@ -2569,7 +2646,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           name: 'Testitem 4',
           startTime: moment("".concat(this.currentYear, "-04-02")),
           endTime: moment("".concat(this.currentYear, "-04-05")),
-          "class": 'type-b'
+          "class": 'type-b',
+          details: 'More information of Testitem 4. A lot of text to show how this is handeled.'
         }].sort(function (a, b) {
           return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
@@ -2577,7 +2655,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 1', [{
           name: 'Testitem 0',
           startTime: moment("".concat(this.currentYear, "-02-12")),
-          endTime: moment("".concat(this.currentYear, "-05-23"))
+          endTime: moment("".concat(this.currentYear, "-05-23")),
+          details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          "class": 'type-c'
         }, {
           name: 'Testitem 1',
           startTime: moment("".concat(this.currentYear, "-04-11")),
@@ -2700,7 +2780,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
           name: 'Testitem 1',
           startTime: moment("".concat(this.currentYear - 1, "-08-11")),
-          endTime: moment("".concat(this.currentYear, "-09-02")),
+          endTime: moment("".concat(this.currentYear, "-06-02")),
           "class": 'type-a'
         }].sort(function (a, b) {
           return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
@@ -2849,7 +2929,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("groups", ctx.groups)("startDate", ctx.startDate)("endDate", ctx.endDate)("layoutStrategy", ctx.stackedLayoutStrategy);
         }
       },
-      directives: [_ng_time_chart_src_lib_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_5__["NgTimeChartComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterOutlet"]],
+      directives: [_ng_time_chart_src_lib_components_chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_5__["NgTimeChartComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterOutlet"]],
       styles: [".date-input[_ngcontent-%COMP%] {\n  display: inline-block;\n  margin-right: 2em;\n}\n\n.content[_ngcontent-%COMP%] {\n  padding: 4em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0LXNob3djYXNlL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC1zaG93Y2FzZS9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFBO0VBQ0EsaUJBQUE7QUNDRjs7QURFQTtFQUNFLFlBQUE7QUNDRiIsImZpbGUiOiJwcm9qZWN0cy9uZy10aW1lLWNoYXJ0LXNob3djYXNlL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRhdGUtaW5wdXQge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1hcmdpbi1yaWdodDogMmVtO1xufVxuXG4uY29udGVudCB7XG4gIHBhZGRpbmc6IDRlbTtcbn1cbiIsIi5kYXRlLWlucHV0IHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBtYXJnaW4tcmlnaHQ6IDJlbTtcbn1cblxuLmNvbnRlbnQge1xuICBwYWRkaW5nOiA0ZW07XG59Il19 */"]
     });
     /*@__PURE__*/
@@ -2916,9 +2996,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ng_time_chart_src_lib_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../../../ng-time-chart/src/lib/ng-time-chart.module */
-    "../ng-time-chart/src/lib/ng-time-chart.module.ts");
+    var _ng_time_chart_src_lib_components_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../../ng-time-chart/src/lib/components/ng-time-chart.module */
+    "../ng-time-chart/src/lib/components/ng-time-chart.module.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -2933,13 +3013,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return new (t || AppModule)();
       },
       providers: [],
-      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _ng_time_chart_src_lib_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__["NgTimeChartModule"]]]
+      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _ng_time_chart_src_lib_components_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__["NgTimeChartModule"]]]
     });
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _ng_time_chart_src_lib_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__["NgTimeChartModule"]]
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _ng_time_chart_src_lib_components_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__["NgTimeChartModule"]]
       });
     })();
     /*@__PURE__*/
@@ -2950,7 +3030,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
           declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _ng_time_chart_src_lib_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__["NgTimeChartModule"]],
+          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _ng_time_chart_src_lib_components_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_4__["NgTimeChartModule"]],
           providers: [],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         }]
