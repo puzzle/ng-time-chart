@@ -1,11 +1,11 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import {Constants} from '../constants';
+import {Constants} from '../../constants';
 import * as moment_ from 'moment';
-import {Group} from '../group';
-import {Item} from '../item';
-import {Period} from '../period';
-import {LayoutSelectorService} from '../layout/layout-selector.service';
-import {LayoutStrategy} from '../layout/layout-strategy.enum';
+import {Group} from '../../group';
+import {Item} from '../../item';
+import {Period} from '../../period';
+import {LayoutSelectorService} from '../../layout/layout-selector.service';
+import {LayoutStrategy} from '../../layout/layout-strategy.enum';
 
 @Component({
   selector: 'ng-time-table-body',

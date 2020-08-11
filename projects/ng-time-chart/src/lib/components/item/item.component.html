@@ -1,0 +1,23 @@
+<div class="item {{item.class}}"
+     *ngIf="isInPeriod(item.startTime) || isInPeriod(item.endTime)"
+     [style.left.px]="(getDayOfPeriod(item.startTime) * DAY_WIDTH + SIDEBAR_WIDTH)"
+     [style.minWidth.px]="(getDuration(item) * DAY_WIDTH)"
+     [style.maxWidth.px]="(getDuration(item) * DAY_WIDTH)"
+     [class.open-left]="isNotInPeriod(item.startTime)"
+     [class.open-right]="isNotInPeriod(item.endTime)"
+     (click)="open(item)">
+  <ng-container *ngFor="let day of item.dates">
+    <div class="blockade-day day-width-1"
+         *ngIf="isInPeriod(day)"
+         [style.left.px]="getDaysSince(item.startTime,day)*DAY_WIDTH">
+      &nbsp;
+    </div>
+  </ng-container>
+  <div class="blockade-title">
+    {{item.name}}
+    ({{item.startTime | timeChartDateFormatter}} - {{item.endTime | timeChartDateFormatter}})
+  </div>
+  <div *ngIf="item.details" class="blockade-details">
+    <p>{{item.details}}</p>
+  </div>
+</div>

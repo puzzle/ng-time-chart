@@ -1,0 +1,7 @@
+<div class="item-grouping" *ngIf="visibleInPeriod(itemGrouping)">
+  <div class="items">
+    <ng-container *ngFor="let item of itemGrouping">
+      <ng-item [period]="period" [item]="item"></ng-item>
+    </ng-container>
+  </div>
+</div>

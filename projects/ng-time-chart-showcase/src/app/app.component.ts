@@ -39,6 +39,7 @@ export class AppComponent {
             startTime: moment(`${this.currentYear}-03-25`),
             endTime: moment(`${this.currentYear}-03-30`),
             class: 'type-a',
+            details: 'More information of Testitem 1',
             onClick: () => alert('I was clicked 😊')
           },
           {
@@ -57,7 +58,8 @@ export class AppComponent {
             name: 'Testitem 4',
             startTime: moment(`${this.currentYear}-04-02`),
             endTime: moment(`${this.currentYear}-04-05`),
-            class: 'type-b'
+            class: 'type-b',
+            details: 'More information of Testitem 4. A lot of text to show how this is handeled.'
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         () => alert('Group clicked')
       ),
@@ -67,7 +69,9 @@ export class AppComponent {
           {
             name: 'Testitem 0',
             startTime: moment(`${this.currentYear}-02-12`),
-            endTime: moment(`${this.currentYear}-05-23`)
+            endTime: moment(`${this.currentYear}-05-23`),
+            details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            class: 'type-c'
           },
           {
             name: 'Testitem 1',
@@ -227,7 +231,7 @@ export class AppComponent {
           {
             name: 'Testitem 1',
             startTime: moment(`${this.currentYear - 1}-08-11`),
-            endTime: moment(`${this.currentYear}-09-02`),
+            endTime: moment(`${this.currentYear}-06-02`),
             class: 'type-a'
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         () => console.log('clicked')

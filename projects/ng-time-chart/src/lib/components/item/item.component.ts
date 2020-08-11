@@ -1,18 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Period} from '../../period';
 import {Item} from '../../item';
-import * as moment_ from 'moment';
 import {Constants} from '../../constants';
-import {max, min} from 'moment';
+import {Period} from '../../period';
+import * as moment_ from 'moment';
 
 const moment = moment_;
 
 @Component({
-  selector: 'ng-item-grouping',
-  templateUrl: './item-grouping.component.html',
-  styleUrls: ['./item-grouping.component.scss']
+  selector: 'ng-item',
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.scss']
 })
-export class ItemGroupingComponent implements OnInit {
+export class ItemComponent implements OnInit {
 
   readonly DAY_WIDTH = Constants.DAY_WIDTH;
   readonly SIDEBAR_WIDTH = Constants.SIDEBAR_WIDTH;
@@ -21,7 +20,7 @@ export class ItemGroupingComponent implements OnInit {
   period: Period;
 
   @Input()
-  itemGrouping: Item[];
+  item: Item;
 
   constructor() {
   }
@@ -58,18 +57,6 @@ export class ItemGroupingComponent implements OnInit {
 
   open(item: Item) {
     item.onClick?.apply(null);
-  }
-
-  visibleInPeriod(itemGrouping: Item[]) {
-    if (!itemGrouping || itemGrouping.length === 0) {
-      return false;
-    }
-    const earliestDate = min(itemGrouping.map(item => item.startTime));
-    const latestDate = max(itemGrouping.map(item => item.endTime));
-    if (this.isInPeriod(earliestDate) || this.isInPeriod(latestDate)) {
-      return true;
-    }
-    return !(!this.isInPeriod(earliestDate) && !this.isInPeriod(latestDate));
   }
 
   private getStartDateInCurrentPeriod(startDate: moment_.Moment) {

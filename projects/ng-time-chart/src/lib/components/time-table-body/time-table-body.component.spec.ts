@@ -1,14 +1,13 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {Component} from '@angular/core';
-import {Item} from '../item';
-import {Period} from '../period';
-import {Group} from '../group';
+import {Item} from '../../item';
+import {Period} from '../../period';
+import {Group} from '../../group';
 import * as moment_ from 'moment';
-import {LayoutStrategy} from '../../public-api';
+import {LayoutStrategy} from '../../../public-api';
 import {TimeTableBodyComponent} from './time-table-body.component';
-import {ItemGroupingComponent} from './item-grouping/item-grouping.component';
-import {TimeChartDateFormatterPipe} from '../pipes/time-chart-date-formatter.pipe';
+import {ItemGroupingComponent} from '../item-grouping/item-grouping.component';
 
 const moment = moment_;
 
@@ -20,7 +19,7 @@ describe('TimeTableBodyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ItemGroupingComponent, TimeTableBodyComponent, TimeChartDateFormatterPipe, TestHostComponent]
+      declarations: [ItemGroupingComponent, TimeTableBodyComponent, TestHostComponent]
     }).compileComponents();
   }));
 

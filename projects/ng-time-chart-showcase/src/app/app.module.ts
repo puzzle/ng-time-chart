@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgTimeChartModule } from '../../../ng-time-chart/src/lib/ng-time-chart.module';
+import { NgTimeChartModule } from '../../../ng-time-chart/src/lib/components/ng-time-chart.module';
 
 @NgModule({
   declarations: [

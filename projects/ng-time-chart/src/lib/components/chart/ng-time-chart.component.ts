@@ -1,11 +1,11 @@
 import {AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import * as moment_ from 'moment';
 import {filter, map} from 'rxjs/operators';
-import {Period} from './period';
+import {Period} from '../../period';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {Group} from './group';
-import {Constants} from './constants';
-import {LayoutStrategy} from './layout/layout-strategy.enum';
+import {Group} from '../../group';
+import {Constants} from '../../constants';
+import {LayoutStrategy} from '../../layout/layout-strategy.enum';
 
 const moment = moment_;
 

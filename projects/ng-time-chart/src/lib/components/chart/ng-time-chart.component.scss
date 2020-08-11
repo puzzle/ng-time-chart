@@ -1,5 +1,6 @@
-@import "../styles/settings/variables";
-@import "../styles/sidebar";
+@import "../../../styles/1_settings/variables";
+@import "../../../styles/6_components/sidebar";
+@import "../../../styles/5_objects/day";
 
 .timetable {
   display: flex;
@@ -57,11 +58,6 @@
 
 .month:first-child {
   border-left-width: 1px;
-}
-
-.day-width-1 {
-  min-width: $day-width;
-  max-width: $day-width;
 }
 
 .week-offset {
