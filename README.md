@@ -114,8 +114,8 @@ If the values are changed the calendar will be redrawn. If a date is set, switch
 This is a grouping of several items.
 - _name_: The name of the group as displayed in the chart
 - _duration_: The calculated duration of the whole group. It is automatically calculated as the difference between the earliest start time and the latest end time of all items passed to the constructor.
-- _items_: The items belonging to the group
-- _onClick_: The optional action to execute if the group is clicked
+- _items_: The items belonging to the group.
+- _onClick_: The optional action to execute when the user clicks on the group.
 
 ### Item
 This represents a bar in the time chart.
@@ -123,7 +123,8 @@ This represents a bar in the time chart.
 - _startTime_: The start date of the item. This is represented in Momentjs
 - _endTime_: The end date of the item.
 - _class_: The optional css-class of the item.
-_ _onClick_: The optional action to take if the bar is clicked in the chart.
+- _onClick_: The optional action to take when the user clicks the item in the chart.
+- _details_: Additional information for the item. These are displayed when the mouse hovers over the item in the calendar.
  
 ##Known Issues
 
