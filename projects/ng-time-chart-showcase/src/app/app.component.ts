@@ -59,7 +59,7 @@ export class AppComponent {
             startTime: moment(`${this.currentYear}-04-02`),
             endTime: moment(`${this.currentYear}-04-05`),
             class: 'type-b',
-            details: 'More information of Testitem 4. A lot of text to show how this is handeled.'
+            details: 'More information of Testitem 4. A lot of text to show how this is handled.'
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         () => alert('Group clicked')
       ),
@@ -76,7 +76,29 @@ export class AppComponent {
           {
             name: 'Testitem 1',
             startTime: moment(`${this.currentYear}-04-11`),
-            endTime: moment(`${this.currentYear}-05-02`)
+            endTime: moment(`${this.currentYear}-04-28`),
+            details: 'Oh, there\'s a monkey in my pocket, And he\'s stealing all my change. His stare is blank and glassy, I suspect he\'s deranged 🐒',
+            class: 'type-c',
+            dates: [
+              moment(`${this.currentYear}-04-11`),
+              moment(`${this.currentYear}-04-12`),
+              moment(`${this.currentYear}-04-13`),
+              moment(`${this.currentYear}-04-14`),
+              moment(`${this.currentYear}-04-15`),
+              moment(`${this.currentYear}-04-16`),
+              moment(`${this.currentYear}-04-17`),
+              moment(`${this.currentYear}-04-18`),
+              moment(`${this.currentYear}-04-19`),
+              moment(`${this.currentYear}-04-20`),
+              moment(`${this.currentYear}-04-21`),
+              moment(`${this.currentYear}-04-22`),
+              moment(`${this.currentYear}-04-23`),
+              moment(`${this.currentYear}-04-24`),
+              moment(`${this.currentYear}-04-25`),
+              moment(`${this.currentYear}-04-26`),
+              moment(`${this.currentYear}-04-27`),
+              moment(`${this.currentYear}-04-28`)
+            ]
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         () => console.log('clicked')
       ),
