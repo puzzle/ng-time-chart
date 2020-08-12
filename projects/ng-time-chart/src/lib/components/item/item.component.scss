@@ -1,4 +1,5 @@
 @import "../../../styles/1_settings/variables";
+@import "../../../styles/5_objects/day";
 
 .item {
   cursor: pointer;
@@ -26,7 +27,7 @@
 
   .blockade-details {
     display: none;
-
+    position: relative;
   }
 }
 
@@ -43,12 +44,16 @@
   .blockade-details {
     display: block;
     font-weight: normal;
-    width: 40em;
+    max-width: 40em;
     white-space: normal;
     margin-top: 8px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+  }
+
+  .blockade-day {
+    display: none;
   }
 }
 
