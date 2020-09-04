@@ -9,12 +9,15 @@ import {Component, ViewChild} from '@angular/core';
 import {Period} from '../../period';
 import {Group} from '../../group';
 import {LayoutStrategy} from '../../layout/layout-strategy.enum';
+import {Item} from '../../item';
+import {addMatchers, cold, initTestScheduler} from 'jasmine-marbles';
 
 const moment = moment_;
 
 describe('NgTimeChartComponent', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
+  let testGroups: Group[];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +34,28 @@ describe('NgTimeChartComponent', () => {
   }));
 
   beforeEach(() => {
+    const item0: Item = {
+      name: 'Testitem0',
+      startTime: moment('2020-03-01'),
+      endTime: moment('2020-03-15')
+    };
+    const item1: Item = {
+      name: 'TestItem1',
+      startTime: moment('2020-03-17'),
+      endTime: moment('2020-04-08')
+    };
+    const item2: Item = {
+      name: 'TestItem2',
+      startTime: moment('2020-04-09'),
+      endTime: moment('2020-05-20')
+    };
+
+    const group = new Group('TestGroup0', [item0, item1, item2]);
+    testGroups = [group];
+
     fixture = TestBed.createComponent(TestHostComponent);
+    initTestScheduler();
+    addMatchers();
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -85,25 +109,53 @@ describe('NgTimeChartComponent', () => {
     expect(days).toBeNull();
   });
 
+  it('should handle period changes', () => {
+    const startDates = cold('a', {a: moment('2020-01-01')});
+    const endDates = cold('--a-b', {a: moment('2020-01-20'), b: moment('2020-01-24')});
+    startDates.subscribe(value => component.ngTimeChartComponent.startDate = value);
+    endDates.subscribe(value => component.ngTimeChartComponent.endDate = value);
+    expect(component.ngTimeChartComponent.durationInDays$)
+      .toBeObservable(cold('a-b-c', {
+        a: 367,
+        b: 20,
+        c: 24
+      }));
+  });
+
+  it('should update filtered items when adding new items', () => {
+    const startDates = cold('a-----b',
+      {
+        a: moment('2020-01-01'),
+        b: moment('2020-08-10')
+      });
+    const endDates = cold('--a',
+      {a: moment('2020-08-20')});
+    const groups = cold('---a-b',
+      {
+        a: [],
+        b: testGroups
+      });
+    startDates.subscribe(value => component.ngTimeChartComponent.startDate = value);
+    endDates.subscribe(value => component.ngTimeChartComponent.endDate = value);
+    groups.subscribe(value => component.ngTimeChartComponent.groups = value);
+    expect(component.ngTimeChartComponent.filteredGroups$)
+      .toBeObservable(cold('---a-bc',
+        {
+          a: [],
+          b: testGroups,
+          c: []
+        }));
+  });
+
   @Component({
     selector: 'ng-host-component',
-    template: '<ng-time-chart [groups]="groups" [startDate]="startDate" [endDate]="endDate" [layoutStrategy]="strategy"></ng-time-chart>',
+    template: '<ng-time-chart [groups]="[]" [startDate]="startDate" [endDate]="endDate" [layoutStrategy]="strategy"></ng-time-chart>',
   })
   class TestHostComponent {
     @ViewChild(NgTimeChartComponent)
     public ngTimeChartComponent: NgTimeChartComponent;
-    readonly period: Period = new Period(moment('2020-01-01'), moment('2020-12-31'));
-    readonly groups: Group[] = [];
     startDate = null;
     endDate = null;
     readonly strategy: LayoutStrategy = LayoutStrategy.Stacked;
-
-    setStartDate(date: moment_.Moment) {
-      this.startDate = date;
-    }
-
-    setEndDate(date: moment_.Moment) {
-      this.endDate = date;
-    }
   }
 });
