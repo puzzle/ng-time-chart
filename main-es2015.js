@@ -395,6 +395,7 @@ class NgTimeChartComponent {
         this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_5__["Constants"].DAY_WIDTH;
         this.yearChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.period$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](this._startDate, this._endDate));
+        this._groups$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.today = moment();
         const periodChange$ = this.period$.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(period => period.isValid()));
         this.months$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(period => NgTimeChartComponent.enumerateMonths(period)));
@@ -402,8 +403,11 @@ class NgTimeChartComponent {
         this.days$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(period => NgTimeChartComponent.enumerateDays(period)));
         this.durationInDays$ = this.days$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(days => days.length));
         this.precedingPeriodDaysBeforeFirstWeek$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(period => NgTimeChartComponent.getOldPeriodDaysBeforeFirstWeek(period)));
-        this.filteredGroups$ = this.period$
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(period => this.groups.filter(group => period.overlaps(group.duration))));
+        this.filteredGroups$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.period$, this._groups$])
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(([period, groups]) => groups.filter(group => period.overlaps(group.duration))));
+    }
+    set groups(value) {
+        this._groups$.next(value);
     }
     set startDate(date) {
         this._startDate = date;

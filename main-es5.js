@@ -2,13 +2,21 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -527,13 +535,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var NgTimeChartComponent = /*#__PURE__*/function () {
       function NgTimeChartComponent() {
-        var _this = this;
-
         _classCallCheck(this, NgTimeChartComponent);
 
         this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_5__["Constants"].DAY_WIDTH;
         this.yearChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.period$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](this._startDate, this._endDate));
+        this._groups$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.today = moment();
         var periodChange$ = this.period$.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (period) {
           return period.isValid();
@@ -553,8 +560,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.precedingPeriodDaysBeforeFirstWeek$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
           return NgTimeChartComponent.getOldPeriodDaysBeforeFirstWeek(period);
         }));
-        this.filteredGroups$ = this.period$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
-          return _this.groups.filter(function (group) {
+        this.filteredGroups$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.period$, this._groups$]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              period = _ref2[0],
+              groups = _ref2[1];
+
+          return groups.filter(function (group) {
             return period.overlaps(group.duration);
           });
         }));
@@ -625,6 +636,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               inline: 'center'
             });
           }
+        }
+      }, {
+        key: "groups",
+        set: function set(value) {
+          this._groups$.next(value);
         }
       }, {
         key: "startDate",
