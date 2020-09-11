@@ -2,7 +2,7 @@ import {AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, Eve
 import * as moment_ from 'moment';
 import {filter, map} from 'rxjs/operators';
 import {Period} from '../../period';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {Group} from '../../group';
 import {Constants} from '../../constants';
 import {LayoutStrategy} from '../../layout/layout-strategy.enum';
@@ -17,8 +17,13 @@ const moment = moment_;
 })
 export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
 
+  private readonly _groups$: Subject<Group[]>;
+
   @Input()
-  groups: Group[];
+  set groups(value: Group[]) {
+    this._groups$.next(value);
+  }
+
   filteredGroups$: Observable<Group[]>;
 
   @Input()
@@ -67,6 +72,7 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
   constructor() {
     this.yearChange = new EventEmitter<number>();
     this.period$ = new BehaviorSubject<Period>(new Period(this._startDate, this._endDate));
+    this._groups$ = new Subject<Group[]>();
     this.today = moment();
 
     const periodChange$ = this.period$.asObservable().pipe(filter(period => period.isValid()));
@@ -79,8 +85,8 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
       map(period => NgTimeChartComponent.getOldPeriodDaysBeforeFirstWeek(period))
     );
 
-    this.filteredGroups$ = this.period$
-      .pipe(map(period => this.groups.filter(group => period.overlaps(group.duration))));
+    this.filteredGroups$ = combineLatest([this.period$, this._groups$])
+      .pipe(map(([period, groups]) => groups.filter(group => period.overlaps(group.duration))));
   }
 
 
