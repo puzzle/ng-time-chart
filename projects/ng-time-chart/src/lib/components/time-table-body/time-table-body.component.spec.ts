@@ -53,7 +53,7 @@ describe('TimeTableBodyComponent', () => {
 
   @Component({
     selector: 'ng-host-component',
-    template: '<ng-time-table-body [period]="period" [groups]="groups" [today]="today" [days]="days" [layoutStrategy]="strategy"></ng-time-table-body>',
+    template: '<ng-time-table-body [period]="period" [groups]="groups" [today]="today" [layoutStrategy]="strategy"></ng-time-table-body>',
   })
   class TestHostComponent {
     readonly period: Period = new Period(moment('2020-01-01'), moment('2020-12-31'));

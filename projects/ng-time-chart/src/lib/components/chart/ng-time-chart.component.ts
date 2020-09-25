@@ -1,4 +1,4 @@
-import {AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import * as moment_ from 'moment';
 import {filter, map} from 'rxjs/operators';
 import {Period} from '../../period';
@@ -6,6 +6,8 @@ import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {Group} from '../../group';
 import {Constants} from '../../constants';
 import {LayoutStrategy} from '../../layout/layout-strategy.enum';
+import {PeriodService} from '../../service/period.service';
+import {YearService} from '../../service/year.service';
 
 const moment = moment_;
 
@@ -13,9 +15,12 @@ const moment = moment_;
   selector: 'ng-time-chart',
   templateUrl: './ng-time-chart.component.html',
   styleUrls: ['./ng-time-chart.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    PeriodService,
+    YearService]
 })
-export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
+export class NgTimeChartComponent implements AfterViewInit {
 
   private readonly _groups$: Subject<Group[]>;
 
@@ -24,26 +29,29 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
     this._groups$.next(value);
   }
 
-  filteredGroups$: Observable<Group[]>;
+  readonly filteredGroups$: Observable<Group[]>;
+  readonly currentPeriod$: Observable<Period>;
 
   @Input()
   set startDate(date: moment_.Moment) {
-    this._startDate = date;
-    this.changePeriod(this._startDate, this._endDate);
+    this.periodService.startDate = date;
   }
 
   get startDate(): moment_.Moment {
-    return this._startDate;
+    return this.periodService.startDate;
   }
 
   @Input()
   set endDate(date: moment_.Moment) {
-    this._endDate = date;
-    this.changePeriod(this._startDate, this._endDate);
+    this.periodService.endDate = date;
   }
 
   get endDate(): moment_.Moment {
-    return this._endDate;
+    return this.periodService.endDate;
+  }
+
+  get currentYear$(): Observable<number> {
+    return this.yearService.year$;
   }
 
   @Input()
@@ -54,38 +62,34 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
 
   @ViewChild('todayMarker') todayMarker;
 
-  readonly period$: Subject<Period>;
-
-  private _startDate?: moment_.Moment;
-  private _endDate?: moment_.Moment;
-
   readonly months$: Observable<Period[]>;
   readonly weeks$: Observable<Period[]>;
   readonly days$: Observable<moment_.Moment[]>;
   readonly durationInDays$: Observable<number>;
   readonly precedingPeriodDaysBeforeFirstWeek$: Observable<number>;
   readonly today: moment_.Moment;
-  currentYear: number;
 
   readonly DAY_WIDTH = Constants.DAY_WIDTH;
 
-  constructor() {
+  constructor(public periodService: PeriodService,
+              public yearService: YearService) {
     this.yearChange = new EventEmitter<number>();
-    this.period$ = new BehaviorSubject<Period>(new Period(this._startDate, this._endDate));
-    this._groups$ = new Subject<Group[]>();
+    this.yearService.year$.subscribe(year => this.yearChange.emit(year));
+    this._groups$ = new BehaviorSubject<Group[]>([]);
     this.today = moment();
+    this.currentPeriod$ = combineLatest([this.periodService.period$, this.yearService.period$])
+      .pipe(map(([period, year]) => period != null ? period : year),
+        filter(period => period.isValid()));
 
-    const periodChange$ = this.period$.asObservable().pipe(filter(period => period.isValid()));
-
-    this.months$ = periodChange$.pipe(map(period => NgTimeChartComponent.enumerateMonths(period)));
-    this.weeks$ = periodChange$.pipe(map(period => NgTimeChartComponent.enumerateWeeks(period)));
-    this.days$ = periodChange$.pipe(map(period => NgTimeChartComponent.enumerateDays(period)));
+    this.months$ = this.currentPeriod$.pipe(map(period => NgTimeChartComponent.enumerateMonths(period)));
+    this.weeks$ = this.currentPeriod$.pipe(map(period => NgTimeChartComponent.enumerateWeeks(period)));
+    this.days$ = this.currentPeriod$.pipe(map(period => NgTimeChartComponent.enumerateDays(period)));
     this.durationInDays$ = this.days$.pipe(map(days => days.length));
-    this.precedingPeriodDaysBeforeFirstWeek$ = periodChange$.pipe(
+    this.precedingPeriodDaysBeforeFirstWeek$ = this.currentPeriod$.pipe(
       map(period => NgTimeChartComponent.getOldPeriodDaysBeforeFirstWeek(period))
     );
 
-    this.filteredGroups$ = combineLatest([this.period$, this._groups$])
+    this.filteredGroups$ = combineLatest([this.currentPeriod$, this._groups$])
       .pipe(map(([period, groups]) => groups.filter(group => period.overlaps(group.duration))));
   }
 
@@ -106,17 +110,28 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
   }
 
   static enumerateMonths(period: Period): Period[] {
-    function enumerate(currentDate: moment_.Moment, expanded: Period[]): Period[] {
-      if (currentDate.isSameOrBefore(period.endDate, 'day')) {
-        const endDate = currentDate.clone().endOf('month');
-        expanded.push(new Period(currentDate, endDate));
-        const advanceDate = currentDate.clone().add(1, 'month');
-        enumerate(advanceDate, expanded);
-      }
-      return expanded;
+    if (!period) {
+      return null;
     }
 
-    return !period ? null : enumerate(period.startDate.clone(), []);
+    function getMonthWithinPeriod(dayInMonth: moment_.Moment): Period {
+      const fullMonth = new Period(dayInMonth.clone().startOf('month'), dayInMonth.clone().endOf('month'));
+      return fullMonth.intersect(myPeriod);
+    }
+
+    function enumerateWithinPeriod(startDate: moment_.Moment): Period[] {
+      const months = [];
+      let current = startDate.clone();
+      while (myPeriod.containsDate(current)) {
+        months.push(getMonthWithinPeriod(current));
+        current = current.clone().add(1, 'month');
+      }
+      return months;
+    }
+
+
+    const myPeriod = new Period(period.startDate.clone().hour(0), period.endDate.clone().hour(23));
+    return enumerateWithinPeriod(period.startDate.clone());
   }
 
   static enumerateWeeks(period: Period): Period[] {
@@ -153,10 +168,6 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
     return !period ? null : enumerate(period.startDate.clone(), []);
   }
 
-  ngAfterContentInit(): void {
-    this.changeYear(moment().year());
-  }
-
   ngAfterViewInit() {
     this.scrollTodayIntoView();
   }
@@ -166,36 +177,11 @@ export class NgTimeChartComponent implements AfterContentInit, AfterViewInit {
   }
 
   changeYear(year: number) {
-    this.yearChange.next(year);
-    this.currentYear = year;
-    if (!this._startDate && !this._endDate) {
-      this.period$.next(new Period(moment(`${year}-01-01`).hour(12), moment(`${year}-12-31`).hour(23)));
-    } else {
-      this.changePeriod(this._startDate, this._endDate);
-      this.period$.next(new Period(this._startDate.hour(12), this._endDate.hour(23)));
-    }
+    this.yearService.year = year;
   }
 
-  private changePeriod(startDate: moment_.Moment, endDate: moment_.Moment) {
-    if (startDate == null && endDate == null) {
-      return;
-    }
-    let myStartDate;
-    if (startDate != null) {
-      myStartDate = startDate;
-    } else {
-      myStartDate = endDate.clone();
-      myStartDate.subtract(1, 'year');
-    }
-
-    let myEndDate;
-    if (endDate != null) {
-      myEndDate = endDate;
-    } else {
-      myEndDate = myStartDate.clone();
-      myEndDate.add(1, 'year');
-    }
-    this.period$.next(new Period(myStartDate.hour(0), myEndDate.hour(23)));
+  showYearSpinner$(): Observable<boolean> {
+    return this.periodService.isFullYear$;
   }
 
   private scrollTodayIntoView() {

@@ -47,7 +47,7 @@ export class TimeTableBodyComponent {
     if (!this.period.containsDate(date)) {
       return 0;
     }
-    return Math.round(date.diff(this.period.startDate, 'days', true));
+    return Math.round(date.diff(this.period.startDate, 'days', true)) - 1;
   }
 
   isInPeriod(time: moment_.Moment): boolean {

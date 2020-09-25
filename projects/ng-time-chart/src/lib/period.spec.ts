@@ -55,4 +55,10 @@ describe('period', () => {
     const intersection = period0.intersect(period1);
     expect(intersection).toBeNull('There should not be an intersection');
   });
+
+  it('should handle a null start date', () => {
+    const period = new Period(null, moment('2030-02-12'));
+    expect(period).not.toBeNull('null must be permissible for period start date');
+    expect(period.isValid()).toBeFalse();
+  });
 });
