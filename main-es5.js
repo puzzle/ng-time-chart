@@ -391,21 +391,89 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _service_period_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../../service/period.service */
+    "../ng-time-chart/src/lib/service/period.service.ts");
+    /* harmony import */
+
+
+    var _service_year_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../../service/year.service */
+    "../ng-time-chart/src/lib/service/year.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @angular/common */
     "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ../time-table-body/time-table-body.component */
     "../ng-time-chart/src/lib/components/time-table-body/time-table-body.component.ts");
 
     var _c0 = ["todayMarker"];
 
-    function NgTimeChartComponent_div_14_Template(rf, ctx) {
+    function NgTimeChartComponent_div_4_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 15);
+        var _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3", 14);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NgTimeChartComponent_div_4_Template_h3_click_1_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7);
+
+          var currentYear_r5 = ctx.ngIf;
+
+          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r6.changeYear(currentYear_r5 - 1);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "< ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "h1", 15);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "h3", 14);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NgTimeChartComponent_div_4_Template_h3_click_5_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7);
+
+          var currentYear_r5 = ctx.ngIf;
+
+          var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r8.changeYear(currentYear_r5 + 1);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " >");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var currentYear_r5 = ctx.ngIf;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](currentYear_r5);
+      }
+    }
+
+    function NgTimeChartComponent_div_10_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 16);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -413,35 +481,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var month_r4 = ctx.$implicit;
+        var month_r9 = ctx.$implicit;
 
-        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", month_r4.days * ctx_r0.DAY_WIDTH, "px");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", month_r9.days * ctx_r1.DAY_WIDTH, "px")("max-width", month_r9.days * ctx_r1.DAY_WIDTH, "px");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", month_r4.startDate.format("MMMM YYYY"), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", month_r9.startDate.format("MMMM YYYY"), " ");
       }
     }
 
-    function NgTimeChartComponent_div_18_Template(rf, ctx) {
+    function NgTimeChartComponent_div_14_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 17);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "async");
       }
 
       if (rf & 2) {
-        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](1, 2, ctx_r1.precedingPeriodDaysBeforeFirstWeek$) * ctx_r1.DAY_WIDTH, "px");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](1, 2, ctx_r2.precedingPeriodDaysBeforeFirstWeek$) * ctx_r2.DAY_WIDTH, "px");
       }
     }
 
-    function NgTimeChartComponent_div_20_Template(rf, ctx) {
+    function NgTimeChartComponent_div_16_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 18);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -449,15 +517,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var week_r5 = ctx.$implicit;
+        var week_r10 = ctx.$implicit;
 
-        var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", week_r5.days * ctx_r2.DAY_WIDTH, "px");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", week_r10.days * ctx_r3.DAY_WIDTH, "px");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("(", week_r5.startDate.isoWeek(), " )", week_r5.startDate.startOf("isoWeek").format("L"), "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("(", week_r10.startDate.isoWeek(), " )", week_r10.startDate.startOf("isoWeek").format("L"), "");
       }
     }
 
@@ -467,9 +535,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       };
     };
 
-    function NgTimeChartComponent_ng_container_23_div_1_Template(rf, ctx) {
+    function NgTimeChartComponent_ng_container_19_div_1_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 20, 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 21, 22);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
 
@@ -477,21 +545,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var day_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var day_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c1, ctx_r7.isToday(day_r6)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c1, ctx_r12.isToday(day_r11)));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", day_r6.format("dd"), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", day_r11.format("dd"), " ");
       }
     }
 
-    function NgTimeChartComponent_ng_container_23_ng_template_2_Template(rf, ctx) {
+    function NgTimeChartComponent_ng_container_19_ng_template_2_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -499,71 +567,83 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var day_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var day_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", day_r6.format("dd"), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", day_r11.format("dd"), " ");
       }
     }
 
-    function NgTimeChartComponent_ng_container_23_Template(rf, ctx) {
+    function NgTimeChartComponent_ng_container_19_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, NgTimeChartComponent_ng_container_23_div_1_Template, 3, 4, "div", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, NgTimeChartComponent_ng_container_19_div_1_Template, 3, 4, "div", 19);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, NgTimeChartComponent_ng_container_23_ng_template_2_Template, 2, 1, "ng-template", null, 19, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, NgTimeChartComponent_ng_container_19_ng_template_2_Template, 2, 1, "ng-template", null, 20, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
 
       if (rf & 2) {
-        var day_r6 = ctx.$implicit;
+        var day_r11 = ctx.$implicit;
 
-        var _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
+        var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
 
-        var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r3.isToday(day_r6))("ngIfElse", _r8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r4.isToday(day_r11))("ngIfElse", _r13);
       }
     }
 
     var moment = moment__WEBPACK_IMPORTED_MODULE_1__;
 
     var NgTimeChartComponent = /*#__PURE__*/function () {
-      function NgTimeChartComponent() {
+      function NgTimeChartComponent(periodService, yearService) {
+        var _this = this;
+
         _classCallCheck(this, NgTimeChartComponent);
 
+        this.periodService = periodService;
+        this.yearService = yearService;
         this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_5__["Constants"].DAY_WIDTH;
         this.yearChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.period$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](this._startDate, this._endDate));
-        this._groups$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+        this.yearService.year$.subscribe(function (year) {
+          return _this.yearChange.emit(year);
+        });
+        this._groups$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
         this.today = moment();
-        var periodChange$ = this.period$.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (period) {
+        this.currentPeriod$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.periodService.period$, this.yearService.period$]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              period = _ref2[0],
+              year = _ref2[1];
+
+          return period != null ? period : year;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (period) {
           return period.isValid();
         }));
-        this.months$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
+        this.months$ = this.currentPeriod$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
           return NgTimeChartComponent.enumerateMonths(period);
         }));
-        this.weeks$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
+        this.weeks$ = this.currentPeriod$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
           return NgTimeChartComponent.enumerateWeeks(period);
         }));
-        this.days$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
+        this.days$ = this.currentPeriod$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
           return NgTimeChartComponent.enumerateDays(period);
         }));
         this.durationInDays$ = this.days$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (days) {
           return days.length;
         }));
-        this.precedingPeriodDaysBeforeFirstWeek$ = periodChange$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
+        this.precedingPeriodDaysBeforeFirstWeek$ = this.currentPeriod$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (period) {
           return NgTimeChartComponent.getOldPeriodDaysBeforeFirstWeek(period);
         }));
-        this.filteredGroups$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.period$, this._groups$]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref) {
-          var _ref2 = _slicedToArray(_ref, 2),
-              period = _ref2[0],
-              groups = _ref2[1];
+        this.filteredGroups$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.currentPeriod$, this._groups$]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref3) {
+          var _ref4 = _slicedToArray(_ref3, 2),
+              period = _ref4[0],
+              groups = _ref4[1];
 
           return groups.filter(function (group) {
             return period.overlaps(group.duration);
@@ -572,11 +652,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       _createClass(NgTimeChartComponent, [{
-        key: "ngAfterContentInit",
-        value: function ngAfterContentInit() {
-          this.changeYear(moment().year());
-        }
-      }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
           this.scrollTodayIntoView();
@@ -589,42 +664,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "changeYear",
         value: function changeYear(year) {
-          this.yearChange.next(year);
-          this.currentYear = year;
-
-          if (!this._startDate && !this._endDate) {
-            this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](moment("".concat(year, "-01-01")).hour(12), moment("".concat(year, "-12-31")).hour(23)));
-          } else {
-            this.changePeriod(this._startDate, this._endDate);
-            this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](this._startDate.hour(12), this._endDate.hour(23)));
-          }
+          this.yearService.year = year;
         }
       }, {
-        key: "changePeriod",
-        value: function changePeriod(startDate, endDate) {
-          if (startDate == null && endDate == null) {
-            return;
-          }
-
-          var myStartDate;
-
-          if (startDate != null) {
-            myStartDate = startDate;
-          } else {
-            myStartDate = endDate.clone();
-            myStartDate.subtract(1, 'year');
-          }
-
-          var myEndDate;
-
-          if (endDate != null) {
-            myEndDate = endDate;
-          } else {
-            myEndDate = myStartDate.clone();
-            myEndDate.add(1, 'year');
-          }
-
-          this.period$.next(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](myStartDate.hour(0), myEndDate.hour(23)));
+        key: "showYearSpinner$",
+        value: function showYearSpinner$() {
+          return this.periodService.isFullYear$;
         }
       }, {
         key: "scrollTodayIntoView",
@@ -645,20 +690,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "startDate",
         set: function set(date) {
-          this._startDate = date;
-          this.changePeriod(this._startDate, this._endDate);
+          this.periodService.startDate = date;
         },
         get: function get() {
-          return this._startDate;
+          return this.periodService.startDate;
         }
       }, {
         key: "endDate",
         set: function set(date) {
-          this._endDate = date;
-          this.changePeriod(this._startDate, this._endDate);
+          this.periodService.endDate = date;
         },
         get: function get() {
-          return this._endDate;
+          return this.periodService.endDate;
+        }
+      }, {
+        key: "currentYear$",
+        get: function get() {
+          return this.yearService.year$;
         }
       }], [{
         key: "getOldPeriodDaysBeforeFirstWeek",
@@ -683,18 +731,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "enumerateMonths",
         value: function enumerateMonths(period) {
-          function enumerate(currentDate, expanded) {
-            if (currentDate.isSameOrBefore(period.endDate, 'day')) {
-              var endDate = currentDate.clone().endOf('month');
-              expanded.push(new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](currentDate, endDate));
-              var advanceDate = currentDate.clone().add(1, 'month');
-              enumerate(advanceDate, expanded);
-            }
-
-            return expanded;
+          if (!period) {
+            return null;
           }
 
-          return !period ? null : enumerate(period.startDate.clone(), []);
+          function getMonthWithinPeriod(dayInMonth) {
+            var fullMonth = new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](dayInMonth.clone().startOf('month'), dayInMonth.clone().endOf('month'));
+            return fullMonth.intersect(myPeriod);
+          }
+
+          function enumerateWithinPeriod(startDate) {
+            var months = [];
+            var current = startDate.clone();
+
+            while (myPeriod.containsDate(current)) {
+              months.push(getMonthWithinPeriod(current));
+              current = current.clone().add(1, 'month');
+            }
+
+            return months;
+          }
+
+          var myPeriod = new _period__WEBPACK_IMPORTED_MODULE_3__["Period"](period.startDate.clone().hour(0), period.endDate.clone().hour(23));
+          return enumerateWithinPeriod(period.startDate.clone());
         }
       }, {
         key: "enumerateWeeks",
@@ -740,7 +799,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     NgTimeChartComponent.ɵfac = function NgTimeChartComponent_Factory(t) {
-      return new (t || NgTimeChartComponent)();
+      return new (t || NgTimeChartComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_period_service__WEBPACK_IMPORTED_MODULE_6__["PeriodService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_year_service__WEBPACK_IMPORTED_MODULE_7__["YearService"]));
     };
 
     NgTimeChartComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -766,9 +825,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       outputs: {
         yearChange: "yearChange"
       },
-      decls: 29,
-      vars: 34,
-      consts: [[1, "timetable"], [1, "timetable-header"], [1, "year-selector", "label-bar"], [2, "display", "inline-block", "cursor", "pointer", 3, "click"], [2, "display", "inline-block"], [1, "calendar-header"], [1, "months"], ["class", "month", 3, "width", 4, "ngFor", "ngForOf"], [1, "week-bar"], [1, "weeks"], ["class", "week-offset", 3, "width", 4, "ngIf"], ["class", "week", 3, "width", 4, "ngFor", "ngForOf"], [1, "days"], [4, "ngFor", "ngForOf"], [3, "groups", "today", "period", "durationInDays", "layoutStrategy"], [1, "month"], [1, "week-offset"], [1, "week"], ["class", "day today", 3, "ngClass", 4, "ngIf", "ngIfElse"], ["normalDay", ""], [1, "day", "today", 3, "ngClass"], ["todayMarker", ""], [1, "day"]],
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([_service_period_service__WEBPACK_IMPORTED_MODULE_6__["PeriodService"], _service_year_service__WEBPACK_IMPORTED_MODULE_7__["YearService"]])],
+      decls: 25,
+      vars: 36,
+      consts: [[1, "timetable"], [1, "timetable-header"], [1, "year-selector", "label-bar"], [4, "ngIf"], [1, "calendar-header"], [1, "months"], ["class", "month", 3, "width", "max-width", 4, "ngFor", "ngForOf"], [1, "week-bar"], [1, "weeks"], ["class", "week-offset", 3, "width", 4, "ngIf"], ["class", "week", 3, "width", 4, "ngFor", "ngForOf"], [1, "days"], [4, "ngFor", "ngForOf"], [3, "groups", "today", "period", "durationInDays", "layoutStrategy"], [2, "display", "inline-block", "cursor", "pointer", 3, "click"], [2, "display", "inline-block"], [1, "month"], [1, "week-offset"], [1, "week"], ["class", "day today", 3, "ngClass", 4, "ngIf", "ngIfElse"], ["normalDay", ""], [1, "day", "today", 3, "ngClass"], ["todayMarker", ""], [1, "day"]],
       template: function NgTimeChartComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -779,85 +839,61 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, NgTimeChartComponent_div_4_Template, 7, 1, "div", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "h3", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](5, "async");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NgTimeChartComponent_Template_h3_click_5_listener() {
-            return ctx.changeYear(ctx.currentYear - 1);
-          });
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "< ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](6, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "h1", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](8, "async");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 5);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "h3", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, NgTimeChartComponent_div_10_Template, 2, 5, "div", 6);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NgTimeChartComponent_Template_h3_click_9_listener() {
-            return ctx.changeYear(ctx.currentYear + 1);
-          });
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " >");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](11, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 7);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 5);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](12, "async");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, NgTimeChartComponent_div_14_Template, 2, 3, "div", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, NgTimeChartComponent_div_14_Template, 2, 4, "div", 9);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](15, "async");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](16, NgTimeChartComponent_div_16_Template, 2, 4, "div", 10);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 8);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 9);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, NgTimeChartComponent_div_18_Template, 2, 4, "div", 10);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](19, "async");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, NgTimeChartComponent_div_20_Template, 2, 4, "div", 11);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](21, "async");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](17, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 11);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](23, NgTimeChartComponent_ng_container_23_Template, 4, 2, "ng-container", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](19, NgTimeChartComponent_ng_container_19_Template, 4, 2, "ng-container", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](20, "async");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "ng-time-table-body", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](22, "async");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](24, "async");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "ng-time-table-body", 14);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](26, "async");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "async");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -865,43 +901,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         if (rf & 2) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](2, 16, ctx.durationInDays$) * ctx.DAY_WIDTH, "px");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](2, 14, ctx.durationInDays$) * ctx.DAY_WIDTH, "px");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("visibility", !ctx.startDate && !ctx.endDate ? "" : "hidden");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](5, 16, ctx.showYearSpinner$()) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](6, 18, ctx.currentYear$));
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](8, 20, ctx.durationInDays$) * ctx.DAY_WIDTH, "px");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](11, 22, ctx.months$));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currentYear);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](12, 18, ctx.durationInDays$) * ctx.DAY_WIDTH, "px");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](15, 20, ctx.months$));
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](19, 22, ctx.precedingPeriodDaysBeforeFirstWeek$) > 0);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](15, 24, ctx.precedingPeriodDaysBeforeFirstWeek$) > 0);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](21, 24, ctx.weeks$));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](17, 26, ctx.weeks$));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](24, 26, ctx.days$));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](20, 28, ctx.days$));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("groups", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](26, 28, ctx.filteredGroups$))("today", ctx.today)("period", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 30, ctx.period$))("durationInDays", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 32, ctx.durationInDays$))("layoutStrategy", ctx.layoutStrategy);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("groups", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](22, 30, ctx.filteredGroups$))("today", ctx.today)("period", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 32, ctx.currentPeriod$))("durationInDays", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](24, 34, ctx.durationInDays$))("layoutStrategy", ctx.layoutStrategy);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_7__["TimeTableBodyComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgClass"]],
-      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["AsyncPipe"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_9__["TimeTableBodyComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgClass"]],
+      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["AsyncPipe"]],
       styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.day-width-1[_ngcontent-%COMP%] {\n  min-width: 20px;\n  max-width: 20px;\n}\n\n.timetable[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.timetable-header[_ngcontent-%COMP%] {\n  display: flex;\n  padding-bottom: 0;\n  margin-bottom: 0;\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  height: 70px;\n  max-height: 70px;\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .calendar-header[_ngcontent-%COMP%] {\n  height: 70px;\n  max-height: 70px;\n  background-color: white;\n}\n\n.months[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.month[_ngcontent-%COMP%] {\n  border: solid 1px #888;\n  border-left-width: 0;\n  flex: auto;\n  box-sizing: border-box;\n  text-align: center;\n  white-space: nowrap;\n  overflow: hidden;\n}\n\n.month[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.week-offset[_ngcontent-%COMP%] {\n  border-right: solid #888 1px;\n  box-sizing: border-box;\n}\n\n.weeks[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.week[_ngcontent-%COMP%] {\n  border: 0 solid;\n  border-right-width: 1px;\n  text-align: center;\n  display: inline-block;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\n.week[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.days[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.day[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  border: solid 1px #888;\n  border-left-width: 0;\n  min-width: 20px;\n  display: inline-block;\n  text-align: center;\n  margin: 0;\n  font-size: 10px;\n}\n\n.day[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.today[_ngcontent-%COMP%] {\n  background-color: #b00b1e;\n  position: relative;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvNl9jb21wb25lbnRzL19zaWRlYmFyLnNjc3MiLCIvaG9tZS9ydW5uZXIvd29yay9uZy10aW1lLWNoYXJ0L25nLXRpbWUtY2hhcnQvcHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvc3R5bGVzLzFfc2V0dGluZ3MvX3ZhcmlhYmxlcy5zY3NzIiwicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL2NvbXBvbmVudHMvY2hhcnQvbmctdGltZS1jaGFydC5jb21wb25lbnQuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9zdHlsZXMvNV9vYmplY3RzL19kYXkuc2NzcyIsIi9ob21lL3J1bm5lci93b3JrL25nLXRpbWUtY2hhcnQvbmctdGltZS1jaGFydC9wcm9qZWN0cy9uZy10aW1lLWNoYXJ0L3NyYy9saWIvY29tcG9uZW50cy9jaGFydC9uZy10aW1lLWNoYXJ0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsdUJBQUE7RUFDQSxhQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQ0hjO0VESWQsZ0JDSmM7QUNHaEI7O0FDSkE7RUFDRSxlRkhVO0VFSVYsZUZKVTtBQ1daOztBRVBBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FGVUY7O0FFTkE7RUFDRSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLHdCQUFBO0VBQUEsZ0JBQUE7RUFDQSxNQUFBO0VBQ0EsV0FBQTtBRlNGOztBRVBFO0VBQ0Usc0JBQUE7RUFDQSxZSHBCWTtFR3FCWixnQkhyQlk7RUdzQlosd0JBQUE7RUFBQSxnQkFBQTtFQUNBLE9BQUE7QUZTSjs7QUVQSTtFQUNFLGdCQUFBO0VBQ0EsaUJBQUE7QUZTTjs7QUVMRTtFQUNFLFlIaENZO0VHaUNaLGdCSGpDWTtFR2tDWix1QkFBQTtBRk9KOztBRUhBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7QUZNRjs7QUVIQTtFQUNFLHNCQUFBO0VBQ0Esb0JBQUE7RUFDQSxVQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7QUZNRjs7QUVIQTtFQUNFLHNCQUFBO0FGTUY7O0FFSEE7RUFDRSw0QkFBQTtFQUNBLHNCQUFBO0FGTUY7O0FFSEE7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBRk1GOztBRUhBO0VBQ0UsZUFBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUNBLHNCQUFBO0VBQ0EsZUFBQTtBRk1GOztBRUhBO0VBQ0Usc0JBQUE7QUZNRjs7QUVIQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtBRk1GOztBRUhBO0VBQ0Usc0JBQUE7RUFDQSxzQkFBQTtFQUNBLG9CQUFBO0VBQ0EsZUgvRlU7RUdnR1YscUJBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxlQUFBO0FGTUY7O0FFSEE7RUFDRSxzQkFBQTtBRk1GOztBRUhBO0VBQ0UseUJIakdjO0VHa0dkLGtCQUFBO0FGTUYiLCJmaWxlIjoicHJvamVjdHMvbmctdGltZS1jaGFydC9zcmMvbGliL2NvbXBvbmVudHMvY2hhcnQvbmctdGltZS1jaGFydC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCIuLi8xX3NldHRpbmdzL3ZhcmlhYmxlc1wiO1xuXG4ubGFiZWwtYmFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGZsZXg6IDEgMCAkc2lkZWJhci13aWR0aDtcbiAgbWluLXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbiAgbWF4LXdpZHRoOiAkc2lkZWJhci13aWR0aDtcbn1cbiIsIiRkYXktd2lkdGg6IDIwcHg7XG4kaXRlbS12ZXJ0aWNhbC1wYWRkaW5nOiAycHg7XG4kaXRlbS12ZXJ0aWNhbC1tYXJnaW46IDRweDtcbiRzaWRlYmFyLXdpZHRoOiAyMDBweDtcbiRoZWFkZXItaGVpZ2h0OiA3MHB4O1xuJGdyYXktZGFyazogIzg4ODtcbiRncmF5LWJhc2U6ICNhYWE7XG4kZ3JheS1saWdodDogI2NjYztcbiRncmF5LWxpZ2h0ZXI6ICNlZWU7XG4kYnJhbmQtaW5mbzogI2RlYWQwMDtcbiRicmFuZC1wcmltYXJ5OiAjYjAwYjFlO1xuJGJyYW5kLWRhbmdlcjogIzM5OTM4MztcbiRjb2xvci1hOiAjYjAwYjFlO1xuJGNvbG9yLWI6ICNmYTBhYWE7XG4kY29sb3ItYzogIzM5OTM4MztcbiIsIi5sYWJlbC1iYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgei1pbmRleDogMTAwMDtcbiAgZmxleDogMSAwIDIwMHB4O1xuICBtaW4td2lkdGg6IDIwMHB4O1xuICBtYXgtd2lkdGg6IDIwMHB4O1xufVxuXG4uZGF5LXdpZHRoLTEge1xuICBtaW4td2lkdGg6IDIwcHg7XG4gIG1heC13aWR0aDogMjBweDtcbn1cblxuLnRpbWV0YWJsZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93LXg6IGF1dG87XG4gIG92ZXJmbG93LXk6IGF1dG87XG59XG5cbi50aW1ldGFibGUtaGVhZGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZy1ib3R0b206IDA7XG4gIG1hcmdpbi1ib3R0b206IDA7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTA7XG59XG4udGltZXRhYmxlLWhlYWRlciAueWVhci1zZWxlY3RvciB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGhlaWdodDogNzBweDtcbiAgbWF4LWhlaWdodDogNzBweDtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgbGVmdDogMDtcbn1cbi50aW1ldGFibGUtaGVhZGVyIC55ZWFyLXNlbGVjdG9yIGgzIHtcbiAgbWFyZ2luLWxlZnQ6IDRweDtcbiAgbWFyZ2luLXJpZ2h0OiA0cHg7XG59XG4udGltZXRhYmxlLWhlYWRlciAuY2FsZW5kYXItaGVhZGVyIHtcbiAgaGVpZ2h0OiA3MHB4O1xuICBtYXgtaGVpZ2h0OiA3MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuLm1vbnRocyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi5tb250aCB7XG4gIGJvcmRlcjogc29saWQgMXB4ICM4ODg7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAwO1xuICBmbGV4OiBhdXRvO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5tb250aDpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi53ZWVrLW9mZnNldCB7XG4gIGJvcmRlci1yaWdodDogc29saWQgIzg4OCAxcHg7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrcyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrIHtcbiAgYm9yZGVyOiAwIHNvbGlkO1xuICBib3JkZXItcmlnaHQtd2lkdGg6IDFweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLndlZWs6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4uZGF5cyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG59XG5cbi5kYXkge1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBib3JkZXI6IHNvbGlkIDFweCAjODg4O1xuICBib3JkZXItbGVmdC13aWR0aDogMDtcbiAgbWluLXdpZHRoOiAyMHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luOiAwO1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5kYXk6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4udG9kYXkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjAwYjFlO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59IiwiQGltcG9ydCBcIi4uLzFfc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5cbi5kYXktd2lkdGgtMSB7XG4gIG1pbi13aWR0aDogJGRheS13aWR0aDtcbiAgbWF4LXdpZHRoOiAkZGF5LXdpZHRoO1xufVxuIiwiQGltcG9ydCBcIi4uLy4uLy4uL3N0eWxlcy8xX3NldHRpbmdzL3ZhcmlhYmxlc1wiO1xuQGltcG9ydCBcIi4uLy4uLy4uL3N0eWxlcy82X2NvbXBvbmVudHMvc2lkZWJhclwiO1xuQGltcG9ydCBcIi4uLy4uLy4uL3N0eWxlcy81X29iamVjdHMvZGF5XCI7XG5cbi50aW1ldGFibGUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBvdmVyZmxvdy14OiBhdXRvO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG5cbi50aW1ldGFibGUtaGVhZGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZy1ib3R0b206IDA7XG4gIG1hcmdpbi1ib3R0b206IDA7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTA7XG5cbiAgLnllYXItc2VsZWN0b3Ige1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xuICAgIGxlZnQ6IDA7XG5cbiAgICBoMyB7XG4gICAgICBtYXJnaW4tbGVmdDogNHB4O1xuICAgICAgbWFyZ2luLXJpZ2h0OiA0cHg7XG4gICAgfVxuICB9XG5cbiAgLmNhbGVuZGFyLWhlYWRlciB7XG4gICAgaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLWhlaWdodDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgfVxufVxuXG4ubW9udGhzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLm1vbnRoIHtcbiAgYm9yZGVyOiBzb2xpZCAxcHggJGdyYXktZGFyaztcbiAgYm9yZGVyLWxlZnQtd2lkdGg6IDA7XG4gIGZsZXg6IGF1dG87XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLm1vbnRoOmZpcnN0LWNoaWxkIHtcbiAgYm9yZGVyLWxlZnQtd2lkdGg6IDFweDtcbn1cblxuLndlZWstb2Zmc2V0IHtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCAkZ3JheS1kYXJrIDFweDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLndlZWtzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLndlZWsge1xuICBib3JkZXI6IDAgc29saWQ7XG4gIGJvcmRlci1yaWdodC13aWR0aDogMXB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuXG4ud2VlazpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi5kYXlzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbn1cblxuLmRheSB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGJvcmRlcjogc29saWQgMXB4ICRncmF5LWRhcms7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAwO1xuICBtaW4td2lkdGg6ICRkYXktd2lkdGg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW46IDA7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLmRheTpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi50b2RheSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRicmFuZC1wcmltYXJ5O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG4iXX0= */"],
       changeDetection: 0
     });
@@ -914,10 +946,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           selector: 'ng-time-chart',
           templateUrl: './ng-time-chart.component.html',
           styleUrls: ['./ng-time-chart.component.scss'],
-          changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+          changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+          providers: [_service_period_service__WEBPACK_IMPORTED_MODULE_6__["PeriodService"], _service_year_service__WEBPACK_IMPORTED_MODULE_7__["YearService"]]
         }]
       }], function () {
-        return [];
+        return [{
+          type: _service_period_service__WEBPACK_IMPORTED_MODULE_6__["PeriodService"]
+        }, {
+          type: _service_year_service__WEBPACK_IMPORTED_MODULE_7__["YearService"]
+        }];
       }, {
         groups: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
@@ -1682,7 +1719,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return 0;
           }
 
-          return Math.round(date.diff(this.period.startDate, 'days', true));
+          return Math.round(date.diff(this.period.startDate, 'days', true)) - 1;
         }
       }, {
         key: "isInPeriod",
@@ -2311,6 +2348,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return new Period(latestStart, earliestEnd);
         }
       }, {
+        key: "equals",
+        value: function equals(period) {
+          return this.startDate.isSame(period.startDate) && this.endDate.isSame(period.endDate);
+        }
+      }, {
         key: "startDate",
         get: function get() {
           return this._startDate;
@@ -2366,6 +2408,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           return periods;
+        }
+      }, {
+        key: "forYear",
+        value: function forYear(year) {
+          var midYear = moment("".concat(year, "-06-01"));
+          return new Period(midYear.clone().startOf('year'), midYear.clone().endOf('year'));
         }
       }]);
 
@@ -2446,6 +2494,311 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           name: 'timeChartDateFormatter'
         }]
       }], null, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/service/period.service.ts":
+  /*!**********************************************************!*\
+    !*** ../ng-time-chart/src/lib/service/period.service.ts ***!
+    \**********************************************************/
+
+  /*! exports provided: PeriodService */
+
+  /***/
+  function ngTimeChartSrcLibServicePeriodServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PeriodService", function () {
+      return PeriodService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! rxjs */
+    "../../node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _period__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../period */
+    "../ng-time-chart/src/lib/period.ts");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! moment */
+    "../../node_modules/moment/moment.js");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! rxjs/operators */
+    "../../node_modules/rxjs/_esm2015/operators/index.js");
+
+    var moment = moment__WEBPACK_IMPORTED_MODULE_3__;
+    /**
+     * The service provides the current calendar period. It is specified:
+     * <ul>
+     *   <li>As the period between a start and end date if both are specified</li>
+     *   <li>The duration of a year following the start date if no end date is specified</li>
+     *   <li>The duration of a year preceding the end date if no start date is specified</li>
+     *   <li>The full current year from jan 1st to dec 31 if neither start nor end date are specified</li>
+     */
+
+    var PeriodService = /*#__PURE__*/function () {
+      function PeriodService() {
+        _classCallCheck(this, PeriodService);
+
+        this._startDate$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
+        this._endDate$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
+        this._period$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](PeriodService.getCurrentYearPeriod());
+        var startAndEnd$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])([this._startDate$, this._endDate$]);
+        this._isFullYear$ = startAndEnd$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (_ref5) {
+          var _ref6 = _slicedToArray(_ref5, 2),
+              start = _ref6[0],
+              end = _ref6[1];
+
+          return !start && !end;
+        }));
+        this._period$ = startAndEnd$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (_ref7) {
+          var _ref8 = _slicedToArray(_ref7, 2),
+              start = _ref8[0],
+              end = _ref8[1];
+
+          return PeriodService.calculatePeriod(start, end);
+        }));
+      }
+      /**
+       * Set the start date of the period. If the parameter is null the start date will be calculated
+       * @param date A momentjs date or null
+       */
+
+
+      _createClass(PeriodService, [{
+        key: "startDate",
+        set: function set(date) {
+          this._startDate$.next(date);
+        }
+        /**
+         * Set the end date of the period. If the parameter is null the end date will be  calculated.
+         * @param date A momentjs date or null
+         */
+
+      }, {
+        key: "endDate",
+        set: function set(date) {
+          this._endDate$.next(date);
+        }
+        /**
+         * The observable with the period between start- and end date or the current year if neither is passed.
+         */
+
+      }, {
+        key: "period$",
+        get: function get() {
+          return this._period$;
+        }
+        /**
+         * Returns true if neither start nor end were given and the current year was picked instead.
+         */
+
+      }, {
+        key: "isFullYear$",
+        get: function get() {
+          return this._isFullYear$;
+        }
+      }], [{
+        key: "getCurrentYearPeriod",
+        value: function getCurrentYearPeriod() {
+          var currentYear = moment();
+          return new _period__WEBPACK_IMPORTED_MODULE_2__["Period"](currentYear.clone().startOf('year'), currentYear.clone().endOf('year'));
+        }
+      }, {
+        key: "calculatePeriod",
+        value: function calculatePeriod(startDate, endDate) {
+          if (startDate == null && endDate == null) {
+            return null;
+          }
+
+          var myStartDate;
+
+          if (startDate != null) {
+            myStartDate = startDate;
+          } else {
+            myStartDate = endDate.clone();
+            myStartDate.subtract(1, 'year');
+          }
+
+          var myEndDate;
+
+          if (endDate != null) {
+            myEndDate = endDate.clone();
+          } else {
+            myEndDate = myStartDate.clone();
+            myEndDate.add(1, 'year');
+          }
+
+          return new _period__WEBPACK_IMPORTED_MODULE_2__["Period"](myStartDate, myEndDate);
+        }
+      }]);
+
+      return PeriodService;
+    }();
+
+    PeriodService.ɵfac = function PeriodService_Factory(t) {
+      return new (t || PeriodService)();
+    };
+
+    PeriodService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: PeriodService,
+      factory: PeriodService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PeriodService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "../ng-time-chart/src/lib/service/year.service.ts":
+  /*!********************************************************!*\
+    !*** ../ng-time-chart/src/lib/service/year.service.ts ***!
+    \********************************************************/
+
+  /*! exports provided: YearService */
+
+  /***/
+  function ngTimeChartSrcLibServiceYearServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "YearService", function () {
+      return YearService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! rxjs */
+    "../../node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _period__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../period */
+    "../ng-time-chart/src/lib/period.ts");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! moment */
+    "../../node_modules/moment/moment.js");
+    /* harmony import */
+
+
+    var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! rxjs/operators */
+    "../../node_modules/rxjs/_esm2015/operators/index.js");
+
+    var moment = moment__WEBPACK_IMPORTED_MODULE_3__;
+
+    var YearService = /*#__PURE__*/function () {
+      function YearService() {
+        _classCallCheck(this, YearService);
+
+        this._year$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](moment().year());
+        this._period$ = this._year$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (year) {
+          return YearService.periodForYear(year);
+        }));
+      }
+
+      _createClass(YearService, [{
+        key: "year",
+        set: function set(value) {
+          this._year$.next(value);
+        }
+      }, {
+        key: "year$",
+        get: function get() {
+          return this._year$.asObservable();
+        }
+      }, {
+        key: "period$",
+        get: function get() {
+          return this._period$;
+        }
+      }], [{
+        key: "periodForYear",
+        value: function periodForYear(year) {
+          return _period__WEBPACK_IMPORTED_MODULE_2__["Period"].forYear(year);
+        }
+      }]);
+
+      return YearService;
+    }();
+
+    YearService.ɵfac = function YearService_Factory(t) {
+      return new (t || YearService)();
+    };
+
+    YearService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: YearService,
+      factory: YearService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](YearService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [];
+      }, null);
     })();
     /***/
 
