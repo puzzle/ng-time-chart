@@ -74,6 +74,14 @@ describe('NgTimeChartComponent', () => {
       .toBeTruthy(`Expected last day of last month to be 2020-012-31 but was ${months[11].endDate}`);
   });
 
+  it('should enumerate partial months', () => {
+    const period = new Period(moment('2020-07-01'), moment('2020-08-02'));
+    const months = NgTimeChartComponent.enumerateMonths(period);
+    expect(months.length).toEqual(2);
+    const august = months[1];
+    expect(august.days).toEqual(2);
+  });
+
   it('should handle empty periods when enumerating months', () => {
     const months = NgTimeChartComponent.enumerateMonths(null);
     expect(months).toBeNull();
@@ -122,6 +130,40 @@ describe('NgTimeChartComponent', () => {
       }));
   });
 
+  it('should handle groups without any dates', () => {
+    const groups = cold('a-',
+      {
+        a: testGroups
+      });
+    groups.subscribe(value => component.ngTimeChartComponent.groups = value);
+    expect(component.ngTimeChartComponent.filteredGroups$)
+      .toBeObservable(cold('a-',
+        {
+          a: testGroups
+        }));
+  });
+
+  it('should be able to handle groups before dates', () => {
+    const startDates = cold('--a-',
+      {
+        a: moment('2020-01-01'),
+      });
+    const endDates = cold('---a',
+      {a: moment('2020-08-20')});
+    const groups = cold('a---',
+      {
+        a: testGroups
+      });
+    startDates.subscribe(value => component.ngTimeChartComponent.startDate = value);
+    endDates.subscribe(value => component.ngTimeChartComponent.endDate = value);
+    groups.subscribe(value => component.ngTimeChartComponent.groups = value);
+    expect(component.ngTimeChartComponent.filteredGroups$)
+      .toBeObservable(cold('a-aa',
+        {
+          a: testGroups
+        }));
+  });
+
   it('should update filtered items when adding new items', () => {
     const startDates = cold('a-----b',
       {
@@ -139,7 +181,7 @@ describe('NgTimeChartComponent', () => {
     endDates.subscribe(value => component.ngTimeChartComponent.endDate = value);
     groups.subscribe(value => component.ngTimeChartComponent.groups = value);
     expect(component.ngTimeChartComponent.filteredGroups$)
-      .toBeObservable(cold('---a-bc',
+      .toBeObservable(cold('a-aa-bc',
         {
           a: [],
           b: testGroups,

@@ -24,6 +24,11 @@ export class Period {
     this._endDate = endDate?.clone();
   }
 
+  static forYear(year: number): Period {
+    const midYear = moment(`${year}-06-01`);
+    return new Period(midYear.clone().startOf('year'), midYear.clone().endOf('year'));
+  }
+
   get startDate(): moment_.Moment {
     return this._startDate;
   }
@@ -84,6 +89,10 @@ export class Period {
       return null;
     }
     return new Period(latestStart, earliestEnd);
+  }
+
+  public equals(period: Period) {
+    return this.startDate.isSame(period.startDate) && this.endDate.isSame(period.endDate);
   }
 
 }

@@ -2,10 +2,10 @@
   <div class="timetable-header"
        [style.width.px]="(durationInDays$ | async) * DAY_WIDTH">
     <div class="year-selector label-bar">
-      <div [style.visibility]="!startDate && !endDate ? '' : 'hidden'">
-        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear-1)">&lt; </h3>
+      <div *ngIf="(showYearSpinner$() | async) && (currentYear$ | async) as currentYear">
+        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear -1)">&lt; </h3>
         <h1 style="display: inline-block">{{currentYear}}</h1>
-        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear+1)"> &gt;</h3>
+        <h3 style="display: inline-block; cursor: pointer" (click)="changeYear(currentYear + 1)"> &gt;</h3>
       </div>
     </div>
     <div class="calendar-header"
@@ -13,6 +13,7 @@
       <div class="months">
         <div *ngFor="let month of months$ | async"
              [style.width.px]="month.days * DAY_WIDTH"
+             [style.max-width.px]="month.days * DAY_WIDTH"
              class="month">
           {{month.startDate.format('MMMM YYYY')}}
         </div>
@@ -44,7 +45,7 @@
   </div>
   <ng-time-table-body [groups]="filteredGroups$ | async"
                       [today]="today"
-                      [period]="period$ | async"
+                      [period]="currentPeriod$ | async"
                       [durationInDays]="durationInDays$ | async"
                       [layoutStrategy]="layoutStrategy"></ng-time-table-body>
 </div>
