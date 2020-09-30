@@ -110,6 +110,16 @@ export class AppComponent {
               moment(`${this.currentYear}-10-09`),
               moment(`${this.currentYear}-10-10`)
             ]
+          },
+          {
+            name: 'Testitem 3',
+            startTime: moment(`${this.currentYear}-10-11T00:01`),
+            endTime: moment(`${this.currentYear}-10-12T05:00`),
+            class: 'type-b',
+            dates: [
+              moment(`${this.currentYear}-10-11`),
+              moment(`${this.currentYear}-10-12`)
+            ]
           },].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         () => console.log('clicked')
       ),

@@ -40,9 +40,9 @@ export class ItemComponent implements OnInit {
   }
 
   getDuration(item: Item): number {
-    const startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);
-    const endDate = this.getEndDateCurrentPeriod(item.endTime).hour(12);
-    return Math.round(endDate.diff(startDate, 'days', true)) + 1;
+    const startDate = this.getStartDateInCurrentPeriod(item.startTime).startOf('day');
+    const endDate = this.getEndDateCurrentPeriod(item.endTime).endOf('day');
+    return Math.ceil(endDate.diff(startDate, 'days', true));
   }
 
   isNotInPeriod(time: moment_.Moment): boolean {
@@ -50,9 +50,9 @@ export class ItemComponent implements OnInit {
   }
 
   getDaysSince(referenceDate: string | moment_.Moment, date: string | moment_.Moment): number {
-    const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).hour(12);
-    const myDate = this.getStartDateInCurrentPeriod(moment(date)).hour(12);
-    return Math.floor(myDate.diff(moment(refDate), 'days', true));
+    const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).startOf('day');
+    const myDate = this.getStartDateInCurrentPeriod(moment(date)).startOf('day');
+    return Math.ceil(myDate.diff(moment(refDate), 'days', true));
   }
 
   open(item: Item) {

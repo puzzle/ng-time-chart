@@ -9,7 +9,7 @@
   <ng-container *ngFor="let day of item.dates">
     <div class="blockade-day day-width-1"
          *ngIf="isInPeriod(day)"
-         [style.left.px]="getDaysSince(item.startTime,day)*DAY_WIDTH">
+         [style.left.px]="getDaysSince(item.startTime, day) * DAY_WIDTH">
       &nbsp;
     </div>
   </ng-container>

@@ -15,7 +15,10 @@ describe('ItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TimeChartDateFormatterPipe, ItemComponent, TestHostComponent]
+      declarations: [
+        ItemComponent,
+        TimeChartDateFormatterPipe,
+        TestHostComponent]
     })
       .compileComponents();
   }));
@@ -36,13 +39,73 @@ describe('ItemComponent', () => {
   });
 
   it('should calculate the day of period with late time correctly', () => {
-    expect(component.itemComponent.getDayOfPeriod(moment('2020-10-08T22:34')))
+    expect(component.itemComponent.getDayOfPeriod(moment('2020-10-08T23:34')))
       .toEqual(281);
   });
 
   it('should calculate the day of period with early time correctly', () => {
-    expect(component.itemComponent.getDayOfPeriod(moment('2020-10-08T00:12')))
+    expect(component.itemComponent.getDayOfPeriod(moment('2020-10-08T00:00')))
       .toEqual(281);
+  });
+
+  it('should calculate the affected days since a date', () => {
+    expect(component.itemComponent.getDaysSince(moment('2020-01-02'), moment('2020-01-04')))
+      .toEqual(2);
+  });
+
+  it('should calculate the days since a date with late time', () => {
+    expect(component.itemComponent.getDaysSince(moment('2020-01-02T23:23'), moment('2020-01-04')))
+      .toEqual(2);
+  });
+
+  it('should calculate the days since a date with late time 2', () => {
+    expect(component.itemComponent.getDaysSince(moment('2020-01-02'), moment('2020-01-04T23:45')))
+      .toEqual(2);
+  });
+
+  it('should calculate the days since a date with late time 3', () => {
+    expect(component.itemComponent.getDaysSince(moment('2020-01-02T00:54'), moment('2020-01-04T23:45')))
+      .toEqual(2);
+  });
+
+  it('should calculate the days since a date with early time', () => {
+    expect(component.itemComponent.getDaysSince(moment('2020-01-02T00:54'), moment('2020-01-04T00:01')))
+      .toEqual(2);
+  });
+
+  it('should calculate the days since a date with early time 2', () => {
+    expect(component.itemComponent.getDaysSince(moment('2020-01-02T23:54'), moment('2020-01-04T00:01')))
+      .toEqual(2);
+  });
+
+  it('should calculate the duration of an item 1', () => {
+    const item = {
+      name: 'testItem',
+      startTime: moment('2020-05-01'),
+      endTime: moment('2020-05-20'),
+    };
+    expect(component.itemComponent.getDuration(item))
+      .toEqual(20);
+  });
+
+  it('should calculate the duration of an item 2', () => {
+    const item = {
+      name: 'testItem',
+      startTime: moment('2020-05-01T23:59'),
+      endTime: moment('2020-05-20T00:00'),
+    };
+    expect(component.itemComponent.getDuration(item))
+      .toEqual(20);
+  });
+
+  it('should calculate the duration of an item 3', () => {
+    const item = {
+      name: 'testItem',
+      startTime: moment('2020-05-01T00:00'),
+      endTime: moment('2020-05-20T23:59'),
+    };
+    expect(component.itemComponent.getDuration(item))
+      .toEqual(20);
   });
 
   @Component({
