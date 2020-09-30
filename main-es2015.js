@@ -807,7 +807,7 @@ class ItemComponent {
         if (!this.period.containsDate(date)) {
             return 0;
         }
-        return Math.round(date.diff(this.period.startDate, 'days', true));
+        return Math.floor(date.diff(this.period.startDate, 'days', true));
     }
     getDuration(item) {
         const startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);
@@ -818,9 +818,9 @@ class ItemComponent {
         return !this.period.containsDate(time);
     }
     getDaysSince(referenceDate, date) {
-        const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
-        const myDate = this.getStartDateInCurrentPeriod(moment(date));
-        return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+        const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).hour(12);
+        const myDate = this.getStartDateInCurrentPeriod(moment(date)).hour(12);
+        return Math.floor(myDate.diff(moment(refDate), 'days', true));
     }
     open(item) {
         var _a;
@@ -1669,7 +1669,7 @@ class AppComponent {
                 {
                     name: 'Testitem 1',
                     startTime: moment(`${this.currentYear}-03-25`),
-                    endTime: moment(`${this.currentYear}-03-30`),
+                    endTime: moment(`${this.currentYear}-03-30T01:30`),
                     class: 'type-a',
                     details: 'More information of Testitem 1',
                     onClick: () => alert('I was clicked 😊')
@@ -1705,7 +1705,7 @@ class AppComponent {
                 {
                     name: 'Testitem 1',
                     startTime: moment(`${this.currentYear}-04-11`),
-                    endTime: moment(`${this.currentYear}-04-28`),
+                    endTime: moment(`${this.currentYear}-04-28T00:30`),
                     details: 'Oh, there\'s a monkey in my pocket, And he\'s stealing all my change. His stare is blank and glassy, I suspect he\'s deranged 🐒',
                     class: 'type-c',
                     dates: [
@@ -1728,7 +1728,18 @@ class AppComponent {
                         moment(`${this.currentYear}-04-27`),
                         moment(`${this.currentYear}-04-28`)
                     ]
-                }
+                },
+                {
+                    name: 'Testitem 2',
+                    startTime: moment(`${this.currentYear}-10-08T22:00`),
+                    endTime: moment(`${this.currentYear}-10-10T04:30`),
+                    class: 'type-b',
+                    dates: [
+                        moment(`${this.currentYear}-10-08`),
+                        moment(`${this.currentYear}-10-09`),
+                        moment(`${this.currentYear}-10-10`)
+                    ]
+                },
             ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
             new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 2', [
                 {

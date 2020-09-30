@@ -1364,7 +1364,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return 0;
           }
 
-          return Math.round(date.diff(this.period.startDate, 'days', true));
+          return Math.floor(date.diff(this.period.startDate, 'days', true));
         }
       }, {
         key: "getDuration",
@@ -1381,9 +1381,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getDaysSince",
         value: function getDaysSince(referenceDate, date) {
-          var refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
-          var myDate = this.getStartDateInCurrentPeriod(moment(date));
-          return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+          var refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).hour(12);
+          var myDate = this.getStartDateInCurrentPeriod(moment(date)).hour(12);
+          return Math.floor(myDate.diff(moment(refDate), 'days', true));
         }
       }, {
         key: "open",
@@ -2999,7 +2999,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           name: 'Testitem 1',
           startTime: moment("".concat(this.currentYear, "-03-25")),
-          endTime: moment("".concat(this.currentYear, "-03-30")),
+          endTime: moment("".concat(this.currentYear, "-03-30T01:30")),
           "class": 'type-a',
           details: 'More information of Testitem 1',
           onClick: function onClick() {
@@ -3034,10 +3034,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           name: 'Testitem 1',
           startTime: moment("".concat(this.currentYear, "-04-11")),
-          endTime: moment("".concat(this.currentYear, "-04-28")),
+          endTime: moment("".concat(this.currentYear, "-04-28T00:30")),
           details: 'Oh, there\'s a monkey in my pocket, And he\'s stealing all my change. His stare is blank and glassy, I suspect he\'s deranged 🐒',
           "class": 'type-c',
           dates: [moment("".concat(this.currentYear, "-04-11")), moment("".concat(this.currentYear, "-04-12")), moment("".concat(this.currentYear, "-04-13")), moment("".concat(this.currentYear, "-04-14")), moment("".concat(this.currentYear, "-04-15")), moment("".concat(this.currentYear, "-04-16")), moment("".concat(this.currentYear, "-04-17")), moment("".concat(this.currentYear, "-04-18")), moment("".concat(this.currentYear, "-04-19")), moment("".concat(this.currentYear, "-04-20")), moment("".concat(this.currentYear, "-04-21")), moment("".concat(this.currentYear, "-04-22")), moment("".concat(this.currentYear, "-04-23")), moment("".concat(this.currentYear, "-04-24")), moment("".concat(this.currentYear, "-04-25")), moment("".concat(this.currentYear, "-04-26")), moment("".concat(this.currentYear, "-04-27")), moment("".concat(this.currentYear, "-04-28"))]
+        }, {
+          name: 'Testitem 2',
+          startTime: moment("".concat(this.currentYear, "-10-08T22:00")),
+          endTime: moment("".concat(this.currentYear, "-10-10T04:30")),
+          "class": 'type-b',
+          dates: [moment("".concat(this.currentYear, "-10-08")), moment("".concat(this.currentYear, "-10-09")), moment("".concat(this.currentYear, "-10-10"))]
         }].sort(function (a, b) {
           return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
