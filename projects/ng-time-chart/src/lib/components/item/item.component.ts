@@ -36,7 +36,7 @@ export class ItemComponent implements OnInit {
     if (!this.period.containsDate(date)) {
       return 0;
     }
-    return Math.round(date.diff(this.period.startDate, 'days', true));
+    return Math.floor(date.diff(this.period.startDate, 'days', true));
   }
 
   getDuration(item: Item): number {
@@ -50,9 +50,9 @@ export class ItemComponent implements OnInit {
   }
 
   getDaysSince(referenceDate: string | moment_.Moment, date: string | moment_.Moment): number {
-    const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate));
-    const myDate = this.getStartDateInCurrentPeriod(moment(date));
-    return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+    const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).hour(12);
+    const myDate = this.getStartDateInCurrentPeriod(moment(date)).hour(12);
+    return Math.floor(myDate.diff(moment(refDate), 'days', true));
   }
 
   open(item: Item) {
