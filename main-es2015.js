@@ -428,7 +428,7 @@ class NgTimeChartComponent {
         this.yearChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.yearService.year$.subscribe(year => this.yearChange.emit(year));
         this._groups$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
-        this.today = moment();
+        this.today = moment().hour(12);
         this.currentPeriod$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.periodService.period$, this.yearService.period$])
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(([period, year]) => period != null ? period : year), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(period => period.isValid()));
         this.months$ = this.currentPeriod$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(period => NgTimeChartComponent.enumerateMonths(period)));

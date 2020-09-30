@@ -619,7 +619,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return _this.yearChange.emit(year);
         });
         this._groups$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
-        this.today = moment();
+        this.today = moment().hour(12);
         this.currentPeriod$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.periodService.period$, this.yearService.period$]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref) {
           var _ref2 = _slicedToArray(_ref, 2),
               period = _ref2[0],
