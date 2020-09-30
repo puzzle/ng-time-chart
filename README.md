@@ -126,7 +126,7 @@ This represents a bar in the time chart.
 - _onClick_: The optional action to take when the user clicks the item in the chart.
 - _details_: Additional information for the item. These are displayed when the mouse hovers over the item in the calendar.
  
-##Known Issues
+## Known Issues
 
 - `Warning: Type LayoutStrategy is not assignable to type LayoutStrategy`
 This is a warning displayed by IntelliJ. We have no idea why this is happening. It does not seem to cause any actual problems in code however.
