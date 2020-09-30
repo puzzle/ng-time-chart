@@ -128,14 +128,19 @@ export class AppComponent {
         [
           {
             name: 'Testitem 0',
-            startTime: moment(`${this.currentYear}-06-12`),
-            endTime: moment(`${this.currentYear}-07-23`)
+            startTime: moment(`${this.currentYear}-06-12T08:23`),
+            endTime: moment(`${this.currentYear}-07-01T06:23`)
           },
           {
             name: 'Testitem 1',
             startTime: moment(`${this.currentYear - 1}-08-11`),
             endTime: moment(`${this.currentYear}-09-02`)
-          }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
+          },
+          {
+            name: 'Testitem 3',
+            startTime: moment(`${this.currentYear}-07-01T08:23`),
+            endTime: moment(`${this.currentYear}-07-12T23:23`)
+          },].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         () => console.log('clicked')
       ),
       new Group(
