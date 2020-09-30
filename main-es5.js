@@ -1369,9 +1369,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getDuration",
         value: function getDuration(item) {
-          var startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);
-          var endDate = this.getEndDateCurrentPeriod(item.endTime).hour(12);
-          return Math.round(endDate.diff(startDate, 'days', true)) + 1;
+          var startDate = this.getStartDateInCurrentPeriod(item.startTime).startOf('day');
+          var endDate = this.getEndDateCurrentPeriod(item.endTime).endOf('day');
+          return Math.ceil(endDate.diff(startDate, 'days', true));
         }
       }, {
         key: "isNotInPeriod",
@@ -1381,9 +1381,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getDaysSince",
         value: function getDaysSince(referenceDate, date) {
-          var refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).hour(12);
-          var myDate = this.getStartDateInCurrentPeriod(moment(date)).hour(12);
-          return Math.floor(myDate.diff(moment(refDate), 'days', true));
+          var refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).startOf('day');
+          var myDate = this.getStartDateInCurrentPeriod(moment(date)).startOf('day');
+          return Math.ceil(myDate.diff(moment(refDate), 'days', true));
         }
       }, {
         key: "open",
@@ -3044,6 +3044,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           endTime: moment("".concat(this.currentYear, "-10-10T04:30")),
           "class": 'type-b',
           dates: [moment("".concat(this.currentYear, "-10-08")), moment("".concat(this.currentYear, "-10-09")), moment("".concat(this.currentYear, "-10-10"))]
+        }, {
+          name: 'Testitem 3',
+          startTime: moment("".concat(this.currentYear, "-10-11T00:01")),
+          endTime: moment("".concat(this.currentYear, "-10-12T05:00")),
+          "class": 'type-b',
+          dates: [moment("".concat(this.currentYear, "-10-11")), moment("".concat(this.currentYear, "-10-12"))]
         }].sort(function (a, b) {
           return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {

@@ -810,17 +810,17 @@ class ItemComponent {
         return Math.floor(date.diff(this.period.startDate, 'days', true));
     }
     getDuration(item) {
-        const startDate = this.getStartDateInCurrentPeriod(item.startTime).hour(12);
-        const endDate = this.getEndDateCurrentPeriod(item.endTime).hour(12);
-        return Math.round(endDate.diff(startDate, 'days', true)) + 1;
+        const startDate = this.getStartDateInCurrentPeriod(item.startTime).startOf('day');
+        const endDate = this.getEndDateCurrentPeriod(item.endTime).endOf('day');
+        return Math.ceil(endDate.diff(startDate, 'days', true));
     }
     isNotInPeriod(time) {
         return !this.period.containsDate(time);
     }
     getDaysSince(referenceDate, date) {
-        const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).hour(12);
-        const myDate = this.getStartDateInCurrentPeriod(moment(date)).hour(12);
-        return Math.floor(myDate.diff(moment(refDate), 'days', true));
+        const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).startOf('day');
+        const myDate = this.getStartDateInCurrentPeriod(moment(date)).startOf('day');
+        return Math.ceil(myDate.diff(moment(refDate), 'days', true));
     }
     open(item) {
         var _a;
@@ -1738,6 +1738,16 @@ class AppComponent {
                         moment(`${this.currentYear}-10-08`),
                         moment(`${this.currentYear}-10-09`),
                         moment(`${this.currentYear}-10-10`)
+                    ]
+                },
+                {
+                    name: 'Testitem 3',
+                    startTime: moment(`${this.currentYear}-10-11T00:01`),
+                    endTime: moment(`${this.currentYear}-10-12T05:00`),
+                    class: 'type-b',
+                    dates: [
+                        moment(`${this.currentYear}-10-11`),
+                        moment(`${this.currentYear}-10-12`)
                     ]
                 },
             ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
