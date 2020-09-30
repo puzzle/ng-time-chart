@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Period} from '../../period';
 import {Item} from '../../item';
 import * as moment_ from 'moment';
@@ -9,7 +9,7 @@ import {max, min} from 'moment';
   templateUrl: './item-grouping.component.html',
   styleUrls: ['./item-grouping.component.scss']
 })
-export class ItemGroupingComponent implements OnInit {
+export class ItemGroupingComponent {
 
   @Input()
   period: Period;
@@ -18,9 +18,6 @@ export class ItemGroupingComponent implements OnInit {
   itemGrouping: Item[];
 
   constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
   isInPeriod(time: moment_.Moment): boolean {

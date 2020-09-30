@@ -12,6 +12,7 @@ describe('TiledLayoutService', () => {
 
   let simpleOrderItems: Item[];
   let complexOrderItems: Item[];
+  let stackOnSameDay: Item[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -41,8 +42,19 @@ describe('TiledLayoutService', () => {
       startTime: moment('2020-02-20'),
       endTime: moment('2020-06-20')
     };
+    const item5: Item = {
+      name: 'TestItem5',
+      startTime: moment('2020-08-20T08:00'),
+      endTime: moment('2020-08-21T08:00')
+    };
+    const item6: Item = {
+      name: 'TestItem5',
+      startTime: moment('2020-08-21T09:00'),
+      endTime: moment('2020-08-25T22:00')
+    };
     simpleOrderItems = [item0, item2, item1];
     complexOrderItems = [item3, item2, item4, item2, item3, item0];
+    stackOnSameDay = [item5, item6];
   });
 
   it('should be created', () => {
@@ -57,5 +69,10 @@ describe('TiledLayoutService', () => {
   it('should handle overlapping items', () => {
     const lainOut: Item[][] = service.doLayout(complexOrderItems);
     expect(lainOut.length).toEqual(3);
+  });
+
+  it('should stack items with only hours during the same day between them', () => {
+    const lainOut: Item[][] = service.doLayout(stackOnSameDay);
+    expect(lainOut.length).toEqual(2);
   });
 });

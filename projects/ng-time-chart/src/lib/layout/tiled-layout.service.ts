@@ -24,7 +24,6 @@ export class TiledLayoutService implements LayoutService {
 }
 
 class ItemOrder {
-  private readonly _queues: Item[][];
 
   get queues(): Item[][] {
     return this._queues;
@@ -33,9 +32,18 @@ class ItemOrder {
   constructor() {
     this._queues = [];
   }
+  private readonly _queues: Item[][];
+
+  private static getStartDate(item: Item): moment_.Moment {
+    return item.startTime.clone().startOf('day');
+  }
+
+  private static getEndDate(item: Item): moment_.Moment {
+    return item.endTime.clone().endOf('day');
+  }
 
   add(item: Item) {
-    this.getFreeQueue(item.startTime).push(item);
+    this.getFreeQueue(ItemOrder.getStartDate(item)).push(item);
 
   }
 
@@ -44,7 +52,7 @@ class ItemOrder {
       return this.createNewSubQueue();
     }
 
-    const queuesWithFreeSpace = this._queues.filter(queue => queue[queue.length - 1].endTime.isBefore(date));
+    const queuesWithFreeSpace = this._queues.filter(queue => ItemOrder.getEndDate(queue[queue.length - 1]).isBefore(date));
     if (queuesWithFreeSpace.length > 0) {
       return queuesWithFreeSpace[0];
     }
