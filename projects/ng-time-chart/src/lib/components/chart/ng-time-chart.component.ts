@@ -76,7 +76,7 @@ export class NgTimeChartComponent implements AfterViewInit {
     this.yearChange = new EventEmitter<number>();
     this.yearService.year$.subscribe(year => this.yearChange.emit(year));
     this._groups$ = new BehaviorSubject<Group[]>([]);
-    this.today = moment();
+    this.today = moment().hour(12);
     this.currentPeriod$ = combineLatest([this.periodService.period$, this.yearService.period$])
       .pipe(map(([period, year]) => period != null ? period : year),
         filter(period => period.isValid()));
