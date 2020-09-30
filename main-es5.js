@@ -1081,9 +1081,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       _createClass(ItemGroupingComponent, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
-      }, {
         key: "isInPeriod",
         value: function isInPeriod(time) {
           return this.period.containsDate(time);
@@ -2234,7 +2231,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ItemOrder, [{
         key: "add",
         value: function add(item) {
-          this.getFreeQueue(item.startTime).push(item);
+          this.getFreeQueue(ItemOrder.getStartDate(item)).push(item);
         }
       }, {
         key: "getFreeQueue",
@@ -2244,7 +2241,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           var queuesWithFreeSpace = this._queues.filter(function (queue) {
-            return queue[queue.length - 1].endTime.isBefore(date);
+            return ItemOrder.getEndDate(queue[queue.length - 1]).isBefore(date);
           });
 
           if (queuesWithFreeSpace.length > 0) {
@@ -2266,6 +2263,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "queues",
         get: function get() {
           return this._queues;
+        }
+      }], [{
+        key: "getStartDate",
+        value: function getStartDate(item) {
+          return item.startTime.clone().startOf('day');
+        }
+      }, {
+        key: "getEndDate",
+        value: function getEndDate(item) {
+          return item.endTime.clone().endOf('day');
         }
       }]);
 
@@ -3056,12 +3063,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return console.log('clicked');
         }), new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_3__["Group"]('Testgroup 2', [{
           name: 'Testitem 0',
-          startTime: moment("".concat(this.currentYear, "-06-12")),
-          endTime: moment("".concat(this.currentYear, "-07-23"))
+          startTime: moment("".concat(this.currentYear, "-06-12T08:23")),
+          endTime: moment("".concat(this.currentYear, "-07-01T06:23"))
         }, {
           name: 'Testitem 1',
           startTime: moment("".concat(this.currentYear - 1, "-08-11")),
           endTime: moment("".concat(this.currentYear, "-09-02"))
+        }, {
+          name: 'Testitem 3',
+          startTime: moment("".concat(this.currentYear, "-07-01T08:23")),
+          endTime: moment("".concat(this.currentYear, "-07-12T23:23"))
         }].sort(function (a, b) {
           return moment.duration(a.startTime.diff(b.startTime)).asSeconds();
         }), function () {
