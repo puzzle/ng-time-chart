@@ -1,5 +1,5 @@
 <div class="item {{item.class}}"
-     *ngIf="isInPeriod(item.startTime) || isInPeriod(item.endTime)"
+     *ngIf="isVisible(item)"
      [style.left.px]="(getDayOfPeriod(item.startTime) * DAY_WIDTH + SIDEBAR_WIDTH)"
      [style.minWidth.px]="(getDuration(item) * DAY_WIDTH)"
      [style.maxWidth.px]="(getDuration(item) * DAY_WIDTH)"

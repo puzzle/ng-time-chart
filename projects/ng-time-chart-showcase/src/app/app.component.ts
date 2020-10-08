@@ -290,7 +290,7 @@ export class AppComponent {
           {
             name: 'Testitem 0',
             startTime: moment(`${this.currentYear}-09-12`),
-            endTime: moment(`2021-01-23`)
+            endTime: moment(`${this.currentYear + 1}-01-23`)
           },
           {
             name: 'Testitem 1',
@@ -298,7 +298,37 @@ export class AppComponent {
             endTime: moment(`${this.currentYear}-11-02`)
           }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
         () => console.log('clicked')
-      )
+      ),
+      new Group(
+        'Testgroup 12',
+        [
+          {
+            name: 'Testitem 1',
+            startTime: moment(`${this.currentYear - 1}-09-01T20:30:00`),
+            endTime: moment(`${this.currentYear + 1}-12-12T04:30:00`),
+          }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
+        () => console.log('clicked')
+      ),
+      new Group(
+        'Testgroup 13',
+        [
+          {
+            name: 'Testitem 1',
+            startTime: moment(`${this.currentYear - 1}-09-01T20:30:00`),
+            endTime: moment(`${this.currentYear - 1}-12-12T04:30:00`),
+          },
+          {
+            name: 'Testitem 2',
+            startTime: moment(`${this.currentYear}-09-01T20:30:00`),
+            endTime: moment(`${this.currentYear}-12-12T04:30:00`),
+          },
+          {
+            name: 'Testitem 3',
+            startTime: moment(`${this.currentYear + 1}-09-01T20:30:00`),
+            endTime: moment(`${this.currentYear + 1}-12-12T04:30:00`),
+          }].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()),
+        () => console.log('clicked')
+      ),
     ];
   }
 

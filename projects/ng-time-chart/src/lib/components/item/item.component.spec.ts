@@ -108,6 +108,16 @@ describe('ItemComponent', () => {
       .toEqual(20);
   });
 
+  it('should be visible when start is before and end is after the view period', () => {
+    const item = {
+      name: 'testItem',
+      startTime: moment('2019-05-01T00:00'),
+      endTime: moment('2021-05-20T23:59'),
+    };
+    expect(component.itemComponent.isVisible(item))
+      .toBeTrue();
+  });
+
   @Component({
     selector: 'ng-host-component',
     template: '<ng-item [period]="period" [item]="item"></ng-item>'
