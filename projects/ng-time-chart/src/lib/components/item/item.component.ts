@@ -28,6 +28,12 @@ export class ItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isVisible(item: Item) {
+    return this.isInPeriod(item.startTime) ||
+      this.isInPeriod(item.endTime) ||
+      new Period(item.startTime, item.endTime).containsDate(this.period.startDate);
+  }
+
   isInPeriod(time: moment_.Moment): boolean {
     return this.period.containsDate(time);
   }

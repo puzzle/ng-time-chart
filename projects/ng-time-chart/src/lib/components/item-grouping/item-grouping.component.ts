@@ -34,9 +34,9 @@ export class ItemGroupingComponent {
     }
     const earliestDate = min(itemGrouping.map(item => item.startTime));
     const latestDate = max(itemGrouping.map(item => item.endTime));
-    if (this.isInPeriod(earliestDate) || this.isInPeriod(latestDate)) {
-      return true;
-    }
-    return !(!this.isInPeriod(earliestDate) && !this.isInPeriod(latestDate));
+    const groupingPeriod = new Period(earliestDate, latestDate);
+    return this.isInPeriod(earliestDate) ||
+      this.isInPeriod(latestDate) ||
+      groupingPeriod.containsDate(this.period.startDate);
   }
 }
