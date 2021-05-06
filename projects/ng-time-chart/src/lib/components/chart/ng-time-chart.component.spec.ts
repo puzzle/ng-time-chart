@@ -13,6 +13,7 @@ import {Item} from '../../item';
 import {addMatchers, cold, initTestScheduler} from 'jasmine-marbles';
 
 const moment = moment_;
+const year:number = new Date().getFullYear();
 
 describe('NgTimeChartComponent', () => {
   let component: TestHostComponent;
@@ -36,18 +37,18 @@ describe('NgTimeChartComponent', () => {
   beforeEach(() => {
     const item0: Item = {
       name: 'Testitem0',
-      startTime: moment('2020-03-01'),
-      endTime: moment('2020-03-15')
+      startTime: moment(`${year}-03-01`),
+      endTime: moment(`${year}-03-15`)
     };
     const item1: Item = {
       name: 'TestItem1',
-      startTime: moment('2020-03-17'),
-      endTime: moment('2020-04-08')
+      startTime: moment(`${year}-03-17`),
+      endTime: moment(`${year}-04-08`)
     };
     const item2: Item = {
       name: 'TestItem2',
-      startTime: moment('2020-04-09'),
-      endTime: moment('2020-05-20')
+      startTime: moment(`${year}-04-09`),
+      endTime: moment(`${year}-05-20`)
     };
 
     const group = new Group('TestGroup0', [item0, item1, item2]);
@@ -65,17 +66,17 @@ describe('NgTimeChartComponent', () => {
   });
 
   it('should enumerate months', () => {
-    const period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    const period = new Period(moment(`2020-01-01`), moment(`2020-12-31`));
     const months = NgTimeChartComponent.enumerateMonths(period);
     expect(months.length).toEqual(12, 'Should enumerate 12 months');
     expect(months[0].startDate.isSame(period.startDate, 'day'))
-      .toBeTruthy(`Expected first day of first month to be 2020-01-01 but was ${months[0].startDate}`);
+      .toBeTruthy(`Expected first day of first month to be ${year}-01-01 but was ${months[0].startDate}`);
     expect(months[11].endDate.isSame(period.endDate, 'day'))
-      .toBeTruthy(`Expected last day of last month to be 2020-012-31 but was ${months[11].endDate}`);
+      .toBeTruthy(`Expected last day of last month to be ${year}-012-31 but was ${months[11].endDate}`);
   });
 
   it('should enumerate partial months', () => {
-    const period = new Period(moment('2020-07-01'), moment('2020-08-02'));
+    const period = new Period(moment(`${year}-07-01`), moment(`${year}-08-02`));
     const months = NgTimeChartComponent.enumerateMonths(period);
     expect(months.length).toEqual(2);
     const august = months[1];
@@ -88,13 +89,13 @@ describe('NgTimeChartComponent', () => {
   });
 
   it('should enumerate weeks', () => {
-    const period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    const period = new Period(moment(`2020-01-01`), moment(`2020-12-31`));
     const weeks = NgTimeChartComponent.enumerateWeeks(period);
     expect(weeks.length).toEqual(53, 'Should enumerate 53 weeks');
-    expect(weeks[0].startDate.isSame(moment('2020-01-01'), 'day'))
+    expect(weeks[0].startDate.isSame(moment(`2020-01-01`), 'day'))
       .toBeTruthy(`Expected first day of first week to be 2020-01-01 but was ${weeks[0].startDate}`);
-    expect(weeks[52].endDate.isSame(moment('2020-12-31'), 'day'))
-      .toBeTruthy(`Expected last day of last week to be 2020-12-31 but was ${weeks[52].endDate}`);
+    expect(weeks[52].endDate.isSame(moment(`2020-12-31`), 'day'))
+      .toBeTruthy(`Expected last day of last week to be $2020-12-31 but was ${weeks[52].endDate}`);
   });
 
   it('should handle empty periods when enumerating weeks', () => {
@@ -103,12 +104,12 @@ describe('NgTimeChartComponent', () => {
   });
 
   it('should enumerate days', () => {
-    const period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    const period = new Period(moment(`2020-01-01`), moment(`2020-12-31`));
     const days = NgTimeChartComponent.enumerateDays(period);
     expect(days.length).toEqual(366);
-    expect(days[0].isSame(moment('2020-01-01'), 'day'))
+    expect(days[0].isSame(moment(`2020-01-01`), 'day'))
       .toBeTruthy(`Expected first day to be 2020-01-01 but was ${days[0]}`);
-    expect(days[days.length - 1].isSame(moment('2020-12-31'), 'day'))
+    expect(days[days.length - 1].isSame(moment(`2020-12-31`), 'day'))
       .toBeTruthy(`Expected last day to be 2020-12-31 but was ${days[days.length - 1]}`);
   });
 
@@ -118,13 +119,13 @@ describe('NgTimeChartComponent', () => {
   });
 
   it('should handle period changes', () => {
-    const startDates = cold('a', {a: moment('2020-01-01')});
-    const endDates = cold('--a-b', {a: moment('2020-01-20'), b: moment('2020-01-24')});
+    const startDates = cold('a', {a: moment(`${year}-01-01`)});
+    const endDates = cold('--a-b', {a: moment(`${year}-01-20`), b: moment(`${year}-01-24`)});
     startDates.subscribe(value => component.ngTimeChartComponent.startDate = value);
     endDates.subscribe(value => component.ngTimeChartComponent.endDate = value);
     expect(component.ngTimeChartComponent.durationInDays$)
       .toBeObservable(cold('a-b-c', {
-        a: 367,
+        a: 366,
         b: 20,
         c: 24
       }));
@@ -146,10 +147,10 @@ describe('NgTimeChartComponent', () => {
   it('should be able to handle groups before dates', () => {
     const startDates = cold('--a-',
       {
-        a: moment('2020-01-01'),
+        a: moment(`${year}-01-01`),
       });
     const endDates = cold('---a',
-      {a: moment('2020-08-20')});
+      {a: moment(`${year}-08-20`)});
     const groups = cold('a---',
       {
         a: testGroups
@@ -167,11 +168,11 @@ describe('NgTimeChartComponent', () => {
   it('should update filtered items when adding new items', () => {
     const startDates = cold('a-----b',
       {
-        a: moment('2020-01-01'),
-        b: moment('2020-08-10')
+        a: moment(`${year}-01-01`),
+        b: moment(`${year}-08-10`)
       });
     const endDates = cold('--a',
-      {a: moment('2020-08-20')});
+      {a: moment(`${year}-08-20`)});
     const groups = cold('---a-b',
       {
         a: [],
