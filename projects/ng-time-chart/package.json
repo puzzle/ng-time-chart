@@ -36,6 +36,9 @@
       }
     }
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "scripts": {
     "postinstall": "ngcc"
   }
