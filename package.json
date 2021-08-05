@@ -32,6 +32,7 @@
     "angular-cli-ghpages": "^0.6.2",
     "core-js": "^3.6.5",
     "moment": "^2.29.0",
+    "n": "^7.3.1",
     "rxjs": "~6.5.5",
     "tsickle": "^0.39.1",
     "tslib": "^1.10.0",
