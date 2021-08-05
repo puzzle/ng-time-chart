@@ -8,30 +8,29 @@
   <div class="calendar-showcase">
     <h1>Calendar with year selector</h1>
     <ng-time-chart [groups]="groups" [layoutStrategy]="tiledLayoutStrategy">
-
     </ng-time-chart>
   </div>
-<!--  <div class="calendar-showcase" style="margin-top: 100px">-->
-<!--    <h1>Calendar with dynamic length</h1>-->
-<!--    <div class="date-input">-->
-<!--      <label for="start-date">Start date:</label>-->
-<!--      <input #start_date type="date"-->
-<!--             id="start-date"-->
-<!--             name="start-date"-->
-<!--             (blur)="setStartDate(start_date.value)"-->
-<!--             value="2020-05-01">-->
-<!--    </div>-->
-<!--    <div class="date-input">-->
-<!--      <label for="end-date">End date:</label>-->
-<!--      <input #end_date type="date"-->
-<!--             id="end-date"-->
-<!--             name="end-date"-->
-<!--             (blur)="setEndDate(end_date.value)"-->
-<!--             value="2020-08-31">-->
-<!--    </div>-->
-<!--    <ng-time-chart [groups]="groups" [startDate]="startDate" [endDate]="endDate"-->
-<!--                   [layoutStrategy]="stackedLayoutStrategy">-->
-<!--    </ng-time-chart>-->
-<!--  </div>-->
+    <div class="calendar-showcase" style="margin-top: 100px">
+      <h1>Calendar with dynamic length</h1>
+      <div class="date-input">
+        <label for="start-date">Start date:</label>
+        <input #start_date type="date"
+               id="start-date"
+               name="start-date"
+               (blur)="setStartDate(start_date.value)"
+               value="2020-05-01">
+      </div>
+      <div class="date-input">
+        <label for="end-date">End date:</label>
+        <input #end_date type="date"
+               id="end-date"
+               name="end-date"
+               (blur)="setEndDate(end_date.value)"
+               value="2020-08-31">
+      </div>
+      <ng-time-chart [groups]="groups" [startDate]="startDate" [endDate]="endDate"
+                     [layoutStrategy]="stackedLayoutStrategy">
+      </ng-time-chart>
+    </div>
 </div>
 <router-outlet></router-outlet>
