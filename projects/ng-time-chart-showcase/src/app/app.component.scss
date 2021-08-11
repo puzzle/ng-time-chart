@@ -1,3 +1,17 @@
+.calendar-showcase {
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    flex: 1;
+  }
+
+  ng-time-chart {
+    flex: 3;
+  }
+}
+
 .date-input {
   display: inline-block;
   margin-right: 2em;

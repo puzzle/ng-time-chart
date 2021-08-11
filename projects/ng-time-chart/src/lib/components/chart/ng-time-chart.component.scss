@@ -2,6 +2,10 @@
 @import "../../../styles/6_components/sidebar";
 @import "../../../styles/5_objects/day";
 
+:host{
+  display: contents;
+}
+
 .timetable {
   display: flex;
   flex-direction: column;
