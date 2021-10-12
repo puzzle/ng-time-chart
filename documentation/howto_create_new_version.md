@@ -11,8 +11,10 @@ How to publish a new version
 4. Push the new version `git push origin master --tags`
 
 ## Publish to NPM
-1. Log into npm `npm login`, using credentials from cryptopus
-2. Publish new version `npm publish`
+1. Run ng build, this will build the library in the _dist_-directory
+2. Log into npm `npm login`, using credentials from cryptopus
+3. `cd` into the _dist_-directory
+4. Publish new version `npm publish`
 
 ## Prepare the next version
 1. Increase the version number in package files and add the SNAPSHOT-suffix:
