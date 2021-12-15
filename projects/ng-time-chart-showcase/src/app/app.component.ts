@@ -268,6 +268,7 @@ export class AppComponent {
             name: 'Testitem 0',
             startTime: moment(`${this.currentYear}-06-12`),
             endTime: moment(`${this.currentYear}-07-23`),
+            hideDateRangeInHeader: true,
             class: 'type-a',
             dates: [
               moment(`${this.currentYear}-06-18`),

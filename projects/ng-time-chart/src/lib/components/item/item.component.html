@@ -15,7 +15,9 @@
   </ng-container>
   <div class="blockade-title">
     {{item.name}}
-    ({{item.startTime | timeChartDateFormatter}} - {{item.endTime | timeChartDateFormatter}})
+    <ng-container *ngIf="!item.hideDateRangeInHeader">
+      ({{item.startTime | timeChartDateFormatter}} - {{item.endTime | timeChartDateFormatter}})
+    </ng-container>
   </div>
   <div *ngIf="item.details" class="blockade-details">
     <p>{{item.details}}</p>
