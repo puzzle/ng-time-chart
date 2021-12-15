@@ -13,7 +13,7 @@ How to publish a new version
 ## Publish to NPM
 1. Run `npm run build`, this will build the library in the _dist_-directory
 2. Log into npm `npm login`, using credentials from cryptopus
-3. `cd` into the _dist_-directory
+3. `cd` into the _dist/ng-time-chart_-directory
 4. Publish new version `npm publish`
 
 ## Prepare the next version
