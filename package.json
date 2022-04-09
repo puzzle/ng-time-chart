@@ -31,7 +31,7 @@
     "@angular/router": "~12.2.6",
     "angular-cli-ghpages": "^0.6.2",
     "core-js": "^3.17.3",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "n": "^7.4.1",
     "rxjs": "~6.5.5",
     "tsickle": "^0.39.1",
