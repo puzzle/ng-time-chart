@@ -1,8 +1,6 @@
 import {Item} from './item';
 import {Period} from './period';
-import * as moment_ from 'moment';
-
-const moment = moment_;
+import { DateTime } from 'luxon';
 
 export class Group {
   readonly name: string;
@@ -19,8 +17,8 @@ export class Group {
   }
 
   private static calculateDuration(items: Item[]) {
-    const startDate = moment.min(items.map(item => item.startTime));
-    const endDate = moment.max(items.map(item => item.endTime));
+    const startDate = DateTime.min(...items.map(item => item.startTime));
+    const endDate = DateTime.max(...items.map(item => item.endTime));
     if (!startDate || !endDate) {
       return null;
     }

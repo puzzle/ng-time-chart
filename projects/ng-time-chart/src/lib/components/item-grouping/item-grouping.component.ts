@@ -1,8 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Period} from '../../period';
 import {Item} from '../../item';
-import * as moment_ from 'moment';
-import {max, min} from 'moment';
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'ng-item-grouping',
@@ -20,7 +19,7 @@ export class ItemGroupingComponent {
   constructor() {
   }
 
-  isInPeriod(time: moment_.Moment): boolean {
+  isInPeriod(time: DateTime): boolean {
     return this.period.containsDate(time);
   }
 
@@ -32,8 +31,8 @@ export class ItemGroupingComponent {
     if (!itemGrouping || itemGrouping.length === 0) {
       return false;
     }
-    const earliestDate = min(itemGrouping.map(item => item.startTime));
-    const latestDate = max(itemGrouping.map(item => item.endTime));
+    const earliestDate = DateTime.min(...itemGrouping.map(item => item.startTime));
+    const latestDate = DateTime.max(...itemGrouping.map(item => item.endTime));
     const groupingPeriod = new Period(earliestDate, latestDate);
     return this.isInPeriod(earliestDate) ||
       this.isInPeriod(latestDate) ||
