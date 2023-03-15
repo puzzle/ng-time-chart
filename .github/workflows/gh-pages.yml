@@ -16,7 +16,7 @@ jobs:
 
       - name: Install and build
         run: |
-          npm i --force
+          npm i
           npm run build:showcase
 
       - name: deploy

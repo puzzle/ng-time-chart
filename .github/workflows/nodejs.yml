@@ -25,8 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: sudo apt-get install xvfb
-      # use --force to prevent typescript version conflicts
-    - run: npm ci --force
+    - run: npm ci
     - run: npm run build --if-present
     - run: xvfb-run --auto-servernum npm test
     - name: Cleanum xvfb pidx
