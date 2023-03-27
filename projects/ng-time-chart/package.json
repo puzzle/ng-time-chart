@@ -1,7 +1,7 @@
 {
-  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "$schema": "node_modules/ng-packagr/package.schema.json",
   "name": "@puzzleitc/ng-time-chart",
-  "version": "0.5.15",
+  "version": "0.5.16",
   "description": "A library to display durations in a horizontally scrolling calendar. Similar to a Gantt-chart.",
   "author": "Florian Hug (hug@puzzle.ch)",
   "repository": {
@@ -30,10 +30,7 @@
     "dest": "../../dist/ng-time-chart",
     "assets": [],
     "lib": {
-      "entryFile": "src/public-api.ts",
-      "umdModuleIds": {
-        "moment": "moment"
-      }
+      "entryFile": "src/public-api.ts"
     }
   },
   "dependencies": {
