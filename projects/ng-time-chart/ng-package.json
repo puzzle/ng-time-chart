@@ -3,5 +3,12 @@
   "dest": "../../dist/ng-time-chart",
   "lib": {
     "entryFile": "src/public-api.ts"
+  },
+  "whitelistedNonPeerDependencies": ["moment"],
+  "allowedCommonJsDependencies": ["moment"],
+  "npm": {
+    "dependencies": {
+      "moment": "^2.27.0"
+    }
   }
 }
