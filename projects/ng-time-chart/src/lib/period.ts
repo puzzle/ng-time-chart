@@ -1,39 +1,35 @@
-import * as moment_ from 'moment';
-import {max, min} from 'moment';
-
-const moment = moment_;
-
+import { DateTime } from 'luxon';
 export class Period {
 
-  private readonly _startDate: moment_.Moment;
-  private readonly _endDate: moment_.Moment;
+  private readonly _startDate: DateTime;
+  private readonly _endDate: DateTime;
 
   private static splitAtNewYear(period: Period): Period[] {
     const periods: Period[] = [];
     if (period.endDate.year() > period.startDate.year()) {
-      periods.push(new Period(period.startDate.clone(), moment(`${period.startDate.year()}-12-31`)));
-      periods.push(...Period.splitAtNewYear(new Period(moment(`${period.endDate.year()}-01-01`), period.endDate.clone())));
+      periods.push(new Period(period.startDate, DateTime(`${period.startDate.year()}-12-31`)));
+      periods.push(...Period.splitAtNewYear(new Period(DateTime(`${period.endDate.year()}-01-01`), period.endDate)));
     } else {
       periods.push(period);
     }
     return periods;
   }
 
-  constructor(startDate: moment_.Moment, endDate: moment_.Moment) {
-    this._startDate = startDate?.clone();
-    this._endDate = endDate?.clone();
+  constructor(startDate: DateTime, endDate: DateTime) {
+    this._startDate = DateTime.fromMillis(startDate.toMillis());
+    this._endDate = DateTime.fromMillis(endDate.toMillis());
   }
 
   static forYear(year: number): Period {
-    const midYear = moment(`${year}-06-01`);
-    return new Period(midYear.clone().startOf('year'), midYear.clone().endOf('year'));
+    const midYear = new DateTime(`${year}-06-01`);
+    return new Period(midYear.startOf('year'), midYear.endOf('year'));
   }
 
-  get startDate(): moment_.Moment {
+  get startDate(): DateTime {
     return this._startDate;
   }
 
-  get endDate(): moment_.Moment {
+  get endDate(): DateTime {
     return this._endDate;
   }
 
@@ -45,7 +41,7 @@ export class Period {
 
     function countThursdays(period: Period) {
       let count = 0;
-      const startDay = period.startDate.clone().isoWeekday(4);
+      const startDay = period.startDate.isoWeekday(4);
       if (startDay.isBefore(period.startDate)) {
         startDay.add(7, 'days');
       }
@@ -64,11 +60,15 @@ export class Period {
   }
 
   public isValid(): boolean {
-    return !!this.startDate && !!this.endDate && this.startDate.isBefore(this.endDate);
+    if(this._endDate instanceof DateTime && this._startDate instanceof DateTime){
+      return !!this._startDate && !!this._endDate && this._startDate.toMillis() < this._endDate.toMillis()
+    }else{
+      return false;
+    }
   }
 
-  public containsDate(date: moment.Moment): boolean {
-    return date.isSameOrAfter(this.startDate) && date.isSameOrBefore(this.endDate);
+  public containsDate(date: DateTime): boolean {
+    return Period.isSameOrAfter(date,this.startDate) && Period.isSameOrBefore(date,this.endDate);
   }
 
   public toString() {
@@ -80,19 +80,38 @@ export class Period {
   }
 
   intersect(period: Period): Period {
-    const latestStart = max(this.startDate, period.startDate);
-    const earliestEnd = min(this.endDate, period.endDate);
+    const latestStart = DateTime.max(this.startDate, period.startDate);
+    const earliestEnd = DateTime.min(this.endDate, period.endDate);
     if (!latestStart || !earliestEnd) {
       return null;
     }
-    if (latestStart.isAfter(earliestEnd)) {
+    if (Period.isAfter(latestStart,earliestEnd)) {
       return null;
     }
     return new Period(latestStart, earliestEnd);
   }
 
   public equals(period: Period) {
-    return this.startDate.isSame(period.startDate) && this.endDate.isSame(period.endDate);
+    return Period.isSame(this.startDate,period.startDate) && Period.isSame(this.endDate,period.endDate)
   }
 
+
+  public static isSameOrBeforeDay(first:DateTime,second:DateTime):boolean{
+    return DateTime.fromFormat(first.toISODate(),'dd-MM-yyyy').toMillis()<=DateTime.fromFormat(second.toISODate(),'dd-MM-yyyy').toMillis();
+  }
+  public static isSameOrBefore(first:DateTime,second:DateTime):boolean{
+    return first.toMillis()<=second.toMillis();
+  }
+  public static isSameOrAfter(first:DateTime,second:DateTime):boolean{
+    return first.toMillis()>=second.toMillis();
+  }
+  public static isSame(first:DateTime,second:DateTime):boolean{
+    return first.toMillis()==second.toMillis();
+  }
+  public static isBefore(first:DateTime,second:DateTime):boolean{
+    return first.toMillis()<second.toMillis();
+  }
+  public static isAfter(first:DateTime,second:DateTime):boolean{
+    return first.toMillis()>second.toMillis();
+  }
 }

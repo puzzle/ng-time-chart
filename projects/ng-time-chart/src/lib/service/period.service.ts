@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {Period} from '../period';
-import * as moment_ from 'moment';
 import {map} from 'rxjs/operators';
-
-const moment = moment_;
+import { DateTime } from 'luxon';
 
 /**
  * The service provides the current calendar period. It is specified:
@@ -21,23 +19,23 @@ export class PeriodService {
 
   private readonly _period$: Observable<Period>;
   private readonly _isFullYear$: Observable<boolean>;
-  private readonly _startDate$: Subject<moment_.Moment>;
-  private readonly _endDate$: Subject<moment_.Moment>;
+  private readonly _startDate$: Subject<DateTime>;
+  private readonly _endDate$: Subject<DateTime>;
 
 
   /**
    * Set the start date of the period. If the parameter is null the start date will be calculated
-   * @param date A momentjs date or null
+   * @param date A luxon date or null
    */
-  set startDate(date: moment_.Moment) {
+  set startDate(date: DateTime) {
     this._startDate$.next(date);
   }
 
   /**
    * Set the end date of the period. If the parameter is null the end date will be  calculated.
-   * @param date A momentjs date or null
+   * @param date A luxon date or null
    */
-  set endDate(date: moment_.Moment) {
+  set endDate(date: DateTime) {
     this._endDate$.next(date);
   }
 
@@ -65,14 +63,14 @@ export class PeriodService {
   }
 
   private static getCurrentYearPeriod() {
-    const currentYear = moment();
+    const currentYear = DateTime.now();
     return new Period(
-      currentYear.clone().startOf('year'),
-      currentYear.clone().endOf('year')
+      currentYear.startOf('year'),
+      currentYear.endOf('year')
     );
   }
 
-  private static calculatePeriod(startDate: moment_.Moment, endDate: moment_.Moment): Period {
+  private static calculatePeriod(startDate: DateTime, endDate: DateTime): Period {
     if (startDate == null && endDate == null) {
       return null;
     }
@@ -80,15 +78,15 @@ export class PeriodService {
     if (startDate != null) {
       myStartDate = startDate;
     } else {
-      myStartDate = endDate.clone();
+      myStartDate = endDate;
       myStartDate.subtract(1, 'year');
     }
 
     let myEndDate;
     if (endDate != null) {
-      myEndDate = endDate.clone();
+      myEndDate = endDate;
     } else {
-      myEndDate = myStartDate.clone();
+      myEndDate = myStartDate;
       myEndDate.add(1, 'year');
     }
     return new Period(myStartDate, myEndDate);

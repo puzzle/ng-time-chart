@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {Period} from '../period';
-import * as moment_ from 'moment';
 import {map} from 'rxjs/operators';
-
-const moment = moment_;
+import { DateTime } from 'luxon';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +29,7 @@ export class YearService {
   }
 
   constructor() {
-    this._year$ = new BehaviorSubject<number>(moment().year());
+    this._year$ = new BehaviorSubject<number>( DateTime.local());
     this._period$ = this._year$.pipe(map(year => YearService.periodForYear(year)));
   }
 }

@@ -2,10 +2,8 @@ import {TestBed} from '@angular/core/testing';
 
 import {PeriodService} from './period.service';
 import {cold} from 'jasmine-marbles';
-import * as moment_ from 'moment';
 import {Period} from '../period';
-
-const moment = moment_;
+import { DateTime } from 'luxon';
 
 describe('PeriodService', () => {
   let service: PeriodService;
@@ -24,7 +22,7 @@ describe('PeriodService', () => {
   });
 
   it('Should provide a period of one year after start date', () => {
-    const startDate = moment('2008-03-02');
+    const startDate = DateTime('2008-03-02');
     const startDateObservable = cold('-a-', {a: startDate});
     startDateObservable.subscribe(date => service.startDate = date);
     expect(service.period$)
@@ -36,7 +34,7 @@ describe('PeriodService', () => {
   });
 
   it('should provide a period of one year before the end date', () => {
-    const endDate = moment('2020-09-23');
+    const endDate = DateTime('2020-09-23');
     const endDateObservable = cold('-a-', {a: endDate});
     endDateObservable.subscribe(date => service.endDate = date);
     expect(service.period$)
@@ -47,8 +45,8 @@ describe('PeriodService', () => {
   });
 
   it('should provide the period between start and end date', () => {
-    const startDate = moment('2018-03-02');
-    const endDate = moment('2020-09-23');
+    const startDate = DateTime('2018-03-02');
+    const endDate = DateTime('2020-09-23');
     cold('-a--', {a: startDate})
       .subscribe(date => service.startDate = date);
     cold('--a-', {a: endDate})

@@ -1,10 +1,8 @@
 import {TestBed} from '@angular/core/testing';
 
 import {StackedLayoutService} from './stacked-layout.service';
-import * as moment_ from 'moment';
 import {Item} from '../item';
-
-const moment = moment_;
+import { DateTime } from 'luxon';
 
 describe('StackedLayoutService', () => {
   let service: StackedLayoutService;
@@ -17,18 +15,18 @@ describe('StackedLayoutService', () => {
   beforeEach(() => {
     item0 = {
       name: 'Testitem0',
-      startTime: moment('2020-03-01'),
-      endTime: moment('2020-03-15')
+      startTime: DateTime('2020-03-01'),
+      endTime: DateTime('2020-03-15')
     };
     item1 = {
       name: 'TestItem1',
-      startTime: moment('2020-03-17'),
-      endTime: moment('2020-04-08')
+      startTime: DateTime('2020-03-17'),
+      endTime: DateTime('2020-04-08')
     };
     item2 = {
       name: 'TestItem2',
-      startTime: moment('2020-04-09'),
-      endTime: moment('2020-05-20')
+      startTime: DateTime('2020-04-09'),
+      endTime: DateTime('2020-05-20')
     };
 
     simpleOrderItems = [item0, item2, item1];

@@ -1,11 +1,10 @@
 import {TestBed} from '@angular/core/testing';
 
 import {TiledLayoutService} from './tiled-layout.service';
-import * as moment_ from 'moment';
+import { DateTime } from 'luxon';
 import {LayoutService} from './layout.service';
 import {Item} from '../item';
 
-const moment = moment_;
 
 describe('TiledLayoutService', () => {
   let service: LayoutService;
@@ -19,38 +18,38 @@ describe('TiledLayoutService', () => {
     service = TestBed.inject(TiledLayoutService);
     const item0: Item = {
       name: 'Testitem0',
-      startTime: moment('2020-03-01'),
-      endTime: moment('2020-03-15')
+      startTime: DateTime.fromISO('2020-03-01'),
+      endTime: DateTime.fromISO('2020-03-15')
     };
     const item1: Item = {
       name: 'TestItem1',
-      startTime: moment('2020-03-17'),
-      endTime: moment('2020-04-08')
+      startTime: DateTime.fromISO('2020-03-17'),
+      endTime: DateTime.fromISO('2020-04-08')
     };
     const item2: Item = {
       name: 'TestItem2',
-      startTime: moment('2020-04-09'),
-      endTime: moment('2020-05-20')
+      startTime: DateTime.fromISO('2020-04-09'),
+      endTime: DateTime.fromISO('2020-05-20')
     };
     const item3: Item = {
       name: 'TestItem3',
-      startTime: moment('2020-05-21'),
-      endTime: moment('2020-05-30')
+      startTime: DateTime.fromISO('2020-05-21'),
+      endTime: DateTime.fromISO('2020-05-30')
     };
     const item4: Item = {
       name: 'TestItem4',
-      startTime: moment('2020-02-20'),
-      endTime: moment('2020-06-20')
+      startTime: DateTime.fromISO('2020-02-20'),
+      endTime: DateTime.fromISO('2020-06-20')
     };
     const item5: Item = {
       name: 'TestItem5',
-      startTime: moment('2020-08-20T08:00'),
-      endTime: moment('2020-08-21T08:00')
+      startTime: DateTime.fromISO('2020-08-20T08:00'),
+      endTime: DateTime.fromISO('2020-08-21T08:00')
     };
     const item6: Item = {
       name: 'TestItem5',
-      startTime: moment('2020-08-21T09:00'),
-      endTime: moment('2020-08-25T22:00')
+      startTime: DateTime.fromISO('2020-08-21T09:00'),
+      endTime: DateTime.fromISO('2020-08-25T22:00')
     };
     simpleOrderItems = [item0, item2, item1];
     complexOrderItems = [item3, item2, item4, item2, item3, item0];

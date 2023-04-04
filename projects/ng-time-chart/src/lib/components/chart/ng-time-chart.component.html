@@ -15,7 +15,7 @@
              [style.width.px]="month.days * DAY_WIDTH"
              [style.max-width.px]="month.days * DAY_WIDTH"
              class="month">
-          {{month.startDate.format('MMMM YYYY')}}
+          {{month.startDate.toFormat('MMMM YYYY')}}
         </div>
       </div>
       <div class="week-bar">
@@ -32,11 +32,11 @@
       <div class="days">
         <ng-container *ngFor="let day of days$ | async">
           <div class="day today" *ngIf="isToday(day); else normalDay" [ngClass]="{'today': isToday(day)}" #todayMarker>
-            {{day.format('dd')}}
+            {{day.toFormat('dd')}}
           </div>
           <ng-template #normalDay>
             <div class="day">
-              {{day.format('dd')}}
+              {{day.toFormat('dd')}}
             </div>
           </ng-template>
         </ng-container>

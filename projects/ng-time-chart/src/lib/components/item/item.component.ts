@@ -2,9 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Item} from '../../item';
 import {Constants} from '../../constants';
 import {Period} from '../../period';
-import * as moment_ from 'moment';
-
-const moment = moment_;
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'ng-item',
@@ -34,11 +32,11 @@ export class ItemComponent implements OnInit {
       new Period(item.startTime, item.endTime).containsDate(this.period.startDate);
   }
 
-  isInPeriod(time: moment_.Moment): boolean {
+  isInPeriod(time: DateTime): boolean {
     return this.period.containsDate(time);
   }
 
-  getDayOfPeriod(date: moment_.Moment): number {
+  getDayOfPeriod(date: DateTime): number {
     if (!this.period.containsDate(date)) {
       return 0;
     }
@@ -51,34 +49,32 @@ export class ItemComponent implements OnInit {
     return Math.ceil(endDate.diff(startDate, 'days', true));
   }
 
-  isNotInPeriod(time: moment_.Moment): boolean {
+  isNotInPeriod(time: DateTime): boolean {
     return !this.period.containsDate(time);
   }
 
-  getDaysSince(referenceDate: string | moment_.Moment, date: string | moment_.Moment): number {
-    const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).startOf('day');
-    const myDate = this.getStartDateInCurrentPeriod(moment(date)).startOf('day');
-    return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+  getDaysSince(referenceDate: string | DateTime, date: string | DateTime): number {
+    const refDate = this.getStartDateInCurrentPeriod(new DateTime(referenceDate)).startOf('day');
+    const myDate = this.getStartDateInCurrentPeriod(new DateTime(date)).startOf('day');
+    return Math.ceil(myDate.diff(new DateTime(refDate), 'days', true));
   }
 
   open(item: Item) {
     item.onClick?.apply(null);
   }
 
-  private getStartDateInCurrentPeriod(startDate: moment_.Moment) {
-    const date = startDate.clone();
-    if (date.isBefore(this.period.startDate)) {
-      return this.period.startDate.clone();
+  private getStartDateInCurrentPeriod(startDate: DateTime) {
+    if (Period.isBefore(startDate,this.period.startDate)) {
+      return this.period.startDate;
     }
-    return date;
+    return startDate;
   }
 
-  private getEndDateCurrentPeriod(endDate: moment_.Moment) {
-    const date = endDate.clone();
-    if (date.isAfter(this.period.endDate)) {
-      return this.period.endDate.clone();
+  private getEndDateCurrentPeriod(endDate: DateTime) {
+    if (Period.isAfter(endDate,this.period.endDate)) {
+      return this.period.endDate;
     }
-    return date;
+    return endDate;
   }
 
 }

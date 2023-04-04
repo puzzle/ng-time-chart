@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import * as moment_ from 'moment';
 import {LayoutService} from './layout.service';
 import {Item} from '../item';
+import { DateTime } from 'luxon';
+import {Period} from '../period';
 
 @Injectable({
   providedIn: 'root'
@@ -34,12 +35,12 @@ class ItemOrder {
   }
   private readonly _queues: Item[][];
 
-  private static getStartDate(item: Item): moment_.Moment {
-    return item.startTime.clone().startOf('day');
+  private static getStartDate(item: Item): DateTime {
+    return item.startTime.startOf('day');
   }
 
-  private static getEndDate(item: Item): moment_.Moment {
-    return item.endTime.clone().endOf('day');
+  private static getEndDate(item: Item): DateTime {
+    return item.endTime.endOf('day');
   }
 
   add(item: Item) {
@@ -47,12 +48,12 @@ class ItemOrder {
 
   }
 
-  private getFreeQueue(date: moment_.Moment): Item[] {
+  private getFreeQueue(date: DateTime): Item[] {
     if (this._queues.length === 0) {
       return this.createNewSubQueue();
     }
 
-    const queuesWithFreeSpace = this._queues.filter(queue => ItemOrder.getEndDate(queue[queue.length - 1]).isBefore(date));
+    const queuesWithFreeSpace = this._queues.filter(queue => Period.isBefore(ItemOrder.getEndDate(queue[queue.length - 1]),date));
     if (queuesWithFreeSpace.length > 0) {
       return queuesWithFreeSpace[0];
     }
