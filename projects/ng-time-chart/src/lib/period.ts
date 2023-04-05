@@ -6,9 +6,9 @@ export class Period {
 
   private static splitAtNewYear(period: Period): Period[] {
     const periods: Period[] = [];
-    if (period.endDate.year() > period.startDate.year()) {
-      periods.push(new Period(period.startDate, DateTime(`${period.startDate.year()}-12-31`)));
-      periods.push(...Period.splitAtNewYear(new Period(DateTime(`${period.endDate.year()}-01-01`), period.endDate)));
+    if (period.endDate.year > period.startDate.year) {
+      periods.push(new Period(period.startDate.set({}), DateTime.fromISO(`${period.startDate.year}-12-31`)));
+      periods.push(...Period.splitAtNewYear(new Period(DateTime.fromISO(`${period.endDate.year}-01-01`), period.endDate.set({}))));
     } else {
       periods.push(period);
     }
@@ -16,13 +16,13 @@ export class Period {
   }
 
   constructor(startDate: DateTime, endDate: DateTime) {
-    this._startDate = DateTime.fromMillis(startDate.toMillis());
-    this._endDate = DateTime.fromMillis(endDate.toMillis());
+    this._startDate = startDate?.set({});
+    this._endDate = endDate?.set({});
   }
 
   static forYear(year: number): Period {
-    const midYear = new DateTime(`${year}-06-01`);
-    return new Period(midYear.startOf('year'), midYear.endOf('year'));
+    const midYear = DateTime.fromISO(`${year}-06-01`);
+    return new Period(midYear.set({}).startOf('year'), midYear.set({}).endOf('year'));
   }
 
   get startDate(): DateTime {
@@ -34,21 +34,21 @@ export class Period {
   }
 
   get days(): number {
-    return Math.ceil(this.endDate.diff(this.startDate, 'days', true));
+    return Math.ceil(this.endDate.diff(this.startDate, 'days').as('days'));
   }
 
   get isoWeeks(): number {
 
     function countThursdays(period: Period) {
       let count = 0;
-      const startDay = period.startDate.isoWeekday(4);
-      if (startDay.isBefore(period.startDate)) {
-        startDay.add(7, 'days');
+      let startDay = period.startDate.set({}).set({ weekday: 4 });
+      if (Period.isBefore(startDay,period.startDate)) {
+        startDay=startDay.plus({ days: 7 });
       }
       if (period.days >= 4) {
-        while (startDay.isSameOrBefore(period.endDate, 'day')) {
+        while (Period.isSameOrBeforeDay(startDay,period.endDate)) {
           count++;
-          startDay.add(7, 'days');
+          startDay=startDay.plus({ days: 7 });
         }
       }
       return count;
@@ -96,8 +96,11 @@ export class Period {
   }
 
 
+  public static isSameDay(first:DateTime,second:DateTime):boolean{
+    return DateTime.fromISO(first.toISODate()).toMillis()==DateTime.fromISO(second.toISODate()).toMillis();
+  }
   public static isSameOrBeforeDay(first:DateTime,second:DateTime):boolean{
-    return DateTime.fromFormat(first.toISODate(),'dd-MM-yyyy').toMillis()<=DateTime.fromFormat(second.toISODate(),'dd-MM-yyyy').toMillis();
+    return DateTime.fromISO(first.toISODate()).toMillis()<=DateTime.fromISO(second.toISODate()).toMillis();
   }
   public static isSameOrBefore(first:DateTime,second:DateTime):boolean{
     return first.toMillis()<=second.toMillis();

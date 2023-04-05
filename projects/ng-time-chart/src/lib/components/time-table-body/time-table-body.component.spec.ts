@@ -24,18 +24,18 @@ describe('TimeTableBodyComponent', () => {
   beforeEach(() => {
     const item0: Item = {
       name: 'Testitem0',
-      startTime: DateTime('2020-03-01'),
-      endTime: DateTime('2020-03-15')
+      startTime: DateTime.fromISO('2020-03-01'),
+      endTime: DateTime.fromISO('2020-03-15')
     };
     const item1: Item = {
       name: 'TestItem1',
-      startTime: DateTime('2020-03-17'),
-      endTime: DateTime('2020-04-08')
+      startTime: DateTime.fromISO('2020-03-17'),
+      endTime: DateTime.fromISO('2020-04-08')
     };
     const item2: Item = {
       name: 'TestItem2',
-      startTime: DateTime('2020-04-09'),
-      endTime: DateTime('2020-05-20')
+      startTime: DateTime.fromISO('2020-04-09'),
+      endTime: DateTime.fromISO('2020-05-20')
     };
     simpleOrderItems = [item0, item2, item1];
     group = {name: 'TestGroup', items: simpleOrderItems};
@@ -54,9 +54,9 @@ describe('TimeTableBodyComponent', () => {
     template: '<ng-time-table-body [period]="period" [groups]="groups" [today]="today" [layoutStrategy]="strategy"></ng-time-table-body>',
   })
   class TestHostComponent {
-    readonly period: Period = new Period(DateTime('2020-01-01'), DateTime('2020-12-31'));
+    readonly period: Period = new Period(DateTime.fromISO('2020-01-01'),DateTime.fromISO('2020-12-31'));
     readonly groups: Group[] = [group];
-    readonly today: DateTime = DateTime();
+    readonly today: DateTime = DateTime.local();
     readonly days: DateTime[] = [];
     readonly strategy: LayoutStrategy = LayoutStrategy.Stacked;
   }

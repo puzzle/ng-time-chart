@@ -25,8 +25,8 @@
                [style.width.px]="(precedingPeriodDaysBeforeFirstWeek$ | async) * DAY_WIDTH"></div>
           <div class="week"
                *ngFor="let week of weeks$ | async"
-               [style.width.px]="week.days * DAY_WIDTH">({{week.startDate.isoWeek()}}
-            ){{week.startDate.startOf('isoWeek').format('L')}}</div>
+               [style.width.px]="week.days * DAY_WIDTH">({{week.startDate.weekNumber}}
+            ){{week.startDate.startOf('week').toFormat('L')}}</div>
         </div>
       </div>
       <div class="days">

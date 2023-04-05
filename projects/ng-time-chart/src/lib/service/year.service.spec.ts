@@ -20,18 +20,18 @@ describe('YearServiceService', () => {
 
   it('should emit the current year by default', () => {
     expect(service.year$)
-      .toBeObservable(cold('a-', {a: DateTime().year()}));
+      .toBeObservable(cold('a-', {a: DateTime.local().year}));
   });
 
   it('should emit a new year if it is passed in', () => {
     cold('--a-', {a: 2040})
       .subscribe(year => service.year = year);
     expect(service.year$)
-      .toBeObservable(cold('a-b-', {a: DateTime().year(), b: 2040}));
+      .toBeObservable(cold('a-b-', {a: DateTime.local().year, b: 2040}));
   });
 
   it('should emit the period for the current year', () => {
     expect(service.period$)
-      .toBeObservable(cold('a-', {a: Period.forYear(DateTime().year())}));
+      .toBeObservable(cold('a-', {a: Period.forYear(DateTime.local().year)}));
   });
 });

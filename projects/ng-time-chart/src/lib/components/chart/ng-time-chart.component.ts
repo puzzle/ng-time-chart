@@ -104,7 +104,7 @@ export class NgTimeChartComponent implements AfterViewInit {
     if (!period.containsDate(weekStart)) {
       weekStart.plus({ week: 1 })
     }
-    const difference = Math.ceil(weekStart.diff(period.startDate, 'days', true));
+    const difference = Math.ceil(weekStart.diff(period.startDate, 'days').as('days'));
     return difference > 0 ? difference : 0;
   }
 
@@ -136,11 +136,11 @@ export class NgTimeChartComponent implements AfterViewInit {
   static enumerateWeeks(period: Period): Period[] {
     function enumerate(currentDate: DateTime, expanded: Period[]): Period[] {
       if (Period.isSameOrBeforeDay(currentDate,period.endDate)) {
-        const endDate = currentDate.set({}).endOf('isoWeek');
-        const startDate = currentDate.set({}).startOf('isoWeek');
+        const endDate = currentDate.set({}).endOf('week');
+        const startDate = currentDate.set({}).startOf('week');
         const week = new Period(startDate, endDate);
         expanded.push(period.intersect(week));
-        const advanceDate = currentDate.set({}).add(1, 'week');
+        const advanceDate = currentDate.set({}).plus({ week: 1 });
         enumerate(advanceDate, expanded);
       }
       return expanded;
@@ -164,7 +164,7 @@ export class NgTimeChartComponent implements AfterViewInit {
       return expanded;
     }
 
-    return !period ? null : enumerate(period.startDate, []);
+    return !period ? null : enumerate(period.startDate.set({}), []);
   }
 
   ngAfterViewInit() {
@@ -172,7 +172,7 @@ export class NgTimeChartComponent implements AfterViewInit {
   }
 
   isToday(day: DateTime): boolean {
-    return this.today.isSame(day, 'day');
+    return Period.isSameDay(this.today,day);
   }
 
   changeYear(year: number) {

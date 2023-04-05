@@ -36,11 +36,11 @@ class ItemOrder {
   private readonly _queues: Item[][];
 
   private static getStartDate(item: Item): DateTime {
-    return item.startTime.startOf('day');
+    return item.startTime.set({}).startOf('day');
   }
 
   private static getEndDate(item: Item): DateTime {
-    return item.endTime.endOf('day');
+    return item.endTime.set({}).endOf('day');
   }
 
   add(item: Item) {

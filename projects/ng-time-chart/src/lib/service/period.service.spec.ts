@@ -22,31 +22,34 @@ describe('PeriodService', () => {
   });
 
   it('Should provide a period of one year after start date', () => {
-    const startDate = DateTime('2008-03-02');
+    const startDate = DateTime.fromISO('2008-03-02');
     const startDateObservable = cold('-a-', {a: startDate});
+    service.period$.subscribe(p=>console.log("startdate of period: " + p.startDate.toISO()));
+    //service.period$.subscribe(p=>console.log("enddate of period: " + p.endDate.toISO()));
     startDateObservable.subscribe(date => service.startDate = date);
     expect(service.period$)
       .toBeObservable(cold('ab-',
         {
           a: null,
-          b: new Period(startDate, startDate.clone().add(1, 'year'))
+          b: new Period(startDate, startDate.set({}).plus({ year: 1 }))
         }));
   });
 
   it('should provide a period of one year before the end date', () => {
-    const endDate = DateTime('2020-09-23');
+    const endDate = DateTime.fromISO('2020-09-23');
     const endDateObservable = cold('-a-', {a: endDate});
     endDateObservable.subscribe(date => service.endDate = date);
+
     expect(service.period$)
       .toBeObservable(cold('ab-', {
         a: null,
-        b: new Period(endDate.clone().subtract(1, 'year'), endDate)
+        b: new Period(endDate.set({}).minus({ year: 1 }), endDate)
       }));
   });
 
   it('should provide the period between start and end date', () => {
-    const startDate = DateTime('2018-03-02');
-    const endDate = DateTime('2020-09-23');
+    const startDate = DateTime.fromISO('2018-03-02');
+    const endDate = DateTime.fromISO('2020-09-23');
     cold('-a--', {a: startDate})
       .subscribe(date => service.startDate = date);
     cold('--a-', {a: endDate})
@@ -54,7 +57,7 @@ describe('PeriodService', () => {
     expect(service.period$)
       .toBeObservable(cold('abc-', {
         a: null,
-        b: new Period(startDate, startDate.clone().add(1, 'year')),
+        b: new Period(startDate, startDate.set({}).plus({ year: 1 })),
         c: new Period(startDate, endDate)
       }));
   });

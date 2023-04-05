@@ -63,10 +63,10 @@ export class PeriodService {
   }
 
   private static getCurrentYearPeriod() {
-    const currentYear = DateTime.now();
+    const currentYear = DateTime.local();
     return new Period(
-      currentYear.startOf('year'),
-      currentYear.endOf('year')
+      currentYear.set({}).startOf('year'),
+      currentYear.set({}).endOf('year')
     );
   }
 
@@ -78,16 +78,16 @@ export class PeriodService {
     if (startDate != null) {
       myStartDate = startDate;
     } else {
-      myStartDate = endDate;
-      myStartDate.subtract(1, 'year');
+      myStartDate = endDate.set({});
+      myStartDate=myStartDate.minus({ year: 1 });
     }
 
     let myEndDate;
     if (endDate != null) {
-      myEndDate = endDate;
+      myEndDate = endDate.set({});
     } else {
-      myEndDate = myStartDate;
-      myEndDate.add(1, 'year');
+      myEndDate = myStartDate.set({});
+      myEndDate=myEndDate.plus({ year: 1 });
     }
     return new Period(myStartDate, myEndDate);
   }

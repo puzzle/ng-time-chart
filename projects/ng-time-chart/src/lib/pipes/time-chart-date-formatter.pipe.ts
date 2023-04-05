@@ -8,7 +8,11 @@ import { DateTime } from 'luxon';
 export class TimeChartDateFormatterPipe implements PipeTransform {
 
   transform(dateString: (string | DateTime)): any {
-    return new DateTime(dateString).toFormat('D. M.');
+    if(dateString instanceof DateTime){
+      return dateString.toFormat('dd. MM.');
+    }else{
+      return DateTime.fromISO(dateString).toFormat('dd. MM.');
+    }
   }
 
 }

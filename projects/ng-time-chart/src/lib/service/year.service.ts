@@ -29,7 +29,7 @@ export class YearService {
   }
 
   constructor() {
-    this._year$ = new BehaviorSubject<number>( DateTime.local());
+    this._year$ = new BehaviorSubject<number>( DateTime.local().year);
     this._period$ = this._year$.pipe(map(year => YearService.periodForYear(year)));
   }
 }

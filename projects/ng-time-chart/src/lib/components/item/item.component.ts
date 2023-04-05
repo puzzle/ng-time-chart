@@ -40,13 +40,13 @@ export class ItemComponent implements OnInit {
     if (!this.period.containsDate(date)) {
       return 0;
     }
-    return Math.floor(date.diff(this.period.startDate, 'days', true));
+    return Math.floor(date.diff(this.period.startDate, 'days').as('days'));
   }
 
   getDuration(item: Item): number {
     const startDate = this.getStartDateInCurrentPeriod(item.startTime).startOf('day');
     const endDate = this.getEndDateCurrentPeriod(item.endTime).endOf('day');
-    return Math.ceil(endDate.diff(startDate, 'days', true));
+    return Math.ceil(endDate.diff(startDate, 'days').as('days'));
   }
 
   isNotInPeriod(time: DateTime): boolean {
@@ -54,23 +54,39 @@ export class ItemComponent implements OnInit {
   }
 
   getDaysSince(referenceDate: string | DateTime, date: string | DateTime): number {
-    const refDate = this.getStartDateInCurrentPeriod(new DateTime(referenceDate)).startOf('day');
-    const myDate = this.getStartDateInCurrentPeriod(new DateTime(date)).startOf('day');
-    return Math.ceil(myDate.diff(new DateTime(refDate), 'days', true));
+    let referenceDT: DateTime;
+    if(referenceDate instanceof DateTime){
+      referenceDT=referenceDate.set({});
+    }else{
+      referenceDT = DateTime.fromISO(referenceDate);;
+    }
+    referenceDT=this.getStartDateInCurrentPeriod(referenceDT).startOf('day');
+
+
+    let myDT: DateTime;
+    if(myDT instanceof DateTime){
+      myDT=date.set({});
+    }else{
+      myDT = DateTime.fromISO(date);;
+    }
+    myDT=this.getStartDateInCurrentPeriod(myDT).startOf('day');
+
+    return Math.ceil(myDT.diff(referenceDT, 'days').as('days'));
   }
+
 
   open(item: Item) {
     item.onClick?.apply(null);
   }
 
-  private getStartDateInCurrentPeriod(startDate: DateTime) {
+  private getStartDateInCurrentPeriod(startDate: DateTime): DateTime {
     if (Period.isBefore(startDate,this.period.startDate)) {
       return this.period.startDate;
     }
     return startDate;
   }
 
-  private getEndDateCurrentPeriod(endDate: DateTime) {
+  private getEndDateCurrentPeriod(endDate: DateTime): DateTime {
     if (Period.isAfter(endDate,this.period.endDate)) {
       return this.period.endDate;
     }

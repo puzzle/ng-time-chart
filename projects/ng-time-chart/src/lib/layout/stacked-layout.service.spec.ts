@@ -15,18 +15,18 @@ describe('StackedLayoutService', () => {
   beforeEach(() => {
     item0 = {
       name: 'Testitem0',
-      startTime: DateTime('2020-03-01'),
-      endTime: DateTime('2020-03-15')
+      startTime: DateTime.fromISO('2020-03-01'),
+      endTime: DateTime.fromISO('2020-03-15')
     };
     item1 = {
       name: 'TestItem1',
-      startTime: DateTime('2020-03-17'),
-      endTime: DateTime('2020-04-08')
+      startTime: DateTime.fromISO('2020-03-17'),
+      endTime: DateTime.fromISO('2020-04-08')
     };
     item2 = {
       name: 'TestItem2',
-      startTime: DateTime('2020-04-09'),
-      endTime: DateTime('2020-05-20')
+      startTime: DateTime.fromISO('2020-04-09'),
+      endTime: DateTime.fromISO('2020-05-20')
     };
 
     simpleOrderItems = [item0, item2, item1];
