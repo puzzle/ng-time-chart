@@ -24,8 +24,6 @@ describe('PeriodService', () => {
   it('Should provide a period of one year after start date', () => {
     const startDate = DateTime.fromISO('2008-03-02');
     const startDateObservable = cold('-a-', {a: startDate});
-    service.period$.subscribe(p=>console.log("startdate of period: " + p.startDate.toISO()));
-    //service.period$.subscribe(p=>console.log("enddate of period: " + p.endDate.toISO()));
     startDateObservable.subscribe(date => service.startDate = date);
     expect(service.period$)
       .toBeObservable(cold('ab-',
