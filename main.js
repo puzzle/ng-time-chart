@@ -1,18 +1,18 @@
+"use strict";
 (self["webpackChunkng_time_chart_showcase"] = self["webpackChunkng_time_chart_showcase"] || []).push([["main"],{
 
-/***/ 96344:
+/***/ 6344:
 /*!***********************************************************************!*\
   !*** ./projects/ng-time-chart-showcase/src/app/app-routing.module.ts ***!
   \***********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppRoutingModule": function() { return /* binding */ AppRoutingModule; }
+/* harmony export */   "AppRoutingModule": () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ 71258);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
 
 
 
@@ -27,26 +27,22 @@ AppRoutingModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0_
 
 /***/ }),
 
-/***/ 71099:
+/***/ 1099:
 /*!******************************************************************!*\
   !*** ./projects/ng-time-chart-showcase/src/app/app.component.ts ***!
   \******************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppComponent": function() { return /* binding */ AppComponent; }
+/* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var moment_locale_de_ch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment/locale/de-ch */ 67978);
-/* harmony import */ var moment_locale_de_ch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment_locale_de_ch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/group */ 20370);
-/* harmony import */ var _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/layout/layout-strategy.enum */ 53224);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _ng_time_chart_src_lib_components_chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/components/chart/ng-time-chart.component */ 72986);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 71258);
+/* harmony import */ var _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/group */ 370);
+/* harmony import */ var _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/layout/layout-strategy.enum */ 3224);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! luxon */ 20);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _ng_time_chart_src_lib_components_chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/components/chart/ng-time-chart.component */ 2986);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 2816);
 
 
 
@@ -54,356 +50,344 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const moment = moment__WEBPACK_IMPORTED_MODULE_0__;
 class AppComponent {
     constructor() {
-        this.currentYear = moment().year();
+        this.currentYear = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.local().year;
         this.title = 'NgTimeChartLibrary';
-        this.startDate = moment(`${this.currentYear}-05-01`);
-        this.endDate = moment(`${this.currentYear}-08-31`);
-        this.tiledLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_3__.LayoutStrategy.Tiled;
-        this.stackedLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_3__.LayoutStrategy.Stacked;
-        moment.locale('de-ch');
+        this.startDate = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-05-01`);
+        this.endDate = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-08-31`);
+        this.tiledLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__.LayoutStrategy.Tiled;
+        this.stackedLayoutStrategy = _ng_time_chart_src_lib_layout_layout_strategy_enum__WEBPACK_IMPORTED_MODULE_1__.LayoutStrategy.Stacked;
+        luxon__WEBPACK_IMPORTED_MODULE_2__.Settings.defaultLocale = 'de-ch';
         this.groups = [
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 0', [
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 0', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-02-12`),
-                    endTime: moment(`${this.currentYear}-03-23`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-02-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-03-23`),
                     class: 'type-b'
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear}-03-25`),
-                    endTime: moment(`${this.currentYear}-03-30T01:30`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-03-25`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-03-30T01:30`),
                     class: 'type-a',
                     details: 'More information of Testitem 1',
                     onClick: () => alert('I was clicked 😊')
                 },
                 {
                     name: 'Testitem 2',
-                    startTime: moment(`${this.currentYear}-04-01`),
-                    endTime: moment(`${this.currentYear}-04-07`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-01`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-07`),
                     class: 'type-b'
                 },
                 {
                     name: 'Testitem 3',
-                    startTime: moment(`${this.currentYear}-04-08`),
-                    endTime: moment(`${this.currentYear}-04-12`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-08`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-12`),
                     class: 'type-b'
                 },
                 {
                     name: 'Testitem 4',
-                    startTime: moment(`${this.currentYear}-04-02`),
-                    endTime: moment(`${this.currentYear}-04-05`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-02`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-05`),
                     class: 'type-b',
                     details: 'More information of Testitem 4. A lot of text to show how this is handled.'
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => alert('Group clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 1', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => alert('Group clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 1', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-02-12`),
-                    endTime: moment(`${this.currentYear}-05-23`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-02-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-05-23`),
                     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                     class: 'type-c'
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear}-04-11`),
-                    endTime: moment(`${this.currentYear}-04-28T00:30`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-28T00:30`),
                     details: 'Oh, there\'s a monkey in my pocket, And he\'s stealing all my change. His stare is blank and glassy, I suspect he\'s deranged 🐒',
                     class: 'type-c',
                     dates: [
-                        moment(`${this.currentYear}-04-11`),
-                        moment(`${this.currentYear}-04-12`),
-                        moment(`${this.currentYear}-04-13`),
-                        moment(`${this.currentYear}-04-14`),
-                        moment(`${this.currentYear}-04-15`),
-                        moment(`${this.currentYear}-04-16`),
-                        moment(`${this.currentYear}-04-17`),
-                        moment(`${this.currentYear}-04-18`),
-                        moment(`${this.currentYear}-04-19`),
-                        moment(`${this.currentYear}-04-20`),
-                        moment(`${this.currentYear}-04-21`),
-                        moment(`${this.currentYear}-04-22`),
-                        moment(`${this.currentYear}-04-23`),
-                        moment(`${this.currentYear}-04-24`),
-                        moment(`${this.currentYear}-04-25`),
-                        moment(`${this.currentYear}-04-26`),
-                        moment(`${this.currentYear}-04-27`),
-                        moment(`${this.currentYear}-04-28`)
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-11`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-12`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-13`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-14`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-15`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-16`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-17`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-18`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-19`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-20`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-21`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-22`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-23`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-24`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-25`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-26`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-27`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-28`)
                     ]
                 },
                 {
                     name: 'Testitem 2',
-                    startTime: moment(`${this.currentYear}-10-08T22:00`),
-                    endTime: moment(`${this.currentYear}-10-10T04:30`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-08T22:00`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-10T04:30`),
                     class: 'type-b',
                     dates: [
-                        moment(`${this.currentYear}-10-08`),
-                        moment(`${this.currentYear}-10-09`),
-                        moment(`${this.currentYear}-10-10`)
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-08`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-09`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-10`)
                     ]
                 },
                 {
                     name: 'Testitem 3',
-                    startTime: moment(`${this.currentYear}-10-11T00:01`),
-                    endTime: moment(`${this.currentYear}-10-12T05:00`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-11T00:01`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-12T05:00`),
                     class: 'type-b',
                     dates: [
-                        moment(`${this.currentYear}-10-11`),
-                        moment(`${this.currentYear}-10-12`)
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-11`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-12`)
                     ]
                 },
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 2', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 2', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-06-12T08:23`),
-                    endTime: moment(`${this.currentYear}-07-01T06:23`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-12T08:23`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-07-01T06:23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear - 1}-08-11`),
-                    endTime: moment(`${this.currentYear}-09-02`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-08-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-09-02`)
                 },
                 {
                     name: 'Testitem 3',
-                    startTime: moment(`${this.currentYear}-07-01T08:23`),
-                    endTime: moment(`${this.currentYear}-07-12T23:23`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-07-01T08:23`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-07-12T23:23`)
                 },
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 3', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 3', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-09-12`),
-                    endTime: moment(`${this.currentYear}-10-23`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-09-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear}-10-11`),
-                    endTime: moment(`${this.currentYear}-11-02`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-10-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-11-02`)
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 4', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 4', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-02-12`),
-                    endTime: moment(`${this.currentYear}-05-23`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-02-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-05-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear}-12-11`),
-                    endTime: moment(`${this.currentYear + 1}-03-02`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-12-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear + 1}-03-02`)
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 5', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 5', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-03-12`),
-                    endTime: moment(`${this.currentYear}-03-23`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-03-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-03-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear}-03-11`),
-                    endTime: moment(`${this.currentYear}-04-02`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-03-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-02`)
                 },
                 {
                     name: 'Testitem 2',
-                    startTime: moment(`${this.currentYear}-04-01`),
-                    endTime: moment(`${this.currentYear}-04-04`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-01`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-04`)
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 6', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 6', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-06-12`),
-                    endTime: moment(`${this.currentYear}-07-23`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-07-23`),
                     class: 'type-c'
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear - 1}-08-11`),
-                    endTime: moment(`${this.currentYear}-09-02`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-08-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-09-02`),
                     class: 'type-a'
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 7', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 7', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear - 1}-09-12`),
-                    endTime: moment(`${this.currentYear - 1}-10-23`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-09-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-10-23`),
                     class: 'my-class-a'
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear - 2}-10-11`),
-                    endTime: moment(`${this.currentYear - 1}-11-02`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 2}-10-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-11-02`),
                     class: 'my-class-a'
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 8', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 8', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-02-12`),
-                    endTime: moment(`${this.currentYear}-04-23`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-02-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear}-05-11`),
-                    endTime: moment(`${this.currentYear}-06-02`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-05-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-02`)
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 9', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 9', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-02-12`),
-                    endTime: moment(`${this.currentYear}-05-23`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-02-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-05-23`),
                     dates: [
-                        moment(`${this.currentYear}-04-11`),
-                        moment(`${this.currentYear}-04-12`)
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-11`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-12`)
                     ]
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear}-04-11`),
-                    endTime: moment(`${this.currentYear}-05-02`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-04-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-05-02`)
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 10', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 10', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-06-12`),
-                    endTime: moment(`${this.currentYear}-07-23`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-07-23`),
                     hideDateRangeInHeader: true,
                     class: 'type-a',
                     dates: [
-                        moment(`${this.currentYear}-06-18`),
-                        moment(`${this.currentYear}-06-19`),
-                        moment(`${this.currentYear}-06-23`),
-                        moment(`${this.currentYear}-06-24`)
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-18`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-19`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-23`),
+                        luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-24`)
                     ]
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear - 1}-08-11`),
-                    endTime: moment(`${this.currentYear}-06-02`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-08-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-06-02`),
                     class: 'type-a'
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 11', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 11', [
                 {
                     name: 'Testitem 0',
-                    startTime: moment(`${this.currentYear}-09-12`),
-                    endTime: moment(`${this.currentYear + 1}-01-23`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-09-12`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear + 1}-01-23`)
                 },
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear - 1}-10-11`),
-                    endTime: moment(`${this.currentYear}-11-02`)
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-10-11`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-11-02`)
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 12', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 12', [
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear - 1}-09-01T20:30:00`),
-                    endTime: moment(`${this.currentYear + 1}-12-12T04:30:00`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-09-01T20:30:00`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear + 1}-12-12T04:30:00`),
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
-            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_2__.Group('Testgroup 13', [
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
+            new _ng_time_chart_src_lib_group__WEBPACK_IMPORTED_MODULE_0__.Group('Testgroup 13', [
                 {
                     name: 'Testitem 1',
-                    startTime: moment(`${this.currentYear - 1}-09-01T20:30:00`),
-                    endTime: moment(`${this.currentYear - 1}-12-12T04:30:00`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-09-01T20:30:00`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear - 1}-12-12T04:30:00`),
                 },
                 {
                     name: 'Testitem 2',
-                    startTime: moment(`${this.currentYear}-09-01T20:30:00`),
-                    endTime: moment(`${this.currentYear}-12-12T04:30:00`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-09-01T20:30:00`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear}-12-12T04:30:00`),
                 },
                 {
                     name: 'Testitem 3',
-                    startTime: moment(`${this.currentYear + 1}-09-01T20:30:00`),
-                    endTime: moment(`${this.currentYear + 1}-12-12T04:30:00`),
+                    startTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear + 1}-09-01T20:30:00`),
+                    endTime: luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(`${this.currentYear + 1}-12-12T04:30:00`),
                 }
-            ].sort((a, b) => moment.duration(a.startTime.diff(b.startTime)).asSeconds()), () => console.log('clicked')),
+            ].sort((a, b) => a.startTime.diff(b.startTime).as('seconds')), () => console.log('clicked')),
         ];
     }
     setStartDate(value) {
-        this.startDate = (!!value && value.length > 0) ? moment((value)) : null;
+        this.startDate = (!!value && value.length > 0) ? luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO((value)) : null;
     }
     setEndDate(value) {
-        this.endDate = (!!value && value.length > 0) ? moment((value)) : null;
+        this.endDate = (!!value && value.length > 0) ? luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO((value)) : null;
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
-AppComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["ng-tl-root"]], decls: 23, vars: 7, consts: [[1, "content"], [2, "text-align", "center"], [1, "calendar-showcase"], [3, "groups", "layoutStrategy"], [1, "calendar-showcase", 2, "margin-top", "100px"], [1, "date-input"], ["for", "start-date"], ["type", "date", "id", "start-date", "name", "start-date", "value", "2020-05-01", 3, "blur"], ["start_date", ""], ["for", "end-date"], ["type", "date", "id", "end-date", "name", "end-date", "value", "2020-08-31", 3, "blur"], ["end_date", ""], [3, "groups", "startDate", "endDate", "layoutStrategy"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
-        const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](2, "h1");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](4, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](5, "h1");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](6, "Calendar with year selector");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](7, "ng-time-chart", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](8, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](9, "h1");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](10, "Calendar with dynamic length");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](11, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](12, "label", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](13, "Start date:");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](14, "input", 7, 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("blur", function AppComponent_Template_input_blur_14_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r2); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵreference"](15); return ctx.setStartDate(_r0.value); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](16, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](17, "label", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](18, "End date:");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](19, "input", 10, 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("blur", function AppComponent_Template_input_blur_19_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r2); const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵreference"](20); return ctx.setEndDate(_r1.value); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](21, "ng-time-chart", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](22, "router-outlet");
+AppComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["ng-tl-root"]], decls: 23, vars: 7, consts: [[1, "content"], [2, "text-align", "center"], [1, "calendar-showcase"], [3, "groups", "layoutStrategy"], [1, "calendar-showcase", 2, "margin-top", "100px"], [1, "date-input"], ["for", "start-date"], ["type", "date", "id", "start-date", "name", "start-date", "value", "2020-05-01", 3, "blur"], ["start_date", ""], ["for", "end-date"], ["type", "date", "id", "end-date", "name", "end-date", "value", "2020-08-31", 3, "blur"], ["end_date", ""], [3, "groups", "startDate", "endDate", "layoutStrategy"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 0)(1, "div", 1)(2, "h1");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](4, "div", 2)(5, "h1");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](6, "Calendar with year selector");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](7, "ng-time-chart", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](8, "div", 4)(9, "h1");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](10, "Calendar with dynamic length");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](11, "div", 5)(12, "label", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](13, "Start date:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](14, "input", 7, 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("blur", function AppComponent_Template_input_blur_14_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r2); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵreference"](15); return ctx.setStartDate(_r0.value); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](16, "div", 5)(17, "label", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](18, "End date:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](19, "input", 10, 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("blur", function AppComponent_Template_input_blur_19_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r2); const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵreference"](20); return ctx.setEndDate(_r1.value); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](21, "ng-time-chart", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](22, "router-outlet");
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtextInterpolate1"](" Welcome to ", ctx.title, "! ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("groups", ctx.groups)("layoutStrategy", ctx.tiledLayoutStrategy);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("groups", ctx.groups)("startDate", ctx.startDate)("endDate", ctx.endDate)("layoutStrategy", ctx.stackedLayoutStrategy);
-    } }, directives: [_ng_time_chart_src_lib_components_chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_4__.NgTimeChartComponent, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterOutlet], styles: [".calendar-showcase[_ngcontent-%COMP%] {\n  max-height: 400px;\n  display: flex;\n  flex-direction: column;\n}\n.calendar-showcase[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  flex: 1;\n}\n.calendar-showcase[_ngcontent-%COMP%]   ng-time-chart[_ngcontent-%COMP%] {\n  flex: 3;\n}\n.date-input[_ngcontent-%COMP%] {\n  display: inline-block;\n  margin-right: 2em;\n}\n.content[_ngcontent-%COMP%] {\n  padding: 4em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGlCQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0FBQ0Y7QUFDRTtFQUNFLE9BQUE7QUFDSjtBQUVFO0VBQ0UsT0FBQTtBQUFKO0FBSUE7RUFDRSxxQkFBQTtFQUNBLGlCQUFBO0FBREY7QUFJQTtFQUNFLFlBQUE7QUFERiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FsZW5kYXItc2hvd2Nhc2Uge1xuICBtYXgtaGVpZ2h0OiA0MDBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcblxuICBoMSB7XG4gICAgZmxleDogMTtcbiAgfVxuXG4gIG5nLXRpbWUtY2hhcnQge1xuICAgIGZsZXg6IDM7XG4gIH1cbn1cblxuLmRhdGUtaW5wdXQge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1hcmdpbi1yaWdodDogMmVtO1xufVxuXG4uY29udGVudCB7XG4gIHBhZGRpbmc6IDRlbTtcbn1cbiJdfQ== */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" Welcome to ", ctx.title, "! ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("groups", ctx.groups)("layoutStrategy", ctx.tiledLayoutStrategy);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("groups", ctx.groups)("startDate", ctx.startDate)("endDate", ctx.endDate)("layoutStrategy", ctx.stackedLayoutStrategy);
+    } }, directives: [_ng_time_chart_src_lib_components_chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_3__.NgTimeChartComponent, _angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterOutlet], styles: [".calendar-showcase[_ngcontent-%COMP%] {\n  max-height: 400px;\n  display: flex;\n  flex-direction: column;\n}\n.calendar-showcase[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  flex: 1;\n}\n.calendar-showcase[_ngcontent-%COMP%]   ng-time-chart[_ngcontent-%COMP%] {\n  flex: 3;\n}\n.date-input[_ngcontent-%COMP%] {\n  display: inline-block;\n  margin-right: 2em;\n}\n.content[_ngcontent-%COMP%] {\n  padding: 4em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGlCQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0FBQ0Y7QUFDRTtFQUNFLE9BQUE7QUFDSjtBQUVFO0VBQ0UsT0FBQTtBQUFKO0FBSUE7RUFDRSxxQkFBQTtFQUNBLGlCQUFBO0FBREY7QUFJQTtFQUNFLFlBQUE7QUFERiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FsZW5kYXItc2hvd2Nhc2Uge1xuICBtYXgtaGVpZ2h0OiA0MDBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcblxuICBoMSB7XG4gICAgZmxleDogMTtcbiAgfVxuXG4gIG5nLXRpbWUtY2hhcnQge1xuICAgIGZsZXg6IDM7XG4gIH1cbn1cblxuLmRhdGUtaW5wdXQge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1hcmdpbi1yaWdodDogMmVtO1xufVxuXG4uY29udGVudCB7XG4gIHBhZGRpbmc6IDRlbTtcbn1cbiJdfQ== */"] });
 
 
 /***/ }),
 
-/***/ 78267:
+/***/ 8267:
 /*!***************************************************************!*\
   !*** ./projects/ng-time-chart-showcase/src/app/app.module.ts ***!
   \***************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppModule": function() { return /* binding */ AppModule; }
+/* harmony export */   "AppModule": () => (/* binding */ AppModule)
 /* harmony export */ });
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ 71570);
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 96344);
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 71099);
-/* harmony import */ var _ng_time_chart_src_lib_components_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/components/ng-time-chart.module */ 56007);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ 318);
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 6344);
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 1099);
+/* harmony import */ var _ng_time_chart_src_lib_components_ng_time_chart_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../ng-time-chart/src/lib/components/ng-time-chart.module */ 6007);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
 
 
 
@@ -429,12 +413,11 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵ
 /*!*************************************************************************!*\
   !*** ./projects/ng-time-chart-showcase/src/environments/environment.ts ***!
   \*************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "environment": function() { return /* binding */ environment; }
+/* harmony export */   "environment": () => (/* binding */ environment)
 /* harmony export */ });
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
@@ -454,17 +437,16 @@ const environment = {
 
 /***/ }),
 
-/***/ 30606:
+/***/ 606:
 /*!*****************************************************!*\
   !*** ./projects/ng-time-chart-showcase/src/main.ts ***!
   \*****************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ 71570);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app.module */ 78267);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ 318);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app.module */ 8267);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./environments/environment */ 2665);
 
 
@@ -479,30 +461,28 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__.platformBrowser().bootstr
 
 /***/ }),
 
-/***/ 72986:
+/***/ 2986:
 /*!************************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/components/chart/ng-time-chart.component.ts ***!
   \************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "NgTimeChartComponent": function() { return /* binding */ NgTimeChartComponent; }
+/* harmony export */   "NgTimeChartComponent": () => (/* binding */ NgTimeChartComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ 33927);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs/operators */ 9170);
-/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../period */ 73245);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ 76491);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 61486);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ 25201);
-/* harmony import */ var _service_period_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/period.service */ 55468);
-/* harmony import */ var _service_year_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../service/year.service */ 61909);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ 54364);
-/* harmony import */ var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../time-table-body/time-table-body.component */ 29493);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ 6942);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs/operators */ 9151);
+/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../period */ 3245);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ 4505);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 9193);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants */ 5201);
+/* harmony import */ var _service_period_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/period.service */ 5468);
+/* harmony import */ var _service_year_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/year.service */ 1909);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! luxon */ 20);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../time-table-body/time-table-body.component */ 9493);
 
 
 
@@ -522,8 +502,7 @@ function NgTimeChartComponent_div_4_Template(rf, ctx) {
   if (rf & 1) {
     const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "h3", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div")(1, "h3", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("click", function NgTimeChartComponent_div_4_Template_h3_click_1_listener() {
       const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵrestoreView"](_r7);
       const currentYear_r5 = restoredCtx.ngIf;
@@ -543,8 +522,7 @@ function NgTimeChartComponent_div_4_Template(rf, ctx) {
       return ctx_r8.changeYear(currentYear_r5 + 1);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](6, " >");
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]()();
   }
 
   if (rf & 2) {
@@ -566,7 +544,7 @@ function NgTimeChartComponent_div_10_Template(rf, ctx) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵstyleProp"]("width", month_r9.days * ctx_r1.DAY_WIDTH, "px")("max-width", month_r9.days * ctx_r1.DAY_WIDTH, "px");
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" ", month_r9.startDate.format("MMMM YYYY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" ", month_r9.startDate.toFormat("MMMM yyyy"), " ");
   }
 }
 
@@ -594,7 +572,7 @@ function NgTimeChartComponent_div_16_Template(rf, ctx) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵstyleProp"]("width", week_r10.days * ctx_r3.DAY_WIDTH, "px");
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate2"]("(", week_r10.startDate.isoWeek(), " )", week_r10.startDate.startOf("isoWeek").format("L"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate2"]("(", week_r10.startDate.weekNumber, " )", week_r10.startDate.startOf("week").toFormat("L"), "");
   }
 }
 
@@ -616,7 +594,7 @@ function NgTimeChartComponent_ng_container_19_div_1_Template(rf, ctx) {
     const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpureFunction1"](2, _c1, ctx_r12.isToday(day_r11)));
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" ", day_r11.format("dd"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" ", day_r11.toFormat("dd"), " ");
   }
 }
 
@@ -630,7 +608,7 @@ function NgTimeChartComponent_ng_container_19_ng_template_2_Template(rf, ctx) {
   if (rf & 2) {
     const day_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" ", day_r11.format("dd"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" ", day_r11.toFormat("dd"), " ");
   }
 }
 
@@ -653,16 +631,17 @@ function NgTimeChartComponent_ng_container_19_Template(rf, ctx) {
   }
 }
 
-const moment = moment__WEBPACK_IMPORTED_MODULE_0__;
 class NgTimeChartComponent {
   constructor(periodService, yearService) {
     this.periodService = periodService;
     this.yearService = yearService;
-    this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_2__.Constants.DAY_WIDTH;
+    this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_1__.Constants.DAY_WIDTH;
     this.yearChange = new _angular_core__WEBPACK_IMPORTED_MODULE_6__.EventEmitter();
     this.yearService.year$.subscribe(year => this.yearChange.emit(year));
     this._groups$ = new rxjs__WEBPACK_IMPORTED_MODULE_7__.BehaviorSubject([]);
-    this.today = moment().hour(12);
+    this.today = luxon__WEBPACK_IMPORTED_MODULE_4__.DateTime.local().set({
+      hour: 12
+    });
     this.currentPeriod$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_8__.combineLatest)([this.periodService.period$, this.yearService.period$]).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.map)(([period, year]) => period != null ? period : year), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_10__.filter)(period => period.isValid()));
     this.months$ = this.currentPeriod$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.map)(period => NgTimeChartComponent.enumerateMonths(period)));
     this.weeks$ = this.currentPeriod$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.map)(period => NgTimeChartComponent.enumerateWeeks(period)));
@@ -701,17 +680,21 @@ class NgTimeChartComponent {
       return 0;
     }
 
-    if (period.startDate.isoWeekday() <= 4) {
+    if (period.startDate.weekday <= 4) {
       return 0;
     }
 
-    const weekStart = period.startDate.clone().isoWeekday(1);
+    const weekStart = period.startDate.set({}).set({
+      weekday: 1
+    });
 
     if (!period.containsDate(weekStart)) {
-      weekStart.add(1, 'week');
+      weekStart.plus({
+        week: 1
+      });
     }
 
-    const difference = Math.ceil(weekStart.diff(period.startDate, 'days', true));
+    const difference = Math.ceil(weekStart.diff(period.startDate, 'days').as('days'));
     return difference > 0 ? difference : 0;
   }
 
@@ -721,34 +704,42 @@ class NgTimeChartComponent {
     }
 
     function getMonthWithinPeriod(dayInMonth) {
-      const fullMonth = new _period__WEBPACK_IMPORTED_MODULE_1__.Period(dayInMonth.clone().startOf('month'), dayInMonth.clone().endOf('month'));
+      const fullMonth = new _period__WEBPACK_IMPORTED_MODULE_0__.Period(dayInMonth.set({}).startOf('month'), dayInMonth.set({}).endOf('month'));
       return fullMonth.intersect(myPeriod);
     }
 
     function enumerateWithinPeriod(startDate) {
       const months = [];
-      let current = startDate.clone();
+      let current = startDate.set({});
 
       while (myPeriod.containsDate(current)) {
         months.push(getMonthWithinPeriod(current));
-        current = current.clone().add(1, 'month');
+        current = current.set({}).plus({
+          month: 1
+        });
       }
 
       return months;
     }
 
-    const myPeriod = new _period__WEBPACK_IMPORTED_MODULE_1__.Period(period.startDate.clone().hour(0), period.endDate.clone().hour(23));
-    return enumerateWithinPeriod(period.startDate.clone());
+    const myPeriod = new _period__WEBPACK_IMPORTED_MODULE_0__.Period(period.startDate.set({}).set({
+      hour: 0
+    }), period.endDate.set({}).set({
+      hour: 23
+    }));
+    return enumerateWithinPeriod(period.startDate.set({}));
   }
 
   static enumerateWeeks(period) {
     function enumerate(currentDate, expanded) {
-      if (currentDate.isSameOrBefore(period.endDate, 'day')) {
-        const endDate = currentDate.clone().endOf('isoWeek');
-        const startDate = currentDate.clone().startOf('isoWeek');
-        const week = new _period__WEBPACK_IMPORTED_MODULE_1__.Period(startDate, endDate);
+      if (_period__WEBPACK_IMPORTED_MODULE_0__.Period.isSameOrBeforeDay(currentDate, period.endDate)) {
+        const endDate = currentDate.set({}).endOf('week');
+        const startDate = currentDate.set({}).startOf('week');
+        const week = new _period__WEBPACK_IMPORTED_MODULE_0__.Period(startDate, endDate);
         expanded.push(period.intersect(week));
-        const advanceDate = currentDate.clone().add(1, 'week');
+        const advanceDate = currentDate.set({}).plus({
+          week: 1
+        });
         enumerate(advanceDate, expanded);
       }
 
@@ -756,8 +747,12 @@ class NgTimeChartComponent {
     }
 
     function firstWeekInPeriod() {
-      const date = period === null || period === void 0 ? void 0 : period.startDate.clone().isoWeekday(4);
-      return period.containsDate(date) ? date : date.add(1, 'week');
+      const date = period === null || period === void 0 ? void 0 : period.startDate.set({}).set({
+        weekday: 4
+      });
+      return period.containsDate(date) ? date : date.plus({
+        week: 1
+      });
     }
 
     return !period ? null : enumerate(firstWeekInPeriod(), []);
@@ -765,16 +760,18 @@ class NgTimeChartComponent {
 
   static enumerateDays(period) {
     function enumerate(currentDate, expanded) {
-      if (currentDate.isSameOrBefore(period.endDate, 'day')) {
+      if (_period__WEBPACK_IMPORTED_MODULE_0__.Period.isSameOrBeforeDay(currentDate, period.endDate)) {
         expanded.push(currentDate);
-        const advanceDate = currentDate.clone().add(1, 'day');
+        const advanceDate = currentDate.set({}).plus({
+          days: 1
+        });
         enumerate(advanceDate, expanded);
       }
 
       return expanded;
     }
 
-    return !period ? null : enumerate(period.startDate.clone(), []);
+    return !period ? null : enumerate(period.startDate.set({}), []);
   }
 
   ngAfterViewInit() {
@@ -782,7 +779,7 @@ class NgTimeChartComponent {
   }
 
   isToday(day) {
-    return this.today.isSame(day, 'day');
+    return _period__WEBPACK_IMPORTED_MODULE_0__.Period.isSameDay(this.today, day);
   }
 
   changeYear(year) {
@@ -806,7 +803,7 @@ class NgTimeChartComponent {
 }
 
 NgTimeChartComponent.ɵfac = function NgTimeChartComponent_Factory(t) {
-  return new (t || NgTimeChartComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_service_period_service__WEBPACK_IMPORTED_MODULE_3__.PeriodService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_service_year_service__WEBPACK_IMPORTED_MODULE_4__.YearService));
+  return new (t || NgTimeChartComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_service_period_service__WEBPACK_IMPORTED_MODULE_2__.PeriodService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_service_year_service__WEBPACK_IMPORTED_MODULE_3__.YearService));
 };
 
 NgTimeChartComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineComponent"]({
@@ -832,14 +829,13 @@ NgTimeChartComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE
   outputs: {
     yearChange: "yearChange"
   },
-  features: [_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵProvidersFeature"]([_service_period_service__WEBPACK_IMPORTED_MODULE_3__.PeriodService, _service_year_service__WEBPACK_IMPORTED_MODULE_4__.YearService])],
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵProvidersFeature"]([_service_period_service__WEBPACK_IMPORTED_MODULE_2__.PeriodService, _service_year_service__WEBPACK_IMPORTED_MODULE_3__.YearService])],
   decls: 25,
   vars: 36,
   consts: [[1, "timetable"], [1, "timetable-header"], [1, "year-selector", "label-bar"], [4, "ngIf"], [1, "calendar-header"], [1, "months"], ["class", "month", 3, "width", "max-width", 4, "ngFor", "ngForOf"], [1, "week-bar"], [1, "weeks"], ["class", "week-offset", 3, "width", 4, "ngIf"], ["class", "week", 3, "width", 4, "ngFor", "ngForOf"], [1, "days"], [4, "ngFor", "ngForOf"], [3, "groups", "today", "period", "durationInDays", "layoutStrategy"], [2, "display", "inline-block", "cursor", "pointer", 3, "click"], [2, "display", "inline-block"], [1, "month"], [1, "week-offset"], [1, "week"], ["class", "day today", 3, "ngClass", 4, "ngIf", "ngIfElse"], ["normalDay", ""], [1, "day", "today", 3, "ngClass"], ["todayMarker", ""], [1, "day"]],
   template: function NgTimeChartComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div", 0)(1, "div", 1);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipe"](2, "async");
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](3, "div", 2);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](4, NgTimeChartComponent_div_4_Template, 7, 1, "div", 3);
@@ -852,20 +848,16 @@ NgTimeChartComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](10, NgTimeChartComponent_div_10_Template, 2, 5, "div", 6);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipe"](11, "async");
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](12, "div", 7);
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](13, "div", 8);
+      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](12, "div", 7)(13, "div", 8);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](14, NgTimeChartComponent_div_14_Template, 2, 4, "div", 9);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipe"](15, "async");
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](16, NgTimeChartComponent_div_16_Template, 2, 4, "div", 10);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipe"](17, "async");
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]()();
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](18, "div", 11);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](19, NgTimeChartComponent_ng_container_19_Template, 4, 2, "ng-container", 12);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipe"](20, "async");
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]()()();
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](21, "ng-time-table-body", 13);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipe"](22, "async");
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipe"](23, "async");
@@ -892,7 +884,7 @@ NgTimeChartComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("groups", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipeBind1"](22, 30, ctx.filteredGroups$))("today", ctx.today)("period", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipeBind1"](23, 32, ctx.currentPeriod$))("durationInDays", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpipeBind1"](24, 34, ctx.durationInDays$))("layoutStrategy", ctx.layoutStrategy);
     }
   },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_11__.NgForOf, _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_5__.TimeTableBodyComponent, _angular_common__WEBPACK_IMPORTED_MODULE_11__.NgClass],
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_11__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_11__.NgClass, _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_5__.TimeTableBodyComponent],
   pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_11__.AsyncPipe],
   styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.day-width-1[_ngcontent-%COMP%] {\n  min-width: 20px;\n  max-width: 20px;\n}\n\n[_nghost-%COMP%] {\n  display: contents;\n}\n\n.timetable[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.timetable-header[_ngcontent-%COMP%] {\n  display: flex;\n  padding-bottom: 0;\n  margin-bottom: 0;\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  height: 70px;\n  max-height: 70px;\n  position: sticky;\n  left: 0;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .year-selector[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n.timetable-header[_ngcontent-%COMP%]   .calendar-header[_ngcontent-%COMP%] {\n  height: 70px;\n  max-height: 70px;\n  background-color: white;\n}\n\n.months[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.month[_ngcontent-%COMP%] {\n  border: solid 1px #888;\n  border-left-width: 0;\n  flex: auto;\n  box-sizing: border-box;\n  text-align: center;\n  white-space: nowrap;\n  overflow: hidden;\n}\n\n.month[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.week-offset[_ngcontent-%COMP%] {\n  border-right: solid #888 1px;\n  box-sizing: border-box;\n}\n\n.weeks[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n}\n\n.week[_ngcontent-%COMP%] {\n  border: 0 solid;\n  border-right-width: 1px;\n  text-align: center;\n  display: inline-block;\n  box-sizing: border-box;\n  font-size: 10px;\n}\n\n.week[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.days[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.day[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  border: solid 1px #888;\n  border-left-width: 0;\n  min-width: 20px;\n  display: inline-block;\n  text-align: center;\n  margin: 0;\n  font-size: 10px;\n}\n\n.day[_ngcontent-%COMP%]:first-child {\n  border-left-width: 1px;\n}\n\n.today[_ngcontent-%COMP%] {\n  background-color: #b00b1e;\n  position: relative;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3N0eWxlcy82X2NvbXBvbmVudHMvX3NpZGViYXIuc2NzcyIsIi4uLy4uLy4uL3N0eWxlcy8xX3NldHRpbmdzL192YXJpYWJsZXMuc2NzcyIsIm5nLXRpbWUtY2hhcnQuY29tcG9uZW50LnNjc3MiLCIuLi8uLi8uLi9zdHlsZXMvNV9vYmplY3RzL19kYXkuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLHVCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7RUFDQSxnQkNIYztFRElkLGdCQ0pjO0FDR2hCOztBQ0pBO0VBQ0UsZUZIVTtFRUlWLGVGSlU7QUNXWjs7QUFQQTtFQUNFLGlCQUFBO0FBVUY7O0FBUEE7RUFDRSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7QUFVRjs7QUFOQTtFQUNFLGFBQUE7RUFDQSxpQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxNQUFBO0VBQ0EsV0FBQTtBQVNGOztBQVBFO0VBQ0Usc0JBQUE7RUFDQSxZRHhCWTtFQ3lCWixnQkR6Qlk7RUMwQlosZ0JBQUE7RUFDQSxPQUFBO0FBU0o7O0FBUEk7RUFDRSxnQkFBQTtFQUNBLGlCQUFBO0FBU047O0FBTEU7RUFDRSxZRHBDWTtFQ3FDWixnQkRyQ1k7RUNzQ1osdUJBQUE7QUFPSjs7QUFIQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHNCQUFBO0FBTUY7O0FBSEE7RUFDRSxzQkFBQTtFQUNBLG9CQUFBO0VBQ0EsVUFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLGdCQUFBO0FBTUY7O0FBSEE7RUFDRSxzQkFBQTtBQU1GOztBQUhBO0VBQ0UsNEJBQUE7RUFDQSxzQkFBQTtBQU1GOztBQUhBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7QUFNRjs7QUFIQTtFQUNFLGVBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EscUJBQUE7RUFDQSxzQkFBQTtFQUNBLGVBQUE7QUFNRjs7QUFIQTtFQUNFLHNCQUFBO0FBTUY7O0FBSEE7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7QUFNRjs7QUFIQTtFQUNFLHNCQUFBO0VBQ0Esc0JBQUE7RUFDQSxvQkFBQTtFQUNBLGVEbkdVO0VDb0dWLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxTQUFBO0VBQ0EsZUFBQTtBQU1GOztBQUhBO0VBQ0Usc0JBQUE7QUFNRjs7QUFIQTtFQUNFLHlCRHJHYztFQ3NHZCxrQkFBQTtBQU1GIiwiZmlsZSI6Im5nLXRpbWUtY2hhcnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IFwiLi4vMV9zZXR0aW5ncy92YXJpYWJsZXNcIjtcblxuLmxhYmVsLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB6LWluZGV4OiAxMDAwO1xuICBmbGV4OiAxIDAgJHNpZGViYXItd2lkdGg7XG4gIG1pbi13aWR0aDogJHNpZGViYXItd2lkdGg7XG4gIG1heC13aWR0aDogJHNpZGViYXItd2lkdGg7XG59XG4iLCIkZGF5LXdpZHRoOiAyMHB4O1xuJGl0ZW0tdmVydGljYWwtcGFkZGluZzogMnB4O1xuJGl0ZW0tdmVydGljYWwtbWFyZ2luOiA0cHg7XG4kc2lkZWJhci13aWR0aDogMjAwcHg7XG4kaGVhZGVyLWhlaWdodDogNzBweDtcbiRncmF5LWRhcms6ICM4ODg7XG4kZ3JheS1iYXNlOiAjYWFhO1xuJGdyYXktbGlnaHQ6ICNjY2M7XG4kZ3JheS1saWdodGVyOiAjZWVlO1xuJGJyYW5kLWluZm86ICNkZWFkMDA7XG4kYnJhbmQtcHJpbWFyeTogI2IwMGIxZTtcbiRicmFuZC1kYW5nZXI6ICMzOTkzODM7XG4kY29sb3ItYTogI2IwMGIxZTtcbiRjb2xvci1iOiAjZmEwYWFhO1xuJGNvbG9yLWM6ICMzOTkzODM7XG4iLCJAaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzFfc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5AaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzZfY29tcG9uZW50cy9zaWRlYmFyXCI7XG5AaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzVfb2JqZWN0cy9kYXlcIjtcblxuOmhvc3R7XG4gIGRpc3BsYXk6IGNvbnRlbnRzO1xufVxuXG4udGltZXRhYmxlIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgb3ZlcmZsb3cteDogYXV0bztcbiAgb3ZlcmZsb3cteTogYXV0bztcbn1cblxuXG4udGltZXRhYmxlLWhlYWRlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBhZGRpbmctYm90dG9tOiAwO1xuICBtYXJnaW4tYm90dG9tOiAwO1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICB0b3A6IDA7XG4gIHotaW5kZXg6IDEwO1xuXG4gIC55ZWFyLXNlbGVjdG9yIHtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgIGhlaWdodDogJGhlYWRlci1oZWlnaHQ7XG4gICAgbWF4LWhlaWdodDogJGhlYWRlci1oZWlnaHQ7XG4gICAgcG9zaXRpb246IHN0aWNreTtcbiAgICBsZWZ0OiAwO1xuXG4gICAgaDMge1xuICAgICAgbWFyZ2luLWxlZnQ6IDRweDtcbiAgICAgIG1hcmdpbi1yaWdodDogNHB4O1xuICAgIH1cbiAgfVxuXG4gIC5jYWxlbmRhci1oZWFkZXIge1xuICAgIGhlaWdodDogJGhlYWRlci1oZWlnaHQ7XG4gICAgbWF4LWhlaWdodDogJGhlYWRlci1oZWlnaHQ7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIH1cbn1cblxuLm1vbnRocyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi5tb250aCB7XG4gIGJvcmRlcjogc29saWQgMXB4ICRncmF5LWRhcms7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAwO1xuICBmbGV4OiBhdXRvO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5tb250aDpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0LXdpZHRoOiAxcHg7XG59XG5cbi53ZWVrLW9mZnNldCB7XG4gIGJvcmRlci1yaWdodDogc29saWQgJGdyYXktZGFyayAxcHg7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrcyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi53ZWVrIHtcbiAgYm9yZGVyOiAwIHNvbGlkO1xuICBib3JkZXItcmlnaHQtd2lkdGg6IDFweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLndlZWs6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4uZGF5cyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG59XG5cbi5kYXkge1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBib3JkZXI6IHNvbGlkIDFweCAkZ3JheS1kYXJrO1xuICBib3JkZXItbGVmdC13aWR0aDogMDtcbiAgbWluLXdpZHRoOiAkZGF5LXdpZHRoO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luOiAwO1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5kYXk6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdC13aWR0aDogMXB4O1xufVxuXG4udG9kYXkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkYnJhbmQtcHJpbWFyeTtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuIiwiQGltcG9ydCBcIi4uLzFfc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5cbi5kYXktd2lkdGgtMSB7XG4gIG1pbi13aWR0aDogJGRheS13aWR0aDtcbiAgbWF4LXdpZHRoOiAkZGF5LXdpZHRoO1xufVxuIl19 */"],
   changeDetection: 0
@@ -900,23 +892,21 @@ NgTimeChartComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE
 
 /***/ }),
 
-/***/ 59148:
+/***/ 9148:
 /*!********************************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/components/item-grouping/item-grouping.component.ts ***!
   \********************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ItemGroupingComponent": function() { return /* binding */ ItemGroupingComponent; }
+/* harmony export */   "ItemGroupingComponent": () => (/* binding */ ItemGroupingComponent)
 /* harmony export */ });
-/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../period */ 73245);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 54364);
-/* harmony import */ var _item_item_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../item/item.component */ 66182);
+/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../period */ 3245);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! luxon */ 20);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _item_item_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../item/item.component */ 6182);
 
 
 
@@ -933,11 +923,9 @@ function ItemGroupingComponent_div_0_ng_container_2_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("period", ctx_r1.period)("item", item_r2);
 } }
 function ItemGroupingComponent_div_0_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 1)(1, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](2, ItemGroupingComponent_div_0_ng_container_2_Template, 2, 2, "ng-container", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
@@ -957,8 +945,8 @@ class ItemGroupingComponent {
         if (!itemGrouping || itemGrouping.length === 0) {
             return false;
         }
-        const earliestDate = (0,moment__WEBPACK_IMPORTED_MODULE_1__.min)(itemGrouping.map(item => item.startTime));
-        const latestDate = (0,moment__WEBPACK_IMPORTED_MODULE_1__.max)(itemGrouping.map(item => item.endTime));
+        const earliestDate = luxon__WEBPACK_IMPORTED_MODULE_1__.DateTime.min(...itemGrouping.map(item => item.startTime));
+        const latestDate = luxon__WEBPACK_IMPORTED_MODULE_1__.DateTime.max(...itemGrouping.map(item => item.endTime));
         const groupingPeriod = new _period__WEBPACK_IMPORTED_MODULE_0__.Period(earliestDate, latestDate);
         return this.isInPeriod(earliestDate) ||
             this.isInPeriod(latestDate) ||
@@ -975,24 +963,22 @@ ItemGroupingComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
 
 /***/ }),
 
-/***/ 66182:
+/***/ 6182:
 /*!**************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/components/item/item.component.ts ***!
   \**************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ItemComponent": function() { return /* binding */ ItemComponent; }
+/* harmony export */   "ItemComponent": () => (/* binding */ ItemComponent)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ 25201);
-/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../period */ 73245);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 54364);
-/* harmony import */ var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pipes/time-chart-date-formatter.pipe */ 69153);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ 5201);
+/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../period */ 3245);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! luxon */ 20);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pipes/time-chart-date-formatter.pipe */ 9153);
 
 
 
@@ -1030,11 +1016,9 @@ function ItemComponent_div_0_ng_container_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate2"](" (", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](2, 2, ctx_r2.item.startTime), " - ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](3, 4, ctx_r2.item.endTime), ") ");
 } }
 function ItemComponent_div_0_div_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 8)(1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
@@ -1065,7 +1049,6 @@ function ItemComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("ngIf", ctx_r0.item.details);
 } }
-const moment = moment__WEBPACK_IMPORTED_MODULE_2__;
 class ItemComponent {
     constructor() {
         this.DAY_WIDTH = _constants__WEBPACK_IMPORTED_MODULE_0__.Constants.DAY_WIDTH;
@@ -1085,38 +1068,52 @@ class ItemComponent {
         if (!this.period.containsDate(date)) {
             return 0;
         }
-        return Math.floor(date.diff(this.period.startDate, 'days', true));
+        return Math.floor(date.diff(this.period.startDate, 'days').as('days'));
     }
     getDuration(item) {
         const startDate = this.getStartDateInCurrentPeriod(item.startTime).startOf('day');
         const endDate = this.getEndDateCurrentPeriod(item.endTime).endOf('day');
-        return Math.ceil(endDate.diff(startDate, 'days', true));
+        return Math.ceil(endDate.diff(startDate, 'days').as('days'));
     }
     isNotInPeriod(time) {
         return !this.period.containsDate(time);
     }
     getDaysSince(referenceDate, date) {
-        const refDate = this.getStartDateInCurrentPeriod(moment(referenceDate)).startOf('day');
-        const myDate = this.getStartDateInCurrentPeriod(moment(date)).startOf('day');
-        return Math.ceil(myDate.diff(moment(refDate), 'days', true));
+        let referenceDT;
+        if (referenceDate instanceof luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime) {
+            referenceDT = referenceDate.set({});
+        }
+        else {
+            referenceDT = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(referenceDate);
+            ;
+        }
+        referenceDT = this.getStartDateInCurrentPeriod(referenceDT).startOf('day');
+        let myDT;
+        if (myDT instanceof luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime) {
+            myDT = date.set({});
+        }
+        else {
+            myDT = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromISO(date);
+            ;
+        }
+        myDT = this.getStartDateInCurrentPeriod(myDT).startOf('day');
+        return Math.ceil(myDT.diff(referenceDT, 'days').as('days'));
     }
     open(item) {
         var _a;
         (_a = item.onClick) === null || _a === void 0 ? void 0 : _a.apply(null);
     }
     getStartDateInCurrentPeriod(startDate) {
-        const date = startDate.clone();
-        if (date.isBefore(this.period.startDate)) {
-            return this.period.startDate.clone();
+        if (_period__WEBPACK_IMPORTED_MODULE_1__.Period.isBefore(startDate, this.period.startDate)) {
+            return this.period.startDate;
         }
-        return date;
+        return startDate;
     }
     getEndDateCurrentPeriod(endDate) {
-        const date = endDate.clone();
-        if (date.isAfter(this.period.endDate)) {
-            return this.period.endDate.clone();
+        if (_period__WEBPACK_IMPORTED_MODULE_1__.Period.isAfter(endDate, this.period.endDate)) {
+            return this.period.endDate;
         }
-        return date;
+        return endDate;
     }
 }
 ItemComponent.ɵfac = function ItemComponent_Factory(t) { return new (t || ItemComponent)(); };
@@ -1129,24 +1126,23 @@ ItemComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["
 
 /***/ }),
 
-/***/ 56007:
+/***/ 6007:
 /*!***************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/components/ng-time-chart.module.ts ***!
   \***************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "NgTimeChartModule": function() { return /* binding */ NgTimeChartModule; }
+/* harmony export */   "NgTimeChartModule": () => (/* binding */ NgTimeChartModule)
 /* harmony export */ });
-/* harmony import */ var _chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chart/ng-time-chart.component */ 72986);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 54364);
-/* harmony import */ var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./time-table-body/time-table-body.component */ 29493);
-/* harmony import */ var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./item-grouping/item-grouping.component */ 59148);
-/* harmony import */ var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pipes/time-chart-date-formatter.pipe */ 69153);
-/* harmony import */ var _item_item_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./item/item.component */ 66182);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _chart_ng_time_chart_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chart/ng-time-chart.component */ 2986);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _time_table_body_time_table_body_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./time-table-body/time-table-body.component */ 9493);
+/* harmony import */ var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./item-grouping/item-grouping.component */ 9148);
+/* harmony import */ var _pipes_time_chart_date_formatter_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pipes/time-chart-date-formatter.pipe */ 9153);
+/* harmony import */ var _item_item_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./item/item.component */ 6182);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 3184);
 
 
 
@@ -1173,22 +1169,21 @@ NgTimeChartModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5
 
 /***/ }),
 
-/***/ 29493:
+/***/ 9493:
 /*!************************************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/components/time-table-body/time-table-body.component.ts ***!
   \************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TimeTableBodyComponent": function() { return /* binding */ TimeTableBodyComponent; }
+/* harmony export */   "TimeTableBodyComponent": () => (/* binding */ TimeTableBodyComponent)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ 25201);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../layout/layout-selector.service */ 49750);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 54364);
-/* harmony import */ var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../item-grouping/item-grouping.component */ 59148);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ 5201);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _layout_layout_selector_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../layout/layout-selector.service */ 9750);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../item-grouping/item-grouping.component */ 9148);
 
 
 
@@ -1207,15 +1202,13 @@ function TimeTableBodyComponent_div_1_ng_container_4_Template(rf, ctx) { if (rf 
 } }
 function TimeTableBodyComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 3)(1, "div", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function TimeTableBodyComponent_div_1_Template_div_click_1_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r6); const group_r2 = restoredCtx.$implicit; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r5.open(group_r2); });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, TimeTableBodyComponent_div_1_ng_container_4_Template, 2, 2, "ng-container", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
 } if (rf & 2) {
     const group_r2 = ctx.$implicit;
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
@@ -1244,10 +1237,15 @@ class TimeTableBodyComponent {
         if (!this.period.containsDate(date)) {
             return 0;
         }
-        return Math.round(date.diff(this.period.startDate, 'days', true)) - 1;
+        return Math.round(date.diff(this.period.startDate, 'days').as('days')) - 1;
     }
     isInPeriod(time) {
-        return this.period.containsDate(time);
+        if (this.period) {
+            return this.period.containsDate(time);
+        }
+        else {
+            return false;
+        }
     }
     open(group) {
         var _a;
@@ -1271,21 +1269,20 @@ TimeTableBodyComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MOD
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx.groups);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.isInPeriod(ctx.today));
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_2__.ItemGroupingComponent], styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.timetable-body[_ngcontent-%COMP%] {\n  padding-top: 0;\n  margin-top: 0;\n  margin-bottom: 4px;\n  position: relative;\n  z-index: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-label[_ngcontent-%COMP%] {\n  position: sticky;\n  left: 0;\n  flex: 1 0 200px;\n  text-align: left;\n  color: #aaa;\n  margin: 0;\n  padding-top: calc(2px + 4px + 1px);\n  padding-bottom: calc(2px + 4px + 1px);\n  z-index: 1000;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-display[_ngcontent-%COMP%] {\n  border-top: solid 1px #ccc;\n  width: 100%;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:first-child {\n  margin-top: 0;\n  padding-top: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:nth-child(odd) {\n  background-color: #eee;\n}\n\n.today-marker[_ngcontent-%COMP%] {\n  width: 4px;\n  background-color: #b00b1e;\n  display: block;\n  border-left: solid white 1px;\n  border-right: solid white 1px;\n  box-sizing: content-box;\n  position: absolute;\n  top: -40px;\n  bottom: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3N0eWxlcy82X2NvbXBvbmVudHMvX3NpZGViYXIuc2NzcyIsIi4uLy4uLy4uL3N0eWxlcy8xX3NldHRpbmdzL192YXJpYWJsZXMuc2NzcyIsInRpbWUtdGFibGUtYm9keS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLHVCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7RUFDQSxnQkNIYztFRElkLGdCQ0pjO0FDR2hCOztBQUhBO0VBQ0UsY0FBQTtFQUNBLGFBQUE7RUFDQSxrQkRKcUI7RUNLckIsa0JBQUE7RUFDQSxVQUFBO0FBTUY7O0FBSkU7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7QUFNSjs7QUFKSTtFQUNFLGdCQUFBO0VBQ0EsT0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFdEYk07RUNjTixTQUFBO0VBQ0Esa0NBQUE7RUFDQSxxQ0FBQTtFQUNBLGFBQUE7QUFNTjs7QUFISTtFQUNFLDBCQUFBO0VBQ0EsV0FBQTtBQUtOOztBQURFO0VBQ0UsYUFBQTtFQUNBLGNBQUE7QUFHSjs7QUFBRTtFQUNFLHNCRDlCVztBQ2dDZjs7QUFFQTtFQUNFLFVBQUE7RUFDQSx5QkRsQ2M7RUNtQ2QsY0FBQTtFQUNBLDRCQUFBO0VBQ0EsNkJBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFNBQUE7QUFDRiIsImZpbGUiOiJ0aW1lLXRhYmxlLWJvZHkuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IFwiLi4vMV9zZXR0aW5ncy92YXJpYWJsZXNcIjtcblxuLmxhYmVsLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB6LWluZGV4OiAxMDAwO1xuICBmbGV4OiAxIDAgJHNpZGViYXItd2lkdGg7XG4gIG1pbi13aWR0aDogJHNpZGViYXItd2lkdGg7XG4gIG1heC13aWR0aDogJHNpZGViYXItd2lkdGg7XG59XG4iLCIkZGF5LXdpZHRoOiAyMHB4O1xuJGl0ZW0tdmVydGljYWwtcGFkZGluZzogMnB4O1xuJGl0ZW0tdmVydGljYWwtbWFyZ2luOiA0cHg7XG4kc2lkZWJhci13aWR0aDogMjAwcHg7XG4kaGVhZGVyLWhlaWdodDogNzBweDtcbiRncmF5LWRhcms6ICM4ODg7XG4kZ3JheS1iYXNlOiAjYWFhO1xuJGdyYXktbGlnaHQ6ICNjY2M7XG4kZ3JheS1saWdodGVyOiAjZWVlO1xuJGJyYW5kLWluZm86ICNkZWFkMDA7XG4kYnJhbmQtcHJpbWFyeTogI2IwMGIxZTtcbiRicmFuZC1kYW5nZXI6ICMzOTkzODM7XG4kY29sb3ItYTogI2IwMGIxZTtcbiRjb2xvci1iOiAjZmEwYWFhO1xuJGNvbG9yLWM6ICMzOTkzODM7XG4iLCJAaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzFfc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5AaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzZfY29tcG9uZW50cy9zaWRlYmFyXCI7XG5cbi50aW1ldGFibGUtYm9keSB7XG4gIHBhZGRpbmctdG9wOiAwO1xuICBtYXJnaW4tdG9wOiAwO1xuICBtYXJnaW4tYm90dG9tOiAkaXRlbS12ZXJ0aWNhbC1tYXJnaW47XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgei1pbmRleDogMDtcblxuICAuaXRlbS1ncm91cCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuXG4gICAgLml0ZW0tbGFiZWwge1xuICAgICAgcG9zaXRpb246IHN0aWNreTtcbiAgICAgIGxlZnQ6IDA7XG4gICAgICBmbGV4OiAxIDAgJHNpZGViYXItd2lkdGg7XG4gICAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgICAgY29sb3I6ICRncmF5LWJhc2U7XG4gICAgICBtYXJnaW46IDA7XG4gICAgICBwYWRkaW5nLXRvcDogY2FsYygjeyRpdGVtLXZlcnRpY2FsLXBhZGRpbmd9ICsgI3skaXRlbS12ZXJ0aWNhbC1tYXJnaW59ICsgMXB4KTtcbiAgICAgIHBhZGRpbmctYm90dG9tOiBjYWxjKCN7JGl0ZW0tdmVydGljYWwtcGFkZGluZ30gKyAjeyRpdGVtLXZlcnRpY2FsLW1hcmdpbn0gKyAxcHgpO1xuICAgICAgei1pbmRleDogMTAwMDtcbiAgICB9XG5cbiAgICAuaXRlbS1kaXNwbGF5IHtcbiAgICAgIGJvcmRlci10b3A6IHNvbGlkIDFweCAkZ3JheS1saWdodDtcbiAgICAgIHdpZHRoOiAxMDAlO1xuICAgIH1cbiAgfVxuXG4gIC5pdGVtLWdyb3VwOmZpcnN0LWNoaWxkIHtcbiAgICBtYXJnaW4tdG9wOiAwO1xuICAgIHBhZGRpbmctdG9wOiAwO1xuICB9XG5cbiAgLml0ZW0tZ3JvdXA6bnRoLWNoaWxkKG9kZCkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRncmF5LWxpZ2h0ZXI7XG4gIH1cbn1cblxuLnRvZGF5LW1hcmtlciB7XG4gIHdpZHRoOiA0cHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICRicmFuZC1wcmltYXJ5O1xuICBkaXNwbGF5OiBibG9jaztcbiAgYm9yZGVyLWxlZnQ6IHNvbGlkIHdoaXRlIDFweDtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCB3aGl0ZSAxcHg7XG4gIGJveC1zaXppbmc6IGNvbnRlbnQtYm94O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTQwcHg7XG4gIGJvdHRvbTogMDtcbn1cbiJdfQ== */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _item_grouping_item_grouping_component__WEBPACK_IMPORTED_MODULE_2__.ItemGroupingComponent, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf], styles: [".label-bar[_ngcontent-%COMP%] {\n  background-color: white;\n  z-index: 1000;\n  flex: 1 0 200px;\n  min-width: 200px;\n  max-width: 200px;\n}\n\n.timetable-body[_ngcontent-%COMP%] {\n  padding-top: 0;\n  margin-top: 0;\n  margin-bottom: 4px;\n  position: relative;\n  z-index: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-label[_ngcontent-%COMP%] {\n  position: sticky;\n  left: 0;\n  flex: 1 0 200px;\n  text-align: left;\n  color: #aaa;\n  margin: 0;\n  padding-top: calc(2px + 4px + 1px);\n  padding-bottom: calc(2px + 4px + 1px);\n  z-index: 1000;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]   .item-display[_ngcontent-%COMP%] {\n  border-top: solid 1px #ccc;\n  width: 100%;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:first-child {\n  margin-top: 0;\n  padding-top: 0;\n}\n\n.timetable-body[_ngcontent-%COMP%]   .item-group[_ngcontent-%COMP%]:nth-child(odd) {\n  background-color: #eee;\n}\n\n.today-marker[_ngcontent-%COMP%] {\n  width: 4px;\n  background-color: #b00b1e;\n  display: block;\n  border-left: solid white 1px;\n  border-right: solid white 1px;\n  box-sizing: content-box;\n  position: absolute;\n  top: -40px;\n  bottom: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3N0eWxlcy82X2NvbXBvbmVudHMvX3NpZGViYXIuc2NzcyIsIi4uLy4uLy4uL3N0eWxlcy8xX3NldHRpbmdzL192YXJpYWJsZXMuc2NzcyIsInRpbWUtdGFibGUtYm9keS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLHVCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7RUFDQSxnQkNIYztFRElkLGdCQ0pjO0FDR2hCOztBQUhBO0VBQ0UsY0FBQTtFQUNBLGFBQUE7RUFDQSxrQkRKcUI7RUNLckIsa0JBQUE7RUFDQSxVQUFBO0FBTUY7O0FBSkU7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7QUFNSjs7QUFKSTtFQUNFLGdCQUFBO0VBQ0EsT0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFdEYk07RUNjTixTQUFBO0VBQ0Esa0NBQUE7RUFDQSxxQ0FBQTtFQUNBLGFBQUE7QUFNTjs7QUFISTtFQUNFLDBCQUFBO0VBQ0EsV0FBQTtBQUtOOztBQURFO0VBQ0UsYUFBQTtFQUNBLGNBQUE7QUFHSjs7QUFBRTtFQUNFLHNCRDlCVztBQ2dDZjs7QUFFQTtFQUNFLFVBQUE7RUFDQSx5QkRsQ2M7RUNtQ2QsY0FBQTtFQUNBLDRCQUFBO0VBQ0EsNkJBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFNBQUE7QUFDRiIsImZpbGUiOiJ0aW1lLXRhYmxlLWJvZHkuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IFwiLi4vMV9zZXR0aW5ncy92YXJpYWJsZXNcIjtcblxuLmxhYmVsLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB6LWluZGV4OiAxMDAwO1xuICBmbGV4OiAxIDAgJHNpZGViYXItd2lkdGg7XG4gIG1pbi13aWR0aDogJHNpZGViYXItd2lkdGg7XG4gIG1heC13aWR0aDogJHNpZGViYXItd2lkdGg7XG59XG4iLCIkZGF5LXdpZHRoOiAyMHB4O1xuJGl0ZW0tdmVydGljYWwtcGFkZGluZzogMnB4O1xuJGl0ZW0tdmVydGljYWwtbWFyZ2luOiA0cHg7XG4kc2lkZWJhci13aWR0aDogMjAwcHg7XG4kaGVhZGVyLWhlaWdodDogNzBweDtcbiRncmF5LWRhcms6ICM4ODg7XG4kZ3JheS1iYXNlOiAjYWFhO1xuJGdyYXktbGlnaHQ6ICNjY2M7XG4kZ3JheS1saWdodGVyOiAjZWVlO1xuJGJyYW5kLWluZm86ICNkZWFkMDA7XG4kYnJhbmQtcHJpbWFyeTogI2IwMGIxZTtcbiRicmFuZC1kYW5nZXI6ICMzOTkzODM7XG4kY29sb3ItYTogI2IwMGIxZTtcbiRjb2xvci1iOiAjZmEwYWFhO1xuJGNvbG9yLWM6ICMzOTkzODM7XG4iLCJAaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzFfc2V0dGluZ3MvdmFyaWFibGVzXCI7XG5AaW1wb3J0IFwiLi4vLi4vLi4vc3R5bGVzLzZfY29tcG9uZW50cy9zaWRlYmFyXCI7XG5cbi50aW1ldGFibGUtYm9keSB7XG4gIHBhZGRpbmctdG9wOiAwO1xuICBtYXJnaW4tdG9wOiAwO1xuICBtYXJnaW4tYm90dG9tOiAkaXRlbS12ZXJ0aWNhbC1tYXJnaW47XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgei1pbmRleDogMDtcblxuICAuaXRlbS1ncm91cCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuXG4gICAgLml0ZW0tbGFiZWwge1xuICAgICAgcG9zaXRpb246IHN0aWNreTtcbiAgICAgIGxlZnQ6IDA7XG4gICAgICBmbGV4OiAxIDAgJHNpZGViYXItd2lkdGg7XG4gICAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgICAgY29sb3I6ICRncmF5LWJhc2U7XG4gICAgICBtYXJnaW46IDA7XG4gICAgICBwYWRkaW5nLXRvcDogY2FsYygjeyRpdGVtLXZlcnRpY2FsLXBhZGRpbmd9ICsgI3skaXRlbS12ZXJ0aWNhbC1tYXJnaW59ICsgMXB4KTtcbiAgICAgIHBhZGRpbmctYm90dG9tOiBjYWxjKCN7JGl0ZW0tdmVydGljYWwtcGFkZGluZ30gKyAjeyRpdGVtLXZlcnRpY2FsLW1hcmdpbn0gKyAxcHgpO1xuICAgICAgei1pbmRleDogMTAwMDtcbiAgICB9XG5cbiAgICAuaXRlbS1kaXNwbGF5IHtcbiAgICAgIGJvcmRlci10b3A6IHNvbGlkIDFweCAkZ3JheS1saWdodDtcbiAgICAgIHdpZHRoOiAxMDAlO1xuICAgIH1cbiAgfVxuXG4gIC5pdGVtLWdyb3VwOmZpcnN0LWNoaWxkIHtcbiAgICBtYXJnaW4tdG9wOiAwO1xuICAgIHBhZGRpbmctdG9wOiAwO1xuICB9XG5cbiAgLml0ZW0tZ3JvdXA6bnRoLWNoaWxkKG9kZCkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRncmF5LWxpZ2h0ZXI7XG4gIH1cbn1cblxuLnRvZGF5LW1hcmtlciB7XG4gIHdpZHRoOiA0cHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICRicmFuZC1wcmltYXJ5O1xuICBkaXNwbGF5OiBibG9jaztcbiAgYm9yZGVyLWxlZnQ6IHNvbGlkIHdoaXRlIDFweDtcbiAgYm9yZGVyLXJpZ2h0OiBzb2xpZCB3aGl0ZSAxcHg7XG4gIGJveC1zaXppbmc6IGNvbnRlbnQtYm94O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTQwcHg7XG4gIGJvdHRvbTogMDtcbn1cbiJdfQ== */"] });
 
 
 /***/ }),
 
-/***/ 25201:
+/***/ 5201:
 /*!*****************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/constants.ts ***!
   \*****************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Constants": function() { return /* binding */ Constants; }
+/* harmony export */   "Constants": () => (/* binding */ Constants)
 /* harmony export */ });
 class Constants {
 }
@@ -1295,23 +1292,20 @@ Constants.SIDEBAR_WIDTH = 200;
 
 /***/ }),
 
-/***/ 20370:
+/***/ 370:
 /*!*************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/group.ts ***!
   \*************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Group": function() { return /* binding */ Group; }
+/* harmony export */   "Group": () => (/* binding */ Group)
 /* harmony export */ });
-/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./period */ 73245);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./period */ 3245);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! luxon */ 20);
 
 
-const moment = moment__WEBPACK_IMPORTED_MODULE_1__;
 class Group {
     constructor(name, items, onClick = () => {
     }) {
@@ -1321,8 +1315,8 @@ class Group {
         this.onClick = onClick;
     }
     static calculateDuration(items) {
-        const startDate = moment.min(items.map(item => item.startTime));
-        const endDate = moment.max(items.map(item => item.endTime));
+        const startDate = luxon__WEBPACK_IMPORTED_MODULE_1__.DateTime.min(...items.map(item => item.startTime));
+        const endDate = luxon__WEBPACK_IMPORTED_MODULE_1__.DateTime.max(...items.map(item => item.endTime));
         if (!startDate || !endDate) {
             return null;
         }
@@ -1333,21 +1327,20 @@ class Group {
 
 /***/ }),
 
-/***/ 49750:
+/***/ 9750:
 /*!**************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/layout/layout-selector.service.ts ***!
   \**************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "LayoutSelectorService": function() { return /* binding */ LayoutSelectorService; }
+/* harmony export */   "LayoutSelectorService": () => (/* binding */ LayoutSelectorService)
 /* harmony export */ });
-/* harmony import */ var _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout-strategy.enum */ 53224);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _stacked_layout_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stacked-layout.service */ 92345);
-/* harmony import */ var _tiled_layout_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tiled-layout.service */ 27427);
+/* harmony import */ var _layout_strategy_enum__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layout-strategy.enum */ 3224);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _stacked_layout_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stacked-layout.service */ 2345);
+/* harmony import */ var _tiled_layout_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tiled-layout.service */ 7427);
 
 
 
@@ -1377,16 +1370,15 @@ LayoutSelectorService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MOD
 
 /***/ }),
 
-/***/ 53224:
+/***/ 3224:
 /*!***********************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/layout/layout-strategy.enum.ts ***!
   \***********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "LayoutStrategy": function() { return /* binding */ LayoutStrategy; }
+/* harmony export */   "LayoutStrategy": () => (/* binding */ LayoutStrategy)
 /* harmony export */ });
 var LayoutStrategy;
 (function (LayoutStrategy) {
@@ -1403,18 +1395,17 @@ var LayoutStrategy;
 
 /***/ }),
 
-/***/ 92345:
+/***/ 2345:
 /*!*************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/layout/stacked-layout.service.ts ***!
   \*************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "StackedLayoutService": function() { return /* binding */ StackedLayoutService; }
+/* harmony export */   "StackedLayoutService": () => (/* binding */ StackedLayoutService)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
 
 class StackedLayoutService {
     constructor() {
@@ -1429,18 +1420,19 @@ StackedLayoutService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
 
 /***/ }),
 
-/***/ 27427:
+/***/ 7427:
 /*!***********************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/layout/tiled-layout.service.ts ***!
   \***********************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TiledLayoutService": function() { return /* binding */ TiledLayoutService; }
+/* harmony export */   "TiledLayoutService": () => (/* binding */ TiledLayoutService)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../period */ 3245);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
+
 
 class TiledLayoutService {
     constructor() {
@@ -1457,7 +1449,7 @@ class TiledLayoutService {
     }
 }
 TiledLayoutService.ɵfac = function TiledLayoutService_Factory(t) { return new (t || TiledLayoutService)(); };
-TiledLayoutService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: TiledLayoutService, factory: TiledLayoutService.ɵfac, providedIn: 'root' });
+TiledLayoutService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: TiledLayoutService, factory: TiledLayoutService.ɵfac, providedIn: 'root' });
 class ItemOrder {
     constructor() {
         this._queues = [];
@@ -1466,10 +1458,10 @@ class ItemOrder {
         return this._queues;
     }
     static getStartDate(item) {
-        return item.startTime.clone().startOf('day');
+        return item.startTime.set({}).startOf('day');
     }
     static getEndDate(item) {
-        return item.endTime.clone().endOf('day');
+        return item.endTime.set({}).endOf('day');
     }
     add(item) {
         this.getFreeQueue(ItemOrder.getStartDate(item)).push(item);
@@ -1478,7 +1470,7 @@ class ItemOrder {
         if (this._queues.length === 0) {
             return this.createNewSubQueue();
         }
-        const queuesWithFreeSpace = this._queues.filter(queue => ItemOrder.getEndDate(queue[queue.length - 1]).isBefore(date));
+        const queuesWithFreeSpace = this._queues.filter(queue => _period__WEBPACK_IMPORTED_MODULE_0__.Period.isBefore(ItemOrder.getEndDate(queue[queue.length - 1]), date));
         if (queuesWithFreeSpace.length > 0) {
             return queuesWithFreeSpace[0];
         }
@@ -1494,32 +1486,28 @@ class ItemOrder {
 
 /***/ }),
 
-/***/ 73245:
+/***/ 3245:
 /*!**************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/period.ts ***!
   \**************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Period": function() { return /* binding */ Period; }
+/* harmony export */   "Period": () => (/* binding */ Period)
 /* harmony export */ });
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! luxon */ 20);
 
-
-const moment = moment__WEBPACK_IMPORTED_MODULE_0__;
 class Period {
     constructor(startDate, endDate) {
-        this._startDate = startDate === null || startDate === void 0 ? void 0 : startDate.clone();
-        this._endDate = endDate === null || endDate === void 0 ? void 0 : endDate.clone();
+        this._startDate = startDate === null || startDate === void 0 ? void 0 : startDate.set({});
+        this._endDate = endDate === null || endDate === void 0 ? void 0 : endDate.set({});
     }
     static splitAtNewYear(period) {
         const periods = [];
-        if (period.endDate.year() > period.startDate.year()) {
-            periods.push(new Period(period.startDate.clone(), moment(`${period.startDate.year()}-12-31`)));
-            periods.push(...Period.splitAtNewYear(new Period(moment(`${period.endDate.year()}-01-01`), period.endDate.clone())));
+        if (period.endDate.year > period.startDate.year) {
+            periods.push(new Period(period.startDate.set({}), luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(`${period.startDate.year}-12-31`)));
+            periods.push(...Period.splitAtNewYear(new Period(luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(`${period.endDate.year}-01-01`), period.endDate.set({}))));
         }
         else {
             periods.push(period);
@@ -1527,8 +1515,8 @@ class Period {
         return periods;
     }
     static forYear(year) {
-        const midYear = moment(`${year}-06-01`);
-        return new Period(midYear.clone().startOf('year'), midYear.clone().endOf('year'));
+        const midYear = luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(`${year}-06-01`);
+        return new Period(midYear.set({}).startOf('year'), midYear.set({}).endOf('year'));
     }
     get startDate() {
         return this._startDate;
@@ -1537,19 +1525,19 @@ class Period {
         return this._endDate;
     }
     get days() {
-        return Math.ceil(this.endDate.diff(this.startDate, 'days', true));
+        return Math.ceil(this.endDate.diff(this.startDate, 'days').as('days'));
     }
     get isoWeeks() {
         function countThursdays(period) {
             let count = 0;
-            const startDay = period.startDate.clone().isoWeekday(4);
-            if (startDay.isBefore(period.startDate)) {
-                startDay.add(7, 'days');
+            let startDay = period.startDate.set({}).set({ weekday: 4 });
+            if (Period.isBefore(startDay, period.startDate)) {
+                startDay = startDay.plus({ days: 7 });
             }
             if (period.days >= 4) {
-                while (startDay.isSameOrBefore(period.endDate, 'day')) {
+                while (Period.isSameOrBeforeDay(startDay, period.endDate)) {
                     count++;
-                    startDay.add(7, 'days');
+                    startDay = startDay.plus({ days: 7 });
                 }
             }
             return count;
@@ -1559,10 +1547,15 @@ class Period {
             .reduceRight((previousValue, currentValue) => previousValue + currentValue);
     }
     isValid() {
-        return !!this.startDate && !!this.endDate && this.startDate.isBefore(this.endDate);
+        if (this._endDate instanceof luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime && this._startDate instanceof luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime) {
+            return !!this._startDate && !!this._endDate && this._startDate.toMillis() < this._endDate.toMillis();
+        }
+        else {
+            return false;
+        }
     }
     containsDate(date) {
-        return date.isSameOrAfter(this.startDate) && date.isSameOrBefore(this.endDate);
+        return Period.isSameOrAfter(date, this.startDate) && Period.isSameOrBefore(date, this.endDate);
     }
     toString() {
         return `Period (${this.startDate} - ${this.endDate})`;
@@ -1571,44 +1564,67 @@ class Period {
         return !!this.intersect(period);
     }
     intersect(period) {
-        const latestStart = (0,moment__WEBPACK_IMPORTED_MODULE_0__.max)(this.startDate, period.startDate);
-        const earliestEnd = (0,moment__WEBPACK_IMPORTED_MODULE_0__.min)(this.endDate, period.endDate);
+        const latestStart = luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.max(this.startDate, period.startDate);
+        const earliestEnd = luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.min(this.endDate, period.endDate);
         if (!latestStart || !earliestEnd) {
             return null;
         }
-        if (latestStart.isAfter(earliestEnd)) {
+        if (Period.isAfter(latestStart, earliestEnd)) {
             return null;
         }
         return new Period(latestStart, earliestEnd);
     }
     equals(period) {
-        return this.startDate.isSame(period.startDate) && this.endDate.isSame(period.endDate);
+        return Period.isSame(this.startDate, period.startDate) && Period.isSame(this.endDate, period.endDate);
+    }
+    static isSameDay(first, second) {
+        return luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(first.toISODate()).toMillis() == luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(second.toISODate()).toMillis();
+    }
+    static isSameOrBeforeDay(first, second) {
+        return luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(first.toISODate()).toMillis() <= luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(second.toISODate()).toMillis();
+    }
+    static isSameOrBefore(first, second) {
+        return first.toMillis() <= second.toMillis();
+    }
+    static isSameOrAfter(first, second) {
+        return first.toMillis() >= second.toMillis();
+    }
+    static isSame(first, second) {
+        return first.toMillis() == second.toMillis();
+    }
+    static isBefore(first, second) {
+        return first.toMillis() < second.toMillis();
+    }
+    static isAfter(first, second) {
+        return first.toMillis() > second.toMillis();
     }
 }
 
 
 /***/ }),
 
-/***/ 69153:
+/***/ 9153:
 /*!********************************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/pipes/time-chart-date-formatter.pipe.ts ***!
   \********************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TimeChartDateFormatterPipe": function() { return /* binding */ TimeChartDateFormatterPipe; }
+/* harmony export */   "TimeChartDateFormatterPipe": () => (/* binding */ TimeChartDateFormatterPipe)
 /* harmony export */ });
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! luxon */ 20);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
 
 
-const moment = moment__WEBPACK_IMPORTED_MODULE_0__;
 class TimeChartDateFormatterPipe {
     transform(dateString) {
-        return moment(dateString).format('D. M.');
+        if (dateString instanceof luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime) {
+            return dateString.toFormat('dd. MM.');
+        }
+        else {
+            return luxon__WEBPACK_IMPORTED_MODULE_0__.DateTime.fromISO(dateString).toFormat('dd. MM.');
+        }
     }
 }
 TimeChartDateFormatterPipe.ɵfac = function TimeChartDateFormatterPipe_Factory(t) { return new (t || TimeChartDateFormatterPipe)(); };
@@ -1617,30 +1633,27 @@ TimeChartDateFormatterPipe.ɵpipe = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTE
 
 /***/ }),
 
-/***/ 55468:
+/***/ 5468:
 /*!******************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/service/period.service.ts ***!
   \******************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PeriodService": function() { return /* binding */ PeriodService; }
+/* harmony export */   "PeriodService": () => (/* binding */ PeriodService)
 /* harmony export */ });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 76491);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 61486);
-/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../period */ 73245);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 33927);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 4505);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 9193);
+/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../period */ 3245);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 6942);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! luxon */ 20);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 3184);
 
 
 
 
 
-const moment = moment__WEBPACK_IMPORTED_MODULE_1__;
 /**
  * The service provides the current calendar period. It is specified:
  * <ul>
@@ -1660,14 +1673,14 @@ class PeriodService {
     }
     /**
      * Set the start date of the period. If the parameter is null the start date will be calculated
-     * @param date A momentjs date or null
+     * @param date A luxon date or null
      */
     set startDate(date) {
         this._startDate$.next(date);
     }
     /**
      * Set the end date of the period. If the parameter is null the end date will be  calculated.
-     * @param date A momentjs date or null
+     * @param date A luxon date or null
      */
     set endDate(date) {
         this._endDate$.next(date);
@@ -1685,8 +1698,8 @@ class PeriodService {
         return this._isFullYear$;
     }
     static getCurrentYearPeriod() {
-        const currentYear = moment();
-        return new _period__WEBPACK_IMPORTED_MODULE_0__.Period(currentYear.clone().startOf('year'), currentYear.clone().endOf('year'));
+        const currentYear = luxon__WEBPACK_IMPORTED_MODULE_1__.DateTime.local();
+        return new _period__WEBPACK_IMPORTED_MODULE_0__.Period(currentYear.set({}).startOf('year'), currentYear.set({}).endOf('year'));
     }
     static calculatePeriod(startDate, endDate) {
         if (startDate == null && endDate == null) {
@@ -1697,16 +1710,16 @@ class PeriodService {
             myStartDate = startDate;
         }
         else {
-            myStartDate = endDate.clone();
-            myStartDate.subtract(1, 'year');
+            myStartDate = endDate.set({});
+            myStartDate = myStartDate.minus({ year: 1 });
         }
         let myEndDate;
         if (endDate != null) {
-            myEndDate = endDate.clone();
+            myEndDate = endDate.set({});
         }
         else {
-            myEndDate = myStartDate.clone();
-            myEndDate.add(1, 'year');
+            myEndDate = myStartDate.set({});
+            myEndDate = myEndDate.plus({ year: 1 });
         }
         return new _period__WEBPACK_IMPORTED_MODULE_0__.Period(myStartDate, myEndDate);
     }
@@ -1717,32 +1730,29 @@ PeriodService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__[
 
 /***/ }),
 
-/***/ 61909:
+/***/ 1909:
 /*!****************************************************************!*\
   !*** ./projects/ng-time-chart/src/lib/service/year.service.ts ***!
   \****************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "YearService": function() { return /* binding */ YearService; }
+/* harmony export */   "YearService": () => (/* binding */ YearService)
 /* harmony export */ });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 76491);
-/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../period */ 73245);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ 2281);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 33927);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 4505);
+/* harmony import */ var _period__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../period */ 3245);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 6942);
+/* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! luxon */ 20);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 3184);
 
 
 
 
 
-const moment = moment__WEBPACK_IMPORTED_MODULE_1__;
 class YearService {
     constructor() {
-        this._year$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__.BehaviorSubject(moment().year());
+        this._year$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__.BehaviorSubject(luxon__WEBPACK_IMPORTED_MODULE_1__.DateTime.local().year);
         this._period$ = this._year$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.map)(year => YearService.periodForYear(year)));
     }
     set year(value) {
@@ -1762,336 +1772,13 @@ YearService.ɵfac = function YearService_Factory(t) { return new (t || YearServi
 YearService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjectable"]({ token: YearService, factory: YearService.ɵfac, providedIn: 'root' });
 
 
-/***/ }),
-
-/***/ 46700:
-/*!***************************************************!*\
-  !*** ./node_modules/moment/locale/ sync ^\.\/.*$ ***!
-  \***************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var map = {
-	"./af": 62275,
-	"./af.js": 62275,
-	"./ar": 90857,
-	"./ar-dz": 11218,
-	"./ar-dz.js": 11218,
-	"./ar-kw": 14754,
-	"./ar-kw.js": 14754,
-	"./ar-ly": 66680,
-	"./ar-ly.js": 66680,
-	"./ar-ma": 92178,
-	"./ar-ma.js": 92178,
-	"./ar-sa": 56522,
-	"./ar-sa.js": 56522,
-	"./ar-tn": 95682,
-	"./ar-tn.js": 95682,
-	"./ar.js": 90857,
-	"./az": 70164,
-	"./az.js": 70164,
-	"./be": 79774,
-	"./be.js": 79774,
-	"./bg": 60947,
-	"./bg.js": 60947,
-	"./bm": 21832,
-	"./bm.js": 21832,
-	"./bn": 89650,
-	"./bn-bd": 74477,
-	"./bn-bd.js": 74477,
-	"./bn.js": 89650,
-	"./bo": 66005,
-	"./bo.js": 66005,
-	"./br": 98492,
-	"./br.js": 98492,
-	"./bs": 70534,
-	"./bs.js": 70534,
-	"./ca": 52061,
-	"./ca.js": 52061,
-	"./cs": 84737,
-	"./cs.js": 84737,
-	"./cv": 61167,
-	"./cv.js": 61167,
-	"./cy": 77996,
-	"./cy.js": 77996,
-	"./da": 9528,
-	"./da.js": 9528,
-	"./de": 14540,
-	"./de-at": 49430,
-	"./de-at.js": 49430,
-	"./de-ch": 67978,
-	"./de-ch.js": 67978,
-	"./de.js": 14540,
-	"./dv": 83426,
-	"./dv.js": 83426,
-	"./el": 6616,
-	"./el.js": 6616,
-	"./en-au": 63816,
-	"./en-au.js": 63816,
-	"./en-ca": 32162,
-	"./en-ca.js": 32162,
-	"./en-gb": 83305,
-	"./en-gb.js": 83305,
-	"./en-ie": 61954,
-	"./en-ie.js": 61954,
-	"./en-il": 43060,
-	"./en-il.js": 43060,
-	"./en-in": 59923,
-	"./en-in.js": 59923,
-	"./en-nz": 13540,
-	"./en-nz.js": 13540,
-	"./en-sg": 16505,
-	"./en-sg.js": 16505,
-	"./eo": 41907,
-	"./eo.js": 41907,
-	"./es": 86640,
-	"./es-do": 41246,
-	"./es-do.js": 41246,
-	"./es-mx": 56131,
-	"./es-mx.js": 56131,
-	"./es-us": 36430,
-	"./es-us.js": 36430,
-	"./es.js": 86640,
-	"./et": 62551,
-	"./et.js": 62551,
-	"./eu": 32711,
-	"./eu.js": 32711,
-	"./fa": 54572,
-	"./fa.js": 54572,
-	"./fi": 33390,
-	"./fi.js": 33390,
-	"./fil": 87860,
-	"./fil.js": 87860,
-	"./fo": 48216,
-	"./fo.js": 48216,
-	"./fr": 99291,
-	"./fr-ca": 98527,
-	"./fr-ca.js": 98527,
-	"./fr-ch": 58407,
-	"./fr-ch.js": 58407,
-	"./fr.js": 99291,
-	"./fy": 47054,
-	"./fy.js": 47054,
-	"./ga": 49540,
-	"./ga.js": 49540,
-	"./gd": 73917,
-	"./gd.js": 73917,
-	"./gl": 51486,
-	"./gl.js": 51486,
-	"./gom-deva": 56245,
-	"./gom-deva.js": 56245,
-	"./gom-latn": 48868,
-	"./gom-latn.js": 48868,
-	"./gu": 59652,
-	"./gu.js": 59652,
-	"./he": 89019,
-	"./he.js": 89019,
-	"./hi": 42040,
-	"./hi.js": 42040,
-	"./hr": 63402,
-	"./hr.js": 63402,
-	"./hu": 79322,
-	"./hu.js": 79322,
-	"./hy-am": 27609,
-	"./hy-am.js": 27609,
-	"./id": 57942,
-	"./id.js": 57942,
-	"./is": 98275,
-	"./is.js": 98275,
-	"./it": 73053,
-	"./it-ch": 4378,
-	"./it-ch.js": 4378,
-	"./it.js": 73053,
-	"./ja": 46176,
-	"./ja.js": 46176,
-	"./jv": 679,
-	"./jv.js": 679,
-	"./ka": 92726,
-	"./ka.js": 92726,
-	"./kk": 72953,
-	"./kk.js": 72953,
-	"./km": 86957,
-	"./km.js": 86957,
-	"./kn": 59181,
-	"./kn.js": 59181,
-	"./ko": 47148,
-	"./ko.js": 47148,
-	"./ku": 27752,
-	"./ku.js": 27752,
-	"./ky": 65675,
-	"./ky.js": 65675,
-	"./lb": 41263,
-	"./lb.js": 41263,
-	"./lo": 65746,
-	"./lo.js": 65746,
-	"./lt": 11143,
-	"./lt.js": 11143,
-	"./lv": 38753,
-	"./lv.js": 38753,
-	"./me": 44054,
-	"./me.js": 44054,
-	"./mi": 31573,
-	"./mi.js": 31573,
-	"./mk": 30202,
-	"./mk.js": 30202,
-	"./ml": 68523,
-	"./ml.js": 68523,
-	"./mn": 79794,
-	"./mn.js": 79794,
-	"./mr": 56681,
-	"./mr.js": 56681,
-	"./ms": 56975,
-	"./ms-my": 39859,
-	"./ms-my.js": 39859,
-	"./ms.js": 56975,
-	"./mt": 3691,
-	"./mt.js": 3691,
-	"./my": 5152,
-	"./my.js": 5152,
-	"./nb": 7607,
-	"./nb.js": 7607,
-	"./ne": 21526,
-	"./ne.js": 21526,
-	"./nl": 86368,
-	"./nl-be": 40076,
-	"./nl-be.js": 40076,
-	"./nl.js": 86368,
-	"./nn": 68420,
-	"./nn.js": 68420,
-	"./oc-lnc": 51906,
-	"./oc-lnc.js": 51906,
-	"./pa-in": 94504,
-	"./pa-in.js": 94504,
-	"./pl": 54721,
-	"./pl.js": 54721,
-	"./pt": 74645,
-	"./pt-br": 54548,
-	"./pt-br.js": 54548,
-	"./pt.js": 74645,
-	"./ro": 71977,
-	"./ro.js": 71977,
-	"./ru": 26042,
-	"./ru.js": 26042,
-	"./sd": 78849,
-	"./sd.js": 78849,
-	"./se": 27739,
-	"./se.js": 27739,
-	"./si": 50084,
-	"./si.js": 50084,
-	"./sk": 92449,
-	"./sk.js": 92449,
-	"./sl": 23086,
-	"./sl.js": 23086,
-	"./sq": 33139,
-	"./sq.js": 33139,
-	"./sr": 30607,
-	"./sr-cyrl": 30063,
-	"./sr-cyrl.js": 30063,
-	"./sr.js": 30607,
-	"./ss": 40131,
-	"./ss.js": 40131,
-	"./sv": 21665,
-	"./sv.js": 21665,
-	"./sw": 5642,
-	"./sw.js": 5642,
-	"./ta": 33622,
-	"./ta.js": 33622,
-	"./te": 74825,
-	"./te.js": 74825,
-	"./tet": 48336,
-	"./tet.js": 48336,
-	"./tg": 39238,
-	"./tg.js": 39238,
-	"./th": 99463,
-	"./th.js": 99463,
-	"./tk": 39986,
-	"./tk.js": 39986,
-	"./tl-ph": 29672,
-	"./tl-ph.js": 29672,
-	"./tlh": 40043,
-	"./tlh.js": 40043,
-	"./tr": 51212,
-	"./tr.js": 51212,
-	"./tzl": 50110,
-	"./tzl.js": 50110,
-	"./tzm": 80482,
-	"./tzm-latn": 38309,
-	"./tzm-latn.js": 38309,
-	"./tzm.js": 80482,
-	"./ug-cn": 42495,
-	"./ug-cn.js": 42495,
-	"./uk": 54157,
-	"./uk.js": 54157,
-	"./ur": 80984,
-	"./ur.js": 80984,
-	"./uz": 64141,
-	"./uz-latn": 43662,
-	"./uz-latn.js": 43662,
-	"./uz.js": 64141,
-	"./vi": 12607,
-	"./vi.js": 12607,
-	"./x-pseudo": 66460,
-	"./x-pseudo.js": 66460,
-	"./yo": 92948,
-	"./yo.js": 92948,
-	"./zh-cn": 62658,
-	"./zh-cn.js": 62658,
-	"./zh-hk": 39352,
-	"./zh-hk.js": 39352,
-	"./zh-mo": 38274,
-	"./zh-mo.js": 38274,
-	"./zh-tw": 98451,
-	"./zh-tw.js": 98451
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 46700;
-
-/***/ }),
-
-/***/ 81781:
-/*!***************************************************************************************!*\
-  !*** ./projects/ng-time-chart-showcase/$_lazy_route_resources/ lazy namespace object ***!
-  \***************************************************************************************/
-/***/ (function(module) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncaught exception popping up in devtools
-	return Promise.resolve().then(function() {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 81781;
-module.exports = webpackEmptyAsyncContext;
-
 /***/ })
 
 },
-/******/ function(__webpack_require__) { // webpackRuntimeModules
-/******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-/******/ __webpack_require__.O(0, ["vendor"], function() { return __webpack_exec__(30606); });
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ __webpack_require__.O(0, ["vendor"], () => (__webpack_exec__(606)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main-es2018.js.map
+//# sourceMappingURL=main.js.map
