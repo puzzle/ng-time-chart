@@ -4,12 +4,10 @@ import {Component} from '@angular/core';
 import {Item} from '../../item';
 import {Period} from '../../period';
 import {Group} from '../../group';
-import * as moment_ from 'moment';
 import {LayoutStrategy} from '../../../public-api';
 import {TimeTableBodyComponent} from './time-table-body.component';
 import {ItemGroupingComponent} from '../item-grouping/item-grouping.component';
-
-const moment = moment_;
+import { DateTime } from 'luxon';
 
 describe('TimeTableBodyComponent', () => {
   let component: TestHostComponent;
@@ -26,18 +24,18 @@ describe('TimeTableBodyComponent', () => {
   beforeEach(() => {
     const item0: Item = {
       name: 'Testitem0',
-      startTime: moment('2020-03-01'),
-      endTime: moment('2020-03-15')
+      startTime: DateTime.fromISO('2020-03-01'),
+      endTime: DateTime.fromISO('2020-03-15')
     };
     const item1: Item = {
       name: 'TestItem1',
-      startTime: moment('2020-03-17'),
-      endTime: moment('2020-04-08')
+      startTime: DateTime.fromISO('2020-03-17'),
+      endTime: DateTime.fromISO('2020-04-08')
     };
     const item2: Item = {
       name: 'TestItem2',
-      startTime: moment('2020-04-09'),
-      endTime: moment('2020-05-20')
+      startTime: DateTime.fromISO('2020-04-09'),
+      endTime: DateTime.fromISO('2020-05-20')
     };
     simpleOrderItems = [item0, item2, item1];
     group = {name: 'TestGroup', items: simpleOrderItems};
@@ -56,10 +54,10 @@ describe('TimeTableBodyComponent', () => {
     template: '<ng-time-table-body [period]="period" [groups]="groups" [today]="today" [layoutStrategy]="strategy"></ng-time-table-body>',
   })
   class TestHostComponent {
-    readonly period: Period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    readonly period: Period = new Period(DateTime.fromISO('2020-01-01'),DateTime.fromISO('2020-12-31'));
     readonly groups: Group[] = [group];
-    readonly today: moment_.Moment = moment();
-    readonly days: moment_.Moment[] = [];
+    readonly today: DateTime = DateTime.local();
+    readonly days: DateTime[] = [];
     readonly strategy: LayoutStrategy = LayoutStrategy.Stacked;
   }
 });

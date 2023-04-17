@@ -34,20 +34,20 @@ new Group(
         [
           {
             name: 'Timeframe with 4 active days and color set',
-            startTime: moment('2019-02-12'),
-            endTime: moment('2019-05-23').
+            startTime: DateTime.fromISO('2019-02-12'),
+            endTime: DateTime.fromISO('2019-05-23'),
             class: 'my-class-a',
             dates: [
-              moment('2019-03-18'),
-              moment('2019-03-19'),
-              moment('2019-03-23'),
-              moment('2019-03-24')
+              DateTime.fromISO('2019-03-18'),
+              DateTime.fromISO('2019-03-19'),
+              DateTime.fromISO('2019-03-23'),
+              DateTime.fromISO('2019-03-24')
             ]
           },
           {
             name: 'Timeframe in default color',
-            startTime: moment('2018-12-11'),
-            endTime: moment('2019-03-02')
+            startTime: DateTime.fromISO('2018-12-11'),
+            endTime: DateTime.fromISO('2019-03-02')
           }
         ],
         () => console.log('clicked'),
@@ -98,8 +98,8 @@ In your `styles.scss`, add the style definition for the classes you have added i
 If the values are changed the calendar will be redrawn. If a date is set, switching years is disabled.
 
 ```typescript
-  startDate = moment('2019-10-10');
-  endDate = moment('2020-03-10');
+  startDate = DateTime.fromISO('2019-10-10');
+  endDate = DateTime.fromISO('2020-03-10');
 ```
 
 ```angular2html
@@ -120,7 +120,7 @@ This is a grouping of several items.
 ### Item
 This represents a bar in the time chart.
 - _name_: The name of the item.
-- _startTime_: The start date of the item. This is represented in Momentjs
+- _startTime_: The start date of the item. This is represented in Luxon
 - _endTime_: The end date of the item.
 - _class_: The optional css-class of the item.
 - _onClick_: The optional action to take when the user clicks the item in the chart.

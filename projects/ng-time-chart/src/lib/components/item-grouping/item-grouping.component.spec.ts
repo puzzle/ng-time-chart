@@ -1,13 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
+import { DateTime } from 'luxon';
 import {ItemGroupingComponent} from './item-grouping.component';
 import {Component, ViewChild} from '@angular/core';
 import {Period} from '../../period';
 import {Item} from '../../item';
 import {ItemComponent} from '../item/item.component';
-import * as moment_ from 'moment';
-
-const moment = moment_;
 
 
 describe('ItemGroupingComponent', () => {
@@ -23,7 +20,7 @@ describe('ItemGroupingComponent', () => {
   }));
 
   beforeEach(() => {
-    period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    period = new Period(DateTime.fromISO('2020-01-01'), DateTime.fromISO('2020-12-31'));
     fixture = TestBed.createComponent(TestHostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -38,8 +35,8 @@ describe('ItemGroupingComponent', () => {
     component.period = period;
     const item = {
       name: 'testItem',
-      startTime: moment('2019-06-08'),
-      endTime: moment('2021-06-08'),
+      startTime: DateTime.fromISO('2019-06-08'),
+      endTime: DateTime.fromISO('2021-06-08'),
     };
     expect(component.itemGroupingComponent.visibleInPeriod([item])).toBeTrue();
     expect(component).toBeTruthy();
@@ -53,7 +50,7 @@ describe('ItemGroupingComponent', () => {
   class TestHostComponent {
     @ViewChild(ItemGroupingComponent)
     public itemGroupingComponent: ItemGroupingComponent;
-    period: Period = new Period(moment('2020-01-01'), moment('2020-12-31'));
+    period: Period = new Period(DateTime.fromISO('2020-01-01'),DateTime.fromISO('2020-12-31'));
     itemGrouping: Item[] = [];
   }
 });

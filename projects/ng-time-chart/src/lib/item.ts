@@ -1,12 +1,12 @@
-import * as moment_ from 'moment';
+import { DateTime } from 'luxon';
 
 export interface Item {
   readonly name: string;
   details?: string;
-  readonly startTime: moment_.Moment;
-  readonly endTime: moment_.Moment;
+  readonly startTime:DateTime;
+  readonly endTime: DateTime;
   readonly hideDateRangeInHeader?: boolean;
-  dates?: moment_.Moment[];
+  dates?: DateTime[];
   class?: string;
   onClick?: () => void;
 }
